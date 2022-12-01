@@ -198,6 +198,8 @@ class PostController extends Controller
     {
         $post = Post::withTrashed()->where('id',$id)->first();
 
+        unlink(public_path("storage/" . $post->book));
+
         $post -> forceDelete();
 
         return redirect()->back()->with([

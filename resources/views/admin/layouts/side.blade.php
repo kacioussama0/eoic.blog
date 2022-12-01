@@ -3,6 +3,7 @@
         <div class="sidebar-header">
             <div class="d-flex justify-content-between">
                 <div class="logo">
+
                     <a href=""> <img src="{{asset('assets/imgs/logo.svg')}}"  alt="Logo" class = "main-logo "></a>
                 </div>
                 <div class="toggler">
@@ -90,20 +91,22 @@
                 </li>
 
                 <li
-                    class="sidebar-item {{request()->is('admin/complaints*') ? "active" : '' }}">
-                    <a href="{{route('complaints.index')}}" class='sidebar-link '>
-                        <i class="bi bi-file-post"></i>
-                        <span>شكاوي</span>
+                    class="sidebar-item {{request()->is('admin/magazines') ? "active" : '' }}">
+                    <a href="{{route('magazines.index')}}" class='sidebar-link'>
+                        <i class="bi bi-book"></i>
+                        <span>المجلات</span>
                     </a>
                 </li>
 
                 <li
-                    class="sidebar-item {{request()->is('admin/joined-users*') ? "active" : '' }}">
-                    <a href="{{route('joined-users.index')}}" class='sidebar-link '>
-                        <i class="bi bi-people-fill"></i>
-                        <span>هيكلة المرصد</span>
+                    class="sidebar-item {{request()->is('admin/videos') ? "active" : '' }}">
+                    <a href="{{route('videos.index')}}" class='sidebar-link'>
+                        <i class="bi bi-camera-video"></i>
+                        <span>الفيديوهات</span>
                     </a>
                 </li>
+
+
 
 
                 <li

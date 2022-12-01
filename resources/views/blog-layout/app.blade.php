@@ -13,9 +13,12 @@
     <title>{{config('app.name')}} | @yield('title')</title>
     <link rel="stylesheet" href="{{asset('assets/css/bootstrap.rtl.css')}}">
     <link rel='icon' href='{{asset('assets/imgs/logo.svg')}}'>
-    <link rel="stylesheet" href="{{asset('assets/css/uikit-rtl.min.css')}}">
     <link type="text/css" rel="stylesheet" href="{{asset('assets/css/blog.css')}}" />
     <link type="text/css" rel="stylesheet" href="{{asset('assets/css/blog_style.css')}}" />
+    <link href="{{asset('assets/dflip/assets/css/dflip.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{asset('assets/dflip/assets/css/themify-icons.min.css')}}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{{asset('assets/owlcarousel/assets/owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/owlcarousel/assets/owl.theme.default.min.css')}}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 
@@ -26,7 +29,6 @@
     </script>
 
 </head>
-<x-loader/>
 
 
 <body>
@@ -36,13 +38,19 @@
 <nav class="navbar navbar-expand-lg shadow-sm ">
     <div class="container">
         <a class="navbar-brand" href="#">
-            <img src="{{asset('assets/imgs/logo.svg')}}" alt="" class="main-logo">
-        </a>
+            @if(config('app.locale') == 'ar')
+            <a href=""> <img src="{{asset('assets/imgs/AR-eoic.svg')}}"  alt="Logo" class = "main-logo"></a>
+                @elseif(config('app.locale') == 'en')
+                <a href=""> <img src="{{asset('assets/imgs/EN-eoic.svg')}}"  alt="Logo" class = "main-logo"></a>
+            @else
+                <a href=""> <img src="{{asset('assets/imgs/FR-eoic.svg')}}"  alt="Logo" class = "main-logo"></a>
+            @endif
+       </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarScroll">
+        <div class="collapse navbar-nav navbar-collapse" id="navbarScroll">
 
             <ul class="navbar-nav mx-auto my-2 my-lg-0 ">
                 <li class="nav-item {{request()->is('/') ? "active" : '' }}">
@@ -55,16 +63,16 @@
                     </a>
                     <div class="collapse mega-menu p-5 ms-5 " id="about">
                         <div class="container">
-                        <div class="row g-5">
+                        <div class="row">
 
                             <div class="col-3 ">
                                 <h3 class="title-yellow">{{__('عن الهيئة')}}</h3>
                                 <ul>
-                                    <li>{{__('من نحن')}}</li>
-                                    <li>{{__('مشاريعنا')}}</li>
-                                    <li>{{__('الجهات المستفادة')}}</li>
-                                    <li>{{__('الدول التي نعمل بها')}}</li>
-                                    <li>{{__('الهيئة في أعين الإعلام')}}</li>
+                                    <li class=""><a href="">{{__('من نحن')}}</a></li>
+                                    <li><a href="">{{__('مشاريعنا')}}</a></li>
+                                    <li><a href="">{{__('الجهات المستفادة')}}</a></li>
+                                    <li><a href="">{{__('الدول التي نعمل بها')}}</a></li>
+                                    <li><a href="">{{__('الهيئة في أعين الإعلام')}}</a></li>
                                 </ul>
                             </div>
 
@@ -73,10 +81,10 @@
                             <div class="col-4 offset-1">
                                 <h3 class="title-yellow">{{__('الأخبار والنشاطات')}}</h3>
                                 <ul>
-                                    <li>{{__('نشاطات الهيئة')}}</li>
-                                    <li>{{__('بيانات الهيئة')}}</li>
-                                    <li>{{__('إتفاقيات')}}</li>
-                                    <li>{{__('المؤتمر')}}</li>
+                                    <li><a href="">{{__('نشاطات الهيئة')}}</a></li>
+                                    <li><a href="">{{__('بيانات الهيئة')}}</a></li>
+                                    <li><a href="">{{__('إتفاقيات')}}</a></li>
+                                    <li><a href="">{{__('المؤتمر')}}</a></li>
                                 </ul>
                             </div>
 
@@ -123,7 +131,7 @@
             </ul>
                <ul class="navbar-nav">
                    <li class="nav-item">
-                       <a class="nav-link disabled" href="#">{{__('دخول')}}</a>
+                       <a class="nav-link " href="{{route('login')}}">{{__('دخول')}}</a>
                    </li>
                </ul>
         </div>
@@ -147,7 +155,7 @@
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     {{__('الهيئة')}}
                 </a>
-                <ul class="dropdown-menu ">
+                <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="#">Action</a></li>
                     <li><a class="dropdown-item" href="#">Another action</a></li>
                     <li><hr class="dropdown-divider"></li>
@@ -168,7 +176,7 @@
 
 
     <!-- FOOTER -->
-    <footer id="footer" style="background-image: url('{{asset('assets/imgs/continent.svg')}}')">
+    <footer id="footer" class="bg-primary border-top border-3 border-secondary ">
         <!-- container -->
         <div class="container">
             <!-- row -->
@@ -240,9 +248,29 @@
         </div>
     </footer>
 
-    <script src="{{asset('assets/js/uikit.min.js')}}"></script>
-
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/ar_AR/sdk.js#xfbml=1&version=v15.0&appId=3303718453247757&autoLogAppEvents=1" nonce="xcMhs8T4"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="{{asset('assets/dflip/assets/js/dflip.min.js')}}"></script>
+<script src="{{asset('assets/owlcarousel/owl.carousel.min.js')}}"></script>
+
+<script>
+    $('.owl-carousel').owlCarousel({
+        items:1,
+        merge:true,
+        loop:true,
+        margin:10,
+        video:true,
+        center:true,
+        responsive:{
+            480:{
+                items:2
+            },
+            600:{
+                items:4
+            }
+        }
+</script>
 </body>
 
 </html>

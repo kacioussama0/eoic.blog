@@ -5,16 +5,15 @@
 
 
     <div class="page-header ">
-        <div class="uk-overlay-primary uk-position-cover"></div>
 
-        <div class="page-header-bg " style="background-image: url('{{asset('storage/' . $post -> image)}}');background-size: cover" data-stellar-background-ratio="0.9"></div>
+        <div class="page-header-bg" style="background-image: url('{{asset('storage/' . $post -> image)}}');background-size: cover" data-stellar-background-ratio="0.9"></div>
         <div class="container">
             <div class="row justify-content-center" >
                 <div class="col-md-offset-1 col-md-10 text-center">
 
                     <h1 class="text-uppercase" >{{$post -> title}}</h1>
 
-                    <div class="position-relative uk-position-z-index">
+                    <div class="position-relative ">
                         @foreach($post -> tags as $tag)
 
                             <a href="{{route('tag.show',$tag)}}" class="badge bg-primary badge-pill">#{{$tag -> name}}</a>
@@ -32,9 +31,9 @@
 
         <div class="container">
             <div class="row">
-                <div class="col-md-8 uk-animation-scale-up">
+                <div class="col-md-8 ">
 
-                    <img src="{{asset('storage/' . $post -> image)}}" alt="" class="mb-3">
+                    <img src="{{asset('storage/' . $post -> image)}}" alt="" class="mb-3 img-fluid">
 
                     <div style="font-size: 22px" >
                         {!! $post -> content !!}

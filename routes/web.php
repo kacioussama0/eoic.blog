@@ -15,8 +15,6 @@ Route::get('/',[\App\Http\Controllers\BlogController::class,'index']);
 
 Route::get('contact',[\App\Http\Controllers\MessageController::class,'create'])->name('contact');
 Route::post('contact',[\App\Http\Controllers\MessageController::class,'store']);
-Route::get('complaint',[\App\Http\Controllers\ComplaintController::class,'create'])->name('complaint');
-Route::post('complaint',[\App\Http\Controllers\ComplaintController::class,'store']);
 Route::get('join-us',[\App\Http\Controllers\JoinUsController::class,'create'])->name('join-us');
 Route::post('join-us',[\App\Http\Controllers\JoinUsController::class,'store']);
 Route::get('posts/{slug}',[\App\Http\Controllers\BlogController::class,'post'])->name('post.slug');
@@ -42,6 +40,7 @@ Route::prefix('admin')->middleware('auth')->group(function() {
     Route::resource('join-us',\App\Http\Controllers\JoinUsController::class);
     Route::resource('joined-users',\App\Http\Controllers\JoinedUser::class)->name('','joined-users');
     Route::resource('messages',\App\Http\Controllers\MessageController::class)->name('','messages');
-    Route::resource('complaints',\App\Http\Controllers\ComplaintController::class)->name('','complaints');
+    Route::resource('magazines',\App\Http\Controllers\MagazineController::class)->name('','magazines');
+    Route::resource('videos',\App\Http\Controllers\VideoController::class)->name('','videos');
     Route::resource('news',\App\Http\Controllers\NewsController::class)->name('','news');
 });

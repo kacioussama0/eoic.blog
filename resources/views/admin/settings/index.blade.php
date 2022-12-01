@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('title','إعدادات الموقع')
+@section('title',__('إعدادات الموقع'))
 
 
 
@@ -23,13 +23,12 @@
         @method('PATCH')
 
 
-        <x-admin.forms.input name="blog_name" title="إسم الموقع" type="text" value="{{$settings->blog_name}}"/>
-        <x-admin.forms.input name="email" title="البريد الإلكتروني" type="email" value="{{$settings->email}}"/>
-        <x-admin.forms.text-area name="blog_description" title="الوصف"  value="{!! $settings->blog_description !!}"/>
-        <x-admin.forms.input name="phone" title="رقم الهاتف" type="tel" value="{{$settings->phone}}"/>
-        <x-admin.forms.input name="address" title="العنوان" type="text" value="{{$settings->address}}"/>
-
-        <button class="btn btn-primary w-100">تحديث إعدادات الموقع</button>
+        <x-admin.forms.input name="blog_name" title="{{__('إسم الموقع')}}" type="text" value="{{$settings->blog_name}}"/>
+        <x-admin.forms.input name="email" title="{{__('البريد الإلكتروني')}}" type="email" value="{{$settings->email}}"/>
+        <x-admin.forms.text-area name="blog_description" title="{{__('الوصف')}}"  value="{!! $settings->blog_description !!}"/>
+        <x-admin.forms.input name="phone" title="{{__('رقم الهاتف')}}" type="tel" value="{{$settings->phone}}"/>
+        <x-admin.forms.input name="address" title="{{__('العنوان')}}" type="text" value="{{$settings->address}}"/>
+        <button class="btn btn-primary w-100">{{__('تحديث إعدادات الموقع')}}</button>
 
     </form>
     <script src="{{asset('ckeditor/build/ckeditor.js')}}"></script>

@@ -3,21 +3,23 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Magazine;
 use App\Models\News;
 use App\Models\Post;
 use App\Models\Setting;
 use App\Models\Tag;
+use App\Models\Video;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
     public function index() {
 
-        return view('home')->with('first_post',Post::where('is_published','on')->orderByDesc('created_at')->first())
-            ->with('second_post',Post::where('is_published','on')->orderByDesc('created_at')->skip(1)->first())
-            ->with('third_post',Post::where('is_published','on')->orderByDesc('created_at')->skip(2)->first())
-            ->with('last_posts',Post::where('is_published','on')->orderByDesc('created_at')->skip(3)->take(4)->get())
+        return view('home')->with('slider_posts',Post::where('is_published','on')->orderByDesc('created_at')->take(10)->get())
+            ->with('last_posts',Post::where('is_published','on')->orderByDesc('created_at')->take(4)->get())
             ->with('categories',Category::get()->take(5))
+            ->with('magazines',Magazine::where('is_published','1')->latest()->get())
+            ->with('videos',Video::where('is_published','1')->latest()->get())
             ->with('news_title',News::where('is_published','1')->get()->take(10))
             ->with('settings',Setting::first())
             ->with('tags',Tag::get()->take(11));

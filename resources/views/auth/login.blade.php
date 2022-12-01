@@ -4,21 +4,21 @@
 <div class="container  ">
     <div class="row justify-content-center ">
 
-            <div class="card border border-none">
+            <div class="card border border-none rounded-0">
 
                 <div class="row align-items-center">
 
-                    <div class="col-md-6 bg-secondary p-5" >
-                        <img src="{{asset('imgs/logo.svg')}}" alt="" style="width: 450px" class="img-fluid">
+                    <div class="col-md-6 p-5" >
+                        <img src="{{asset('assets/imgs/logo.svg')}}" alt="" style="width: 450px" class="img-fluid">
                     </div>
                     <div class="col-md-6">
                         <div class="card-body">
-                            <h1 class="mb-5  text-center fw-light">مرصد اليقظة لحقوق الإنسان والقضايا العادلة</h1>
+                            <h1 class="mb-5 title text-dark text-center fw-light">{{$settings -> blog_name}}</h1>
                             <form method="POST" action="{{ route('login') }}" >
                                 @csrf
 
 
-                                    <div class=" form-floating mb-3 ">
+                                    <div class=" form-floating mb-3">
                                         <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                                         <label for="email" >البريد الإلكتروني</label>
                                         @error('email')

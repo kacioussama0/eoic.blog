@@ -33,34 +33,31 @@
         <!-- container -->
         <div class="container">
 
-            <h1 class="title mx-auto my-4">{{__('أخر الأخبار')}}</h1>
 
-            <div id="hot-post" class="row hot-post">
-                <div class="col-md-12 hot-post-left mb-2  mb-md-0">
 
-                    <div id="carouselExampleFade" class="carousel slide carousel-fade overflow-hidden rounded " data-bs-ride="carousel">
+
+                    <div id="carouselExampleFade" class="carousel slide overflow-hidden  rounded-4 rounded-top-0 shadow-sm mb-5" data-bs-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
                                 <div class="carousel-content">
-                                    {{$first_post ->created_at -> diffForHumans()}}
-                                    <h3 class="text-truncate" style="max-width: 100%"><a href="{{route('post.slug', $first_post->slug)}}" >{{$first_post -> title}}</a></h3>
+                                    {{$slider_posts[0] ->created_at -> diffForHumans()}}
+                                    <h3 class="text-truncate" style="max-width: 100%"><a href="{{route('post.slug', $slider_posts[0]->slug)}}" >{{$slider_posts[0] -> title}}</a></h3>
                                 </div>
-                                <img src="{{!File::exists($first_post -> image) ? asset('storage/' . $first_post -> image) : asset('imgs/logo.svg') }}" class="d-block w-100" alt="...">
+                                <img src="{{File::exists('storage/' . $slider_posts[0] -> image) ? asset('storage/' . $slider_posts[0] -> image) : asset('assets/imgs/logo.svg') }}" class="d-block w-100" alt="...">
                             </div>
-                            <div class="carousel-item">
-                                <div class="carousel-content">
-                                    {{$second_post ->created_at -> diffForHumans()}}
-                                    <h3 class="text-truncate" style="max-width: 200px"><a href="{{route('post.slug', $second_post->slug)}}" >{{$second_post -> title}}</a></h3>
+
+                            @foreach($slider_posts->skip(1) as $post)
+
+                                <div class="carousel-item">
+                                    <div class="carousel-content">
+                                        {{$post ->created_at -> diffForHumans()}}
+                                        <h3 class="text-truncate" style="max-width: 100%"><a href="{{route('post.slug', $post->slug)}}" >{{$post -> title}}</a></h3>
+                                    </div>
+                                    <img src="{{File::exists('storage/' . $post -> image) ? asset('storage/' . $post -> image) : asset('assets/imgs/logo.svg') }}" class="d-block w-100" alt="...">
                                 </div>
-                                <img src="{{!File::exists($second_post -> image) ? asset('storage/' . $second_post -> image) : asset('imgs/logo.svg') }}" class="d-block w-100" alt="...">
-                            </div>
-                            <div class="carousel-item">
-                                <div class="carousel-content">
-                                    {{$third_post ->created_at -> diffForHumans()}}
-                                    <h3 class="text-truncate" style="max-width: 200px"><a href="{{route('post.slug', $third_post->slug)}}" >{{$third_post -> title}}</a></h3>
-                                </div>
-                                <img src="{{!File::exists($third_post -> image) ? asset('storage/' . $third_post -> image) : asset('imgs/logo.svg') }}" class="d-block w-100" alt="...">
-                            </div>
+
+                            @endforeach
+
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -72,111 +69,93 @@
                         </button>
                     </div>
 
-                </div>
 
-        </div>
-        <!-- /container -->
     </div>
-    <!-- /SECTION -->
-    <!-- SECTION -->
+
     <div class="section ">
-        <!-- container -->
         <div class="container">
-            <!-- row -->
             <div class="row">
                 <div class="col-md-8 ">
-                    <!-- row -->
-                    <div class="row  ">
-                        <div class="col-md-12">
-                            <div class="section-title">
-                                <h2 class="title">أخر المقالات</h2>
+
+                    <h3><img src="{{asset('assets/imgs/zellig.svg')}}" style="width: 30px" alt="" class="me-2">أخر المقالات </h3>
+
+                    <div class="row g-3">
+                            @foreach($last_posts as $post)
+                                <div class="col-md-6">
+                                    <x-article :post="$post"/>
+                                </div>
+                            @endforeach
+                        </div>
+
+                    <div class="card overflow-hidden border-primary">
+                        <div class="card-header p-0 bg-transparent ">
+                            <h3 class="title my-0 py-3">المجلات</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="row g-3">
+                                @foreach($magazines as $magazine)
+
+
+                                          <div class="col-md-4 col-12 col-sm-6">
+                                              <div class="_df_thumb"  source="{{asset('storage/' . $magazine -> book)}}" thumb="{{asset('storage/' . $magazine -> thumbnail)}}">
+                                                  <div class="_df_book-cover _df_thumb-not-found"><span class="_df_book-title">{{$magazine->title}}</span></div>
+                                              </div>
+                                          </div>
+
+
+                                @endforeach
                             </div>
                         </div>
-                        <!-- post -->
-                        @foreach($last_posts as $post)
-                            <div class="col-md-6 wow tada">
-                                <x-article :post="$post"/>
-                            </div>
-                        @endforeach
-                    <!-- /post -->
-
-
-
-
                     </div>
 
 
-
-                    @foreach($categories as $category)
-
-                        @if(count($category -> posts -> take(3)))
-                            <div class="row">
-
-                                <div class="col-md-12">
-                                    <div class="section-title">
-                                        <h2 class="title">{{$category -> name}}</h2>
-                                    </div>
-
-                                </div>
-
-                                @foreach($category -> posts -> where('is_published','on') as $post)
-
-
-                                    <div class="col-md-4  wow bounceInRight" >
-                                        <x-article :post="$post" />
-                                    </div>
-                                @endforeach
-                            </div>
-
-                        @endif
-                    @endforeach
-
-
                 </div>
+
+
 
                 @include('blog-layout.side')
 
 
-    <!-- SECTION -->
-    <div class="section">
-        <!-- container -->
-        <div class="container">
-            <!-- row -->
-            <div class="row">
-                <!-- ad -->
-                <div class="col-md-12 section-row text-center">
-                    <a href="#" style="display: inline-block;margin: auto;">
-                        <img class="img-responsive" src="{{asset('imgs/logo.svg')}}" alt="">
-                    </a>
+
+
                 </div>
-                <!-- /ad -->
-            </div>
-            <!-- /row -->
-        </div>
-        <!-- /container -->
-    </div>
-    <!-- /SECTION -->
 
 
-    <!-- SECTION -->
-    <div class="section">
-        <!-- container -->
-        <div class="container">
-            <!-- row -->
-            <div class="row">
-
-                <div class="col-md-4">
-
-                    <!-- Ad widget -->
-                    <div class="aside-widget text-center">
-                        <a href="#" style="display: inline-block;margin: auto;">
-                            <img class="img-responsive" src="{{asset('imgs/logo.svg')}}" alt="">
-                        </a>
+            <section class="mt-2">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <h2 class="title">فيديوهات</h2>
+                            <div class="owl-carousel owl-theme">
+                                <div class="item-video" data-merge="3">
+                                    <a class="owl-video" href="https://vimeo.com/23924346"></a>
+                                </div>
+                                <div class="item-video" data-merge="1">
+                                    <a class="owl-video" href="https://www.youtube.com/watch?v=JpxsRwnRwCQ"></a>
+                                </div>
+                                <div class="item-video" data-merge="2">
+                                    <a class="owl-video" href="https://www.youtube.com/watch?v=FBu_jxT1PkA"></a>
+                                </div>
+                                <div class="item-video" data-merge="1">
+                                    <a class="owl-video" href="https://www.youtube.com/watch?v=oy18DJwy5lI"></a>
+                                </div>
+                                <div class="item-video" data-merge="2">
+                                    <a class="owl-video" href="https://www.youtube.com/watch?v=H3jLkJrhHKQ"></a>
+                                </div>
+                                <div class="item-video" data-merge="3">
+                                    <a class="owl-video" href="https://www.youtube.com/watch?v=g3J4VxWIM6s"></a>
+                                </div>
+                                <div class="item-video" data-merge="1">
+                                    <a class="owl-video" href="https://www.youtube.com/watch?v=0fhoIate4qI"></a>
+                                </div>
+                                <div class="item-video" data-merge="2">
+                                    <a class="owl-video" href="https://www.youtube.com/watch?v=EF_kj2ojZaE"></a>
+                                </div>
+                        </div>
                     </div>
-                    <!-- /Ad widget -->
                 </div>
-            </div>
-            <!-- /row -->
+            </section>
+
         </div>
         <!-- /container -->
     </div>

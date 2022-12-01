@@ -4,5 +4,15 @@
     "إقترب إلينا": "Get Closure",
     "وسائط الإعلام": "Media",
     "دخول": "Login",
-    "أخر الأخبار": "Latest News"
+    "أخر الأخبار": "Latest News",
+
+
+    "__comment" : "For Settings",
+    "إسم الموقع" : "Blog Name",
+    "البريد الإلكتروني" : "Email",
+    "الوصف" : "Description",
+    "رقم الهاتف" : "Phone",
+    "العنوان" : "َAddress",
+    "تحديث إعدادات الموقع" : "Update Settings",
+    "إعدادات الموقع" : "Site Settings"
 }

@@ -36,15 +36,12 @@
 
         </div>
 
-        <div class="mb-3">
-            <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fmarsad.elyakada&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=3303718453247757" width="340" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-
-        </div>
+        <div class="fb-page" data-href="https://www.facebook.com/MEDIA.EOIC" data-tabs="timeline" data-width="" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false"><blockquote cite="https://www.facebook.com/MEDIA.EOIC" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/MEDIA.EOIC">‎الهيئة الأوروبية للمراكز الإسلامية‎</a></blockquote></div>
 
     <!-- category widget -->
-    <div class="aside-widget">
+    <div class="aside-widget mt-5">
         <div class="section-title">
-            <h2 class="title">التصنيفات</h2>
+            <h2 class="title ">التصنيفات</h2>
         </div>
         <div class="category-widget">
             <ul>

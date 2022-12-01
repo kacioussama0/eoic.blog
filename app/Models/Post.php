@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+
 class Post extends Model
 
 {
@@ -20,6 +21,10 @@ class Post extends Model
         'is_published',
         'created_by',
         'image',
+    ];
+
+    public $translatable = [
+        'title','slug','content'
     ];
 
 

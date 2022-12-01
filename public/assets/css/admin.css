@@ -3,8 +3,6 @@
     color: #fff;
 }
 
-
-
 div::-webkit-scrollbar {
     width: 5px;
 }
@@ -108,11 +106,3 @@ table {
         }
 }
 
-
-/*a {*/
-/*    color: #622599cc !important;*/
-/*}*/
-
-/*a:hover {*/
-/*    color: rgba(98, 37, 153, 0.6) !important;*/
-/*}*/
