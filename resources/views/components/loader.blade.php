@@ -4,7 +4,10 @@
         width: 100%;
         height: 100vh;
         background: #148287;
-        background-size: 20%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-blend-mode: soft-light;
         position: fixed;
         top: 0;
         left: 0;
@@ -14,89 +17,106 @@
         justify-content: center;
         align-items: center;
     }
+
+    .loader-container::before {
+        content: '';
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.3);
+        position: absolute;
+        left: 0;
+        z-index: -1;
+        top: 0;
+    }
     .loader-container img {
         width: 20%;
-        margin-bottom: 30px;
+
     }
 
+    @media (max-width: 767px) {
+        .loader-container img {
+            width: 50%;
 
-    .loader {
-        transform: rotateZ(45deg);
-        perspective: 1000px;
-        border-radius: 50%;
-        width: 48px;
-        height: 48px;
-        color:  #F6CA6D
-    }
-    .loader:before,
-    .loader:after {
-        content: '';
-        display: block;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: inherit;
-        height: inherit;
-        border-radius: 50%;
-        transform: rotateX(70deg);
-        animation: 1s spin linear infinite;
-    }
-    .loader:after {
-        color: #F6CA6D;
-        transform: rotateY(70deg);
-        animation-delay: .4s;
+        }
+
     }
 
-    @keyframes rotate {
+    bodY {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    .center {
+        height: 50vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+    .wave {
+        width: 5px;
+        height: 100px;
+        background: linear-gradient(45deg, #ffc107 , #fff);
+        margin: 10px;
+        animation: wave 1s linear infinite;
+        border-radius: 20px;
+    }
+    .wave:nth-child(2) {
+        animation-delay: 0.1s;
+    }
+    .wave:nth-child(3) {
+        animation-delay: 0.2s;
+    }
+    .wave:nth-child(4) {
+        animation-delay: 0.3s;
+    }
+    .wave:nth-child(5) {
+        animation-delay: 0.4s;
+    }
+    .wave:nth-child(6) {
+        animation-delay: 0.5s;
+    }
+    .wave:nth-child(7) {
+        animation-delay: 0.6s;
+    }
+    .wave:nth-child(8) {
+        animation-delay: 0.7s;
+    }
+    .wave:nth-child(9) {
+        animation-delay: 0.8s;
+    }
+    .wave:nth-child(10) {
+        animation-delay: 0.9s;
+    }
+
+    @keyframes wave {
         0% {
-            transform: translate(-50%, -50%) rotateZ(0deg);
-        }
-        100% {
-            transform: translate(-50%, -50%) rotateZ(360deg);
-        }
-    }
-
-    @keyframes rotateccw {
-        0% {
-            transform: translate(-50%, -50%) rotate(0deg);
-        }
-        100% {
-            transform: translate(-50%, -50%) rotate(-360deg);
-        }
-    }
-
-    @keyframes spin {
-        0%,
-        100% {
-            box-shadow: .2em 0px 0 0px currentcolor;
-        }
-        12% {
-            box-shadow: .2em .2em 0 0 currentcolor;
-        }
-        25% {
-            box-shadow: 0 .2em 0 0px currentcolor;
-        }
-        37% {
-            box-shadow: -.2em .2em 0 0 currentcolor;
+            transform: scale(0);
         }
         50% {
-            box-shadow: -.2em 0 0 0 currentcolor;
+            transform: scale(1);
         }
-        62% {
-            box-shadow: -.2em -.2em 0 0 currentcolor;
-        }
-        75% {
-            box-shadow: 0px -.2em 0 0 currentcolor;
-        }
-        87% {
-            box-shadow: .2em -.2em 0 0 currentcolor;
+        100% {
+            transform: scale(0);
         }
     }
+
 
 
 </style>
 
-<div class="loader-container">
+<div class="loader-container" style="background-image: url('{{asset('assets/imgs/bg-footer.svg')}}')">
     <img src="{{asset('assets/imgs/logo.svg')}}" alt="">
-    <span class="loader"></span>
+    <div class="center">
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+    </div>
 </div>

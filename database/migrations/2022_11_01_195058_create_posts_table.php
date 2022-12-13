@@ -16,8 +16,14 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('title_en')->nullable();
+            $table->string('title_fr')->nullable();
             $table->string('image');
+            $table->string('image_en')->nullable();
+            $table->string('image_fr')->nullable();
             $table->text('content');
+            $table->text('content_en')->nullable();
+            $table->text('content_fr')->nullable();
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('created_by');
             $table->foreign('created_by')->references('id')

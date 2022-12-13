@@ -1,22 +1,26 @@
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form action="{{route('categories.store')}}" method="POST" class="mb-5">
-                    @csrf
-                    <x-admin.forms.input name="category_name" title="إسم التصنيف" type="text"  value="{{old('category_name')}}"/>
-                    <button type="submit" class="btn btn-warning">تعديل التصنيف</button>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
-    </div>
-</div>
+@extends('admin.layouts.app')
+@section('title','تعديل وسم')
+
+
+
+@section('content')
+
+    <form action="{{route('tags.store')}}" method="POST">
+
+        @csrf
+
+        <x-admin.forms.input name="name" title="الوسم بالعربية" type="text" value="{{$tag->name}}"/>
+        <x-admin.forms.input name="name_fr" title="الوسم بالفرنسية" type="text" value="{{$tag->name_en}}"/>
+        <x-admin.forms.input name="name_en" title="الوسم بالإنجليزية" type="text" value="{{$tag->name_fr}}"/>
+
+
+
+
+
+        <button class="btn btn-primary w-100">تعديل الوسم</button>
+
+    </form>
+
+
+
+@endsection

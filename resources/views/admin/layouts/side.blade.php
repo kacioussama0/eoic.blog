@@ -74,6 +74,15 @@
                     </a>
                 </li>
 
+
+                <li
+                    class="sidebar-item {{request()->is('admin/projects*') ? "active" : '' }}">
+                    <a href="{{route('projects.index')}}" class='sidebar-link '>
+                        <i class="bi bi-cash"></i>
+                        <span>المشاريع</span>
+                    </a>
+                </li>
+
                 <li
                     class="sidebar-item {{request()->is('admin/join-us*') ? "active" : '' }}">
                     <a href="{{route('join-us.index')}}" class='sidebar-link '>

@@ -55,4 +55,12 @@ class MessageController extends Controller
 
         return redirect() -> back();
     }
+
+    public function destroyAll()
+    {
+        dd(Message::all());
+        Message::all()->delete();
+
+        return redirect() -> to('admin/messages');
+    }
 }

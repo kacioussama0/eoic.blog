@@ -34,7 +34,7 @@
                     <tr>
 
                         <td>{{$post->title}}</td>
-                        <td>{{$post->category->name}}</td>
+                        <td>1</td>
                         <td>
                             <img src="{{!File::exists($post->image) ? asset('storage/' . $post->image) : asset('imgs/logo.svg') }}" alt="" style="width: 80px ; height: 80px ; object-fit: cover ; border-radius: 5Px">
                         </td>

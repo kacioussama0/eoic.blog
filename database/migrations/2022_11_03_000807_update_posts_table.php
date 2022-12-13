@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::table('posts', function (Blueprint $table) {
             $table -> string('slug')->after('title');
+            $table -> string('slug_fr')->nullable()->after('slug');
+            $table -> string('slug_en')->nullable()->after('slug_fr');
+
         });
     }
 

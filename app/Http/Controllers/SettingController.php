@@ -10,8 +10,7 @@ class SettingController extends Controller
 
     public function __construct()
     {
-        $this->middleware('permission:settings-update',   ['only' => ['update']]);
-        $this->middleware('permission:settings-read',   ['only' => ['show']]);
+        $this->middleware('auth');
     }
 
     public function index()
@@ -27,13 +26,16 @@ class SettingController extends Controller
 
         $request -> validate([
             'blog_name' => 'required|min:5',
-            'blog_description' => 'required|min:5',
+            'blog_name_en' => 'required|min:5',
+            'blog_name_fr' => 'required|min:5',
             'email' => 'required|email',
             'phone' => 'required',
             'address' => 'required',
         ]);
 
+
         $setting -> update($request -> all());
+
         return redirect()->back()->with([
             'success' => 'تم تعديل إعدادات الموقع بنجاح'
         ]);

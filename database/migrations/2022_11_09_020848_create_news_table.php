@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('news', function (Blueprint $table) {
             $table->id();
             $table -> string('title');
+            $table -> string('title_en')->nullable();
+            $table -> string('title_fr')->nullable();
             $table -> boolean('is_published')->nullable();
             $table->timestamps();
             $table->softDeletes();

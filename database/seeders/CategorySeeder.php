@@ -15,9 +15,11 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        $category = new Category();
-        $category -> name = 'blog';
-        $category->save();
+        Category::create([
+           'name' => 'الفتاوي',
+           'name_fr' => 'Fatwas',
+           'name_en' => 'Fatwas',
+        ]);
 
         $category = new Category();
         $category -> name = 'news';

@@ -16,8 +16,14 @@ return new class extends Migration
         Schema::create('magazines', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('title_en')->nullable();
+            $table->string('title_fr')->nullable();
             $table->string('thumbnail');
+            $table->string('thumbnail_fr')->nullable();
+            $table->string('thumbnail_en')->nullable();
             $table->string('book');
+            $table->string('book_fr')->nullable();
+            $table->string('book_en')->nullable();
             $table->boolean('is_published');
             $table->timestamps();
 

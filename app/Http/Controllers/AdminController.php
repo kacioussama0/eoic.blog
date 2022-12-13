@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Magazine;
 use App\Models\Message;
 use App\Models\News;
 use App\Models\Post;
+use App\Models\Project;
 use App\Models\Setting;
 use App\Models\Tag;
 use App\Models\User;
+use App\Models\Video;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -19,7 +22,6 @@ class AdminController extends Controller
 
     public function __construct()
     {
-        $this->middleware('permission:posts-create', ['only' => ['create']]);
         $this->middleware('auth');
     }
 
@@ -31,7 +33,10 @@ class AdminController extends Controller
             ->with('posts', Post::all())
             ->with('tags', Tag::all())
             ->with('messages', Message::all())
-            ->with('latest_news', News::all());
+            ->with('latest_news', News::all())
+            ->with('magazines', Magazine::all())
+            ->with('videos', Video::all())
+            ->with('projects', Project::all());
     }
 
     public function profile()

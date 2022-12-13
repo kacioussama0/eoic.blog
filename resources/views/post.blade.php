@@ -2,24 +2,19 @@
 @section('title','مقال')
 @section('content')
 
-
-
-    <div class="page-header ">
+    <div class="page-header">
 
         <div class="page-header-bg" style="background-image: url('{{asset('storage/' . $post -> image)}}');background-size: cover" data-stellar-background-ratio="0.9"></div>
         <div class="container">
             <div class="row justify-content-center" >
                 <div class="col-md-offset-1 col-md-10 text-center">
 
-                    <h1 class="text-uppercase" >{{$post -> title}}</h1>
+                    <h1 class="display-4" >{{$post -> title()}}</h1>
 
-                    <div class="position-relative ">
+                    <div class="position-relative">
                         @foreach($post -> tags as $tag)
-
-                            <a href="{{route('tag.show',$tag)}}" class="badge bg-primary badge-pill">#{{$tag -> name}}</a>
-
+                            <a href="{{route('tag.show',$tag)}}" class="badge bg-primary link-light badge-pill ">#{{$tag -> name()}}</a>
                         @endforeach
-
                     </div>
                 </div>
             </div>
@@ -27,49 +22,67 @@
     </div>
 
 
-    <div class="section py-5">
+    <div class="section py-4">
 
         <div class="container">
             <div class="row">
-                <div class="col-md-8 ">
+                <div class="col-md-8 overflow-hidden">
 
-                    <img src="{{asset('storage/' . $post -> image)}}" alt="" class="mb-3 img-fluid">
+                    <div class="post-description d-flex flex-md-row flex-column justify-content-between align-items-center mb-5" style="font-size: 25px">
+                        <div class="border-start border-5 border-primary ps-3">
+                            {{date_format($post->created_at,'Y-m-d')}}
+                        </div>
+                        <div >
+                            <a href="https://www.facebook.com/sharer.php?u={{route('post.slug', $post->slug())}}" target="_blank" class="me-2" style="color: #4267B2"><i class="fa-brands fa-facebook"></i></a>
+                            <a href="https://www.facebook.com/dialog/send?app_id=5303202981&display=popup&link={{route('post.slug', $post->slug())}}&redirect_uri={{route('post.slug', $post->slug())}}" class="me-2" style="color: #00B2FF"><i class="fa-brands fa-facebook-messenger" ></i></a>
+                            <a href="#" class="me-2"><i class="fa-brands fa-whatsapp" style="color: #25D366"></i></a>
+                            <a href="https://twitter.com/intent/tweet?text={{$post->title()}}&url={{route('post.slug', $post->slug())}}" target="_blank" class="me-2" style="color: #1DA1F2"><i class="fa-brands fa-twitter"></i></a>
+                        </div>
 
-                    <div style="font-size: 22px" >
-                        {!! $post -> content !!}
                     </div>
+
+                    <div style="font-size: 20px" >
+                        {!! $post -> content() !!}
+                    </div>
+
+
+                    @auth
+                        <a href="{{route('posts.edit',$post)}}" class="btn btn-secondary w-100 my-3 py-2"><i class="fa-light fa-edit me-2"></i>{{__('تحرير المقال')}}</a>
+                    @endauth
+
 
         @if(count($tags))
 
-                    <div class="tags mb-3">
+                <div class="tags my-4">
 
-                        <h3>الوسوم</h3>
+                    <h3>{{__('الوسوم')}}</h3>
 
-                        @foreach($tags as $tag)
+                    @foreach($tags as $tag)
 
-                            <a href="{{route('tag.show',$tag -> id)}}" class="badge bg-primary badge-pill">{{$tag -> name}}</a>
+                        <a href="{{route('tag.show',$tag -> id)}}" class="badge bg-primary link-light badge-pill">#{{$tag -> name()}}</a>
 
-                        @endforeach
+                    @endforeach
 
-                    </div>
+                </div>
 
         @endif
 
                     @if($next)
-                        <a href="{{route('post.slug',$next->slug)}}" class="primary-button my-5"> المقال التالي</a>
+                        <a href="{{route('post.slug',$next->slug())}}" class="btn text-bg-primary  my-5"> المقال التالي</a>
                     @endif
 
 
                     @if($prev)
-                        <a href="{{route('post.slug',$prev->slug)}}" class="secondary-button my-5">المقال الأقدم</a>
+                        <a href="{{route('post.slug',$prev->slug())}}" class="btn text-bg-secondary  my-5">المقال الأقدم</a>
                     @endif
 
 
-                    <div class="more-posts mt-3">
 
-                        <h3 class="title"> المزيد من {{$post -> category -> name}}</h3>
+                    <div class="more-posts mt-3 border-top border-primary py-5">
 
-                        <div class="row mt-5" >
+                        <h3 class="title"> {{__('المزيد من')}} {{$post -> category -> name()}}</h3>
+
+                        <div class="row mt-5">
                         @foreach($post -> category -> posts -> take(4) as $post)
 
                             <div class="col-md-6">
@@ -82,37 +95,13 @@
                     </div>
 
                 </div>
+
                 @include('blog-layout.side')
 
             </div>
-            <!-- /row -->
+
         </div>
-        <!-- /container -->
-    </div>
-    <!-- /SECTION -->
 
-    <div class="container">
-
-
-        <div id="disqus_thread"></div>
-        <script>
-            /**
-             *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-             *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
-            /*
-            var disqus_config = function () {
-            this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-            this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-            };
-            */
-            (function() { // DON'T EDIT BELOW THIS LINE
-                var d = document, s = d.createElement('script');
-                s.src = 'https://elyakada.disqus.com/embed.js';
-                s.setAttribute('data-timestamp', +new Date());
-                (d.head || d.body).appendChild(s);
-            })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </div>
 
 @endsection

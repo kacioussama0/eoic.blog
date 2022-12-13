@@ -7,7 +7,7 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-offset-1 col-md-10 text-center">
-                    <h1 class="text-uppercase"># {{$tag -> name}}</h1>
+                    <h1 class="text-uppercase"># {{$tag -> name()}}</h1>
                 </div>
             </div>
         </div>
@@ -28,7 +28,11 @@
 
 
 
-                        <x-article :post="$post"/>
+                        @if(!empty($post -> title()))
+
+                            <x-article :post="$post"/>
+
+                        @endif
 
 
                     @endforeach

@@ -10,7 +10,10 @@ class TagController extends Controller
     public function index()
     {
         $tags = Tag::latest()->paginate(6);
-        return view('admin.tags.index',compact('tags'));
+        $tagsEN = Tag::latest()->where('name_en' , '<>' , null)->paginate(6);
+        $tagsFR = Tag::latest()->where('name_fr' , '<>' , null)->paginate(6);
+        return view('admin.tags.index',compact('tags','tagsEN','tagsFR'));
+
     }
 
 
@@ -23,34 +26,36 @@ class TagController extends Controller
     public function store(Request $request)
     {
         $request -> validate([
-            'name' => 'required|min:3|max:50|unique:tags'
+            'name' => 'required|min:3|max:50|unique:tags',
+            'name_en' => 'required|min:3|max:50|unique:tags',
+            'name_fr' => 'required|min:3|max:50|unique:tags',
         ]);
 
-        $tag = new Tag();
+        Tag::create($request->all());
 
-        $tag -> name = $request -> name;
-
-        $tag -> save();
-
-        return redirect() -> back()->with([
+        return redirect() -> to('admin/tags')->with([
             'success' => 'تم إضافة الوسم بنجاح'
         ]);
 
     }
 
+    public function edit(Tag $tag) {
+        return view('admin.tags.edit',compact('tag'));
+    }
+
     public function update(Request $request, Tag $tag)
     {
         $request -> validate([
-            'name' => 'required|min:3|max:50|unique:tags'
+            'name' => 'required|min:3|max:50|unique:tags',
+            'name_en' => 'required|min:3|max:50|unique:tags',
+            'name_fr' => 'required|min:3|max:50|unique:tags',
         ]);
 
-        $tag -> name = $request -> name;
+        $tag->update($request->all());
 
-        if($tag -> save()) {
-            return redirect() -> back()->with([
-                'success' => 'تم إضافة الوسم بنجاح'
-            ]);
-        }
+        return redirect() -> to('admin/tags')->with([
+            'success' => 'تم تعديل الوسم بنجاح'
+        ]);
     }
 
     public function destroy(Tag $tag)

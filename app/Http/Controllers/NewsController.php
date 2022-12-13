@@ -38,7 +38,9 @@ class NewsController extends Controller
     public function store(Request $request)
     {
         $request -> validate([
-            'title' => 'required|min:10'
+            'title' => 'required|min:10',
+            'title_en' => 'required|min:10',
+            'title_fr' => 'required|min:10',
         ]);
 
         News::create($request -> all());

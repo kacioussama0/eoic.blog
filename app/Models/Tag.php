@@ -9,11 +9,19 @@ class Tag extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'name'
-    ];
+    protected $guarded = [];
 
     public function posts() {
         return $this -> belongsToMany(Post::class);
+    }
+
+    public function name() {
+
+        if(config('app.locale') == 'en')
+            return   $this -> name_en;
+        elseif(config('app.locale') == 'fr')
+            return  $this->name_fr;
+
+        return $this -> name ;
     }
 }

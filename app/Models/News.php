@@ -13,6 +13,20 @@ class News extends Model
 
     protected $fillable = [
         'title',
+        'title_en',
+        'title_fr',
         'is_published',
     ];
+
+
+    public function title() {
+
+        if(config('app.locale') == 'en')
+            return  $this -> title_en;
+        elseif(config('app.locale') == 'fr')
+            return  $this-> title_fr;
+
+        return $this ->  title ;
+
+    }
 }
