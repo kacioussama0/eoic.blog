@@ -115,12 +115,7 @@ p {
     width: 55px;
 }
 
-body {
-    background-attachment: fixed;
-    background-size: 50%;
-    background-repeat: no-repeat;
-    background-position: center center;
-}
+
 
 .navbar-toggler {
     border: none !important;
@@ -170,57 +165,6 @@ body {
     margin-right: 5px;
 }
 
-.news-container {
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-    z-index: 999;
-    background: #df2020;
-    overflow: hidden;
-    right: 0;
-    font-family: "Roboto", sans-serif;
-    box-shadow: 0 4px 8px -4px rgba(0, 0, 0, 0.3);
-}
-
-.news-container .title1 {
-    position: absolute;
-    background: #df2020;
-
-    height: 100%;
-    display: flex;
-    align-items: center;
-    padding: 0 24px;
-    color: white;
-    font-weight: bold;
-    z-index: 200;
-}
-
-.news-container ul {
-    display: flex;
-    list-style: none;
-    margin: 0;
-
-    animation: scroll 25s infinite linear;
-}
-
-.news-container ul li {
-    white-space: nowrap;
-    padding: 10px 24px;
-    color: #fff !important;
-
-    position: relative;
-}
-
-.news-container ul li::after {
-    content:"";
-    width: 1px;
-    height: 100%;
-    background: #b8b8b8;
-    position: absolute;
-    top: 0;
-    right: 0;
-
-}
 
 .news-container ul li:last-child::after {
     display: none;
@@ -308,12 +252,12 @@ nav {
         background: #148287;
     }
 
-    .navbarScroll ul li:hover:not(.mega-menu) {
+    .navbarScroll ul li:hover:not(div.mega-menu) {
 
         background: #148287;
 
     }
-   .navbarScroll ul li a:not(.mega-menu) {
+   .navbarScroll ul li a:not(div.mega-menu) {
         padding: 0 10px;
 
     }
@@ -324,7 +268,7 @@ nav {
 
 
     .mega-menu {
-        width: 100vw;
+        width: 100%;
         position: absolute;
         left: 0;
         z-index: 999;
@@ -349,7 +293,6 @@ nav {
 .zellig {
     width: 200px;
     height: 200px;
-
     position: relative;
     background: #0c4e51;
     z-index: 22;

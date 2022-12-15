@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('country');
-            $table->string('phone',10);
+            $table->string('phone',15);
             $table->date('dob');
             $table->string('domain');
             $table->string('gender');

@@ -1,14 +1,24 @@
 @extends('blog-layout.app')
 
 @section('title',__('home.home'))
+
+@section('style')
+
+    <link rel="stylesheet" href="{{asset('assets/css/breaking-news-ticker.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/splide.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/splide-core.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/themes/splide-sea-green.min.css')}}">
+
+@endsection
+
+
 @section('content')
 
 
-    <link rel="stylesheet" href="{{asset('assets/css/breaking-news-ticker.min.css')}}">
 
     @if(count($news_titles))
 
-    <div class="bn-breaking-news position-fixed bottom-0 end-0" id="newsTicker2" style="z-index: 999">
+    <div class="bn-breaking-news position-fixed bottom-0 end-0 w-100" id="newsTicker2" style="z-index: 999">
         <div class="bn-label">أخبار عاجلة</div>
         <div class="bn-news">
             <ul>
@@ -35,7 +45,7 @@
 
 
     <div class="section">
-        <div class="container-lg">
+        <div class="container-lg px-0 px-md-2">
                     <div id="LastPosts" class="carousel slide overflow-hidden position-relative  rounded-4 rounded-top-0 shadow mb-5" data-bs-ride="carousel">
                         <div class="carousel-inner">
 
@@ -107,7 +117,7 @@
             <div class="row">
                 <div class="col-md-8">
 
-                    <h3 class="category-title mb-3"><img src="{{asset('assets/imgs/zellig.svg')}}" style="width: 30px" alt="" class="me-2">{{__('home.last-posts')}} </h3>
+                    <h3 class="category-title mb-3 mx-auto"><img src="{{asset('assets/imgs/zellig.svg')}}" style="width: 30px" alt="" class="me-2">{{__('home.last-posts')}} </h3>
 
                     <div class="row g-3 mb-3">
 
@@ -138,7 +148,7 @@
                                 @foreach($magazines as $magazine)
 
                                     @if($magazine->title())
-                                          <div class="col-md-4 col-12 col-sm-6 text-center" style=".df-container-lg {background: blue};">
+                                          <div class="col-md-3 col-12 col-sm-6 text-center" style=".df-container-lg {background: blue};">
                                               <div class="_df_thumb" source="{{asset('storage/' . $magazine -> book())}}" thumb="{{asset('storage/' . $magazine -> thumbnail())}}">
                                                   {{$magazine->title()}}
                                               </div>
@@ -171,28 +181,65 @@
                 <div class="container-lg">
 
                             <h3 class="category-title"><img src="{{asset('assets/imgs/zellig.svg')}}" style="width: 30px" alt="" class="me-2">{{__('home.videos')}} </h3>
-                        <div class="row">
-                            <div class="col-md-12 rounded-4 shadow">
+                </div>
 
-                                <div class=" overflow-hidden plyr__video-embed " id="player">
-                                    <iframe src="{{$videos[0]->url}}"
-                                            allowfullscreen
-                                            allowtransparency
-                                            allow="autoplay">
-                                    </iframe>
-                                </div>
-                            </div>
-
-
-                        </div>
-
-
-
-
-                        </div>
             </section>
 
         <!-- End Video -->
+
+
+            @foreach($categories as $key=> $category)
+
+            <div @if($key % 2 == 1) style="background-color: #e9f2f61f" @endif>
+
+                <div class="container" >
+
+
+
+
+
+
+
+
+                    <div class="card mb-3 border-0 bg-transparent py-3">
+                        <h3 class="card-header  border-start border-5 fw-bold  ps-3  border-primary   bg-transparent border-bottom-0   mb-3">
+
+                            {{$category->name()}}
+
+                        </h3>
+
+                        <div class="card-body p-0 m-0 py-2">
+
+                            <div class="row">
+
+                                @foreach($category->posts->take(3) as $post)
+
+                                    <div class="col-md-4">
+                                        <x-article :post="$post"/>
+                                    </div>
+
+                                    @endforeach
+
+                                    </section>
+
+
+
+
+
+
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+            </div>
+
+
+            @endforeach
 
 
 
@@ -203,6 +250,9 @@
                         <div class="col-md-8">
                             <h3 class="category-title"><img src="{{asset('assets/imgs/zellig.svg')}}" style="width: 30px" alt="" class="me-2">{{__('home.activities')}} </h3>
                             <livewire:posts />
+
+
+
                         </div>
                     </div>
             </article>
@@ -211,6 +261,42 @@
         </div>
     </div>
 
+
+
+
+    @section('script')
+
+
+        <script src="{{asset('assets/js/ideabox-news-ticker.min.js')}}"></script>
+        <script src="{{asset('assets/js/splide.min.js')}}"></script>
+        <script>
+
+            $(document).ready(function(){
+
+                $('#newsTicker2').breakingNews({
+                    effect: 'slide-down',
+                    @if(session()->get('locale') == 'ar')
+                    direction: 'rtl',
+                    @endif
+                    radius: 5
+                });
+
+            });
+
+
+
+
+            var splide = new Splide( '.splide', {
+                type   : 'loop',
+                drag   : 'free',
+                perPage: 3,
+            } );
+
+            splide.mount();
+        </script>
+
+
+    @endsection
 
     @else
 
@@ -227,22 +313,7 @@
 
 
 
-        <script src="{{asset('assets/js/ideabox-news-ticker.min.js')}}"></script>
-        <script>
 
-            $(document).ready(function(){
-
-                $('#newsTicker2').breakingNews({
-                    effect: 'slide-down',
-                    @if(session()->get('locale') == 'ar')
-                    direction: 'rtl',
-                    @endif
-                    radius: 5
-                });
-
-            });
-
-        </script>
 @endsection
 
 

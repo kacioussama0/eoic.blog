@@ -110,6 +110,7 @@ class BlogController extends Controller
 
         return view('results')->with('posts',$posts)
             ->with('categories',Category::all())
+            ->with('word',request('result'))
             ->with('tags',Tag::all())
             ->with('settings',Setting::first());
     }

@@ -22,7 +22,7 @@ class Volunteer extends Component
     protected $rules = [
         'name' => 'required|min:3|max:50',
         'email' => 'required|email|max:50',
-        'phone' => 'required|min:10|max:15',
+        'phone' => 'required|min:10|numeric',
         'dob' => 'required|date',
         'gender' => 'required',
         'time' => 'required',
@@ -56,7 +56,9 @@ class Volunteer extends Component
         $this->phone = '';
         $this->dob = '';
         $this->gender = '';
-        $this->cv = '';
+        $this->domain = '';
+        $this->time = '';
+        $this->country = '';
 
         session()->flash('message', 'تم إرسال الطلب بنجاح');
 

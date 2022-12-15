@@ -3,8 +3,10 @@
     <div class="card my-5 border-0">
 
 
-        <div class="row align-items-center border border-primary rounded shadow">
+        <div class="row align-items-center border border-primary border-0 rounded shadow-sm">
             <div class="col-md-6   border-primary">
+
+                <h1 class="text-center card-header border-0 bg-transparent">{{__('home.volunteer')}}</h1>
 
 
                 <div class="card-body">
@@ -94,8 +96,8 @@
                                 </span>
 
                                     <span class="form-check">
-                                  <label for="gender" class="form-check-label">{{__('female')}}</label>
-                                <input type="radio" name="gender" id="gender" class="form-check-input @error('gender') is-invalid @enderror" wire:model="gender" value="أتثى">
+                                  <label for="gender" class="form-check-label">{{__('forms.female')}}</label>
+                                <input type="radio" name="gender" id="gender" class="form-check-input @error('gender') is-invalid @enderror" wire:model="gender" value="أنثى">
                                 </span>
                                 </div>
 
@@ -119,7 +121,7 @@
 
                             <div class="form-group col-md-6 mb-1">
 
-                                <label for="time" class="form-label">{{__('volunteer-time')}}</label>
+                                <label for="time" class="form-label">{{__('forms.volunteer-time')}}</label>
                                 <input type="text" name="time" id="phone" placeholder="" class="form-control @error('phone') is-invalid @enderror" wire:model="time">
 
                                 @error('time' )

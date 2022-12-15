@@ -107,34 +107,38 @@
                             <tbody>
                             @foreach($magazines as $magazine)
 
-                                <tr>
+                               @if($magazine -> title_en != null)
 
-                                    <td>{{$magazine->title_en}}</td>
-                                    <td>
-                                        <img src="{{asset('storage/' . $magazine->thumbnail_en)}}" alt="" style="width: 150px">
-                                    </td>
-                                    <td>{{$magazine->is_published ? 'نعم' : 'لا'}}</td>
-                                    <td>{{$magazine->created_at}}</td>
-                                    <td>{{$magazine->updated_at}}</td>
-                                    <td>
-                                        <div class="btn-group position-relative z-20">
-                                            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                                {{__('الإجراءات')}}
-                                            </button>
-                                            <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item" href="{{route('magazines.edit',$magazine)}}">{{__('تعديل')}}</a></li>
-                                                <li>
-                                                    <form action="{{route('magazines.destroy',$magazine)}}" method = "POST" onsubmit="return confirm('هل أنت متأكد')">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" class="btn">{{__('حذف')}}</button>
-                                                    </form>
-                                                </li>
+                                   <tr>
 
-                                            </ul>
-                                        </div>
-                                    </td>
-                                </tr>
+                                       <td>{{$magazine->title_en}}</td>
+                                       <td>
+                                           <img src="{{asset('storage/' . $magazine->thumbnail_en)}}" alt="" style="width: 150px">
+                                       </td>
+                                       <td>{{$magazine->is_published ? 'نعم' : 'لا'}}</td>
+                                       <td>{{$magazine->created_at}}</td>
+                                       <td>{{$magazine->updated_at}}</td>
+                                       <td>
+                                           <div class="btn-group position-relative z-20">
+                                               <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                                   {{__('الإجراءات')}}
+                                               </button>
+                                               <ul class="dropdown-menu">
+                                                   <li><a class="dropdown-item" href="{{route('magazines.edit',$magazine)}}">{{__('تعديل')}}</a></li>
+                                                   <li>
+                                                       <form action="{{route('magazines.destroy',$magazine)}}" method = "POST" onsubmit="return confirm('هل أنت متأكد')">
+                                                           @csrf
+                                                           @method('DELETE')
+                                                           <button type="submit" class="btn">{{__('حذف')}}</button>
+                                                       </form>
+                                                   </li>
+
+                                               </ul>
+                                           </div>
+                                       </td>
+                                   </tr>
+
+                               @endif
 
                             @endforeach
                             </tbody>
@@ -159,6 +163,8 @@
 
                             <tbody>
                             @foreach($magazines as $magazine)
+
+                                @if($magazine -> title_fr != null)
 
                                 <tr>
 
@@ -188,6 +194,7 @@
                                         </div>
                                     </td>
                                 </tr>
+                                @endif
                             @endforeach
                             </tbody>
                         </table>

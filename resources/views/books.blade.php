@@ -25,28 +25,28 @@
     <section class="py-5">
 
        <div class="container">
-           <div class="row g-5">
+           <div class="row g-3">
                @foreach($magazines as $magazine)
 
                    @if($magazine->title() != null)
 
                    <div class="col-md-3">
-                       <div class="card"  style="height: 500px">
+                       <div class="card border-primary"  style="height: 550px">
                            <img src="{{asset('storage/' . $magazine -> thumbnail())}}" class="card-img-top object-fit-cover  h-75" alt="...">
                            <div class="card-body h-25 d-flex justify-content-center align-items-center">
                                <h5 class="card-title text-center ">{{$magazine -> title()}}</h5>
                            </div>
 
-                           <div class="card-footer d-flex justify-content-between align-items-center h-25">
+                           <div class="card-footer bg-transparent border-0 d-flex justify-content-between align-items-center h-25">
 
                                <a href="" class="_df_button text-bg-primary" source="{{asset('storage/' . $magazine->book())}}">
                                    {{__('تصفح')}}
-                                   <i class="fa-light fa-eye " ></i>
+                                   <i class="fa-light fa-eye ms-1" ></i>
                                </a>
 
                                <a href="{{asset('storage/' . $magazine->book())}}" download>
                                    {{__('تحميل')}}
-                                   <i class="fa-light fa-download"></i>
+                                   <i class="fa-light fa-download ms-1"></i>
                                </a>
 
 

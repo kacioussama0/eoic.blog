@@ -78,7 +78,7 @@
 
 
 
-                    <div class="more-posts mt-3 border-top border-primary py-5">
+                    <div class="more-posts mt-3 border-top border-primary border-opacity-25 py-5">
 
                         <h3 class="title"> {{__('المزيد من')}} {{$post -> category -> name()}}</h3>
 

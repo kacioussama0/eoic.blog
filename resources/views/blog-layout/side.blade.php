@@ -13,17 +13,10 @@
     </div>
     <!-- /ad widget -->
 
-    <iframe id="iframe" title="prayerWidget" class="widget-m-top" style=" height: 358px; border: 1px solid #ddd;" scrolling="no" src="https://www.islamicfinder.org/prayer-widget/44345994/shafi/1/0/18.0/17.0"> </iframe>
 
 
-    <!-- social widget -->
-    <div class="aside-widget">
-        <div class="section-title">
-            <h2 class="title">{{__('home.social-media')}}</h2>
-        </div>
 
 
-        <div class="fb-page" data-href="https://www.facebook.com/MEDIA.EOIC" data-tabs="timeline" data-width="" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false"><blockquote cite="https://www.facebook.com/MEDIA.EOIC" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/MEDIA.EOIC">‎الهيئة الأوروبية للمراكز الإسلامية‎</a></blockquote></div>
 
     <!-- category widget -->
     <div class="aside-widget mt-5">

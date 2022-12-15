@@ -22,7 +22,7 @@
                 <li class="nav-item" role="presentation">
                 </li>
             </ul>
-        <form action="{{route('magazines.store')}}" method="POST" enctype="multipart/form-data">
+        <form id="fileUploadForm" action="{{route('magazines.store')}}" method="POST" enctype="multipart/form-data">
 
             @csrf
             <div class="tab-content" id="myTabContent">
@@ -36,6 +36,12 @@
                     <div class="form-check form-switch mb-3">
                         <label for="is_published">المجلة منشورة</label>
                         <input class="form-check-input" type="checkbox" name="is_published" id="is_published" value="1">
+                    </div>
+
+                    <div class="form-group">
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+                        </div>
                     </div>
 
                 </div>
@@ -63,5 +69,6 @@
 
 
     </form>
+
 
 @endsection
