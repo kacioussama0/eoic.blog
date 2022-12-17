@@ -126,7 +126,15 @@
                     </a>
                 </li>
 
-                @role('admin')
+
+                <li
+                    class="sidebar-item {{request()->is('admin/cards*') ? "active" : '' }}">
+                    <a href="{{route('cards.index')}}" class='sidebar-link '>
+                        <i class="bi bi-file-post"></i>
+                        <span>البطاقات</span>
+                    </a>
+                </li>
+
 
                 <li
                     class="sidebar-item {{request()->is('admin/settings*') ? "active" : '' }}">
@@ -136,7 +144,6 @@
                     </a>
                 </li>
 
-                @endrole
 
 
 

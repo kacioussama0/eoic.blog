@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Card;
 use App\Models\Category;
 use App\Models\Magazine;
 use App\Models\News;
@@ -26,15 +27,18 @@ class BlogController extends Controller
             ->with('magazines',Magazine::where('is_published','1')->latest()->get())
             ->with('videos',Video::where('is_published','1')->latest()->get())
             ->with('news_titles',News::where('is_published','1')->latest()->get()->take(10))
+            ->with('cards',Card::where('is_published','1')->latest()->get()->take(8))
             ->with('settings',Setting::first())
             ->with('tags',Tag::get()->take(11));
     }
     public function post($slug) {
 
 
-        $post = Post::where('is_published','on')->where('slug',$slug)->orWhere('slug_fr',$slug)->orWhere('slug_en',$slug)->first();
+        $post = Post::where('slug',$slug)->orWhere('slug_fr',$slug)->orWhere('slug_en',$slug)->first();
 
-
+        if(!$post -> is_published && !auth()->user()) {
+            abort(404);
+        }
 
         if(empty($post)) {
             return  redirect() -> to('/')->with('settings',Setting::first());
@@ -85,18 +89,21 @@ class BlogController extends Controller
 
 
         $tag= Tag::find($id);
+
         $tags= Tag::all();
 
         if(empty($tag)) {
-            return  redirect() -> to('/');
-
+            abort(404);
         }
+
+        $posts = $tag -> posts() -> latest() -> paginate(5);
+
 
         return view('tag') ->with('settings',Setting::first())
             ->with('tag',$tag)
             ->with('tags',$tags)
             ->with('categories',Category::all())
-            ->with('posts',$tag  -> posts -> where('is_published','on'));
+            ->with('posts',$posts);
 
     }
 
@@ -119,11 +126,6 @@ class BlogController extends Controller
         return view('who')->with('settings',Setting::first());
     }
 
-    public function questions() {
-        $questions = \App\Models\PopularQuestion::all();
-        return view('questions')->with('settings',Setting::first())
-            ->with('questions',$questions);
-    }
 
 
     public function projects() {

@@ -1,4 +1,4 @@
-<div class="col-md-4 d-md-block d-none">
+<div class="col-md-4 d-lg-block d-none">
 
 
 

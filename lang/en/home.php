@@ -10,7 +10,7 @@ return [
     'our-projects' => 'Our Projects',
     'news-and-activities' => 'News and activities',
     'media' => 'Media',
-    'get-closure' => 'Get Close',
+    'get-closure' => 'Get Closure',
     'beneficiaries' => 'Beneficiaries',
     'countries-deal' => 'The countries in which we operate',
     'contact-us' => 'Contact Us',

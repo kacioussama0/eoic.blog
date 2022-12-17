@@ -1,14 +1,19 @@
+@php
+
+$settings  = \App\Models\Setting::first();
+
+@endphp
 <style>
 
     .loader-container {
         width: 100%;
         height: 100vh;
-        background: #148287;
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center center;
-        background-blend-mode: soft-light;
+        background-blend-mode: color-burn;
         position: fixed;
+        background-color: rgba(20,130,135,0.99);
         top: 0;
         left: 0;
         z-index: 9999;
@@ -22,7 +27,7 @@
         content: '';
         width: 100%;
         height: 100%;
-        background-color: rgba(0,0,0,0.3);
+        background-color: rgba(0,0,0,0.4);
         position: absolute;
         left: 0;
         z-index: -1;
@@ -55,7 +60,7 @@
     }
     .wave {
         width: 5px;
-        height: 100px;
+        height: 70px;
         background: linear-gradient(45deg, #ffc107 , #fff);
         margin: 10px;
         animation: wave 1s linear infinite;
@@ -106,7 +111,8 @@
 </style>
 
 <div class="loader-container" style="background-image: url('{{asset('assets/imgs/bg-footer.svg')}}')">
-    <img src="{{asset('assets/imgs/logo.svg')}}" alt="">
+    <img src="{{asset('assets/imgs/logo.svg')}}" class="my-5" alt="">
+    <h2 class="my-5 text-white w-75 mx-auto text-center">{{$settings -> display_name()}}</h2>
     <div class="center">
         <div class="wave"></div>
         <div class="wave"></div>

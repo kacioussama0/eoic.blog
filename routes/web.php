@@ -5,14 +5,17 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('who-we-are',[\App\Http\Controllers\BlogController::class,'who'])->name('who-we-are');
-Route::get('faq',[\App\Http\Controllers\BlogController::class,'questions'])->name('faq');
 Route::get('projects',[\App\Http\Controllers\BlogController::class,'projects'])->name('projects');
 Route::get('projects/{project}',[\App\Http\Controllers\BlogController::class,'projectDonate'])->name('projects.donate');
 Route::post('projects/checkout',[\App\Http\Controllers\ProjectController::class,'checkout'])->name('cart.checkout');
 Route::get('volunteer',[\App\Http\Controllers\VolunteerController::class,'create'])->name('faq');
+Route::get('payment',[\App\Http\Controllers\PaypalController::class,'payment'])->name('payment');
+Route::get('donate',[\App\Http\Controllers\DonateController::class,'index'])->name('donate');
+Route::post('donate',[\App\Http\Controllers\PaypalController::class,'donate'])->name('donate.process');
+Route::get('cancel',[\App\Http\Controllers\PaypalController::class,'cancel'])->name('payment.cancel');
+Route::get('payment/success',[\App\Http\Controllers\PaypalController::class,'success'])->name('payment.success');
 
 Auth::routes();
-
 
 Route::get('/',[\App\Http\Controllers\BlogController::class,'index']);
 Route::get('/change-language/{locale}',[\App\Http\Controllers\BlogController::class,'change_language'])->name('change-lang');
@@ -20,6 +23,7 @@ Route::get('/change-language/{locale}',[\App\Http\Controllers\BlogController::cl
 Route::get('contact',[\App\Http\Controllers\MessageController::class,'create'])->name('contact');
 Route::post('contact',[\App\Http\Controllers\MessageController::class,'store']);
 Route::get('books',[\App\Http\Controllers\MagazineController::class,'books']);
+Route::get('cards',[\App\Http\Controllers\CardController::class,'cards']);
 Route::get('join-us',[\App\Http\Controllers\JoinUsController::class,'create'])->name('join-us');
 Route::post('join-us',[\App\Http\Controllers\JoinUsController::class,'store']);
 Route::get('posts/{slug}',[\App\Http\Controllers\BlogController::class,'post'])->name('post.slug');
@@ -49,6 +53,7 @@ Route::prefix('admin')->middleware('auth')->group(function() {
     Route::resource('messages',\App\Http\Controllers\MessageController::class)->name('','messages')->except('destroyAll');
     Route::delete('messages/removeAll',[\App\Http\Controllers\MessageController::class,'destroyAll'])->name('removeAllMessages');
     Route::resource('magazines',\App\Http\Controllers\MagazineController::class)->name('','magazines');
+    Route::resource('cards',\App\Http\Controllers\CardController::class)->name('','cards');
     Route::resource('videos',\App\Http\Controllers\VideoController::class)->name('','videos');
     Route::resource('news',\App\Http\Controllers\NewsController::class)->name('','news');
 });

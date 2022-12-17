@@ -3,11 +3,11 @@
     <div class="card my-5 border-0">
 
 
-        <div class="row align-items-center border border-primary rounded shadow">
-            <div class="col-md-6   border-primary">
+        <div class="row align-items-center  rounded shadow-sm">
+            <div class="col-lg-5 order-2 order-lg-0">
 
 
-                <div class="card-body">
+                <div class="card-body p-3">
                     @if (session()->has('message'))
                         <script>
                             Swal.fire({
@@ -113,8 +113,8 @@
 
 
             </div>
-            <div class="col-md-6 ">
-                <img src="{{asset('assets/imgs/contact-us.svg')}}" alt="" class="img-fluid">
+            <div class="col-lg-7 ">
+                <img src="{{asset('assets/imgs/join.svg')}}" alt="" class="img-fluid">
             </div>
 
         </div>

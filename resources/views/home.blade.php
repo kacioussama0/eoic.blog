@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{asset('assets/css/splide.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/splide-core.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/themes/splide-sea-green.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/photoswipe/photoswipe.css')}}" />
 
 @endsection
 
@@ -45,7 +46,7 @@
 
 
     <div class="section">
-        <div class="container-lg px-0 px-md-2">
+        <div class="container-lg px-0 px-lg-2">
                     <div id="LastPosts" class="carousel slide overflow-hidden position-relative  rounded-4 rounded-top-0 shadow mb-5" data-bs-ride="carousel">
                         <div class="carousel-inner">
 
@@ -66,7 +67,7 @@
                                         <div class="carousel-content">
                                             <div class="badge rounded-pill text-bg-secondary  mb-3"><a href="{{url('category/' . $post ->category->name())}}" class="link-dark">{{$post ->category -> name()}}</a></div>
                                             <div class="mb-3">{{$post ->created_at -> diffForHumans()}}</div>
-                                            <h4><a href="{{route('post.slug', $post->slug())}}" class="link-light">{{$post -> title()}}</a></h4>
+                                            <h4><a href="{{route('post.slug', $post->slug())}}" class="link-light vw-100">{{$post -> title()}}</a></h4>
                                         </div>
                                         <img src="{{File::exists('storage/' . $post -> image()) ? asset('storage/' . $post -> image()) : asset('assets/imgs/logo.svg') }}" class="d-block w-100" alt="...">
                                         <span style="font-size: 25px;z-index: 999" class="position-absolute bottom-0 end-0 m-2">
@@ -115,18 +116,18 @@
     <div class="section ">
         <div class="container-lg">
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-lg-8">
 
                     <h3 class="category-title mb-3 mx-auto"><img src="{{asset('assets/imgs/zellig.svg')}}" style="width: 30px" alt="" class="me-2">{{__('home.last-posts')}} </h3>
 
-                    <div class="row g-3 mb-3">
+                    <div class="row g-3 mb-3 ">
 
 
                             @foreach($last_posts as $post)
 
                                 @if($post->title() != null )
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-6 wow fadeIn">
                                         <x-article :post="$post"/>
                                     </div>
                                 @endif
@@ -148,7 +149,7 @@
                                 @foreach($magazines as $magazine)
 
                                     @if($magazine->title())
-                                          <div class="col-md-3 col-12 col-sm-6 text-center" style=".df-container-lg {background: blue};">
+                                          <div class="col-md-3 col-lg-4 col-xl-3 col-sm-6 col wow flipInY  text-center" style=".df-container-lg {background: blue};">
                                               <div class="_df_thumb" source="{{asset('storage/' . $magazine -> book())}}" thumb="{{asset('storage/' . $magazine -> thumbnail())}}">
                                                   {{$magazine->title()}}
                                               </div>
@@ -179,8 +180,7 @@
         <!-- Start Video -->
             <section class="mt-2 mb-3">
                 <div class="container-lg">
-
-                            <h3 class="category-title"><img src="{{asset('assets/imgs/zellig.svg')}}" style="width: 30px" alt="" class="me-2">{{__('home.videos')}} </h3>
+                    <h3 class="category-title"><img src="{{asset('assets/imgs/zellig.svg')}}" style="width: 30px" alt="" class="me-2">{{__('home.videos')}} </h3>
                 </div>
 
             </section>
@@ -190,18 +190,14 @@
 
             @foreach($categories as $key=> $category)
 
+                @if(count($category -> posts))
+
             <div @if($key % 2 == 1) style="background-color: #e9f2f61f" @endif>
 
-                <div class="container" >
+                <div class="container-lg" >
 
 
-
-
-
-
-
-
-                    <div class="card mb-3 border-0 bg-transparent py-3">
+                    <div class="card mb-3  border-0 bg-transparent py-3">
                         <h3 class="card-header  border-start border-5 fw-bold  ps-3  border-primary   bg-transparent border-bottom-0   mb-3">
 
                             {{$category->name()}}
@@ -214,19 +210,13 @@
 
                                 @foreach($category->posts->take(3) as $post)
 
-                                    <div class="col-md-4">
+                                    <div class="col-sm-6 col-md-4 wow fadeIn">
                                         <x-article :post="$post"/>
                                     </div>
 
                                     @endforeach
 
                                     </section>
-
-
-
-
-
-
                             </div>
 
                         </div>
@@ -237,8 +227,7 @@
                 </div>
 
             </div>
-
-
+                @endif
             @endforeach
 
 
@@ -248,11 +237,27 @@
                 <div class="container-lg">
                     <div class="row">
                         <div class="col-md-8">
-                            <h3 class="category-title"><img src="{{asset('assets/imgs/zellig.svg')}}" style="width: 30px" alt="" class="me-2">{{__('home.activities')}} </h3>
-                            <livewire:posts />
+                            <h3 class="category-title"><img src="{{asset('assets/imgs/zellig.svg')}}" style="width: 30px" alt="" class="me-2">{{__('home.cards')}} </h3>
+                            <div class="pswp-gallery pswp-gallery--single-column" id="gallery--getting-started">
 
+                                <div class="row g-3">
 
+                                    @foreach($cards as $card)
+                                        <div class="col-md-6">
+                                            <div class="card border-secondary border-2 overflow-hidden wow flipInY">
+                                                <a href="#"
+                                                   data-pswp-src="{{asset('storage/' . $card -> image())}}"
+                                                   data-pswp-width="2500"
+                                                   data-pswp-height="1666"
+                                                   target="_blank">
+                                                    <img src="{{asset('storage/' . $card -> image())}}" class="img-fluid" alt="" />
+                                                </a>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
 
+                            </div>
                         </div>
                     </div>
             </article>
@@ -274,7 +279,7 @@
             $(document).ready(function(){
 
                 $('#newsTicker2').breakingNews({
-                    effect: 'slide-down',
+
                     @if(session()->get('locale') == 'ar')
                     direction: 'rtl',
                     @endif
@@ -294,6 +299,29 @@
 
             splide.mount();
         </script>
+
+
+            <script type="module">
+                // Include Lightbox
+                import PhotoSwipeLightbox from '{{asset('assets/photoswipe/photoswipe-lightbox.esm.js')}}';
+
+                const lightbox = new PhotoSwipeLightbox({
+                    // may select multiple "galleries"
+                    gallery: '#gallery--getting-started',
+
+                    // Elements within gallery (slides)
+                    children: 'a',
+
+
+                    showHideAnimationType: 'zoom',
+                    showAnimationDuration: 300,
+                    hideAnimationDuration: 300,
+
+                    // setup PhotoSwipe Core dynamic import
+                    pswpModule: () => import('{{asset('assets/photoswipe/photoswipe.esm.js')}}')
+                });
+                lightbox.init();
+            </script>
 
 
     @endsection

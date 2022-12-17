@@ -7,7 +7,7 @@
 
 
     <div class="container my-5">
-        <h1 class="text-center ">{{__('home.join-us')}}</h1>
+        <h1 class="display-4 text-center  border-0 text-primary">{{__('home.join-us')}}</h1>
         <livewire:join-us/>
     </div>
 

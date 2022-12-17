@@ -1,12 +1,14 @@
 <div>
 
+    <h1 class="display-4 text-center  border-0 text-primary">{{__('home.volunteer')}}</h1>
+
+
     <div class="card my-5 border-0">
 
 
-        <div class="row align-items-center border border-primary border-0 rounded shadow-sm">
-            <div class="col-md-6   border-primary">
+        <div class="row align-items-center border border-primary border-0 rounded shadow-sm ">
+            <div class="col-lg-5   border-primary p-3 order-2 order-lg-0">
 
-                <h1 class="text-center card-header border-0 bg-transparent">{{__('home.volunteer')}}</h1>
 
 
                 <div class="card-body">
@@ -24,7 +26,7 @@
 
                         <div class="row">
 
-                            <div class="form-group  col-md-6 mb-1 ">
+                            <div class="form-group  col-md-6  mb-1 ">
 
                                 <label for="name" class="form-label">{{__('forms.full-name')}}</label>
                                 <input type="text" name="name" id="name" placeholder="" class="form-control @error('name') is-invalid @enderror" wire:model="name">
@@ -155,8 +157,8 @@
 
 
             </div>
-            <div class="col-md-6 ">
-                <img src="{{asset('assets/imgs/contact-us.svg')}}" alt="" class="img-fluid">
+            <div class="col-lg-7 ">
+                <img src="{{asset('assets/imgs/volunteer.svg')}}" alt="" class="img-fluid">
             </div>
 
         </div>

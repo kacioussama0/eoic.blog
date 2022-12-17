@@ -3,8 +3,8 @@
     <div class="card my-5 border-0">
 
 
-        <div class="row align-items-center border border-primary rounded shadow">
-            <div class="col-md-6   border-primary">
+        <div class="row align-items-center  rounded shadow-sm">
+            <div class="col-lg-5 order-2 order-lg-0   border-primary">
 
 
                 <div class="card-body">
@@ -78,7 +78,7 @@
 
 
             </div>
-            <div class="col-md-6 ">
+            <div class="col-lg-7">
                 <img src="{{asset('assets/imgs/contact-us.svg')}}" alt="" class="img-fluid">
             </div>
 

@@ -36,17 +36,15 @@ class PostController extends Controller
 
 
     public function __construct() {
-
         $this -> middleware('auth');
-
     }
 
 
     public function index()
     {
-        $posts = Post::latest()->paginate(6);
-        $postsEN = Post::latest()->where('title_en' , '<>' , null)->paginate(6);
-        $postsFR = Post::latest()->where('title_fr' , '<>' , null)->paginate(6);
+        $posts = Post::latest()->paginate(12);
+        $postsEN = Post::latest()->where('title_en' , '<>' , null)->paginate(12);
+        $postsFR = Post::latest()->where('title_fr' , '<>' , null)->paginate(12);
 
         return view('admin.posts.index',compact('posts','postsFR','postsEN'));
 
@@ -68,6 +66,8 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
+        // Start Post Validation
+
         $request->validate([
 
             'title' => 'required|min:5|unique:posts',
@@ -92,8 +92,12 @@ class PostController extends Controller
             ]
         ]);
 
-        $image = $imageFR = $imageEN = '';
+        // End Post Validation
 
+
+        // Start Image Upload
+
+        $image = $imageFR = $imageEN = '';
 
         $image = $request->file('image')->store('posts/ar','public');
 
@@ -104,6 +108,12 @@ class PostController extends Controller
         if(!empty($request->file('image_fr'))) {
             $imageFR = $request->file('image_fr')->store('posts/fr','public');
         }
+
+        // End Image Upload
+
+
+        // Start Store Post To Database
+
 
         $post = Category::find($request->category)->posts()->create([
             'title' => $request->title,
@@ -123,7 +133,15 @@ class PostController extends Controller
             'image_fr' => $imageFR ? $imageFR : $image
         ]);
 
+        // End Store Post To Database
+
+
+        // Start Attach Tags To Post
+
         $post -> tags()->attach($request->tags);
+
+        // End Attach Tags To Post
+
 
         return redirect()->to('admin/posts')->with([
             'success' => 'تم إضافة المنشور بنجاح'
@@ -148,8 +166,10 @@ class PostController extends Controller
 
     public function update(Request $request, Post $post)
     {
+        // Start Post Validation
 
         $request->validate([
+
             'title' => 'required|min:5|unique:posts,title,' . $post->id,
             'category' => 'required',
             'content' => 'required|min:20',
@@ -171,24 +191,52 @@ class PostController extends Controller
             ]
         ]);
 
+        // End Post Validation
+
+
+        // Start Image Upload
 
         $image = $imageFR = $imageEN = '';
 
         if(!empty($request->file('image'))) {
+
+            unlink(public_path("storage/" . $post->image));
+
             $image = $request->file('image')->store('posts/ar/','public');
+
+            if($post -> image == $post -> image_en) {
+                $imageEN = $image;
+            }
+
+            if($post -> image == $post -> image_fr) {
+                $imageFR = $image;
+            }
+
         }
 
         if(!empty($request->file('image_en'))) {
+
+            if($post -> image_en != $post -> image) {
+                unlink(public_path("storage/" . $post->image_en));
+            }
             $imageEN = $request->file('image_en')->store('posts/en/','public');
         }
 
         if(!empty($request->file('image_fr'))) {
+
+            if($post -> image_fr != $post -> image) {
+                unlink(public_path("storage/" . $post->image_fr));
+            }
+
             $imageFR = $request->file('image_fr')->store('posts/fr/','public');
         }
 
+        // End Image Upload
+
+        // Start Update Post To Database
 
 
-             $post->update([
+        $post->update([
                 'title' => $request->title,
                 'title_fr' => $request->title_fr,
                 'title_en' => $request->title_en,
@@ -205,6 +253,8 @@ class PostController extends Controller
                 'image_en' => $imageEN ? $imageEN : $post -> image_en,
                 'image_fr' => $imageFR ? $imageFR : $post -> image_fr
             ]);
+
+            // End Update Post To Database
 
 
             $post -> tags()->sync($request->tags);
@@ -245,8 +295,22 @@ class PostController extends Controller
 
     public function deleteTrashed($id)
     {
+
         $post = Post::withTrashed()->where('id',$id)->first();
 
+        if(\Illuminate\Support\Facades\File::exists('storage/' . $post -> image) && $post -> image != null) {
+            unlink(public_path("storage/" . $post->image));
+        }
+
+        if(\Illuminate\Support\Facades\File::exists('storage/' . $post -> image_en) && $post -> image_en != null) {
+            unlink(public_path("storage/" . $post->image_en));
+        }
+
+
+        if(\Illuminate\Support\Facades\File::exists('storage/' . $post -> image_fr) && $post -> image_fr != null) {
+            unlink(public_path("storage/" . $post->image_fr));
+
+        }
 
         $post -> forceDelete();
 
@@ -272,6 +336,8 @@ class PostController extends Controller
         }
 
     }
+
+
 
 
 

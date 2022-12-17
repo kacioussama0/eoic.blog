@@ -21,6 +21,7 @@
         "@splidejs/splide-extension-video": "^0.8.0",
         "bootstrap-icons": "^1.10.2",
         "flag-icons": "^6.6.6",
-        "hijri-js": "^1.0.25"
+        "hijri-js": "^1.0.25",
+        "photoswipe": "^5.3.4"
     }
 }

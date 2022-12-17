@@ -9,26 +9,15 @@
     <div class="card">
         <div class="card-body">
 
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="arabic-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true"><span class="fi fi-sa"></span></button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="english-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false"><span class="fi fi-us"></span></button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="frensh-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false"><span class="fi fi-fr"></span></button>
-                </li>
-                <li class="nav-item" role="presentation">
-                </li>
-            </ul>
                 <form action="{{route('posts.store')}}" method="POST" enctype="multipart/form-data" class="mt-3">
-                <div class="tab-content" id="myTabContent">
 
-                <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
 
                         @csrf
-                        <x-admin.forms.input name="title" title="العنوان" type="text" value="{{old('title')}}"/>
+
+                    <span class="fi fi-sa  mx-auto d-block" style="width: 70px; height: 70Px"></span>
+
+
+                    <x-admin.forms.input name="title" title="العنوان" type="text" value="{{old('title')}}"/>
 
                         <div class="form-group">
                             <label for="category" class="form-label">التصنيفات</label>
@@ -56,6 +45,19 @@
 
                         <x-admin.forms.input name="image" title="صورة المقال" type="file" value="{{old('image')}}"/>
                         <x-admin.forms.text-area name="content" id="#content" class="content" title="محتوى المقال"  value="{!!old('content')!!}"/>
+                         <hr>
+                        <span class="fi fi-gb  mx-auto d-block" style="width: 70px; height: 70Px"></span>
+
+                    <x-admin.forms.input name="title_en" title="العنوان بالإنجليزي" type="text" value="{{old('title_en')}}"/>
+                        <x-admin.forms.input name="image_en" title="صورة المقال الإنجليزي" type="file" value="{{old('image_en')}}"/>
+                        <x-admin.forms.text-area name="content_en" id="content_1" title="محتوى المقال بالإنجليزي"  value="{!!old('content_en')!!}"/>
+                        <hr>
+
+                    <span class="fi fi-fr mx-auto d-block" style="width: 70px; height: 70Px"></span>
+
+                    <x-admin.forms.input name="title_fr" title="العنوان بالفرنسي" type="text" value="{{old('title_fr')}}"/>
+                        <x-admin.forms.input name="image_fr" title="صورة المقال الفرنسي" type="file" value="{{old('image_fr')}}"/>
+                        <x-admin.forms.text-area name="content_fr" id="content_2" title="محتوى المقال بالفرنسي"  value="{!!old('content_fr')!!}"/>
 
                         <div class="form-check form-switch mb-3">
                             <label for="is_published">المقال منشور</label>
@@ -63,30 +65,13 @@
                         </div>
 
 
-                </div>
-
-
-
-                <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
-                    <x-admin.forms.input name="title_en" title="العنوان" type="text" value="{{old('title_en')}}"/>
-
-
-                    <x-admin.forms.input name="image_en" title="صورة المقال" type="file" value="{{old('image_en')}}"/>
-                    <x-admin.forms.text-area name="content_en" id="content_1" title="محتوى المقال"  value="{!!old('content_en')!!}"/>
-
-                </div>
-                <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
-                    <x-admin.forms.input name="title_fr" title="العنوان" type="text" value="{{old('title_fr')}}"/>
-
-
-
-
-
-                    <x-admin.forms.input name="image_fr" title="صورة المقال" type="file" value="{{old('image_fr')}}"/>
-                    <x-admin.forms.text-area name="content_fr" id="content_2" title="محتوى المقال"  value="{!!old('content_fr')!!}"/>
 
 
                 </div>
+
+
+
+
 
                 </div>
                     <button type="submit" class="btn btn-primary w-100">{{__('إضافة مقال')}}</button>

@@ -30,7 +30,7 @@
 
                    @if($magazine->title() != null)
 
-                   <div class="col-md-3">
+                   <div class="col-md-6 col-lg-4 col-xl-3">
                        <div class="card border-primary"  style="height: 550px">
                            <img src="{{asset('storage/' . $magazine -> thumbnail())}}" class="card-img-top object-fit-cover  h-75" alt="...">
                            <div class="card-body h-25 d-flex justify-content-center align-items-center">
