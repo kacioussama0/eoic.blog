@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Changa:wght@200;300;400;500;600;700;800&display=swap');
 ::selection  {
     background-color: rgba(20, 130, 135, 0.8);
     color: #fff;
@@ -275,7 +275,7 @@ nav {
     .mega-menu a {
         color: #fff;
         font-size: 20px;
-        font-family: 'Cairo' !important;
+        font-family: 'Changa' !important;
     }
 
 
@@ -309,5 +309,5 @@ nav {
 
 
 #sideBar {
-    font-family: Cairo !important;
+    font-family: 'Changa' !important;
 }

@@ -1,14 +1,10 @@
 @extends('blog-layout.app')
-
 @section('title',__('home.home'))
 
 @section('style')
-
     <link rel="stylesheet" href="{{asset('assets/css/breaking-news-ticker.min.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/splide.min.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/splide-core.min.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/themes/splide-sea-green.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/photoswipe/photoswipe.css')}}" />
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.7.3/plyr.css" />
 
 @endsection
 
@@ -20,7 +16,7 @@
     @if(count($news_titles))
 
     <div class="bn-breaking-news position-fixed bottom-0 end-0 w-100" id="newsTicker2" style="z-index: 999">
-        <div class="bn-label">أخبار عاجلة</div>
+        <div class="bn-label">{{__('home.important-news')}}</div>
         <div class="bn-news">
             <ul>
                 @foreach($news_titles as $title)
@@ -41,12 +37,11 @@
 @endif
 @if(count($categories))
 
-
-
-
-
     <div class="section">
         <div class="container-lg px-0 px-lg-2">
+
+            <!-- Start Carousel -->
+
                     <div id="LastPosts" class="carousel slide overflow-hidden position-relative  rounded-4 rounded-top-0 shadow mb-5" data-bs-ride="carousel">
                         <div class="carousel-inner">
 
@@ -67,7 +62,7 @@
                                         <div class="carousel-content">
                                             <div class="badge rounded-pill text-bg-secondary  mb-3"><a href="{{url('category/' . $post ->category->name())}}" class="link-dark">{{$post ->category -> name()}}</a></div>
                                             <div class="mb-3">{{$post ->created_at -> diffForHumans()}}</div>
-                                            <h4><a href="{{route('post.slug', $post->slug())}}" class="link-light vw-100">{{$post -> title()}}</a></h4>
+                                            <h4 class="fw-6"><a href="{{route('post.slug', $post->slug())}}" class="link-light ">{{$post -> title()}}</a></h4>
                                         </div>
                                         <img src="{{File::exists('storage/' . $post -> image()) ? asset('storage/' . $post -> image()) : asset('assets/imgs/logo.svg') }}" class="d-block w-100" alt="...">
                                         <span style="font-size: 25px;z-index: 999" class="position-absolute bottom-0 end-0 m-2">
@@ -87,11 +82,6 @@
                                         </div>
                                     </div>
 
-
-
-
-
-
                                 @endif
                             @endforeach
 
@@ -105,13 +95,12 @@
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Next</span>
                         </button>
-
-
-
                     </div>
 
+            <!-- End Carousel -->
 
-    </div>
+
+        </div>
 
     <div class="section ">
         <div class="container-lg">
@@ -181,7 +170,17 @@
             <section class="mt-2 mb-3">
                 <div class="container-lg">
                     <h3 class="category-title"><img src="{{asset('assets/imgs/zellig.svg')}}" style="width: 30px" alt="" class="me-2">{{__('home.videos')}} </h3>
+                    <div class="plyr__video-embed" id="player">
+                        <iframe
+                            src="https://www.youtube.com/watch?v=3h6RMkjDR50&ab_channel=%D8%A7%D9%84%D9%87%D9%8A%D8%A6%D8%A9%D8%A7%D9%84%D8%A3%D9%88%D8%B1%D9%88%D8%A8%D9%8A%D8%A9%D9%84%D9%84%D9%85%D8%B1%D8%A7%D9%83%D8%B2%D8%A7%D9%84%D8%A5%D8%B3%D9%84%D8%A7%D9%85%D9%8A%D8%A9"
+                            allowfullscreen
+                            allowtransparency
+                            allow="autoplay"
+                        ></iframe>
+                    </div>
+
                 </div>
+
 
             </section>
 
@@ -208,11 +207,16 @@
 
                             <div class="row">
 
+
                                 @foreach($category->posts->take(3) as $post)
 
+
+                                    @if($post -> title() != null)
                                     <div class="col-sm-6 col-md-4 wow fadeIn">
                                         <x-article :post="$post"/>
                                     </div>
+
+                                    @endif
 
                                     @endforeach
 
@@ -271,9 +275,10 @@
 
     @section('script')
 
+            <script src="{{asset('assets/dflip/assets/js/dflip.min.js')}}"></script>
+            <script src="{{asset('assets/dflip/assets/js/metaboxes.min.js')}}"></script>
+            <script src="{{asset('assets/js/ideabox-news-ticker.min.js')}}"></script>
 
-        <script src="{{asset('assets/js/ideabox-news-ticker.min.js')}}"></script>
-        <script src="{{asset('assets/js/splide.min.js')}}"></script>
         <script>
 
             $(document).ready(function(){
@@ -288,18 +293,13 @@
 
             });
 
-
-
-
-            var splide = new Splide( '.splide', {
-                type   : 'loop',
-                drag   : 'free',
-                perPage: 3,
-            } );
-
-            splide.mount();
         </script>
 
+            <script src="https://cdn.plyr.io/3.7.3/plyr.polyfilled.js"></script>
+
+            <script>
+                const player = new Plyr('#player');
+            </script>
 
             <script type="module">
                 // Include Lightbox

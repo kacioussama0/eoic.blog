@@ -4,10 +4,8 @@
 }
 
 * {
-    font-family: 'Cairo' !important;
+    font-family: 'Changa' !important;
 }
-
-
 
 
 body {
@@ -21,15 +19,15 @@ body {
 h1, h2,h3, h4, h5, h6  {
   color: #11151c;
   font-weight: 700;
-    font-family:  'Sultan','Cairo' !important;
+  font-family:  'Sultan','Changa' !important;
 
-    margin: 0px 0px 15px;
+   margin: 0px 0px 15px;
+
 }
 
 a {
     text-decoration: none;
-    font-family:  'Cairo' !important;
-
+    font-family: 'Changa', sans-serif !important;
 }
 
 

@@ -2,6 +2,11 @@
 $navCategories = \App\Models\Category::all()->take(6);
 $settings = \App\Models\Setting::first();
 @endphp
+
+<!-- Made By SKTE :) -->
+<!-- Zakaria Seggar Front End -->
+<!-- Kaci Oussama Back End -->
+
 <!DOCTYPE html>
 <html lang="{{session()->get('locale')}}" dir="@if(session()->get('locale') == 'ar'){{'rtl'}}@else{{'ltr'}}@endif">
 <head>
@@ -59,6 +64,7 @@ $settings = \App\Models\Setting::first();
 
 <x-loader/>
 
+<!-- Start Search Modal -->
 
 <div class="modal fade" id="search" tabindex="-1" aria-labelledby="search" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -67,7 +73,7 @@ $settings = \App\Models\Setting::first();
                 <h1 class="modal-title fs-5 " id="search">{{__('home.search')}}</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body  ">
+            <div class="modal-body">
                 <form action="{{route('search')}}" method="GET" class="d-flex" role="search">
 
                     <input class="form-control me-2" name="result" type="search" placeholder="" aria-label="Search">
@@ -79,6 +85,12 @@ $settings = \App\Models\Setting::first();
     </div>
 </div>
 
+<!-- End Search Modal -->
+
+
+
+<!-- Start Header-->
+
 <header class="position-sticky top-0  bg-white" style="z-index: 999">
 
 <nav class="navbar navbar-expand-lg shadow-sm align-items-center justify-content-between">
@@ -89,7 +101,7 @@ $settings = \App\Models\Setting::first();
             <i class="fa-regular fa-magnifying-glass" style="font-size: 20px"></i>
         </a>
 
-        <a href="{{url('/')}}" class=" wow rollIn text-center text-lg-start">
+        <a href="{{url('/')}}" class=" wow fadeIn text-center text-lg-start">
             <img src="{{asset('assets/imgs/logo.svg')}}"  alt="Logo" class = "main-logo d-inline-block">
             <h6 class="w-50 align-middle d-inline-block mb-0 ms-2 text-center d-none d-md-inline-block">{{$settings -> display_name()}}</h6>
         </a>
@@ -139,7 +151,7 @@ $settings = \App\Models\Setting::first();
                                     <ul class="row">
                                         @foreach($navCategories as $category)
 
-                                            <li class="col-4" ><a href="{{url('category/' . $category -> name())}}">{{$category->name()}}</a></li>
+                                            <li  class="col"><a href="{{url('category/' . $category -> name())}}">{{$category->name()}}</a></li>
                                         @endforeach
 
                                     </ul>
@@ -205,6 +217,13 @@ $settings = \App\Models\Setting::first();
                                     <a href="{{route('contact')}}" class="text-white">
                                         <i class="fa-light fa-credit-card-blank" style="font-size: 80px"></i>
                                         <h3 class="text-white mt-3">{{__('home.cards')}}</h3>
+                                    </a>
+                                </div>
+
+                                <div class="col-3">
+                                    <a href="{{url('category/Posts')}}" class="text-white">
+                                        <i class="fa-light fa-newspaper" style="font-size: 80px"></i>
+                                        <h3 class="text-white mt-3">{{__('home.posts')}}</h3>
                                     </a>
                                 </div>
 
@@ -318,6 +337,9 @@ $settings = \App\Models\Setting::first();
 
 </header>
 
+<!-- End Header -->
+
+<!-- Start OffCanvas -->
 <div class="offcanvas side-nav offcanvas-end " data-bs-scroll="true" tabindex="-1" id="sideBar" aria-labelledby="sideBar" style="font-size: 20px;" >
     <div class="offcanvas-header d-flex flex-column align-items-center">
         <button type="button" class="btn-close my-2" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -373,9 +395,6 @@ $settings = \App\Models\Setting::first();
 
             </li>
 
-
-
-
             <li class="nav-item  py-2 border-bottom border-primary border-opacity-10">
 
 
@@ -413,11 +432,6 @@ $settings = \App\Models\Setting::first();
                     </div>
                 </div>
             </li>
-
-
-
-
-
 
             <li class="nav-item py-3  @auth   border-bottom border-primary border-opacity-10  @endauth">
 
@@ -464,9 +478,6 @@ $settings = \App\Models\Setting::first();
 
             </li>
 
-
-
-
             @auth
 
             <li class="nav-item py-2 d-flex flex-row-reverse align-items-center">
@@ -500,13 +511,7 @@ $settings = \App\Models\Setting::first();
 
             @endauth
 
-
         </ul>
-
-
-
-
-
 
         <img src="{{asset('assets/imgs/lines.svg')}}" class="pt-5 mt-5"/>
         <div class="d-flex align-items-center justify-content-center my-3">
@@ -520,10 +525,16 @@ $settings = \App\Models\Setting::first();
     </div>
 </div>
 
+<!-- End OffCanvas -->
+
+
+<!-- Start Content -->
+
 @yield('content')
 
+<!-- End Content -->
 
-    <!-- Start Footer -->
+<!-- Start Footer -->
     <footer id="footer" class="bg-primary text-lg-start text-center border-top border-3 border-secondary " style="background-image: url('{{asset('assets/imgs/bg-footer.svg')}}')">
         <div class="container">
             <div class="row align-items-lg-baseline align-items-lg-center   justify-content-lg-between justify-content-center">
@@ -606,14 +617,14 @@ $settings = \App\Models\Setting::first();
         </div>
     </footer>
 
+<!-- End Footer  -->
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="{{asset('assets/fontawesome/js/all.min.js')}}"></script>
 <script src="{{asset('assets/js/wow.min.js')}}"></script>
 <script>
     new WOW().init();
 </script>
-<script src="{{asset('assets/dflip/assets/js/dflip.min.js')}}"></script>
-<script src="{{asset('assets/dflip/assets/js/metaboxes.min.js')}}"></script>
 
 @livewireScripts
 

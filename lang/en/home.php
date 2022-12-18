@@ -28,6 +28,9 @@ return [
     'social-media' => 'Social Media',
     'more' => 'More',
     'shortcuts' => 'Shortcuts',
+    'posts' => 'Posts',
+    'important-news' => 'Breaking news'
+
 ];
 
 

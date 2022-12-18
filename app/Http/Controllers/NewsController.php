@@ -14,7 +14,7 @@ class NewsController extends Controller
      */
     public function index()
     {
-        $news = News::OrderByDesc('created_at')->paginate(6);;
+        $news = News::latest()->paginate(6);;
         return view('admin.news.index',compact('news'));
     }
 
@@ -82,7 +82,9 @@ class NewsController extends Controller
     public function update(Request $request, News $news)
     {
         $request -> validate([
-            'title' => 'required|min:10'
+            'title' => 'required|min:10',
+            'title_en' => 'required|min:10',
+            'title_fr' => 'required|min:10',
         ]);
 
 

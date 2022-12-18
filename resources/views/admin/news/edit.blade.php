@@ -1,41 +1,21 @@
 @extends('admin.layouts.app')
-@section('title','تعديل الخبر')
+@section('title','إضافة خبر')
 
 
 
 @section('content')
 
-
-    @if($errors->any())
-
-        <div class="alert alert-danger">
-
-            <ul>
-                @foreach($errors->all() as $error)
-
-                    <li>{{$error}}</li>
-
-                @endforeach
-
-            </ul>
-
-        </div>
-
-    @endif
     <form action="{{route('news.update',$news)}}" method="POST">
-
 
         @csrf
         @method('PATCH')
-
-        <div class="form-group">
-            <label for="title" class="form-label">العنوان</label>
-            <input type="text" name="title" id="title" class="form-control" placeholder="أدخل عنوان الخبر" value="{{$news->title}}">
-        </div>
+        <x-admin.forms.input name="title" title="العنوان بالعربية" type="text" value="{{$news -> title}}"/>
+        <x-admin.forms.input name="title_en" title="العنوان بالإنجيلزية" type="text" value="{{$news -> title_en}}"/>
+        <x-admin.forms.input name="title_fr" title="العنوان بالفرنسية" type="text" value="{{$news -> title_fr}}"/>
 
         <div class="form-check form-switch mb-3">
             <label for="is_published">الخبر منشور</label>
-            <input class="form-check-input" type="checkbox" name="is_published" @if($news -> is_published) checked @endif id="is_published" value="1">
+            <input class="form-check-input" type="checkbox" @if($news -> is_published) checked @endif name="is_published" id="is_published" value="1">
         </div>
 
 

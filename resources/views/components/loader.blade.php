@@ -111,8 +111,8 @@ $settings  = \App\Models\Setting::first();
 </style>
 
 <div class="loader-container" style="background-image: url('{{asset('assets/imgs/bg-footer.svg')}}')">
-    <img src="{{asset('assets/imgs/logo.svg')}}" class="my-5" alt="">
-    <h2 class="my-5 text-white w-75 mx-auto text-center">{{$settings -> display_name()}}</h2>
+    <img src="{{asset('assets/imgs/logo.svg')}}" class="my-2" alt="">
+    <h2 class="mt-3 text-white w-75 mx-auto text-center">{{$settings -> display_name()}}</h2>
     <div class="center">
         <div class="wave"></div>
         <div class="wave"></div>

@@ -28,10 +28,8 @@ return [
     'social-media' => 'مواقع التواصل',
     'more' => 'المزيد',
     'shortcuts' => 'إختصارات',
-
-
-
-
+    'posts' => 'مقالات',
+    'important-news' => 'أخبار عاجلة'
 
 ];
 

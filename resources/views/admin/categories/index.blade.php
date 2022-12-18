@@ -67,6 +67,7 @@
                                                 {{__('الإجراءات')}}
                                             </button>
                                             <ul class="dropdown-menu">
+                                                <li><a class="dropdown-item" href="{{url('category/'. $category->name())}}">{{__('إظهار')}}</a></li>
                                                 <li><a class="dropdown-item" href="{{route('categories.edit',$category)}}">{{__('تعديل')}}</a></li>
                                                 <li>
                                                     <form action="{{route('categories.destroy',$category)}}" method = "POST" onsubmit="return confirm('هل أنت متأكد')">
@@ -135,6 +136,8 @@
                                                     {{__('الإجراءات')}}
                                                 </button>
                                                 <ul class="dropdown-menu">
+                                                    <li><a class="dropdown-item" href="{{url('category/'. $category->name())}}">{{__('إظهار')}}</a></li>
+
                                                     <li><a class="dropdown-item" href="{{route('categories.edit',$category)}}">{{__('تعديل')}}</a></li>
                                                     <li>
                                                         <form action="{{route('categories.destroy',$category)}}" method = "POST" onsubmit="return confirm('هل أنت متأكد')">
@@ -201,6 +204,7 @@
                                                     {{__('الإجراءات')}}
                                                 </button>
                                                 <ul class="dropdown-menu">
+                                                    <li><a class="dropdown-item" href="{{url('category/'. $category->name())}}">{{__('إظهار')}}</a></li>
                                                     <li><a class="dropdown-item" href="{{route('categories.edit',$category)}}">{{__('تعديل')}}</a></li>
                                                     <li>
                                                         <form action="{{route('categories.destroy',$category)}}" method = "POST" onsubmit="return confirm('هل أنت متأكد')">

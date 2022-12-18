@@ -28,10 +28,8 @@ return [
     'social-media' => 'Réseaux Sociaux',
     'more' => 'Suite',
     'shortcuts' => 'Raccourcis',
-
-
-
-
+    'posts' => 'Articles',
+    'important-news' => 'Dernières nouvelles'
 ];
 
 
