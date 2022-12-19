@@ -138,7 +138,7 @@ $settings = \App\Models\Setting::first();
                                     <h3 class="border-start border-5 text-light ps-2 border-secondary ">{{__('home.about-organization')}}</h3>
                                     <ul>
                                         <li class=""><a href="{{route('who-we-are')}}">{{__('home.who-we-are')}}</a></li>
-                                        <li><a href="">{{__('home.our-projects')}}</a></li>
+                                        <li><a href="{{url('projects')}}">{{__('home.our-projects')}}</a></li>
                                         <li><a href="{{url('who-we-are')}}#beneficiaries">{{__('home.beneficiaries')}}</a></li>
                                         <li><a href="{{url('who-we-are')}}#countries">{{__('home.countries-deal')}}</a></li>
                                     </ul>
@@ -214,7 +214,7 @@ $settings = \App\Models\Setting::first();
                                 </div>
 
                                 <div class="col-3">
-                                    <a href="{{route('contact')}}" class="text-white">
+                                    <a href="{{url('cards')}}" class="text-white">
                                         <i class="fa-light fa-credit-card-blank" style="font-size: 80px"></i>
                                         <h3 class="text-white mt-3">{{__('home.cards')}}</h3>
                                     </a>

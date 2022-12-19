@@ -15,8 +15,12 @@ class TagSeeder extends Seeder
      */
     public function run()
     {
-        $tag = new Tag();
-        $tag -> name = 'tag_test';
-        $tag -> save();
+        Tag::create([
+            'name' => 'أسئلة',
+            'name_fr' => 'Question',
+            'name_en' => 'Question'
+        ]);
+
+
     }
 }

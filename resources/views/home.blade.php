@@ -65,13 +65,13 @@
                                             <h4 class="fw-6"><a href="{{route('post.slug', $post->slug())}}" class="link-light ">{{$post -> title()}}</a></h4>
                                         </div>
                                         <img src="{{File::exists('storage/' . $post -> image()) ? asset('storage/' . $post -> image()) : asset('assets/imgs/logo.svg') }}" class="d-block w-100" alt="...">
-                                        <span style="font-size: 25px;z-index: 999" class="position-absolute bottom-0 end-0 m-2">
+                                        <span style="font-size: 25px;z-index: 99" class="position-absolute bottom-0 end-0 m-2">
                                           <button class="bg-transparent border-0 me-3" type="button" data-bs-toggle="collapse" data-bs-target="#slug" aria-expanded="false" aria-controls="slug">
                                             <i class="fa-solid fa-share me-1 pe-auto text-light"></i>
                                            </button>
                                         </span>
 
-                                        <div class="collapse  bg-white position-absolute bottom-0 end-0 m-5 rounded" id="slug" style="z-index: 9999;font-size: 20px;">
+                                        <div class="collapse  bg-white position-absolute bottom-0 end-0 m-5 rounded z-1" id="slug" style="z-index: 9999;font-size: 20px;">
                                             <div class="p-3">
                                                 <a href="https://www.facebook.com/sharer.php?u={{route('post.slug', $post->slug())}}" target="_blank" class="me-2" style="color: #4267B2"><i class="fa-brands fa-facebook"></i></a>
                                                 <a href="https://www.facebook.com/dialog/send?app_id=5303202981&display=popup&link={{route('post.slug', $post->slug())}}&redirect_uri={{route('post.slug', $post->slug())}}" class="me-2" style="color: #00B2FF"><i class="fa-brands fa-facebook-messenger" ></i></a>

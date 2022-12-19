@@ -3,7 +3,7 @@
 namespace App\Http\Livewire\Magazine;
 
 use App\Models\Magazine;
-use Illuminate\Validation\Rules\File;
+use Illuminate\Http\Request;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -25,7 +25,8 @@ class Create extends Component
     public $is_published;
 
 
-    public function create() {
+    public function create(Request $request) {
+
         $this->validate([
             'title' => 'required',
             'thumbnail' => [
@@ -37,41 +38,54 @@ class Create extends Component
                 'required',
                 \Illuminate\Validation\Rules\File::types([
                     'pdf'
-                ])->max(1024 * 100)
+                ])->max(1024 * 200)
             ],
-            'thumbnail_en' => [
-                \Illuminate\Validation\Rules\File::types([
-                    'jpg','gif','png','webp','svg'
-                ])->max(1024 * 4)
-            ],'book_en' => [
-                \Illuminate\Validation\Rules\File::types([
-                    'pdf'
-                ])->max(1024 * 100)
-            ],'thumbnail_fr' => [
-                \Illuminate\Validation\Rules\File::types([
-                    'jpg','gif','png','webp','svg'
-                ])->max(1024 * 4)
-            ],'book_fr' => [
-                \Illuminate\Validation\Rules\File::types([
-                    'pdf'
-                ])->max(1024 * 100)
-            ],
+
+
         ]);
 
         if(!empty($request->file('thumbnail_en'))) {
+            $this->validate([
+                'thumbnail_en' => [
+                    \Illuminate\Validation\Rules\File::types([
+                        'jpg','gif','png','webp','svg'
+                    ])->max(1024 * 4)
+                    ]
+            ]);
             $thumbnailEN = $request->file('thumbnail_en')->store('magazines/thumbnails/en','public');
         }
 
         if(!empty($request->file('thumbnail_fr'))) {
+            $this->validate([
+                'thumbnail_fr' => [
+                    \Illuminate\Validation\Rules\File::types([
+                        'jpg','gif','png','webp','svg'
+                    ])->max(1024 * 4)
+                ],
+            ]);
             $thumbnailFR= $request->file('thumbnail_fr')->store('magazines/thumbnails/fr','public');
         }
 
 
         if(!empty($request->file('book_en'))) {
+            $this->validate([
+                'book_en' => [
+                    \Illuminate\Validation\Rules\File::types([
+                        'pdf'
+                    ])->max(1024 * 200)
+                ],
+            ]);
             $bookEN = $request->file('book_en')->store('magazines/books/en','public');
         }
 
         if(!empty($request->file('book_fr'))) {
+            $this->validate([
+            'book_fr' => [
+                \Illuminate\Validation\Rules\File::types([
+                    'pdf'
+                ])->max(1024 * 200)
+            ]
+            ]);
             $bookFR= $request->file('book_fr')->store('magazines/books/fr','public');
         }
 

@@ -20,7 +20,7 @@ return [
     'magazines' => 'مجلات',
     'cards' => 'بطاقات',
     'videos' => 'فيديوهات',
-    'last-posts' => 'أخر المقالات',
+    'last-posts' => 'أخر الأخبار',
     'categories' => 'التصنيفات',
     'tags' => 'الوسوم',
     'news' => 'الأخبار',

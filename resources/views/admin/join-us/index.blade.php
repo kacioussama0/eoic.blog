@@ -17,11 +17,12 @@
             <thead>
 
                 <tr>
-                    <th>الإسم الكامل</th>
-                    <th>تاريخ ومكان الميلاد</th>
-                    <th>رقم الهاتف</th>
+                    <th>الإسم</th>
                     <th>البريد الإلكتروني</th>
-                    <th>تم إنشاءه</th>
+                    <th>رقم الهاتف</th>
+                    <th>تاريخ الميلاد</th>
+                    <th>الجنس</th>
+                    <th>السيرة الذاتية</th>
                     <th>الإجراءات</th>
                 </tr>
 
@@ -32,15 +33,16 @@
                 @foreach($joins as $join)
 
                     <tr>
-
-                        <td>{{$join -> full_name}}</td>
-                        <td>{{$join -> date_of_birth . ' ب : ' . $join -> place_of_birth}}</td>
-                        <td>{{$join -> phone}}</td>
+                        <td>{{$join -> name}}</td>
                         <td>{{$join -> email}}</td>
-                        <td>{{$join -> created_at}}</td>
+                        <td>{{$join -> phone}}</td>
+                        <td>{{$join -> dob}}</td>
+                        <td>{{$join -> gender}}</td>
                         <td>
-                            <a href="{{url('admin/join-us/' . $join->id)}}" class="btn btn-warning">إظهار</a>
-                            <form action="{{url('admin/join-us/' . $join->id)}}" method="POST" onsubmit="return confirm('هل أنت متأكد ?')" class="d-inline-block">
+                            <a href="{{asset('storage/' . $join -> cv)}}" class="btn btn-primary" download>تحميل </a>
+                        </td>
+                        <td>
+                            <form action="{{route('join-us.destroy',$join)}}" method="POST" onsubmit="return confirm('هل أنت متأكد ?')" class="d-inline-block">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">حذف</button>

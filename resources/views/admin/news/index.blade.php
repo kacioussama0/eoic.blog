@@ -45,6 +45,7 @@
                             <thead>
                             <tr>
                                 <th>الخبر</th>
+                                <th>منشور</th>
                                 <th>تم إنشاءه</th>
                                 <th>تم تعديله</th>
                                 <th>{{__('الإجراءات')}}</th>
@@ -58,6 +59,7 @@
                                 <tr>
 
                                     <td>{{$new->title}}</td>
+                                    <td>{{$new -> is_published ? 'نعم' : 'لا'}}</td>
                                     <td>{{$new->created_at}}</td>
                                     <td>{{$new->updated_at}}</td>
 
@@ -107,6 +109,7 @@
                             <thead>
                             <tr>
                                 <th>الخبر</th>
+                                <th>منشور</th>
                                 <th>تم إنشاءه</th>
                                 <th>تم تعديله</th>
                                 <th>{{__('الإجراءات')}}</th>
@@ -120,6 +123,7 @@
                                 <tr>
 
                                     <td>{{$new->title_en}}</td>
+                                    <td>{{$new -> is_published ? 'نعم' : 'لا'}}</td>
                                     <td>{{$new->created_at}}</td>
                                     <td>{{$new->updated_at}}</td>
 
@@ -169,6 +173,7 @@
                             <thead>
                             <tr>
                                 <th>الخبر</th>
+                                <th>منشور</th>
                                 <th>تم إنشاءه</th>
                                 <th>تم تعديله</th>
                                 <th>{{__('الإجراءات')}}</th>
@@ -182,6 +187,7 @@
                                 <tr>
 
                                     <td>{{$new->title_fr}}</td>
+                                    <td>{{$new -> is_published ? 'نعم' : 'لا'}}</td>
                                     <td>{{$new->created_at}}</td>
                                     <td>{{$new->updated_at}}</td>
                                     <td>

@@ -36,13 +36,12 @@ class BlogController extends Controller
 
         $post = Post::where('slug',$slug)->orWhere('slug_fr',$slug)->orWhere('slug_en',$slug)->first();
 
-        if(!$post -> is_published && !auth()->user()) {
-            abort(404);
-        }
-
-        if(empty($post)) {
+        if(!empty($post)) {
+            if(!$post -> is_published && !auth()->user()) {
+                abort(404);
+            }
+        }else {
             return  redirect() -> to('/')->with('settings',Setting::first());
-
         }
 
         $next_page = Post::where('id','>',$post -> id)->min('id');

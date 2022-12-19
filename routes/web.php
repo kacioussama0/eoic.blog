@@ -24,8 +24,7 @@ Route::get('contact',[\App\Http\Controllers\MessageController::class,'create'])-
 Route::post('contact',[\App\Http\Controllers\MessageController::class,'store']);
 Route::get('books',[\App\Http\Controllers\MagazineController::class,'books']);
 Route::get('cards',[\App\Http\Controllers\CardController::class,'cards']);
-Route::get('join-us',[\App\Http\Controllers\JoinUsController::class,'create'])->name('join-us');
-Route::post('join-us',[\App\Http\Controllers\JoinUsController::class,'store']);
+Route::get('join-us',[\App\Http\Controllers\JoinController::class,'create'])->name('join-us');
 Route::get('posts/{slug}',[\App\Http\Controllers\BlogController::class,'post'])->name('post.slug');
 Route::get('category/{title}',[\App\Http\Controllers\BlogController::class,'category'])->name('category.show');
 Route::get('tag/{id}',[\App\Http\Controllers\BlogController::class,'tag'])->name('tag.show');
@@ -41,14 +40,13 @@ Route::prefix('admin')->middleware('auth')->group(function() {
     Route::resource('users',\App\Http\Controllers\UserController::class)->name('','users');
     Route::resource('categories',\App\Http\Controllers\CategoryController::class);
     Route::resource('tags',\App\Http\Controllers\TagController::class);
-    Route::resource('faq',\App\Http\Controllers\PopularQuestionController::class)->name('','faq');
     Route::resource('posts',\App\Http\Controllers\PostController::class);
     Route::resource('projects',\App\Http\Controllers\ProjectController::class);
     Route::get('junk',[\App\Http\Controllers\PostController::class,'junk']);
     Route::post('posts/uploadImage',[\App\Http\Controllers\PostController::class,'uploadImage'])->name('posts.uploadImage');
     Route::get('trashed/restore/{id}',[\App\Http\Controllers\PostController::class,'restoredTrashed'])->name('posts.restore');
     Route::get('trashed/delete/{id}',[\App\Http\Controllers\PostController::class,'deleteTrashed'])->name('posts.delete');
-    Route::resource('join-us',\App\Http\Controllers\JoinUsController::class);
+    Route::resource('join-us',\App\Http\Controllers\JoinController::class)->name('','join-us');
     Route::resource('joined-users',\App\Http\Controllers\JoinedUser::class)->name('','joined-users');
     Route::resource('messages',\App\Http\Controllers\MessageController::class)->name('','messages')->except('destroyAll');
     Route::delete('messages/removeAll',[\App\Http\Controllers\MessageController::class,'destroyAll'])->name('removeAllMessages');

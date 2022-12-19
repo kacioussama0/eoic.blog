@@ -32,7 +32,6 @@
                     </a>
                 </li>
 
-        @role('admin')
                 <li
                     class="sidebar-item {{request()->is('admin/users*') ? "active" : '' }} ">
                     <a href="{{route('users.index')}}" class="sidebar-link ">
@@ -40,7 +39,6 @@
                         <span>الأعضاء</span>
                     </a>
                 </li>
-        @endrole
 
                 <li
                     class="sidebar-item {{request()->is('admin/categories*') ? "active" : '' }}">
@@ -119,15 +117,6 @@
 
 
                 <li
-                    class="sidebar-item {{request()->is('admin/faq*') ? "active" : '' }}">
-                    <a href="{{url('admin/faq')}}" class='sidebar-link'>
-                        <i class="bi bi-question"></i>
-                        <span>أسئلة شائعة</span>
-                    </a>
-                </li>
-
-
-                <li
                     class="sidebar-item {{request()->is('admin/cards*') ? "active" : '' }}">
                     <a href="{{route('cards.index')}}" class='sidebar-link '>
                         <i class="bi bi-file-post"></i>
@@ -143,9 +132,6 @@
                         <span>إعدادات الموقع</span>
                     </a>
                 </li>
-
-
-
 
 
             </ul>

@@ -37,7 +37,7 @@ $Posts = \App\Models\Category::where('name','مقالات')->orWhere('name_en','
         <div class="card rounded-4  overflow-hidden border-primary mb-3">
             <div class="card-header p-0 bg-transparent border-primary">
                 <h3 class=" my-0 p-3">
-                    <a href="{{url('books')}}" class="link-primary"><img src="{{asset('assets/imgs/zellig.svg')}}" style="width: 30px" alt="" class="me-2"> {{__('home.posts')}} </a>
+                    <a href="{{url('category/Posts')}}" class="link-primary"><img src="{{asset('assets/imgs/zellig.svg')}}" style="width: 30px" alt="" class="me-2"> {{__('home.posts')}} </a>
                 </h3>
             </div>
             <div class="card-body">
@@ -66,6 +66,37 @@ $Posts = \App\Models\Category::where('name','مقالات')->orWhere('name_en','
             </div>
         </div>
 
+        <div class="card rounded-4  overflow-hidden border-primary mb-3">
+            <div class="card-header p-0 bg-transparent border-primary">
+                <h3 class=" my-0 p-3">
+                    <a href="{{url('category/Posts')}}" class="link-primary"><img src="{{asset('assets/imgs/zellig.svg')}}" style="width: 30px" alt="" class="me-2"> حوارات</a>
+                </h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    @foreach($Posts as $post)
+
+                        <div class="post post-row border-bottom pb-4 border-primary border-opacity-25">
+                            <div>
+
+                                <h3 class="post-title"><a href="{{url('posts/' . $post  -> slug())}}">{{$post -> title()}}</a></h3>
+                                <p>{!! Str::limit(strip_tags($post -> content()) ,100)!!}</p>
+
+                                <ul class="post-meta">
+                                    <li>{{$post ->created_at -> diffForHumans()}}</li>
+                                </ul>
+
+                                <div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    @endforeach
+                </div>
+            </div>
+        </div>
 
 
 
