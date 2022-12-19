@@ -10,6 +10,7 @@ use App\Models\Post;
 use App\Models\Project;
 use App\Models\Setting;
 use App\Models\Tag;
+use App\Models\User;
 use App\Models\Video;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -126,6 +127,21 @@ class BlogController extends Controller
     }
 
 
+    public function author($author) {
+        if(auth()->check()) {
+            if(auth()->user()->type == 'super_admin'){
+                $user = User::find($author);
+                if (empty($user)) {
+                    abort(404);
+                }
+                $userPosts = $user->posts()->latest()->paginate(6);
+
+                return view('author', compact('user', 'userPosts'));
+            }
+        }
+
+        return abort(404);
+    }
 
     public function projects() {
         $projects = Project::where('is_published',1)->latest()->get();

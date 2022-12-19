@@ -12,7 +12,6 @@ class Create extends Component
 
     use WithFileUploads;
 
-
     public $title;
     public $title_en;
     public $title_fr;
@@ -25,84 +24,61 @@ class Create extends Component
     public $is_published;
 
 
+    public function updated($name, $value)
+    {
+        $this->validate([
+            'title' => 'required',
+            'thumbnail' => 'required|mimes:jpeg,webp,png',
+            'book' => 'mimes:pdf|required'
+        ]);
+
+    }
+
     public function create(Request $request) {
 
         $this->validate([
             'title' => 'required',
-            'thumbnail' => [
-                'required',
-                \Illuminate\Validation\Rules\File::types([
-                    'jpg','gif','png','webp','svg'
-                ])->max(1024 * 4)
-            ],'book' => [
-                'required',
-                \Illuminate\Validation\Rules\File::types([
-                    'pdf'
-                ])->max(1024 * 200)
-            ],
-
+            'thumbnail' => 'required|mimes:jpeg,webp,png',
+            'book' => 'required|mimes:pdf',
 
         ]);
 
-        if(!empty($request->file('thumbnail_en'))) {
-            $this->validate([
-                'thumbnail_en' => [
-                    \Illuminate\Validation\Rules\File::types([
-                        'jpg','gif','png','webp','svg'
-                    ])->max(1024 * 4)
-                    ]
-            ]);
-            $thumbnailEN = $request->file('thumbnail_en')->store('magazines/thumbnails/en','public');
+        $book = $bookEN = $bookFR = $thumbnail = $thumbnailEN = $thumbnailFR =  '';
+
+        $book = $this->book->store('magazines/book/ar','public');
+        $thumbnail = $this->thumbnail->store('magazines/thumbnail/ar','public');
+
+        if(!empty($this->thumbnail_en)) {
+            $thumbnailEN = $this->thumbnail_en->store('magazines/thumbnail/en','public');
         }
 
-        if(!empty($request->file('thumbnail_fr'))) {
-            $this->validate([
-                'thumbnail_fr' => [
-                    \Illuminate\Validation\Rules\File::types([
-                        'jpg','gif','png','webp','svg'
-                    ])->max(1024 * 4)
-                ],
-            ]);
-            $thumbnailFR= $request->file('thumbnail_fr')->store('magazines/thumbnails/fr','public');
+        if(!empty($this->book_en)) {
+            $bookEN = $this->book_en->store('magazines/book/en','public');
         }
 
-
-        if(!empty($request->file('book_en'))) {
-            $this->validate([
-                'book_en' => [
-                    \Illuminate\Validation\Rules\File::types([
-                        'pdf'
-                    ])->max(1024 * 200)
-                ],
-            ]);
-            $bookEN = $request->file('book_en')->store('magazines/books/en','public');
+        if(!empty($this->thumbnail_fr)) {
+            $thumbnailFR = $this->thumbnail_fr->store('magazines/thumbnail/fr','public');
         }
 
-        if(!empty($request->file('book_fr'))) {
-            $this->validate([
-            'book_fr' => [
-                \Illuminate\Validation\Rules\File::types([
-                    'pdf'
-                ])->max(1024 * 200)
-            ]
-            ]);
-            $bookFR= $request->file('book_fr')->store('magazines/books/fr','public');
+        if(!empty($this->book_fr)) {
+            $bookFR = $this->book_fr->store('magazines/book/fr','public');
         }
 
-        $thumbnail = $request->file('thumbnail')->store('magazines/thumbnails/ar','public');
-        $book = $request->file('book')->store('magazines/books/ar','public');
-
-        $magazine = Magazine::create([
-            'title' => $request->title,
-            'title_en' => $request->title_en,
-            'title_fr' => $request->title_fr,
+        Magazine::create([
+            'title' => $this->title,
+            'title_en' => $this->title_en,
+            'title_fr' => $this->title_fr,
+            'book' => $book,
+            'book_en' => $bookEN,
+            'book_fr' => $bookFR,
             'thumbnail' => $thumbnail,
             'thumbnail_en' => $thumbnailEN,
             'thumbnail_fr' => $thumbnailFR,
-            'book' => $book,
-            'book_en' => $bookEN,
-            'book_fr' => $bookFR ,
-            'is_published' => $request->is_published ? 1 : 0,
+            'is_published' => $this->is_published ? 1 : 0,
+        ]);
+
+        return redirect()->to('admin/magazines')->with([
+            'success'=> 'تم إضافة المجلة بنجاح'
         ]);
 
     }

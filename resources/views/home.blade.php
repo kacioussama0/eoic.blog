@@ -71,7 +71,7 @@
                                            </button>
                                         </span>
 
-                                        <div class="collapse  bg-white position-absolute bottom-0 end-0 m-5 rounded z-1" id="slug" style="z-index: 9999;font-size: 20px;">
+                                        <div class="collapse  bg-white position-absolute bottom-0 end-0 m-5 rounded " id="slug" style="z-index: 99;font-size: 20px;">
                                             <div class="p-3">
                                                 <a href="https://www.facebook.com/sharer.php?u={{route('post.slug', $post->slug())}}" target="_blank" class="me-2" style="color: #4267B2"><i class="fa-brands fa-facebook"></i></a>
                                                 <a href="https://www.facebook.com/dialog/send?app_id=5303202981&display=popup&link={{route('post.slug', $post->slug())}}&redirect_uri={{route('post.slug', $post->slug())}}" class="me-2" style="color: #00B2FF"><i class="fa-brands fa-facebook-messenger" ></i></a>

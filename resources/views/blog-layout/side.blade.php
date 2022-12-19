@@ -7,7 +7,7 @@ $Posts = \App\Models\Category::where('name','مقالات')->orWhere('name_en','
 <div class="col-md-4 d-lg-block d-none">
 
 
-
+@if(!empty($project))
     <!-- ad widget-->
     <div class="aside-widget ">
         <a href="#" style="display: inline-block;margin: auto;">
@@ -29,7 +29,7 @@ $Posts = \App\Models\Category::where('name','مقالات')->orWhere('name_en','
     </div>
     <!-- /ad widget -->
 
-
+@endif
 
     @if(request()->is('/') )
 

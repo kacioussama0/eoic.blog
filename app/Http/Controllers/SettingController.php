@@ -15,8 +15,12 @@ class SettingController extends Controller
 
     public function index()
     {
-        $settings = Setting::first();
-        return view('admin.settings.index',compact('settings'));
+        if(auth()->user()->type == 'super_admin') {
+            $settings = Setting::first();
+            return view('admin.settings.index',compact('settings'));
+        }
+        return abort(404);
+
     }
 
 
@@ -24,21 +28,29 @@ class SettingController extends Controller
     public function update(Request $request, Setting $setting)
     {
 
-        $request -> validate([
-            'blog_name' => 'required|min:5',
-            'blog_name_en' => 'required|min:5',
-            'blog_name_fr' => 'required|min:5',
-            'email' => 'required|email',
-            'phone' => 'required',
-            'address' => 'required',
-        ]);
+        if(auth()->user()->type == 'super_admin') {
 
 
-        $setting -> update($request -> all());
+            $request->validate([
+                'blog_name' => 'required|min:5',
+                'blog_name_en' => 'required|min:5',
+                'blog_name_fr' => 'required|min:5',
+                'email' => 'required|email',
+                'phone' => 'required',
+                'address' => 'required',
+            ]);
 
-        return redirect()->back()->with([
-            'success' => 'تم تعديل إعدادات الموقع بنجاح'
-        ]);
+
+            $setting->update($request->all());
+
+            return redirect()->back()->with([
+                'success' => 'تم تعديل إعدادات الموقع بنجاح'
+            ]);
+
+        }
+
+        return abort(404);
+
     }
 
 

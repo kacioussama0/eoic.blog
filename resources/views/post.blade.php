@@ -1,5 +1,26 @@
 @extends('blog-layout.app')
 @section('title','مقال')
+@section('style')
+    <style class="embedly-css">
+        .card , div.brd  {
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        .card .hdr , .card .brd a{
+            display:none;
+
+        }
+    </style>
+
+    <style>
+
+        img {
+            width: 100%;
+        }
+    </style>
+
+@endsection
+
 @section('content')
 
     <div class="page-header">
@@ -41,7 +62,7 @@
 
                     </div>
 
-                    <div style="font-size: 20px" >
+                    <div style="font-size: 20px" class="w-100" >
                         {!! $post -> content() !!}
                     </div>
 
@@ -104,4 +125,26 @@
 
     </div>
 
+
+
 @endsection
+@section('script')
+    <script async charset="utf-8" src="//cdn.embedly.com/widgets/platform.js"></script>
+    <script>
+        document.querySelectorAll( 'oembed[url]' ).forEach( element => {
+            // Create the <a href="..." class="embedly-card"></a> element that Embedly uses
+            // to discover the media.
+            const anchor = document.createElement( 'a' );
+
+            anchor.setAttribute( 'href', element.getAttribute( 'url' ) );
+            anchor.className = 'embedly-card';
+
+            element.appendChild( anchor );
+        } );
+    </script>
+
+
+@endsection
+
+
+

@@ -30,9 +30,9 @@
 
     <script>
         $(window).on('load',function(){
-            // PAGE IS FULLY LOADED
-            // FADE OUT YOUR OVERLAYING DIV
+
             $('.loader-container').fadeOut();
+            $('body').removeClass('overflow-hidden');
         });
     </script>
     @livewireStyles
@@ -40,7 +40,7 @@
     <!-- End Links Tags  -->
 
 </head>
-<body>
+<body class="overflow-hidden">
 
 <x-loader/>
 

@@ -31,7 +31,7 @@
                         <span>الصفحة الشخصية</span>
                     </a>
                 </li>
-
+                @if(auth()->user()->type == 'super_admin')
                 <li
                     class="sidebar-item {{request()->is('admin/users*') ? "active" : '' }} ">
                     <a href="{{route('users.index')}}" class="sidebar-link ">
@@ -39,7 +39,7 @@
                         <span>الأعضاء</span>
                     </a>
                 </li>
-
+                @endif
                 <li
                     class="sidebar-item {{request()->is('admin/categories*') ? "active" : '' }}">
                     <a href="{{route('categories.index')}}" class='sidebar-link '>
@@ -124,6 +124,7 @@
                     </a>
                 </li>
 
+                @if(auth()->user()->type == 'super_admin')
 
                 <li
                     class="sidebar-item {{request()->is('admin/settings*') ? "active" : '' }}">
@@ -132,7 +133,7 @@
                         <span>إعدادات الموقع</span>
                     </a>
                 </li>
-
+            @endif
 
             </ul>
         </div>

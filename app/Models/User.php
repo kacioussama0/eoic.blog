@@ -12,8 +12,7 @@ use Laratrust\Traits\LaratrustUserTrait;
 
 class User extends Authenticatable
 {
-    use LaratrustUserTrait;
-    use HasApiTokens, HasFactory, Notifiable , SoftDeletes;
+    use HasApiTokens, HasFactory, Notifiable ;
 
     /**
      * The attributes that are mass assignable.
@@ -24,6 +23,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'type'
     ];
 
     /**

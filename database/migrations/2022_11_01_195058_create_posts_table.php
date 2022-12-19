@@ -25,9 +25,9 @@ return new class extends Migration
             $table->text('content_en')->nullable();
             $table->text('content_fr')->nullable();
             $table->unsignedBigInteger('category_id');
-            $table->unsignedBigInteger('created_by');
+            $table->unsignedBigInteger('created_by')->nullable();
             $table->foreign('created_by')->references('id')
-                ->on('users')->cascadeOnUpdate()->cascadeOnDelete();
+                ->on('users')->cascadeOnUpdate()->nullOnDelete();
             $table->timestamps();
             $table->softDeletes();
         });

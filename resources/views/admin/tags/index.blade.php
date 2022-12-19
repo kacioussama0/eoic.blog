@@ -184,7 +184,7 @@
                                                 {{__('الإجراءات')}}
                                             </button>
                                             <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item" href="#">{{__('تعديل')}}</a></li>
+                                                <li><a class="dropdown-item" href="{{route('tags.edit',$tag)}}">{{__('تعديل')}}</a></li>
                                                 <li>
                                                     <form action="{{route('tags.destroy',$tag)}}" method = "POST" onsubmit="return confirm('هل أنت متأكد')">
                                                         @csrf

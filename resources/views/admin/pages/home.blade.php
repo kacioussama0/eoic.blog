@@ -66,6 +66,7 @@
               </div>
           </div>
       </div>
+      @if(auth()->user()->type == 'super_admin')
 
       <div class="col-md-3">
           <div class="card  text-bg-secondary   text-light">
@@ -75,7 +76,7 @@
               </div>
           </div>
       </div>
-
+    @endif
       <div class="col-md-3">
           <div class="card text-bg-primary  text-light">
               <h3 class="card-header"><a href="{{route('projects.index')}}" class="text-light">المشاريع</a></h3>

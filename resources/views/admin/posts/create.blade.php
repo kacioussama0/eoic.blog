@@ -90,7 +90,8 @@
                 licenseKey: '',
 
                 ckfinder: {
-                    uploadUrl: "{{route('posts.uploadImage') . '?_token=' . csrf_token()}}"
+                    uploadUrl: "{{route('posts.uploadImage') . '?_token=' . csrf_token()}}",
+
                 }
 
             } )

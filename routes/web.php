@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('who-we-are',[\App\Http\Controllers\BlogController::class,'who'])->name('who-we-are');
+Route::get('author/{author}',[\App\Http\Controllers\BlogController::class,'author'])->name('author');
 Route::get('projects',[\App\Http\Controllers\BlogController::class,'projects'])->name('projects');
 Route::get('projects/{project}',[\App\Http\Controllers\BlogController::class,'projectDonate'])->name('projects.donate');
 Route::post('projects/checkout',[\App\Http\Controllers\ProjectController::class,'checkout'])->name('cart.checkout');

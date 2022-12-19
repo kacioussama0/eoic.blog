@@ -9,7 +9,7 @@
     @include('admin.layouts.failed')
 
     <a href="{{route('cards.create')}}" class="btn btn-lg btn-primary mb-3">إضافة بطاقة</a>
-
+    @if(count($cards))
     <div class="card">
         <div>
 
@@ -227,6 +227,9 @@
                 </div>
             </div>
         </div>
+    @else
+        <div class="alert alert-danger display-6 text-center">لا توجد بطاقات</div>
+     @endif
     </div>
 
 

@@ -6,18 +6,17 @@
 
 @section('content')
 
-    @role('admin')
+
         <a href="{{route('users.create')}}" class="btn btn-lg btn-primary mb-4">إضافة عضو</a>
-    @endrole
 
     @if (\Session::has('success'))
         <div class="alert alert-success">
-            <ul>
-                <li>{!! \Session::get('success') !!}</li>
-            </ul>
+            {{\Session::get('success')}}
+
         </div>
     @endif
 
+@if(count($users))
     <div class="table-responsive rounded">
 
         <table class="table table-striped table-primary border rounded">
@@ -43,11 +42,12 @@
                        <td>{{$user -> name}}</td>
                         <td>{{$user -> email}}</td>
                         <td>
-                           <img src="{{!File::exists($user->avatar) ?
-                            asset('storage/' . $user -> avatar) :
-                            asset('imgs/avatar.svg')}}" alt="" style="width: 80px ; height:80px" class="rounded-circle">
+                           <img src="{{!File::exists(public_path('storage/' . $user->avatar)) ?
+                            asset('storage/' . $user -> avatar) : asset('assets/imgs/avatar.svg')}}" alt="" style="width: 80px ; height:80px" class="rounded-circle">
                        </td>
-                       <td>{{count($user -> posts)}}</td>
+                       <td>
+                           <a href="{{route('author',$user -> id)}}" class="text-bg-primary p-2 rounded d-inline-block">{{count($user -> posts)}}</a>
+                       </td>
                        <td>{{$user -> created_at}}</td>
                        <td>
                            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
@@ -75,8 +75,12 @@
 
         </table>
 
-
+        <div class="d-flex align-items-center justify-content-center">{{$users -> links()}}</div>
     </div>
 
-
+@else
+    <div class="alert alert-danger">
+        <h1 class="text-center">لا يوجد أعضاء</h1>
+    </div>
+@endif
 @endsection

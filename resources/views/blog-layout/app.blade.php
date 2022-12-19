@@ -14,13 +14,20 @@ $settings = \App\Models\Setting::first();
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="title" content="{{$settings -> display_name()}}">
-    <meta name="description" content="{{$settings -> description()}}">
+    @if(request()->is('posts/*') )
+        <meta name="title" content="{{$post -> title()}}">
+        <meta name="description" content="{!! Str::limit(strip_tags($post -> content()) ,100) !!}">
+    @else
+        <meta name="title" content="{{$settings -> display_name()}}">
+        <meta name="description" content="{{$settings -> description()}}">
+    @endif
     <meta name="keywords" content="">
     <meta name="robots" content="index, follow">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="language" content="Arabic">
     <!-- End Meta -->
+
+
     <link rel='icon' href='{{asset('assets/imgs/logo.svg')}}'>
     <title>{{$settings->display_name()}} | @yield('title')</title>
     <!-- Start Links -->
@@ -221,7 +228,7 @@ $settings = \App\Models\Setting::first();
                                 </div>
 
                                 <div class="col-3">
-                                    <a href="{{url('category/Posts')}}" class="text-white">
+                                    <a href="{{url('category/Articles')}}" class="text-white">
                                         <i class="fa-light fa-newspaper" style="font-size: 80px"></i>
                                         <h3 class="text-white mt-3">{{__('home.posts')}}</h3>
                                     </a>

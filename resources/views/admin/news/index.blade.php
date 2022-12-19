@@ -16,7 +16,7 @@
 
 
     <a href="{{route('news.create')}}" class="btn btn-lg btn-primary mb-4">إضافة خبر جديد</a>
-
+    @if(count($news))
     <div class="card">
         <div>
 
@@ -231,5 +231,7 @@
         </div>
 
     </div>
-
+    @else
+        <div class="alert alert-danger display-6 text-center">لا توجد أخبار</div>
+    @endif
 @endsection

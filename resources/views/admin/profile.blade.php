@@ -30,7 +30,7 @@
 
                 <div class="card-body d-flex align-items-center">
 
-                    <img src="{{File::exists('storage/' . $user -> avatar) ? asset('storage/' . $user -> avatar) : asset('assets/imgs/logo.svg') }}" alt="" class="me-3 rounded-circle" style="object-fit: cover ; height: 150px ; width: 150px">
+                    <img src="{{File::exists(public_path('storage/' . $user -> avatar)) ? asset('storage/' . $user -> avatar) : asset('assets/imgs/logo.svg') }}" alt="" class="me-3 rounded-circle" style="object-fit: cover ; height: 150px ; width: 150px">
 
                     <form action="{{route('updateImage')}}" method="POST" enctype="multipart/form-data" onsubmit="return confirm('هل أنت متأكد ?')">
                         @csrf

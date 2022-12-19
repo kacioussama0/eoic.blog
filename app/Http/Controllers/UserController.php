@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,20 +12,30 @@ class UserController extends Controller
 {
 
     public function  __construct() {
-        return $this->middleware(['role:admin']);
+        return $this->middleware('auth');
     }
 
 
     public function index()
     {
-        $users = User::where('id','<>',Auth::id())->get();
-        return view('admin.users.index',compact('users'));
+        if(auth()->user()->type == 'super_admin') {
+
+            $users = User::where('id', '<>', Auth::id())->paginate(5);
+            return view('admin.users.index',compact('users'));
+        }
+        return abort(404);
     }
 
 
     public function create()
     {
-        return view('admin.users.create')->with('roles', Role::all());
+        if(auth()->user()->type == 'super_admin') {
+
+            return view('admin.users.create');
+
+        }
+        return abort(404);
+
     }
 
 
@@ -35,25 +44,28 @@ class UserController extends Controller
 
         $request -> validate([
             'name' => 'required|min:3|max:50',
-            'email' => 'required|email|max:50|unique:users'
+            'email' => 'required|email|max:50|unique:users,email',
+            'password' => 'required|min:8'
         ]);
 
-        $user = User::create([
-            'name' => $request -> name,
-            'email' => $request -> email,
-            'password' => Hash::make('password')
-        ]);
+        if(auth()->user()->type == 'super_admin') {
+            $user = User::create([
+                'name' => $request -> name,
+                'email' => $request -> email,
+                'password' => Hash::make($request->password),
+                'type' => 'editor'
+            ]);
+            return  redirect()->to('admin/users')->with(
+                ['success' => 'تم إضافة العضو بنجاح']
+            );
 
-        $user -> attachRole($request -> role);
+        }
 
-        return  redirect()->to('admin/users');
+
     }
 
 
-    public function show($id)
-    {
-        //
-    }
+
 
     public function edit($id)
     {
@@ -69,18 +81,26 @@ class UserController extends Controller
             'email' => 'required|email|max:50'
         ]);
 
-        $user = User::where('id',$id)-> update([
-            'name' => $request -> name,
-            'email' => $request -> email,
-        ]);
+        if(auth()->user()->type == 'super_admin') {
 
-        return  redirect()->to('admin/users');
+
+            $user = User::where('id', $id)->update([
+                'name' => $request->name,
+                'email' => $request->email,
+            ]);
+
+            return redirect()->to('admin/users');
+
+        }
     }
 
 
     public function destroy($id)
     {
-        User::find($id)->delete();
-        return  redirect()->to('admin/users');
+        if(auth()->user()->type == 'super_admin') {
+            User::find($id)->delete();
+            return redirect()->to('admin/users');
+        }
+        return  abort(404);
     }
 }

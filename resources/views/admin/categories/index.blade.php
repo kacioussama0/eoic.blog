@@ -53,9 +53,9 @@
 
                                     <td>{{$category->name}}</td>
                                     <td>
-                                        <span class="badge text-bg-secondary rounded-pill p-2 fs-6" >
+                                        <a href="{{url('category/' . $category -> name)}}" class="badge text-bg-primary rounded p-2 fs-6" >
                                             {{count($category->posts)}}
-                                        </span>
+                                        </a>
                                     </td>
                                     <td>{{$category->created_at}}</td>
                                     <td>{{$category->updated_at}}</td>
