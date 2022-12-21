@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('title','التصنيفات')
+@section('title',__('home.categories'))
 
 
 
@@ -8,7 +8,7 @@
     @include('admin.layouts.success')
     @include('admin.layouts.failed')
 
-    <a href="{{route('categories.create')}}" class="btn btn-lg btn-primary mb-3">إضافة تصنيف</a>
+    <a href="{{route('categories.create')}}" class="btn btn-lg btn-primary mb-3">{{__('forms.add-category')}}</a>
 
     <div class="card">
         <div>
@@ -37,11 +37,11 @@
 
                             <thead>
                             <tr>
-                                <th>إسم التصنيف</th>
-                                <th>المقالات</th>
-                                <th>تم إنشاءه</th>
-                                <th>تم تعديله</th>
-                                <th>{{__('الإجراءات')}}</th>
+                                <th>{{__('forms.category-name')}}</th>
+                                <th>{{__('forms.articles')}}</th>
+                                <th>{{__('forms.created-at')}}</th>
+                                <th>{{__('forms.edited-at')}}</th>
+                                <th>{{__('forms.procedures')}}</th>
                             </tr>
                             </thead>
 
@@ -64,16 +64,16 @@
                                     <td>
                                         <div class="btn-group position-relative z-20">
                                             <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                                {{__('الإجراءات')}}
+                                                {{__('forms.procedures')}}
                                             </button>
                                             <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item" href="{{url('category/'. $category->name())}}">{{__('إظهار')}}</a></li>
-                                                <li><a class="dropdown-item" href="{{route('categories.edit',$category)}}">{{__('تعديل')}}</a></li>
+                                                <li><a class="dropdown-item" href="{{url('category/'. $category->name())}}">{{__('forms.show-case')}}</a></li>
+                                                <li><a class="dropdown-item" href="{{route('categories.edit',$category)}}">{{__('forms.edit')}}</a></li>
                                                 <li>
                                                     <form action="{{route('categories.destroy',$category)}}" method = "POST" onsubmit="return confirm('هل أنت متأكد')">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" class="btn">{{__('حذف')}}</button>
+                                                        <button type="submit" class="btn">{{__('forms.delete')}}</button>
                                                     </form>
                                                 </li>
 
@@ -106,11 +106,11 @@
 
                             <thead>
                             <tr>
-                                <th>إسم التصنيف</th>
-                                <th>المقالات</th>
-                                <th>تم إنشاءه</th>
-                                <th>تم تعديله</th>
-                                <th>{{__('الإجراءات')}}</th>
+                                <th>{{__('forms.category-name')}}</th>
+                                <th>{{__('forms.articles')}}</th>
+                                <th>{{__('forms.created-at')}}</th>
+                                <th>{{__('forms.edited-at')}}</th>
+                                <th>{{__('forms.procedures')}}</th>
                             </tr>
                             </thead>
 
@@ -133,17 +133,17 @@
                                         <td>
                                             <div class="btn-group position-relative z-20">
                                                 <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    {{__('الإجراءات')}}
+                                                    {{__('forms.procedures')}}
                                                 </button>
                                                 <ul class="dropdown-menu">
-                                                    <li><a class="dropdown-item" href="{{url('category/'. $category->name())}}">{{__('إظهار')}}</a></li>
+                                                    <li><a class="dropdown-item" href="{{url('category/'. $category->name())}}">{{__('forms.show-case')}}</a></li>
 
-                                                    <li><a class="dropdown-item" href="{{route('categories.edit',$category)}}">{{__('تعديل')}}</a></li>
+                                                    <li><a class="dropdown-item" href="{{route('categories.edit',$category)}}">{{__('forms.edit')}}</a></li>
                                                     <li>
                                                         <form action="{{route('categories.destroy',$category)}}" method = "POST" onsubmit="return confirm('هل أنت متأكد')">
                                                             @csrf
                                                             @method('DELETE')
-                                                            <button type="submit" class="btn">{{__('حذف')}}</button>
+                                                            <button type="submit" class="btn">{{__('forms.delete')}}</button>
                                                         </form>
                                                     </li>
 
@@ -176,11 +176,11 @@
 
                             <thead>
                             <tr>
-                                <th>إسم التصنيف</th>
-                                <th>المقالات</th>
-                                <th>تم إنشاءه</th>
-                                <th>تم تعديله</th>
-                                <th>{{__('الإجراءات')}}</th>
+                                <th>{{__('forms.category-name')}}</th>
+                                <th>{{__('forms.articles')}}</th>
+                                <th>{{__('forms.created-at')}}</th>
+                                <th>{{__('forms.edited-at')}}</th>
+                                <th>{{__('forms.procedures')}}</th>
                             </tr>
                             </thead>
 
@@ -201,16 +201,16 @@
                                         <td>
                                             <div class="btn-group position-relative z-20">
                                                 <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    {{__('الإجراءات')}}
+                                                    {{__('forms.procedures')}}
                                                 </button>
                                                 <ul class="dropdown-menu">
-                                                    <li><a class="dropdown-item" href="{{url('category/'. $category->name())}}">{{__('إظهار')}}</a></li>
-                                                    <li><a class="dropdown-item" href="{{route('categories.edit',$category)}}">{{__('تعديل')}}</a></li>
+                                                    <li><a class="dropdown-item" href="{{url('category/'. $category->name())}}">{{__('forms.show-case')}}</a></li>
+                                                    <li><a class="dropdown-item" href="{{route('categories.edit',$category)}}">{{__('forms.edit')}}</a></li>
                                                     <li>
                                                         <form action="{{route('categories.destroy',$category)}}" method = "POST" onsubmit="return confirm('هل أنت متأكد')">
                                                             @csrf
                                                             @method('DELETE')
-                                                            <button type="submit" class="btn">{{__('حذف')}}</button>
+                                                            <button type="submit" class="btn">{{__('forms.delete')}}</button>
                                                         </form>
                                                     </li>
 

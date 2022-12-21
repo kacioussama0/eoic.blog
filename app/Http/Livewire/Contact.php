@@ -3,6 +3,8 @@
 namespace App\Http\Livewire;
 
 use App\Models\Message;
+use App\Notifications\NewJoinUsNotification;
+use Illuminate\Auth\Events\Registered;
 use Livewire\Component;
 
 class Contact extends Component
@@ -22,12 +24,13 @@ class Contact extends Component
 
     public function send() {
         $this->validate();
-        Message::create([
+
+        event(new Registered($user =  Message::create([
             'name' => $this->name,
             'email' => $this->email,
             'subject' => $this->subject,
             'message' => $this->message,
-        ]);
+        ])));
 
         $this->name = '';
         $this->email = '';

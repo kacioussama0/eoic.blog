@@ -1,5 +1,5 @@
 @php
-$navCategories = \App\Models\Category::all()->take(6);
+$navCategories = \App\Models\Category::all()->take(12);
 $settings = \App\Models\Setting::first();
 @endphp
 
@@ -153,12 +153,12 @@ $settings = \App\Models\Setting::first();
 
 
 
-                                <div class="col-7 offset-1">
+                                <div class="col-9">
                                     <h3 class="border-start border-5 text-light ps-2 border-secondary">{{__('home.news-and-activities')}}</h3>
                                     <ul class="row">
                                         @foreach($navCategories as $category)
 
-                                            <li  class="col"><a href="{{url('category/' . $category -> name())}}">{{$category->name()}}</a></li>
+                                            <li  class="col-4"><a href="{{url('category/' . $category -> name())}}">{{$category->name()}}</a></li>
                                         @endforeach
 
                                     </ul>
@@ -204,30 +204,39 @@ $settings = \App\Models\Setting::first();
 
                     <div class="collapse mega-menu" id="media" data-bs-parent="#megaGroup">
                         <div class="container p-5">
-                            <div class="row justify-content-center text-center ">
+                            <div class="row row-cols-5 justify-content-center text-center ">
 
-                                <div class="col-3">
+                                <div class="col">
+                                    <a href="{{route('members')}}" class="text-white">
+                                        <i class="fa-light fa-users" style="font-size: 80px"></i>
+                                        <h3 class="text-white mt-3">{{__('forms.office-members')}}</h3>
+                                    </a>
+
+                                </div>
+
+
+                                <div class="col">
                                     <a href="" class="text-white">
                                         <i class="fa-light fa-video" style="font-size: 80px"></i>
                                         <h3 class="text-white mt-3">{{__('home.videos')}}</h3>
                                     </a>
 
                                 </div>
-                                <div class="col-3">
+                                <div class="col">
                                     <a href="{{url('books')}}" class="text-white">
                                         <i class="fa-brands fa-readme" style="font-size: 80px"></i>
                                         <h3 class="text-white mt-3">{{__('home.magazines')}}</h3>
                                     </a>
                                 </div>
 
-                                <div class="col-3">
+                                <div class="col">
                                     <a href="{{url('cards')}}" class="text-white">
                                         <i class="fa-light fa-credit-card-blank" style="font-size: 80px"></i>
                                         <h3 class="text-white mt-3">{{__('home.cards')}}</h3>
                                     </a>
                                 </div>
 
-                                <div class="col-3">
+                                <div class="col">
                                     <a href="{{url('category/Articles')}}" class="text-white">
                                         <i class="fa-light fa-newspaper" style="font-size: 80px"></i>
                                         <h3 class="text-white mt-3">{{__('home.posts')}}</h3>
@@ -319,14 +328,14 @@ $settings = \App\Models\Setting::first();
                                <div class="py-2">
                                    <div>
                                        <a href="{{url('admin')}}">
-                                           {{__('لوحة التحكم')}}
+                                           {{__('forms.admin-panel')}}
                                        </a>
                                    </div>
 
                                    <div>
                                        <form action="{{route('logout')}}" method="POST">
                                            @csrf
-                                           <button type="submit" class="btn">تسجيل الخروج</button>
+                                           <button type="submit" class="btn">{{__('forms.log-out')}}</button>
                                        </form>
                                    </div>
 
@@ -440,6 +449,69 @@ $settings = \App\Models\Setting::first();
                 </div>
             </li>
 
+
+
+            <li class="nav-item  py-2 border-bottom border-primary border-opacity-10">
+
+                <span class="d-flex flex-row-reverse align-items-center">
+                                    <i class="fa-regular fa-chevron-down ms-auto"></i>
+                                    <a class="nav-link fw-bold w-100" aria-current="page" data-bs-toggle="collapse" data-bs-target="#news" aria-expanded="true" aria-controls="news" href="#">{{__('home.news-and-activities')}}</a>
+                </span>
+
+                <div id="news" class="accordion-collapse collapse mt-2" aria-labelledby="news">
+                    <div class="accordion-body">
+                        <ul>
+                            @foreach($navCategories as $category)
+
+                                <li class="list-group-item mb-2 ms-3" ><a href="{{url('category/' . $category -> name())}}" class="text-muted">{{$category->name()}}</a></li>
+                            @endforeach
+
+                        </ul>
+                    </div>
+                </div>
+
+            </li>
+
+            <li class="nav-item  py-2 border-bottom border-primary border-opacity-10">
+
+
+                <span class="d-flex align-items-center flex-row-reverse">
+                     <i class="fa-regular fa-chevron-down ms-auto"></i>
+                <a class="nav-link fw-bold w-100" aria-current="page" data-bs-toggle="collapse" data-bs-target="#media" aria-expanded="true" aria-controls="media" href="#">{{__('home.media')}}</a>
+                </span>
+
+                <div id="media" class="accordion-collapse collapse mt-2" aria-labelledby="get-closure">
+                    <div class="accordion-body">
+                        <ul>
+
+                            <li class="list-group-item ms-3 mb-2">
+                                <a href="{{url('videos')}}" class="text-muted">{{__('home.videos')}}</a>
+                            </li>
+
+                            <li class="list-group-item ms-3 mb-2">
+                                <a href="{{url('books')}}" class="text-muted">
+                                    {{__('forms.magazines')}}
+                                </a>
+                            </li>
+
+                            <li class="list-group-item ms-3 mb-2">
+                                <a href="{{url('cards')}}"  class="text-muted">{{__('home.cards')}}</a>
+                            </li>
+
+                            <li class="list-group-item ms-3 mb-2">
+                                <a href="{{url('category/article')}}" class="text-muted">
+
+                                    {{__('home.posts')}}
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </li>
+
+
+
             <li class="nav-item py-3  @auth   border-bottom border-primary border-opacity-10  @endauth">
 
                 <span class="d-flex flex-row-reverse align-items-center">
@@ -521,13 +593,13 @@ $settings = \App\Models\Setting::first();
         </ul>
 
         <img src="{{asset('assets/imgs/lines.svg')}}" class="pt-5 mt-5"/>
-        <div class="d-flex align-items-center justify-content-center my-3">
-            <a href="https://www.facebook.com/MEDIA.EOIC/" target="_blank" class="me-3" style="color: #4267B2"><i class="fa-brands fa-facebook fa-1x"></i></a>
-            <a href="https://www.instagram.com/eoic_geneva/" target="_blank" class="me-3" style="color: #C13584"><i class="fa-brands fa-instagram fa-1x"></i></a>
-            <a href="https://www.youtube.com/channel/UCi_iTZfHrRN19Wtwo4vM4EA?view_as=subscriber" target="_blank" class="me-3" style="color: #FF0000"><i class="fa-brands fa-youtube fa-1x"></i></a>
+            <div class="d-flex align-items-center justify-content-center my-3">
+                <a href="https://www.facebook.com/MEDIA.EOIC/" target="_blank" class="me-3" style="color: #4267B2"><i class="fa-brands fa-facebook fa-1x"></i></a>
+                <a href="https://www.instagram.com/eoic_geneva/" target="_blank" class="me-3" style="color: #C13584"><i class="fa-brands fa-instagram fa-1x"></i></a>
+                <a href="https://www.youtube.com/channel/UCi_iTZfHrRN19Wtwo4vM4EA?view_as=subscriber" target="_blank" class="me-3" style="color: #FF0000"><i class="fa-brands fa-youtube fa-1x"></i></a>
 
-            <a href="https://twitter.com/EOIC_Geneva" target="_blank" class="me-3" style="color: #1DA1F2"><i class="fa-brands fa-twitter f-1x"></i></a>
-        </div>
+                <a href="https://twitter.com/EOIC_Geneva" target="_blank" class="me-3" style="color: #1DA1F2"><i class="fa-brands fa-twitter f-1x"></i></a>
+            </div>
 
     </div>
 </div>
@@ -542,13 +614,13 @@ $settings = \App\Models\Setting::first();
 <!-- End Content -->
 
 <!-- Start Footer -->
-    <footer id="footer" class="bg-primary text-lg-start text-center border-top border-3 border-secondary " style="background-image: url('{{asset('assets/imgs/bg-footer.svg')}}')">
+    <footer id="footer" class="bg-primary text-lg-start text-center border-secondary " style="background-image: url('{{asset('assets/imgs/bg-footer.svg')}}')">
         <div class="container">
             <div class="row align-items-lg-baseline align-items-lg-center   justify-content-lg-between justify-content-center">
                 <div class="col-lg-4">
                     <div class="footer-widget">
                         <div class="name">
-                            <h3 class=" text-light ps-3 border-secondary border-0">{{$settings -> display_name()}}</h3>
+                            <h3 class="text-light border-secondary border-0 mb-2 mb-lg-4">{{$settings -> display_name()}}</h3>
                         </div>
 
                         {!! $settings->description() !!}
@@ -560,7 +632,7 @@ $settings = \App\Models\Setting::first();
 
                 <div class="col-md-2">
                     <div>
-                        <h3 class="mb-2 mb-lg-5 border-none border-lg-start  border-5 text-light ps-3 border-secondary">{{__('home.shortcuts')}}</h3>
+                        <h3 class="mb-2 mb-lg-4  text-light border-secondary">{{__('home.shortcuts')}}</h3>
                         <ul class="navbar-nav">
                             <li class="nav-item">
                                 <a href="{{route('who-we-are')}}" class="nav-link"><i class="fa-light fa-users  me-1"></i> {{__('home.who-we-are')}} </a>
@@ -588,7 +660,7 @@ $settings = \App\Models\Setting::first();
 
                 <div class="col-lg-3">
                     <div class="footer-widget mb-2 mt-lg-0 mt-2">
-                        <h3 class="mb-2 mb-lg-5 border-none border-lg-start  border-5 text-light ps-3 border-secondary">{{__('home.contact-us')}}</h3>
+                        <h3 class="mb-2 mb-lg-4  text-light  border-secondary">{{__('home.contact-us')}}</h3>
                         <div class="contact">
                             <div class="py-2 mb-0">
                                 <i class="fa-light fa-phone me-2"></i>
@@ -615,7 +687,13 @@ $settings = \App\Models\Setting::first();
                     <a href="{{route('login')}}" ><img src="{{asset('assets/imgs/logo.svg')}}" alt=""   class="pe-none"></a>
 
                 </div>
+                <div class="d-flex align-items-center justify-content-center my-3">
+                    <a href="https://www.facebook.com/MEDIA.EOIC/" target="_blank" class="me-3" style="color: #4267B2"><i class="fa-brands fa-facebook fa-2x"></i></a>
+                    <a href="https://www.instagram.com/eoic_geneva/" target="_blank" class="me-3" style="color: #C13584"><i class="fa-brands fa-instagram fa-2x"></i></a>
+                    <a href="https://www.youtube.com/channel/UCi_iTZfHrRN19Wtwo4vM4EA?view_as=subscriber" target="_blank" class="me-3" style="color: #FF0000"><i class="fa-brands fa-youtube fa-2x"></i></a>
 
+                    <a href="https://twitter.com/EOIC_Geneva" target="_blank" class="me-3" style="color: #1DA1F2"><i class="fa-brands fa-twitter fa-2x"></i></a>
+                </div>
                     <p class="mb-0 mt-2 mt-lg-0 text-center"> {{   __('كل الحقوق محفوظة') .' ' . date('Y')}} &copy; {{$settings -> display_name()}}</p>
 
             </div>

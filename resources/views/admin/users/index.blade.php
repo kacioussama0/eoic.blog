@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('title','الأعضاء')
+@section('title',__('forms.members'))
 @section('icon','bi bi-people-fill')
 
 
@@ -7,14 +7,9 @@
 @section('content')
 
 
-        <a href="{{route('users.create')}}" class="btn btn-lg btn-primary mb-4">إضافة عضو</a>
+        <a href="{{route('users.create')}}" class="btn btn-lg btn-primary mb-4">{{__('forms.add-members')}}</a>
 
-    @if (\Session::has('success'))
-        <div class="alert alert-success">
-            {{\Session::get('success')}}
-
-        </div>
-    @endif
+    @include('admin.layouts.success')
 
 @if(count($users))
     <div class="table-responsive rounded">
@@ -24,12 +19,12 @@
             <thead>
 
                 <tr>
-                    <th>الإسم</th>
-                    <th>البريد الإلكتروني</th>
-                    <th>الصورة</th>
-                    <th>عدد المقالات</th>
-                    <th>تم إنشاءه</th>
-                    <th>الإجراءات</th>
+                    <th>{{__('forms.full-name')}}</th>
+                    <th>{{__('forms.email')}}</th>
+                    <th>{{__('forms.picture')}}</th>
+                    <th>{{__('forms.articles')}}</th>
+                    <th>{{__('forms.created-at')}}</th>
+                    <th>{{__('forms.procedures')}}</th>
                 </tr>
 
             </thead>
@@ -51,15 +46,15 @@
                        <td>{{$user -> created_at}}</td>
                        <td>
                            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                               الإجراءات
+                               {{__('forms.procedures')}}
                            </button>
                            <ul class="dropdown-menu">
-                               <li> <a href="{{route('users.edit',$user)}}"  class="dropdown-item">تعديل</a></li>
+                               <li> <a href="{{route('users.edit',$user)}}"  class="dropdown-item">{{__('forms.edit')}}</a></li>
                                <li>
                                    <form action="{{route('users.destroy',$user)}}" method="POST" onsubmit="return confirm('هل أنت متأكد ?')" class="d-inline-block w-100">
                                        @csrf
                                        @method('DELETE')
-                                       <button class="dropdown-item">حذف</button>
+                                       <button class="dropdown-item">{{__('forms.delete')}}</button>
 
                                    </form>
                                </li>
@@ -80,7 +75,7 @@
 
 @else
     <div class="alert alert-danger">
-        <h1 class="text-center">لا يوجد أعضاء</h1>
+        <h1 class="text-center">{{__('forms.empty')}}</h1>
     </div>
 @endif
 @endsection

@@ -15,7 +15,7 @@ class JoinController extends Controller
      */
     public function index()
     {
-        $joins = Join::latest()->get();
+        $joins = Join::all();
         return view('admin.join-us.index',compact('joins'));
     }
 

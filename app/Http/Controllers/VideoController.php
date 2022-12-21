@@ -72,7 +72,7 @@ class VideoController extends Controller
      */
     public function edit(Video $video)
     {
-        //
+        return view('admin.videos.edit',compact('video'));
     }
 
     /**
@@ -84,7 +84,20 @@ class VideoController extends Controller
      */
     public function update(Request $request, Video $video)
     {
-        //
+        $request->validate([
+            'title'=>'required',
+            'url'=>'required|url',
+        ]);
+
+        $video->update([
+            'title' => $request -> title,
+            'url' => $request -> url,
+            'is_published' => $request -> is_published ? 1 : 0,
+        ]);
+
+        return redirect()->to('admin/videos')->with([
+            'success' => 'تم تعديل الفيديو بنجاح'
+        ]);
     }
 
     /**
@@ -95,6 +108,16 @@ class VideoController extends Controller
      */
     public function destroy(Video $video)
     {
-        //
+
+        $video -> delete();
+
+        return redirect()->to('admin/videos')->with([
+            'success' => 'تم حذف الفيديو بنجاح'
+        ]);
+    }
+
+    public function videos() {
+        $videos = Video::where('is_published',1)->latest()->get();
+        return view('videos',compact('videos'));
     }
 }

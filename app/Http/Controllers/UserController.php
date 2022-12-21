@@ -98,7 +98,9 @@ class UserController extends Controller
     public function destroy($id)
     {
         if(auth()->user()->type == 'super_admin') {
-            User::find($id)->delete();
+            $user = User::find($id);
+            $user->notifications()->delete();
+            $user -> delete();
             return redirect()->to('admin/users');
         }
         return  abort(404);

@@ -2,7 +2,7 @@
     <div class="footer my-4">
         <div class="text-center bg-primary py-3 text-light rounded d-flex justify-content-around align-items-center">
             <img src="{{asset('assets/imgs/logo.svg')}}"  alt="Logo" width="50" class="d-md-block d-none">
-            <p class="mb-0">كل الحقوق محفوظة &copy {{config('app.name')}}</p>
+            <p class="mb-0">{{__('forms.all-right-reserved-by') . ' ' . $settings -> display_name()}}</p>
             <img src="{{asset('assets/imgs/logo.svg')}}"  alt="Logo" width="50" class="d-md-block d-none">
         </div>
 

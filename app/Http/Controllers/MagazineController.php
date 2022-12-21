@@ -8,34 +8,21 @@ use Illuminate\Http\Request;
 
 class MagazineController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         $magazines = Magazine::latest()->paginate(6);
         return view('admin.magazines.index',compact('magazines'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         return view('admin.magazines.create');
 
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
         $request->validate([
@@ -227,28 +214,28 @@ class MagazineController extends Controller
     public function destroy(Magazine $magazine)
     {
 
-        if(File::exists(asset("storage/" . $magazine->thumbnail))) {
+        if(File::exists("storage/" . $magazine->thumbnail)) {
             unlink(public_path("storage/" . $magazine->thumbnail));
         }
 
-        if(File::exists(asset("storage/" . $magazine->thumbnail_en))) {
+        if(File::exists("storage/" . $magazine->thumbnail_en)) {
             unlink(public_path("storage/" . $magazine->thumbnail_en));
         }
 
 
-        if(File::exists(asset("storage/" . $magazine->thumbnail_fr))) {
+        if(File::exists("storage/" . $magazine->thumbnail_fr)) {
             unlink(public_path("storage/" . $magazine->thumbnail_fr));
         }
 
-        if(File::exists(asset("storage/" . $magazine->book))) {
+        if(File::exists("storage/" . $magazine->book)) {
             unlink(public_path("storage/" . $magazine->book));
         }
 
-        if(File::exists(asset("storage/" . $magazine->book_en))) {
+        if(File::exists("storage/" . $magazine->book_en)) {
             unlink(public_path("storage/" . $magazine->book_en));
         }
 
-        if(File::exists(asset("storage/" . $magazine->book_fr))) {
+        if(File::exists("storage/" . $magazine->book_fr)) {
             unlink(public_path("storage/" . $magazine->book_fr));
         }
 

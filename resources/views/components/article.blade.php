@@ -9,7 +9,7 @@
         <a href="{{url('category/'. $post -> category -> name)}}" class="badge bg-primary link-light">{{$post -> category -> name()}}</a>
     </div>
 
-    <div class="card-footer bg-transparent d-flex justify-content-between align-items-center flex-row-reverse border-top-0" style="height: 60px">
+    <div class="card-footer bg-transparent d-flex justify-content-between align-items-center flex-row-reverse border-top-0" style="height: 55px">
         <div class="d-flex flex-row-reverse ms-1">
             <span style="" >
                   <button class="bg-transparent border-0" type="button" data-bs-toggle="collapse" data-bs-target="#post{{$post->id}}" aria-expanded="false" aria-controls="{{$post->id}}">

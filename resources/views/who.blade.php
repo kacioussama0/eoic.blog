@@ -306,146 +306,146 @@
 
         <h3 class="my-5" id="countries"><img src="{{asset('assets/imgs/zellig.svg')}}" style="width: 30px" alt="" class="me-2"> {{__('who.countries')}}</h3>
 
-        <div class="row gy-5">
-                <div class="col-md-3">
-                    <div class="card">
-                        <h4 class="card-header">{{__('who.switzerland')}}</h4>
+        <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5  gy-5">
+                <div class="col">
+                    <div class="card border-0">
+                        <h4 class="card-header border-0">{{__('who.switzerland')}}</h4>
                        <i class="fi fi-ch card-img-top img-fluid"></i>
                     </div>
                 </div>
 
-                <div class="col-md-3">
-                    <div class="card">
-                        <h4 class="card-header">{{__('who.france')}}</h4>
+                <div class="col">
+                    <div class="card border-0">
+                        <h4 class="card-header border-0">{{__('who.france')}}</h4>
                         <i class="fi fi-fr card-img-top img-fluid"></i>
                     </div>
                 </div>
 
-                <div class="col-md-3">
-                    <div class="card">
-                        <h4 class="card-header">{{__('who.italy')}}</h4>
+                <div class="col">
+                    <div class="card border-0">
+                        <h4 class="card-header border-0">{{__('who.italy')}}</h4>
                         <i class="fi fi-it card-img-top img-fluid"></i>
                     </div>
                 </div>
 
-                <div class="col-md-3">
-                    <div class="card">
-                        <h4 class="card-header">{{__('who.spain')}}</h4>
+                <div class="col">
+                    <div class="card border-0">
+                        <h4 class="card-header border-0">{{__('who.spain')}}</h4>
                         <i class="fi fi-es card-img-top img-fluid"></i>
                     </div>
                 </div>
 
-                <div class="col-md-3">
-                    <div class="card">
-                        <h4 class="card-header">{{__('who.austria')}}</h4>
+                <div class="col">
+                    <div class="card border-0">
+                        <h4 class="card-header border-0">{{__('who.austria')}}</h4>
                         <i class="fi fi-at card-img-top img-fluid"></i>
                     </div>
                 </div>
 
-                <div class="col-md-3">
-                    <div class="card">
-                        <h4 class="card-header">{{__('who.sweden')}}</h4>
+                <div class="col">
+                    <div class="card border-0">
+                        <h4 class="card-header border-0">{{__('who.sweden')}}</h4>
                         <i class="fi fi-se card-img-top img-fluid"></i>
                     </div>
                 </div>
 
-                <div class="col-md-3">
-                    <div class="card">
-                        <h4 class="card-header">{{__('who.germany')}}</h4>
+                <div class="col">
+                    <div class="card border-0">
+                        <h4 class="card-header border-0">{{__('who.germany')}}</h4>
                         <i class="fi fi-de card-img-top img-fluid"></i>
                     </div>
                 </div>
 
-                <div class="col-md-3">
-                    <div class="card">
-                        <h4 class="card-header">{{__('who.czech')}}</h4>
+                <div class="col">
+                    <div class="card border-0">
+                        <h4 class="card-header border-0">{{__('who.czech')}}</h4>
                         <i class="fi fi-cz card-img-top img-fluid"></i>
                     </div>
                 </div>
 
-                <div class="col-md-3">
-                    <div class="card">
-                        <h4 class="card-header">{{__('who.malta')}}</h4>
+                <div class="col">
+                    <div class="card border-0">
+                        <h4 class="card-header border-0">{{__('who.malta')}}</h4>
                         <i class="fi fi-mt card-img-top img-fluid"></i>
                     </div>
                 </div>
 
-                <div class="col-md-3">
-                    <div class="card">
-                        <h4 class="card-header">{{__('who.macedonia')}}</h4>
+                <div class="col">
+                    <div class="card border-0">
+                        <h4 class="card-header border-0">{{__('who.macedonia')}}</h4>
                         <i class="fi fi-mk card-img-top img-fluid"></i>
                     </div>
                 </div>
 
-                <div class="col-md-3">
-                    <div class="card">
-                        <h4 class="card-header">{{__('who.hungary')}}</h4>
+                <div class="col">
+                    <div class="card border-0">
+                        <h4 class="card-header border-0">{{__('who.hungary')}}</h4>
                         <i class="fi fi-hu card-img-top img-fluid"></i>
                     </div>
                 </div>
 
-                <div class="col-md-3">
-                    <div class="card">
-                        <h4 class="card-header">{{__('who.ukraine')}}</h4>
+                <div class="col">
+                    <div class="card border-0">
+                        <h4 class="card-header border-0">{{__('who.ukraine')}}</h4>
                         <i class="fi fi-ua card-img-top img-fluid"></i>
                     </div>
                 </div>
 
-                <div class="col-md-3">
-                    <div class="card">
-                        <h4 class="card-header">{{__('who.ireland')}}</h4>
+                <div class="col">
+                    <div class="card border-0">
+                        <h4 class="card-header border-0">{{__('who.ireland')}}</h4>
                         <i class="fi fi-ie card-img-top img-fluid"></i>
                     </div>
                 </div>
 
 
-                <div class="col-md-3">
-                    <div class="card">
-                        <h4 class="card-header">{{__('who.denmark')}}</h4>
+                <div class="col">
+                    <div class="card border-0">
+                        <h4 class="card-header border-0">{{__('who.denmark')}}</h4>
                         <i class="fi fi-dk card-img-top img-fluid"></i>
                     </div>
                 </div>
 
-                <div class="col-md-3">
-                    <div class="card">
-                        <h4 class="card-header">{{__('who.britain')}}</h4>
+                <div class="col">
+                    <div class="card border-0">
+                        <h4 class="card-header border-0">{{__('who.britain')}}</h4>
                         <i class="fi fi-gb card-img-top img-fluid"></i>
                     </div>
                 </div>
 
 
-                <div class="col-md-3">
-                    <div class="card">
-                        <h4 class="card-header">{{__('who.belgium')}}</h4>
+                <div class="col">
+                    <div class="card border-0">
+                        <h4 class="card-header border-0">{{__('who.belgium')}}</h4>
                         <i class="fi fi-be card-img-top img-fluid"></i>
                     </div>
                 </div>
 
-                <div class="col-md-3">
-                    <div class="card">
-                        <h4 class="card-header">{{__('who.romania')}}</h4>
+                <div class="col">
+                    <div class="card border-0">
+                        <h4 class="card-header border-0">{{__('who.romania')}}</h4>
                         <i class="fi fi-ro card-img-top img-fluid"></i>
                     </div>
                 </div>
 
-                <div class="col-md-3">
-                    <div class="card">
-                        <h4 class="card-header">{{__('who.finland')}}</h4>
+                <div class="col border-0">
+                    <div class="card border-0">
+                        <h4 class="card-header border-0">{{__('who.finland')}}</h4>
                         <i class="fi fi-fi card-img-top img-fluid"></i>
                     </div>
                 </div>
 
-            <div class="col-md-3">
-                <div class="card">
-                    <h4 class="card-header">{{__('who.kosovo')}}</h4>
+            <div class="col">
+                <div class="card border-0">
+                    <h4 class="card-header border-0">{{__('who.kosovo')}}</h4>
                     <i class="fi fi-xk card-img-top img-fluid"></i>
                 </div>
             </div>
 
 
-            <div class="col-md-3">
-                <div class="card">
-                    <h4 class="card-header">{{__('who.netherlands')}}</h4>
+            <div class="col ">
+                <div class="card border-0">
+                    <h4 class="card-header border-0">{{__('who.netherlands')}}</h4>
                     <i class="fi fi-nl card-img-top img-fluid"></i>
                 </div>
             </div>

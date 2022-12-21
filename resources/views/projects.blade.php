@@ -1,5 +1,5 @@
 @extends('blog-layout.app')
-@section('title','المشاريع')
+@section('title',__('forms.projects'))
 @section('content')
 
 
@@ -12,7 +12,7 @@
 
        <div class="container">
 
-           <h1 class="text-center">{{__('المشاريع')}}</h1>
+           <h1 class="text-center">{{__('forms.projects')}}</h1>
 
            <div class="row g-5">
                @foreach($projects as $project)
@@ -26,7 +26,7 @@
                                <div class="progress mb-3">
                                    <div class="progress-bar progress-bar-striped progress-bar-animated " role="progressbar" aria-label="Animated striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
                                </div>
-                               <a class="btn btn-primary w-100" href="{{route('projects.donate',$project)}}">{{__('تبرع')}}</a>
+                               <a class="btn btn-primary w-100" href="{{route('projects.donate',$project)}}">{{__('forms.donate')}}</a>
                            </div>
                        </div>
                    </div>

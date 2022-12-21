@@ -1,12 +1,12 @@
 @extends('admin.layouts.app')
-@section('title','هيكلة المرصد')
+@section('title','أعضاء المكتب التنفيذي')
 
 
 
 @section('content')
 
     <span class="d-flex justify-content-between">
-            <a href="{{route('joined-users.create')}}" class="btn btn-lg btn-primary mb-4">إضافة عضو</a>
+            <a href="{{route('organization-members.create')}}" class="btn btn-lg btn-primary mb-4">إضافة عضو</a>
     </span>
 
     @include('admin.layouts.success')
@@ -19,11 +19,11 @@
             <thead>
 
                 <tr>
-                    <th>الإسم واللقب</th>
+                    <th>الإسم بالعربية</th>
+                    <th>الإسم اللاتيني</th>
                     <th>العمر</th>
                     <th>الصورة</th>
                     <th>الصفة</th>
-                    <th>المهنة</th>
                     <th>تم إنشاءه</th>
                     <th>الإجراءات</th>
                 </tr>
@@ -35,14 +35,14 @@
                 @foreach($users as $user)
 
                     <tr>
-                        <td>{{$user -> full_name}}</td>
+                        <td>{{$user -> name}}</td>
+                        <td>{{$user -> name_latin}}</td>
                         <td>{{$user -> age}}</td>
                         <td>
-                            <img src="{{asset('storage/' . $user -> image)}}" alt="" style="width: 100px; height: 100px ; object-fit: cover" class="rounded-circle ">
+                            <img src="{{asset('storage/' . $user -> avatar)}}" alt="" style="width: 100px; height: 100px ; object-fit: cover" class="rounded-circle ">
                         </td>
 
                         <td>{{$user -> occupation}}</td>
-                        <td>{{$user -> profession}}</td>
                         <td>{{$user -> created_at}}</td>
                         <td>
 
@@ -51,10 +51,9 @@
                                     الإجراءات
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li><a href="{{route('joined-users.show',$user)}}" class="dropdown-item">إظهار</a></li>
-                                    <li> <a href="{{route('joined-users.edit',$user)}}"  class="dropdown-item">تعديل</a></li>
+                                    <li> <a href="{{route('organization-members.edit',$user)}}"  class="dropdown-item">تعديل</a></li>
                                     <li>
-                                        <form action="{{route('joined-users.destroy',$user)}}" method="POST" onsubmit="return confirm('هل أنت متأكد ?')" class="d-inline-block w-100">
+                                        <form action="{{route('organization-members.destroy',$user)}}" method="POST" onsubmit="return confirm('هل أنت متأكد ?')" class="d-inline-block w-100">
                                             @csrf
                                             @method('DELETE')
                                             <button class="dropdown-item">حذف</button>
@@ -68,5 +67,7 @@
                 @endforeach
             </tbody>
         </table>
+
+        {{$users -> links()}}
     </div>
 @endsection

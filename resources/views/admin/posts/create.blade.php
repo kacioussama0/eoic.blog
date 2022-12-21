@@ -17,10 +17,10 @@
                     <span class="fi fi-sa  mx-auto d-block" style="width: 70px; height: 70Px"></span>
 
 
-                    <x-admin.forms.input name="title" title="العنوان" type="text" value="{{old('title')}}"/>
+                    <x-admin.forms.input name="title" title="{{__('forms.title')}}" type="text" value="{{old('title')}}"/>
 
                         <div class="form-group">
-                            <label for="category" class="form-label">التصنيفات</label>
+                            <label for="category" class="form-label">{{__('home.categories')}}</label>
                             <select name="category" id="category" class="form-select">
                                 @foreach($categories as $category)
                                     <option value="{{$category->id}}">{{$category->name}}</option>
@@ -28,7 +28,7 @@
                             </select>
                         </div>
 
-                        <label for="tags" class="form-label">الوسوم</label>
+                        <label for="tags" class="form-label">{{__('forms.tags')}}</label>
 
                         <div class="form-group">
                             <div class="row">
@@ -43,7 +43,7 @@
 
                         </div>
 
-                        <x-admin.forms.input name="image" title="صورة المقال" type="file" value="{{old('image')}}"/>
+                        <x-admin.forms.input name="image" title="{{__('forms.picture')}}" type="file" value="{{old('image')}}"/>
                         <x-admin.forms.text-area name="content" id="#content" class="content" title="محتوى المقال"  value="{!!old('content')!!}"/>
                          <hr>
                         <span class="fi fi-gb  mx-auto d-block" style="width: 70px; height: 70Px"></span>

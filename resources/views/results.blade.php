@@ -18,7 +18,7 @@
                     @foreach($posts as $post)
 
                         <div class="post post-row">
-                            <a class="post-img" href="{{url('/posts/' . $post -> slug())}}"><img src="{{asset('storage/' . $post -> image)}}" alt="" class="rounded" style="height: 200px !important;"></a>
+                            <a class="post-img" href="{{url('/posts/' . $post -> slug())}}"><img src="{{\Illuminate\Support\Facades\File::exists('storage/' . $post -> image) ? asset('storage/' . $post -> image) : asset('assets/imgs/logo.svg')}}" alt="" class="rounded" style="height: 200px !important;"></a>
                             <div class="post-body">
 
                                 <h3 class="post-title"><a href="{{url('posts/' . $post  -> slug())}}">{{$post -> title()}}</a></h3>

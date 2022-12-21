@@ -1,3 +1,6 @@
+@php
+$settings = \App\Models\Setting::first();
+@endphp
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="rtl">
 <head>
@@ -65,11 +68,11 @@
         <h3 class="mb-5 mb-md-0"><i class="@yield('icon')"></i> @yield('title')</h3>
 
 
-        <a href="{{url('/')}}" class="text-decoration-none"><i class="bi bi-arrow-return-right mx-2   align-middle"></i> الرجوع للموقع</a>
+        <a href="{{url('/')}}" class="text-decoration-none"><i class="bi bi-arrow-return-right mx-2   align-middle"></i>{{__('forms.back-to-home')}}</a>
         <div class="d-flex d-block align-items-center">
             <form action="{{route('logout')}}" method="POST">
                 @csrf
-                <button type="submit" class="link-primary btn"><i class="bi bi-box-arrow-in-left me-1 align-middle"></i>تسجيل الخروج</button>
+                <button type="submit" class="link-primary btn"><i class="bi bi-box-arrow-in-left me-1 align-middle"></i>{{__('forms.log-out')}}</button>
             </form>
         </div>
     </div>

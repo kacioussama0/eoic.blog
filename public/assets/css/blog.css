@@ -272,9 +272,13 @@ nav {
         background-color: #148287;
     }
 
+    .mega-menu li {
+        overflow: hidden;
+
+    }
+
     .mega-menu a {
         color: #fff;
-        font-size: 20px;
         font-family: 'Changa' !important;
     }
 

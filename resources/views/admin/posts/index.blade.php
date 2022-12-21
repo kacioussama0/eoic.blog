@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('title','المقالات')
+@section('title',__('forms.articles'))
 
 
 
@@ -8,7 +8,7 @@
 
     <span class="d-flex justify-content-between flex-sm-row flex-column">
 
-            <a href="{{route('posts.create')}}" class="btn btn-lg btn-primary mb-4">إضافة مقال جديد</a>
+            <a href="{{route('posts.create')}}" class="btn btn-lg btn-primary mb-4">{{__('forms.add-articles')}}</a>
             <a href="{{url('admin/junk')}}" class="btn btn-lg btn-danger mb-4">المقالات المحذوفة</a>
 
     </span>
@@ -24,8 +24,8 @@
                                 <thead >
 
                                 <tr class="sticky-top">
-                                    <th>العنوان</th>
-                                    <th>التصنيف</th>
+                                    <th>{{__('forms.title')}}</th>
+                                    <th>{{__('forms.category')}}</th>
                                     <th>
                                         <i class="fi fi-gb"></i>
                                     </th>
@@ -34,11 +34,11 @@
                                         <i class="fi fi-fr"></i>
                                     </th>
 
-                                    <th>الصورة</th>
-                                    <th>تم إنشاءه</th>
-                                    <th>تم تعديله</th>
-                                    <th>منشور</th>
-                                    <th>الإجراءات</th>
+                                    <th>{{__('forms.picture')}}</th>
+                                    <th>{{__('forms.created-at')}}</th>
+                                    <th>{{__('forms.edited-at')}}</th>
+                                    <th>{{__('forms.published')}}</th>
+                                    <th>{{__('forms.procedures')}}</th>
                                 </tr>
 
                                 </thead>
@@ -83,17 +83,17 @@
 
                                             <div class="btn-group">
                                                 <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    الإجراءات
+                                                    {{__('forms.procedures')}}
                                                 </button>
                                                 <ul class="dropdown-menu">
-                                                    <li><a href="{{route('posts.show',$post)}}" class="dropdown-item">إظهار</a></li>
-                                                    <li> <a href="{{route('posts.edit',$post)}}"  class="dropdown-item">تعديل</a></li>
+                                                    <li><a href="{{route('posts.show',$post)}}" class="dropdown-item">{{__('forms.show-case')}}</a></li>
+                                                    <li> <a href="{{route('posts.edit',$post)}}"  class="dropdown-item">{{__('forms.edit')}}</a></li>
 
                                                     <li>
                                                         <form action="{{route('posts.destroy',$post)}}" method="POST" onsubmit="return confirm('هل أنت متأكد ?')" class="d-inline-block w-100">
                                                             @csrf
                                                             @method('DELETE')
-                                                            <button class="dropdown-item">حذف</button>
+                                                            <button class="dropdown-item">{{__('forms.delete')}}</button>
 
                                                         </form>
                                                     </li>

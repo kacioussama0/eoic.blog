@@ -80,6 +80,10 @@ class VolunteerController extends Controller
      */
     public function destroy(Volunteer $volunteer)
     {
-        //
+        dd($volunteer);
+        $volunteer -> delete();
+        return redirect()->to('admin/join-us')->with([
+            'success' => 'تم الحذف بنجاح'
+        ]);
     }
 }

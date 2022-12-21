@@ -22,7 +22,7 @@ class Volunteer extends Component
     protected $rules = [
         'name' => 'required|min:3|max:50',
         'email' => 'required|email|max:50',
-        'phone' => 'required|min:10|numeric',
+        'phone' => 'required|min:10',
         'dob' => 'required|date',
         'gender' => 'required',
         'time' => 'required',
@@ -36,7 +36,7 @@ class Volunteer extends Component
         $this->validate();
 
 
-        $path = $this->cv->store('public/cv');
+        $path = $this->cv->store('cv','public');
 
 
         \App\Models\Volunteer::create([

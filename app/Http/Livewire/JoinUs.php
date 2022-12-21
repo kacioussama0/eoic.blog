@@ -3,6 +3,8 @@
 namespace App\Http\Livewire;
 
 use App\Models\Join;
+use App\Notifications\NewJoinUsNotification;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Validation\Rules\File;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -32,17 +34,17 @@ class JoinUs extends Component
         $this->validate();
 
 
-        $path = $this->cv->store('public/cv');
+        $path = $this->cv->store('cv','public');
 
 
-        Join::create([
+        event(new Registered($user = Join::create([
             'name' => $this->name,
             'email' =>  $this->email,
             'phone' =>  $this->phone,
             'dob' =>  $this->dob,
             'gender' =>  $this->gender,
             'cv' =>  $path,
-        ]);
+        ])));
 
         $this->name = '';
         $this->email = '';

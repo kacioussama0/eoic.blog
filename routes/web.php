@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('who-we-are',[\App\Http\Controllers\BlogController::class,'who'])->name('who-we-are');
+Route::get('members',[\App\Http\Controllers\BlogController::class,'members'])->name('members');
 Route::get('author/{author}',[\App\Http\Controllers\BlogController::class,'author'])->name('author');
 Route::get('projects',[\App\Http\Controllers\BlogController::class,'projects'])->name('projects');
 Route::get('projects/{project}',[\App\Http\Controllers\BlogController::class,'projectDonate'])->name('projects.donate');
@@ -25,6 +26,7 @@ Route::get('contact',[\App\Http\Controllers\MessageController::class,'create'])-
 Route::post('contact',[\App\Http\Controllers\MessageController::class,'store']);
 Route::get('books',[\App\Http\Controllers\MagazineController::class,'books']);
 Route::get('cards',[\App\Http\Controllers\CardController::class,'cards']);
+Route::get('videos',[\App\Http\Controllers\VideoController::class,'videos']);
 Route::get('join-us',[\App\Http\Controllers\JoinController::class,'create'])->name('join-us');
 Route::get('posts/{slug}',[\App\Http\Controllers\BlogController::class,'post'])->name('post.slug');
 Route::get('category/{title}',[\App\Http\Controllers\BlogController::class,'category'])->name('category.show');
@@ -48,9 +50,9 @@ Route::prefix('admin')->middleware('auth')->group(function() {
     Route::get('trashed/restore/{id}',[\App\Http\Controllers\PostController::class,'restoredTrashed'])->name('posts.restore');
     Route::get('trashed/delete/{id}',[\App\Http\Controllers\PostController::class,'deleteTrashed'])->name('posts.delete');
     Route::resource('join-us',\App\Http\Controllers\JoinController::class)->name('','join-us');
-    Route::resource('joined-users',\App\Http\Controllers\JoinedUser::class)->name('','joined-users');
+    Route::resource('organization-members',\App\Http\Controllers\OrganizationMemberController::class)->name('','organization-members');
     Route::resource('messages',\App\Http\Controllers\MessageController::class)->name('','messages')->except('destroyAll');
-    Route::delete('messages/removeAll',[\App\Http\Controllers\MessageController::class,'destroyAll'])->name('removeAllMessages');
+    Route::delete('removeAllMessages',[\App\Http\Controllers\MessageController::class,'destroyAll'])->name('removeAllMessages');
     Route::resource('magazines',\App\Http\Controllers\MagazineController::class)->name('','magazines');
     Route::resource('cards',\App\Http\Controllers\CardController::class)->name('','cards');
     Route::resource('videos',\App\Http\Controllers\VideoController::class)->name('','videos');

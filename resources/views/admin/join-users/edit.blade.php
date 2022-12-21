@@ -1,16 +1,20 @@
 @extends('admin.layouts.app')
-@section('title','إضافة عضو')
+@section('title','تعديل عضو')
 
 
 
 @section('content')
-    <form action="{{route('joined-users.store')}}" method="POST" enctype="multipart/form-data">
+    <form action="{{route('organization-members.update',$user)}}" method="POST" enctype="multipart/form-data">
         @csrf
-        <x-admin.forms.input name="full_name" title="الإسم الكامل" type="text" value="{{$user->full_name}}"/>
+        @method('PATCH')
+        <x-admin.forms.input name="name" title="الإسم الكامل" type="text" value="{{$user->name}}"/>
+        <x-admin.forms.input name="name_latin" title="الإسم الكامل بالاتينية" type="text" value="{{$user->name_latin}}"/>
         <x-admin.forms.input name="age" title="العمر" type="number" value="{{$user->age}}"/>
-        <x-admin.forms.input name="image" title="الصورة" type="file" value="{{old('image')}}"/>
-        <x-admin.forms.input name="profession" title="المهنة" type="text" value="{{$user->profession}}"/>
+        <x-admin.forms.input name="avatar" title="الصورة" type="file" value="{{old('avatar')}}"/>
+        <img src="{{asset('storage/' . $user -> avatar)}}"  width="200" class="rounded"/>
         <x-admin.forms.input name="occupation" title="الصفة" type="text" value="{{$user->occupation}}"/>
-        <button class="btn btn-primary w-100">إضافة العضو</button>
+        <x-admin.forms.input name="occupation_en" title="الصفة بالإنجليزية" type="text" value="{{$user->occupation_en}}"/>
+        <x-admin.forms.input name="occupation_fr" title="الصفة بالفرنسية" type="text" value="{{$user->occupation_fr}}"/>
+        <button class="btn btn-primary w-100">تعديل العضو</button>
     </form>
 @endsection

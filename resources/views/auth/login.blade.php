@@ -4,14 +4,14 @@
 <div class="container  ">
     <div class="row justify-content-center ">
 
-            <div class="card  border-0 rounded-0">
+            <div class="card border-0 rounded-0">
 
-                <div class="row align-items-center flex-row-reverse">
+                <div class="row align-items-center flex-row-reverse p-lg-5 p-0">
 
-                    <div class="col-md-6 p-5" >
-                        <img src="{{asset('assets/imgs/logo.svg')}}" alt="" style="width: 450px" class="img-fluid">
+                    <div class="col-6 mx-auto mb-2 mb-lg-0 col-lg-7" >
+                        <img src="{{asset('assets/imgs/login.svg')}}" alt=""  class="img-fluid">
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-12 col-lg-5">
                         <div class="card-body">
                             <h1 class="mb-5  text-dark text-center fw-light">{{$settings -> display_name()}}</h1>
                             <form method="POST" action="{{ route('login') }}" >

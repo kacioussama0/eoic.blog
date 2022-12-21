@@ -4,7 +4,7 @@ $project = \App\Models\Project::latest()->first();
 $Posts = \App\Models\Category::where('name','مقالات')->orWhere('name_en','Posts')->orWhere('name_fr','Articles')->first()->posts->take(5);
 
 @endphp
-<div class="col-md-4 d-lg-block d-none">
+<div class="col-lg-4 d-lg-block d-none">
 
 
 @if(!empty($project))
@@ -22,7 +22,7 @@ $Posts = \App\Models\Category::where('name','مقالات')->orWhere('name_en','
                             <div class="progress w-100">
                                 <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-label="Animated striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
                             </div>
-                            <a class="btn btn-primary w-100" href="{{route('projects.donate',$project)}}">{{__('تبرع')}}</a>
+                            <a class="btn btn-primary w-100" href="{{route('projects.donate',$project)}}">{{__('forms.donate')}}</a>
                         </div>
                     </div>
         </a>
@@ -33,7 +33,7 @@ $Posts = \App\Models\Category::where('name','مقالات')->orWhere('name_en','
 
     @if(request()->is('/') )
 
-
+        @if(count($Posts))
         <div class="card rounded-4  overflow-hidden border-primary mb-3">
             <div class="card-header p-0 bg-transparent border-primary">
                 <h3 class=" my-0 p-3">
@@ -65,11 +65,12 @@ $Posts = \App\Models\Category::where('name','مقالات')->orWhere('name_en','
                 </div>
             </div>
         </div>
-
+        @endif
+    @if(count($Posts))
         <div class="card rounded-4  overflow-hidden border-primary mb-3">
             <div class="card-header p-0 bg-transparent border-primary">
                 <h3 class=" my-0 p-3">
-                    <a href="{{url('category/Posts')}}" class="link-primary"><img src="{{asset('assets/imgs/zellig.svg')}}" style="width: 30px" alt="" class="me-2"> حوارات</a>
+                    <a href="{{url('category/Posts')}}" class="link-primary"><img src="{{asset('assets/imgs/zellig.svg')}}" style="width: 30px" alt="" class="me-2"> {{__('forms.dialogues')}}</a>
                 </h3>
             </div>
             <div class="card-body">
@@ -98,11 +99,11 @@ $Posts = \App\Models\Category::where('name','مقالات')->orWhere('name_en','
             </div>
         </div>
 
-
+    @endif
 
     @else
     <!-- category widget -->
-    <div class="aside-widget mt-5">
+    <div class="aside-widget ">
         <div class="section-title">
             <h2 class="title ">{{__('home.categories')}}</h2>
         </div>

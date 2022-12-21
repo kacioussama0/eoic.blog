@@ -27,18 +27,18 @@
         @method('PATCH')
 
         <div class="form-group">
-            <label for="name">الإسم</label>
-            <input type="text" name="name" id="name" placeholder="أدخل الإسم"  class="form-control" value="{{$user -> name}}">
+            <label for="name">{{__('forms.full-name')}}</label>
+            <input type="text" name="name" id="name"  class="form-control" value="{{$user -> name}}">
         </div>
 
         <div class="form-group">
-            <label for="email">البريد الإلكتروني</label>
-            <input type="email" name="email" id="name" placeholder="أدخل البريد الإلكتروني" class="form-control" value="{{$user -> email}}">
+            <label for="email">{{__('forms.email')}}</label>
+            <input type="email" name="email" id="name"  class="form-control" value="{{$user -> email}}">
         </div>
 
 
 
-        <button class="btn btn-primary w-100">تعديل عضو</button>
+        <button class="btn btn-primary w-100">{{__('forms.edit-member')}}</button>
 
     </form>
 

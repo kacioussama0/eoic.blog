@@ -25,7 +25,7 @@
 
     <div class="page-header">
 
-        <div class="page-header-bg" style="background-image: url('{{asset('storage/' . $post -> image)}}');background-size: cover" data-stellar-background-ratio="0.9"></div>
+        <div class="page-header-bg" style="background-image: url('{{asset('storage/' . $post -> image())}}');background-size: cover" data-stellar-background-ratio="0.9"></div>
         <div class="container">
             <div class="row justify-content-center" >
                 <div class="col-md-offset-1 col-md-10 text-center">
@@ -47,13 +47,13 @@
 
         <div class="container">
             <div class="row">
-                <div class="col-md-8 overflow-hidden">
+                <div class="col-12 col-lg-8 overflow-hidden">
 
-                    <div class="post-description d-flex flex-md-row flex-column justify-content-between align-items-center mb-5" style="font-size: 25px">
-                        <div class="border-start border-5 border-primary ps-3">
+                    <div class="post-description d-flex flex-column flex-sm-row  justify-content-between align-items-center mb-3 mb-sm-5 mt-sm-0 mt-5" style="font-size: 25px">
+                        <div class="border-start border-5 border-primary ps-2 mb-3 mb-sm-0">
                             {{date_format($post->created_at,'Y-m-d')}}
                         </div>
-                        <div >
+                        <div>
                             <a href="https://www.facebook.com/sharer.php?u={{route('post.slug', $post->slug())}}" target="_blank" class="me-2" style="color: #4267B2"><i class="fa-brands fa-facebook"></i></a>
                             <a href="https://www.facebook.com/dialog/send?app_id=5303202981&display=popup&link={{route('post.slug', $post->slug())}}&redirect_uri={{route('post.slug', $post->slug())}}" class="me-2" style="color: #00B2FF"><i class="fa-brands fa-facebook-messenger" ></i></a>
                             <a href="#" class="me-2"><i class="fa-brands fa-whatsapp" style="color: #25D366"></i></a>
@@ -68,7 +68,7 @@
 
 
                     @auth
-                        <a href="{{route('posts.edit',$post)}}" class="btn btn-secondary w-100 my-3 py-2"><i class="fa-light fa-edit me-2"></i>{{__('تحرير المقال')}}</a>
+                        <a href="{{route('posts.edit',$post)}}" class="btn btn-secondary w-100 my-3 py-2"><i class="fa-light fa-edit me-2"></i>{{__('forms.edit-articles')}}</a>
                     @endauth
 
 
@@ -76,7 +76,7 @@
 
                 <div class="tags my-4">
 
-                    <h3>{{__('الوسوم')}}</h3>
+                    <h3>{{__('forms.tags')}}</h3>
 
                     @foreach($tags as $tag)
 
@@ -88,23 +88,26 @@
 
         @endif
 
-                    @if($next)
-                        <a href="{{route('post.slug',$next->slug())}}" class="btn text-bg-primary  my-5"> المقال التالي</a>
-                    @endif
+                    <div class="d-flex Srow-reverse justify-content-between align-items-center">
+                        @if($next)
+                            <a href="{{route('post.slug',$next->slug())}}" class="btn text-bg-primary  my-5"> {{__('forms.next-article')}}</a>
+                        @endif
 
 
-                    @if($prev)
-                        <a href="{{route('post.slug',$prev->slug())}}" class="btn text-bg-secondary  my-5">المقال الأقدم</a>
-                    @endif
+                        @if($prev)
+                            <a href="{{route('post.slug',$prev->slug())}}" class="btn text-bg-secondary  my-5">{{__('forms.previous-article')}}</a>
+                        @endif
+
+                    </div>
 
 
 
                     <div class="more-posts mt-3 border-top border-primary border-opacity-25 py-5">
 
-                        <h3 class="title"> {{__('المزيد من')}} {{$post -> category -> name()}}</h3>
+                        <h3 class="title"> {{__('forms.more-of')}} {{$post -> category -> name()}}</h3>
 
                         <div class="row mt-5">
-                        @foreach($post -> category -> posts -> take(4) as $post)
+                        @foreach($post -> category -> posts -> where('slug' ,'<>', $post->slug ) -> take(4) as $post)
 
                             <div class="col-md-6">
                                 <x-article :post="$post"/>

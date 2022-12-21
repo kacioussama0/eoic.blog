@@ -6,6 +6,7 @@ use App\Models\Card;
 use App\Models\Category;
 use App\Models\Magazine;
 use App\Models\News;
+use App\Models\OrganizationMember;
 use App\Models\Post;
 use App\Models\Project;
 use App\Models\Setting;
@@ -22,9 +23,22 @@ class BlogController extends Controller
 {
     public function index() {
 
+        if(config('app.locale') == 'en') {
+            $categories = Category::where('name_en' ,'<>', null)->latest();
+
+        }
+        elseif(config('app.locale') == 'fr') {
+            $categories = Category::where('name_fr' ,'<>', null)->latest();
+        }else {
+            $categories = Category::where('name', '<>' , 'null')->latest();
+        }
+
+
+
+
         return view('home')->with('slider_posts',Post::where('is_published','on')->latest()->take(10)->get())
             ->with('last_posts',Post::where('is_published','on')->latest()->take(4)->get())
-            ->with('categories',Category::get()->take(5))
+            ->with('categories',Category::get()->take(12))
             ->with('magazines',Magazine::where('is_published','1')->latest()->get())
             ->with('videos',Video::where('is_published','1')->latest()->get())
             ->with('news_titles',News::where('is_published','1')->latest()->get()->take(10))
@@ -34,8 +48,15 @@ class BlogController extends Controller
     }
     public function post($slug) {
 
+        if(config('app.locale') == 'en') {
+            $post = Post::where('slug_en',$slug)->first();
+        }
+        elseif(config('app.locale') == 'fr') {
+            $post = Post::where('slug_fr',$slug)->first();
+        }else {
+            $post = Post::where('slug',$slug)->first();
+        }
 
-        $post = Post::where('slug',$slug)->orWhere('slug_fr',$slug)->orWhere('slug_en',$slug)->first();
 
         if(!empty($post)) {
             if(!$post -> is_published && !auth()->user()) {
@@ -63,7 +84,16 @@ class BlogController extends Controller
     public function category($title) {
 
 
-        $category = Category::where('name','=',$title)->orWhere('name_fr','=',$title)->orWhere('name_en','=',$title)->first();
+        if(config('app.locale') == 'en') {
+            $category = Category::where('name_en',$title)->first();
+        }
+        elseif(config('app.locale') == 'fr') {
+            $category = Category::where('name_fr',$title)->first();
+        }else {
+            $category = Category::where('name',$title)->first();
+        }
+
+
 
 
 
@@ -113,7 +143,7 @@ class BlogController extends Controller
             return  redirect ()->to('/');
         }
 
-        $posts = Post::where('title','like','%' . request('result') . '%')->where('content','like','%' . request('result') . '%')->get();
+        $posts = Post::where('title','like','%' . request('result') . '%')->orWhere('content','like','%' . request('result') . '%')->get();
 
         return view('results')->with('posts',$posts)
             ->with('categories',Category::all())
@@ -172,6 +202,12 @@ class BlogController extends Controller
     }catch (\Exception $exception) {
             return redirect()->back();
         }
+    }
+
+
+    public function members() {
+        $members = OrganizationMember::all();
+        return view('members',compact('members'));
     }
 
 }

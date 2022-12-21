@@ -19,6 +19,7 @@ class MessageController extends Controller
     public function index()
     {
         $messages = Message::all();
+        auth()->user()->notifications->markAsRead();
         return view('admin.messages.index',compact('messages'));
     }
 
@@ -58,8 +59,8 @@ class MessageController extends Controller
 
     public function destroyAll()
     {
-        dd(Message::all());
-        Message::all()->delete();
+
+        Message::truncate();
 
         return redirect() -> to('admin/messages');
     }

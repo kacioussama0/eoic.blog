@@ -3,6 +3,9 @@
 
 @section('style')
     <link rel="stylesheet" href="{{asset('assets/css/breaking-news-ticker.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/post.carousel.css')}}">
+
     <link rel="stylesheet" href="{{asset('assets/photoswipe/photoswipe.css')}}" />
     <link rel="stylesheet" href="https://cdn.plyr.io/3.7.3/plyr.css" />
 
@@ -43,7 +46,7 @@
             <!-- Start Carousel -->
 
                     <div id="LastPosts" class="carousel slide overflow-hidden position-relative  rounded-4 rounded-top-0 shadow mb-5" data-bs-ride="carousel">
-                        <div class="carousel-inner">
+                        <div class="carousel-inner ">
 
                             @foreach($slider_posts as  $key => $post)
                                 @if($post->title() != null )
@@ -58,13 +61,13 @@
 
                                 @if($post->title() != null )
 
-                                    <div class="carousel-item @if($key == $active) active @endif">
-                                        <div class="carousel-content">
+                                    <div class="carousel-item  @if($key == $active) active @endif">
+                                        <div class="carousel-content ">
                                             <div class="badge rounded-pill text-bg-secondary  mb-3"><a href="{{url('category/' . $post ->category->name())}}" class="link-dark">{{$post ->category -> name()}}</a></div>
                                             <div class="mb-3">{{$post ->created_at -> diffForHumans()}}</div>
                                             <h4 class="fw-6"><a href="{{route('post.slug', $post->slug())}}" class="link-light ">{{$post -> title()}}</a></h4>
                                         </div>
-                                        <img src="{{File::exists('storage/' . $post -> image()) ? asset('storage/' . $post -> image()) : asset('assets/imgs/logo.svg') }}" class="d-block w-100" alt="...">
+                                        <img src="{{File::exists('storage/' . $post -> image()) ? asset('storage/' . $post -> image()) : asset('assets/imgs/logo.svg') }}" class="d-block w-100 " alt="...">
                                         <span style="font-size: 25px;z-index: 99" class="position-absolute bottom-0 end-0 m-2">
                                           <button class="bg-transparent border-0 me-3" type="button" data-bs-toggle="collapse" data-bs-target="#slug" aria-expanded="false" aria-controls="slug">
                                             <i class="fa-solid fa-share me-1 pe-auto text-light"></i>
@@ -170,7 +173,7 @@
             <section class="mt-2 mb-3">
                 <div class="container-lg">
                     <h3 class="category-title"><img src="{{asset('assets/imgs/zellig.svg')}}" style="width: 30px" alt="" class="me-2">{{__('home.videos')}} </h3>
-                    <div class="plyr__video-embed" id="player">
+                    <div class="plyr__video-embed ratio ratio-16x9" id="player">
                         <iframe
                             src="https://www.youtube.com/watch?v=3h6RMkjDR50&ab_channel=%D8%A7%D9%84%D9%87%D9%8A%D8%A6%D8%A9%D8%A7%D9%84%D8%A3%D9%88%D8%B1%D9%88%D8%A8%D9%8A%D8%A9%D9%84%D9%84%D9%85%D8%B1%D8%A7%D9%83%D8%B2%D8%A7%D9%84%D8%A5%D8%B3%D9%84%D8%A7%D9%85%D9%8A%D8%A9"
                             allowfullscreen
@@ -187,50 +190,45 @@
         <!-- End Video -->
 
 
-            @foreach($categories as $key=> $category)
+            @foreach($categories->take(1) as $key=> $category)
 
-                @if(count($category -> posts))
+            @if( count($category -> posts) && count($category->posts->where('title_en','<>',null)))
 
             <div @if($key % 2 == 1) style="background-color: #e9f2f61f" @endif>
 
-                <div class="container-lg" >
+                <section class="ftco-section">
+
+                    <div class="container-lg">
+                        <h2 class="heading-section mb-5 pb-md-4">{{$category->name()}}</h2>
+                        <div class="featured-carousel owl-carousel">
+
+                                @foreach($category->posts as $post)
 
 
-                    <div class="card mb-3  border-0 bg-transparent py-3">
-                        <h3 class="card-header  border-start border-5 fw-bold  ps-3  border-primary   bg-transparent border-bottom-0   mb-3">
+                                            <div class="item">
+                                                <div class="work">
+                                                    <div class="img d-flex align-items-center justify-content-center rounded" style="background-image: url('{{asset('storage/' . $post -> image())}}');">
+                                                        <a href="#" class="icon d-flex align-items-center justify-content-center">
+                                                            <span class="ion-ios-search"></span>
+                                                        </a>
+                                                    </div>
+                                                    <div class="text pt-3 w-100 text-center">
+                                                        <h3><a href="#">Work 01</a></h3>
+                                                        <span>Web Design</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
 
-                            {{$category->name()}}
 
-                        </h3>
-
-                        <div class="card-body p-0 m-0 py-2">
-
-                            <div class="row">
-
-
-                                @foreach($category->posts->take(3) as $post)
-
-
-                                    @if($post -> title() != null)
-                                    <div class="col-sm-6 col-md-4 wow fadeIn">
-                                        <x-article :post="$post"/>
-                                    </div>
-
-                                    @endif
-
-                                    @endforeach
-
-                                    </section>
-                            </div>
-
+                               @endforeach
                         </div>
-                    </div>
 
-
-
-                </div>
+                    </section>
 
             </div>
+
+
                 @endif
             @endforeach
 
@@ -323,7 +321,53 @@
                 lightbox.init();
             </script>
 
+            <script src="{{asset('assets/js/owl.js')}}"></script>
 
+        <script>
+            (function($) {
+
+                "use strict";
+
+                var fullHeight = function() {
+
+                    $('.js-fullheight').css('height', $(window).height());
+                    $(window).resize(function(){
+                        $('.js-fullheight').css('height', $(window).height());
+                    });
+
+                };
+                fullHeight();
+
+                var carousel = function() {
+                    $('.featured-carousel').owlCarousel({
+                        loop:true,
+                        autoplay: true,
+                        margin:30,
+                        animateOut: 'fadeOut',
+                        animateIn: 'fadeIn',
+                        nav:true,
+                        dots: true,
+                        autoplayHoverPause: false,
+                        items: 1,
+                        navText : ["<span class='ion-ios-arrow-back'></span>","<span class='ion-ios-arrow-forward'></span>"],
+                        responsive:{
+                            0:{
+                                items:1
+                            },
+                            600:{
+                                items:2
+                            },
+                            1000:{
+                                items:3
+                            }
+                        }
+                    });
+
+                };
+                carousel();
+
+            })(jQuery);
+        </script>
     @endsection
 
     @else
@@ -343,6 +387,8 @@
 
 
 @endsection
+
+
 
 
 

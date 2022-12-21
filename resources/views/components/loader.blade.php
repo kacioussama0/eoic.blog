@@ -52,7 +52,7 @@ $settings  = \App\Models\Setting::first();
         box-sizing: border-box;
     }
     .center {
-        height: 50vh;
+
         display: flex;
         justify-content: center;
         align-items: center;
@@ -61,7 +61,7 @@ $settings  = \App\Models\Setting::first();
     .wave {
         width: 5px;
         height: 70px;
-        background: linear-gradient(45deg, #ffc107 , #fff);
+        background: linear-gradient(80deg, #ffc107 , #fff);
         margin: 10px;
         animation: wave 1s linear infinite;
         border-radius: 20px;
@@ -110,19 +110,26 @@ $settings  = \App\Models\Setting::first();
 
 </style>
 
-<div class="loader-container" style="background-image: url('{{asset('assets/imgs/bg-footer.svg')}}')">
-    <img src="{{asset('assets/imgs/logo.svg')}}" class="my-2" alt="">
-    <h2 class="mt-3 text-white w-75 mx-auto text-center">{{$settings -> display_name()}}</h2>
-    <div class="center">
-        <div class="wave"></div>
-        <div class="wave"></div>
-        <div class="wave"></div>
-        <div class="wave"></div>
-        <div class="wave"></div>
-        <div class="wave"></div>
-        <div class="wave"></div>
-        <div class="wave"></div>
-        <div class="wave"></div>
-        <div class="wave"></div>
+<div class="loader-container " style="background-image: url('{{asset('assets/imgs/bg-footer.svg')}}')">
+    <div class="position-absolute start-50 top-50 translate-middle w-100 d-flex flex-column justify-content-center align-items-center">
+
+
+        <img src="{{asset('assets/imgs/logo.svg')}}" class="img-fluid mb-4 user-select-none" alt="">
+        <h2 class="text-white w-75 mx-auto text-center mb-4 user-select-none">{{$settings -> display_name()}}</h2>
+        <div class="center mt-3">
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+        </div>
+
+
     </div>
+
 </div>

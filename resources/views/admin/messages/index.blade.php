@@ -6,7 +6,7 @@
 @section('content')
 
 
-    <form action="{{url('admin/messages/removeAll')}}" method="POST" onsubmit="return confirm('هل أنت متأكد ? ')" class="mb-3">
+    <form action="{{route('removeAllMessages')}}" method="POST"  onsubmit="return confirm('هل أنت متأكد ? ')" class="mb-3">
         @csrf
         @method('DELETE')
         <button type="submit" class="btn btn-lg btn-danger">{{__('حذف كل الرسائل')}}</button>

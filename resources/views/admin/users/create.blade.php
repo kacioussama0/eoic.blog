@@ -10,11 +10,11 @@
 
         @csrf
 
-        <x-admin.forms.input name="name" title="الإسم" type="text" value="{{old('name')}}"/>
-        <x-admin.forms.input name="email" title="البريد الإلكتروني" type="email" value="{{old('email')}}"/>
-        <x-admin.forms.input name="password" title="كلمة السر" type="password" value="{{old('password')}}"/>
+        <x-admin.forms.input name="name" title="{{__('forms.full-name')}}" type="text" value="{{old('name')}}"/>
+        <x-admin.forms.input name="email" title="{{__('forms.email')}}" type="email" value="{{old('email')}}"/>
+        <x-admin.forms.input name="password" title="{{__('forms.password')}}" type="password" value="{{old('password')}}"/>
 
-        <button class="btn btn-primary w-100 mt-3">إضافة عضو</button>
+        <button class="btn btn-primary w-100 mt-3">{{__('forms.add-members')}}</button>
 
     </form>
 

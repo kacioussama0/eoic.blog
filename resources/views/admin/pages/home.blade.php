@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('title','الإحصائيات')
+@section('title',__('forms.statistics'))
 @section('icon','bi bi-speedometer2')
 
 
@@ -13,7 +13,7 @@
       <div class="col-md-3">
           <div class="card  bg-primary text-light">
               <h3 class="card-header">
-                  <a href="{{route('tags.index')}}" class="text-light">الوسوم</a>
+                  <a href="{{route('tags.index')}}" class="text-light">{{__('forms.tags')}}</a>
               </h3>
               <div class="card-body">
                   <h3 class="display-1">{{count($tags)}}</h3>
@@ -24,7 +24,7 @@
       <div class="col-md-3">
           <div class="card  bg-secondary text-light">
               <h3 class="card-header">
-                  <a href="{{route('posts.index')}}" class="text-light">المقالات</a>
+                  <a href="{{route('posts.index')}}" class="text-light">{{__('forms.articles')}}</a>
               </h3>
               <div class="card-body">
                   <h3 class="display-1">{{count($posts)}}
@@ -36,7 +36,7 @@
       <div class="col-md-3">
           <div class="card  bg-primary text-light">
               <h3 class="card-header">
-                  <a href="{{route('categories.index')}}" class="text-light">التصنيفات</a>
+                  <a href="{{route('categories.index')}}" class="text-light">{{__('home.categories')}}</a>
               </h3>
               <div class="card-body">
                   <h3 class="display-1">{{count($categories)}}</h3>
@@ -47,7 +47,7 @@
       <div class="col-md-3">
           <div class="card  bg-secondary  text-light">
               <h3 class="card-header">
-                  <a href="{{route('news.index')}}" class="text-light">أخر الأخبار</a>
+                  <a href="{{route('news.index')}}" class="text-light">{{__('forms.latest-news')}}</a>
               </h3>
               <div class="card-body">
                   <h3 class="display-1">{{count($latest_news)}}</h3>
@@ -59,7 +59,7 @@
       <div class="col-md-3">
           <div class="card  text-bg-primary text-light">
               <h3 class="card-header">
-                  <a href="{{route('messages.index')}}" class="text-light">الرسائل</a>
+                  <a href="{{route('messages.index')}}" class="text-light">{{__('forms.messages')}}</a>
               </h3>
               <div class="card-body">
                   <h3 class="display-1">{{count($messages)}}</h3>
@@ -70,7 +70,7 @@
 
       <div class="col-md-3">
           <div class="card  text-bg-secondary   text-light">
-              <h3 class="card-header"><a href="{{route('users.index')}}" class="text-light">الأعضاء</a></h3>
+              <h3 class="card-header"><a href="{{route('users.index')}}" class="text-light">{{__('forms.members')}}</a></h3>
               <div class="card-body">
                   <h3 class="display-1">{{count($users)}}</h3>
               </div>
@@ -79,7 +79,7 @@
     @endif
       <div class="col-md-3">
           <div class="card text-bg-primary  text-light">
-              <h3 class="card-header"><a href="{{route('projects.index')}}" class="text-light">المشاريع</a></h3>
+              <h3 class="card-header"><a href="{{route('projects.index')}}" class="text-light">{{__('forms.projects')}}</a></h3>
               <div class="card-body">
                   <h3 class="display-1">{{count($projects)}}</h3>
               </div>
@@ -89,7 +89,7 @@
 
       <div class="col-md-3">
           <div class="card text-bg-secondary  text-light">
-              <h3 class="card-header"><a href="{{route('magazines.index')}}" class="text-light">المجلات</a></h3>
+              <h3 class="card-header"><a href="{{route('magazines.index')}}" class="text-light">{{__('forms.magazines')}}</a></h3>
               <div class="card-body">
                   <h3 class="display-1">{{count($magazines)}}</h3>
               </div>
@@ -99,7 +99,7 @@
 
       <div class="col-md-3">
           <div class="card text-bg-primary  text-light">
-              <h3 class="card-header"><a href="{{route('videos.index')}}" class="text-light">الفيديوهات</a></h3>
+              <h3 class="card-header"><a href="{{route('videos.index')}}" class="text-light">{{__('forms.videos')}}</a></h3>
               <div class="card-body">
                   <h3 class="display-1">{{count($videos)}}</h3>
               </div>
