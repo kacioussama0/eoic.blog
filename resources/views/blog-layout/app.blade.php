@@ -216,7 +216,7 @@ $settings = \App\Models\Setting::first();
 
 
                                 <div class="col">
-                                    <a href="" class="text-white">
+                                    <a href="{{url('videos')}}" class="text-white">
                                         <i class="fa-light fa-video" style="font-size: 80px"></i>
                                         <h3 class="text-white mt-3">{{__('home.videos')}}</h3>
                                     </a>
@@ -237,7 +237,13 @@ $settings = \App\Models\Setting::first();
                                 </div>
 
                                 <div class="col">
-                                    <a href="{{url('category/Articles')}}" class="text-white">
+                                    <a href="
+                                        @if(config('app.locale') == 'ar')
+                                            {{url('category/مقالات')}}
+                                        @else
+                                             {{url('category/Articles')}}
+                                        @endif
+                                    " class="text-white">
                                         <i class="fa-light fa-newspaper" style="font-size: 80px"></i>
                                         <h3 class="text-white mt-3">{{__('home.posts')}}</h3>
                                     </a>
@@ -674,7 +680,7 @@ $settings = \App\Models\Setting::first();
 
                             <div class="py-2 mb-0 d-flex justify-content-center">
                                 <i class="fa-light fa-location-dot me-2 h-100"></i>
-                                <p class="text-start mb-0">{{$settings -> address}}</p>
+                                <p class="text-lg-start text-center  mb-0">{{$settings -> address}}</p>
                             </div>
 
 
@@ -694,7 +700,7 @@ $settings = \App\Models\Setting::first();
 
                     <a href="https://twitter.com/EOIC_Geneva" target="_blank" class="me-3" style="color: #1DA1F2"><i class="fa-brands fa-twitter fa-2x"></i></a>
                 </div>
-                    <p class="mb-0 mt-2 mt-lg-0 text-center"> {{   __('كل الحقوق محفوظة') .' ' . date('Y')}} &copy; {{$settings -> display_name()}}</p>
+                    <p class="mb-0 mt-2 mt-lg-0 text-center"> {{   __('forms.all-right-reserved-by') .' ' . date('Y')}} &copy; {{$settings -> display_name()}}</p>
 
             </div>
 

@@ -1,15 +1,15 @@
 @extends('admin.layouts.app')
-@section('title','قائمة الرسائل')
+@section('title',__('forms.messages'))
 
 
 
 @section('content')
 
 
-    <form action="{{route('removeAllMessages')}}" method="POST"  onsubmit="return confirm('هل أنت متأكد ? ')" class="mb-3">
+    <form action="{{route('removeAllMessages')}}" method="POST"  onsubmit="return confirm({{__('forms.you-sure')}})" class="mb-3">
         @csrf
         @method('DELETE')
-        <button type="submit" class="btn btn-lg btn-danger">{{__('حذف كل الرسائل')}}</button>
+        <button type="submit" class="btn btn-lg btn-danger">{{__('forms.delete-all-message')}}</button>
 
     </form>
 
@@ -21,11 +21,11 @@
             <thead>
 
                 <tr>
-                    <th>الإسم</th>
-                    <th>البريد اللإلكتروني</th>
-                    <th>الموضوع</th>
-                    <th>الرسالة</th>
-                    <th>الإجراءات</th>
+                    <th>{{__('forms.full-name')}}</th>
+                    <th>{{__('forms.email')}}</th>
+                    <th>{{__('forms.subject')}}</th>
+                    <th>{{__('forms.message')}}</th>
+                    <th>{{__('forms.procedures')}}</th>
                 </tr>
 
             </thead>
@@ -42,10 +42,10 @@
                         <td>{{$message->message}}</td>
 
                         <td>
-                            <form action="{{route('messages.destroy',$message->id)}}" method="POST" onsubmit="return confirm('هل أنت متأكد ?')" class="d-inline-block">
+                            <form action="{{route('messages.destroy',$message->id)}}" method="POST" onsubmit="return confirm({{__('forms.you-sure')}})" class="d-inline-block">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger">حذف</button>
+                                <button type="submit" class="btn btn-danger">{{__('forms.delete')}}</button>
                             </form>
                         </td>
 
@@ -60,7 +60,7 @@
     </div>
 @else
     <div class="alert alert-danger py-5 text-center">
-        <h1>لا توجد رسائل</h1>
+        <h1>{{__('forms.empty')}}</h1>
     </div>
 
 @endif

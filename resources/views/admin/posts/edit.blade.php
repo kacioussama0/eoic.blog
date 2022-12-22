@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('title','تعديل مقال')
+@section('title',__('forms.edit-articles'))
 
 
 
@@ -30,10 +30,10 @@
                     <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
 
 
-                        <x-admin.forms.input name="title" title="العنوان" type="text" value="{{$post -> title}}"/>
+                        <x-admin.forms.input name="title" title="{{__('forms.title')}}" type="text" value="{{$post -> title}}"/>
 
                         <div class="form-group">
-                            <label for="category" class="form-label">التصنيفات</label>
+                            <label for="category" class="form-label">{{__('forms.category')}}</label>
                             <select name="category" id="category" class="form-select">
                                 @foreach($categories as $category)
                                     <option value="{{$category->id}}" @if($post -> category -> id == $category ->id) selected @endif>{{$category->name}}</option>
@@ -41,7 +41,7 @@
                             </select>
                         </div>
 
-                        <label for="tags" class="form-label">الوسوم</label>
+                        <label for="tags" class="form-label">{{__('forms.tags')}}</label>
 
                         <div class="form-group">
                             <div class="row">
@@ -66,14 +66,14 @@
 
                         </div>
 
-                        <x-admin.forms.input name="image" title="صورة المقال" type="file" value="{{$post -> image}}"/>
+                        <x-admin.forms.input name="image" title="{{__('forms.picture')}}" type="file" value="{{$post -> image}}"/>
 
                         <img src="{{ asset('storage/' . $post->image) }}" alt="" class="rounded" style="width: 250px">
 
-                        <x-admin.forms.text-area name="content" id="#content" class="content" title="محتوى المقال"  value="{!!$post -> content!!}"/>
+                        <x-admin.forms.text-area name="content" id="#content" class="content" title="{{__('forms.article-content')}}"  value="{!!$post -> content!!}"/>
 
                         <div class="form-check form-switch mb-3">
-                            <label for="is_published">المقال منشور</label>
+                            <label for="is_published">{{__('forms.share')}}</label>
                             <input class="form-check-input" type="checkbox" name="is_published" id="is_published" value="on" @if($post -> is_published) checked @endif>
                         </div>
 
@@ -83,25 +83,25 @@
 
 
                     <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
-                        <x-admin.forms.input name="title_en" title="العنوان" type="text" value="{{$post -> title_en }}"/>
-                        <x-admin.forms.input name="image_en" title="صورة المقال" type="file" value="{{old('image_en')}}"/>
+                        <x-admin.forms.input name="title_en" title="{{__('forms.title-in-en')}}" type="text" value="{{$post -> title_en }}"/>
+                        <x-admin.forms.input name="image_en" title="{{__('forms.picture')}}" type="file" value="{{old('image_en')}}"/>
                         <img src="{{!File::exists(public_path($post->image_en)) ? asset('storage/' . $post->image_en) : asset('storage/' . $post->image) }}" alt="" class="rounded" style="width: 250px">
 
-                        <x-admin.forms.text-area name="content_en" id="content_1" title="محتوى المقال"  value="{!! $post -> content_en !!}"/>
+                        <x-admin.forms.text-area name="content_en" id="content_1" title="{{__('forms.article-content')}}"  value="{!! $post -> content_en !!}"/>
 
                     </div>
                     <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
-                        <x-admin.forms.input name="title_fr" title="العنوان" type="text" value="{{$post -> title_fr }}"/>
-                        <x-admin.forms.input name="image_fr" title="صورة المقال" type="file" value="{{old('image_fr')}}"/>
+                        <x-admin.forms.input name="title_fr" title="{{__('forms.title-in-fr')}}" type="text" value="{{$post -> title_fr }}"/>
+                        <x-admin.forms.input name="image_fr" title="{{__('forms.picture')}}" type="file" value="{{old('image_fr')}}"/>
                         <img src="{{!File::exists(public_path($post->image_fr)) ? asset('storage/' . $post->image_fr) : asset('storage/' . $post->image) }}" alt="" class="rounded" style="width: 250px">
 
-                        <x-admin.forms.text-area name="content_fr" id="content_2" title="محتوى المقال"  value="{!!$post -> content_fr !!}"/>
+                        <x-admin.forms.text-area name="content_fr" id="content_2" title="{{__('forms.share')}}"value="{!!$post -> content_fr !!}"/>
 
 
                     </div>
 
                 </div>
-                <button type="submit" class="btn btn-primary w-100">{{__('تعديل  مقال')}}</button>
+                <button type="submit" class="btn btn-primary w-100">{{__('forms.edit')}}</button>
             </form>
 
         </div>

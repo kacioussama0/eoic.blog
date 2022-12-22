@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'admin-panel' => 'اللوحة',
     'full-name' => 'الإسم الكامل',
     'email' => 'البريد الإلكتروني',
     'subject' => 'الموضوع',
@@ -11,6 +12,7 @@ return [
     'dob' => 'تاريخ الميلاد',
     'gender' => 'الجنس',
     'male' => 'ذكر',
+    'address' => 'العنوان',
     'female' => 'أنثى',
     'cv' => 'السيرة الذاتية',
     'send' => 'إرسال',
@@ -36,7 +38,7 @@ return [
     'edit-information' => 'تعديل المعلومات',
     'edit-picture' => 'تعديل الصورة',
     'back-to-home' => 'الرجوع للموقع',
-    'log-out' => 'تسجيل الخروج',
+    'log-out' => 'خروج',
     'add-members' => 'إضافة عضو',
     'empty' => 'لا يوجد',
     'add-category' => 'إضافة تصنيف',
@@ -89,6 +91,48 @@ return [
     'previous-article' => 'المقال الأقدم',
     'more-of' => 'المزيد من',
     'browse' => 'تصفح',
+    'you-sure' => 'هل أنت متأكد ?',
+    'card-in-en' => 'البطاقة بالإنجليزية',
+    'card-in-ar' => 'البطاقة بالعربية',
+    'card-in-fr' => 'البطاقة بالفرنسية',
+    'share' => 'نشر',
+    'edit-card' => 'تعديل بطاقة',
+    'category-in-en' => 'التصنيف بالإنجليزية',
+    'category-in-ar' => 'التصنيف بالعربية ',
+    'category-in-fr' => 'التصنيف بالفرنسية',
+    'edit-category' => 'Edit Category',
+    'edit-category' => 'تعديل تصنيف',
+    'profession' => 'الصفة',
+    'profession-in-en' => 'الصفة بالإنجليزية',
+    'profession-in-fr' => 'الصفة بالفرنسية',
+    'edit-membres' => 'تعديل عضو',
+    'title-in-ar' => 'العنوان بالعربية',
+    'title-in-fr' => 'العنوان بالفرنسية',
+    'title-in-en' => 'العنوان بالإنجلزية',
+    'picture-in-ar' => 'الصورة بالعربية',
+    'picture-in-fr' => 'الصورة بالفرنسية',
+    'picture-in-en' => 'الصورة بالإنجلزية',
+    'book-in-ar' => 'الكتاب بالعربية',
+    'book-in-fr' => 'الكتاب بالفرنسية',
+    'book-in-en' => 'الكتاب بالإنجلزية',
+    'title' => 'العنوان',
+    'book' => 'الكتاب',
+    'edit-magazine' => 'تعديل المجلة',
+    'add-news' => 'إضافة خبر',
+    'news' => 'الخبر',
+    'add-articles' => 'إضافة مقال',
+    'article-content-fr' => 'صورة المقال الفرنسي',
+    'article-content-en' => 'محتوى المقال بالإنجليزي',
+    'article-content-ar' => 'محتوى المقال بالعربية',
+    'article-content' => 'محتوى المقال',
+    'deleted-articles' => 'المقالات المحذوفة',
+    'destroy' => 'الحذف النهائي',
+    'restore' => 'استرجاع',
+    'articles-showcase' => 'إظهار المقال'
+
+
+
+
 
 
 

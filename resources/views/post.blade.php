@@ -88,14 +88,14 @@
 
         @endif
 
-                    <div class="d-flex Srow-reverse justify-content-between align-items-center">
+                    <div class="d-flex flex-row-reverse justify-content-between align-items-center">
                         @if($next)
-                            <a href="{{route('post.slug',$next->slug())}}" class="btn text-bg-primary  my-5"> {{__('forms.next-article')}}</a>
+                            <a href="{{route('post.slug',$next->slug())}}" class="btn text-bg-primary btn-lg my-5"> {{__('forms.next-article')}}</a>
                         @endif
 
 
                         @if($prev)
-                            <a href="{{route('post.slug',$prev->slug())}}" class="btn text-bg-secondary  my-5">{{__('forms.previous-article')}}</a>
+                            <a href="{{route('post.slug',$prev->slug())}}" class="btn text-bg-secondary btn-lg   my-5">{{__('forms.previous-article')}}</a>
                         @endif
 
                     </div>

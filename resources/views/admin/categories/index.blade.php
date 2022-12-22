@@ -73,7 +73,7 @@
                                                     <form action="{{route('categories.destroy',$category)}}" method = "POST" onsubmit="return confirm('هل أنت متأكد')">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" class="btn">{{__('forms.delete')}}</button>
+                                                        <button type="submit" class="btn border-0">{{__('forms.delete')}}</button>
                                                     </form>
                                                 </li>
 
@@ -143,7 +143,7 @@
                                                         <form action="{{route('categories.destroy',$category)}}" method = "POST" onsubmit="return confirm('هل أنت متأكد')">
                                                             @csrf
                                                             @method('DELETE')
-                                                            <button type="submit" class="btn">{{__('forms.delete')}}</button>
+                                                            <button type="submit" class="btn border-0">{{__('forms.delete')}}</button>
                                                         </form>
                                                     </li>
 
@@ -210,7 +210,7 @@
                                                         <form action="{{route('categories.destroy',$category)}}" method = "POST" onsubmit="return confirm('هل أنت متأكد')">
                                                             @csrf
                                                             @method('DELETE')
-                                                            <button type="submit" class="btn">{{__('forms.delete')}}</button>
+                                                            <button type="submit" class="btn border-0">{{__('forms.delete')}}</button>
                                                         </form>
                                                     </li>
 

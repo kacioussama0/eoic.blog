@@ -1,7 +1,24 @@
 @php
 
-$project = \App\Models\Project::latest()->first();
-$Posts = \App\Models\Category::where('name','مقالات')->orWhere('name_en','Posts')->orWhere('name_fr','Articles')->first()->posts->take(5);
+    if(config('app.locale') == 'ar') {
+              $Articles = \App\Models\Category::where('name','مقالات')->first()->posts->where('title','<>',null)->take(5);
+              $Dialogues = \App\Models\Category::where('name','حوارات')->first()->posts->where('title','<>',null)->take(5);
+
+          }
+      elseif(config('app.locale') == 'fr') {
+            $Articles = \App\Models\Category::where('name_fr','Articles')->first()->posts->where('title_fr','<>',null)->take(5);
+            $Dialogues = \App\Models\Category::where('name_fr','Dialogues')->first()->posts->where('title_fr','<>',null)->take(5);
+      }else {
+            $Articles = \App\Models\Category::where('name_en','Articles')->first()->posts->where('title_en','<>',null)->take(5);
+            $Dialogues = \App\Models\Category::where('name_en','Dialogues')->first()->posts->where('title_en','<>',null)->take(5);
+      }
+
+
+
+
+  $project = \App\Models\Project::latest()->first();
+
+
 
 @endphp
 <div class="col-lg-4 d-lg-block d-none">
@@ -33,7 +50,7 @@ $Posts = \App\Models\Category::where('name','مقالات')->orWhere('name_en','
 
     @if(request()->is('/') )
 
-        @if(count($Posts))
+        @if(count($Articles))
         <div class="card rounded-4  overflow-hidden border-primary mb-3">
             <div class="card-header p-0 bg-transparent border-primary">
                 <h3 class=" my-0 p-3">
@@ -42,7 +59,7 @@ $Posts = \App\Models\Category::where('name','مقالات')->orWhere('name_en','
             </div>
             <div class="card-body">
                 <div class="row">
-                    @foreach($Posts as $post)
+                    @foreach($Articles as $post)
 
                         <div class="post post-row border-bottom pb-4 border-primary border-opacity-25">
                             <div>
@@ -66,7 +83,7 @@ $Posts = \App\Models\Category::where('name','مقالات')->orWhere('name_en','
             </div>
         </div>
         @endif
-    @if(count($Posts))
+    @if(count($Dialogues))
         <div class="card rounded-4  overflow-hidden border-primary mb-3">
             <div class="card-header p-0 bg-transparent border-primary">
                 <h3 class=" my-0 p-3">
@@ -75,7 +92,7 @@ $Posts = \App\Models\Category::where('name','مقالات')->orWhere('name_en','
             </div>
             <div class="card-body">
                 <div class="row">
-                    @foreach($Posts as $post)
+                    @foreach($Dialogues as $post)
 
                         <div class="post post-row border-bottom pb-4 border-primary border-opacity-25">
                             <div>

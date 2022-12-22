@@ -141,7 +141,7 @@
                     class="sidebar-item {{request()->is('admin/settings*') ? "active" : '' }}">
                     <a href="   {{route('settings.index')}}" class='sidebar-link '>
                         <i class="bi bi-gear"></i>
-                        <span>{{__('forms.settings')}}</span>
+                        <span>{{__('forms.setting')}}</span>
                     </a>
                 </li>
             @endif

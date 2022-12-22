@@ -1,12 +1,12 @@
 @extends('admin.layouts.app')
-@section('title','أعضاء المكتب التنفيذي')
+@section('title',__('forms.office-members'))
 
 
 
 @section('content')
 
     <span class="d-flex justify-content-between">
-            <a href="{{route('organization-members.create')}}" class="btn btn-lg btn-primary mb-4">إضافة عضو</a>
+            <a href="{{route('organization-members.create')}}" class="btn btn-lg btn-primary mb-4">{{__('forms.add-members')}}</a>
     </span>
 
     @include('admin.layouts.success')
@@ -19,13 +19,13 @@
             <thead>
 
                 <tr>
-                    <th>الإسم بالعربية</th>
-                    <th>الإسم اللاتيني</th>
-                    <th>العمر</th>
-                    <th>الصورة</th>
-                    <th>الصفة</th>
-                    <th>تم إنشاءه</th>
-                    <th>الإجراءات</th>
+                    <th>{{__('forms.full-name')}}</th>
+                    <th>{{__('forms.latin-name')}}</th>
+                    <th>{{__('forms.age')}}</th>
+                    <th>{{__('forms.picture')}}</th>
+                    <th>{{__('forms.profession')}}</th>
+                    <th>{{__('forms.created-at')}}</th>
+                    <th>{{__('forms.procedures')}}</th>
                 </tr>
 
             </thead>
@@ -48,15 +48,15 @@
 
                             <div class="btn-group">
                                 <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                    الإجراءات
+                                    {{__('forms.procedures')}}
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li> <a href="{{route('organization-members.edit',$user)}}"  class="dropdown-item">تعديل</a></li>
+                                    <li> <a href="{{route('organization-members.edit',$user)}}"  class="dropdown-item">{{__('forms.edit')}}</a></li>
                                     <li>
-                                        <form action="{{route('organization-members.destroy',$user)}}" method="POST" onsubmit="return confirm('هل أنت متأكد ?')" class="d-inline-block w-100">
+                                        <form action="{{route('organization-members.destroy',$user)}}" method="POST" onsubmit="return confirm({{__('forms.you-sure')}})" class="d-inline-block w-100">
                                             @csrf
                                             @method('DELETE')
-                                            <button class="dropdown-item">حذف</button>
+                                            <button class="dropdown-item">{{__('forms.delete')}}</button>
 
                                         </form>
                                     </li>

@@ -65,7 +65,7 @@
                         </div>
 
                     @else
-                        <h2 class="alert alert-warning">{{__('لا يوجد مقالات')}}</h2>
+                        <h2 class="alert alert-warning">{{__('forms.empty')}}</h2>
 
                     @endif
                     </div>

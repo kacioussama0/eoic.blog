@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('title','إضافة مجلة')
+@section('title',__('forms.add-magazines'))
 
 
 

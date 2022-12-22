@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('title','تعديل المجلة')
+@section('title',__('forms.edit-magazine'))
 
 
 
@@ -30,17 +30,17 @@
 
                     <div class="tab-pane fade  show active" id="ar-tab" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
 
-                        <x-admin.forms.input name="title" title="العنوان" type="text" value="{{$magazine->title}}"/>
-                        <x-admin.forms.input name="thumbnail" title="الصورة" type="file" value="{{old('thumbnail')}}"/>
+                        <x-admin.forms.input name="title" title="{{__('forms.title')}}" type="text" value="{{$magazine->title}}"/>
+                        <x-admin.forms.input name="thumbnail" title="{{__('forms.picture')}}" type="file" value="{{old('thumbnail')}}"/>
                         <img src="{{asset('storage/' . $magazine->thumbnail)}}" alt="" width="200px" class="rounded mb-3">
 
-                        <x-admin.forms.input name="book" title="الكتاب" type="file" value="{{old('book')}}"/>
+                        <x-admin.forms.input name="book" title="{{__('forms.book')}}" type="file" value="{{old('book')}}"/>
 
                         <div class="_df_thumb"  source="{{asset('storage/' . $magazine -> book)}}" thumb="{{asset('storage/' . $magazine -> thumbnail)}}">
                             <div class="_df_book-cover _df_thumb-not-found"><span class="_df_book-title">{{$magazine->title}}</span></div>
                         </div>
                         <div class="form-check form-switch mb-3">
-                            <label for="is_published">المجلة منشورة</label>
+                            <label for="is_published">{{__('forms.share')}}</label>
                             <input class="form-check-input" type="checkbox" name="is_published" id="is_published" value="1" @if($magazine->is_published) checked @endif>
                         </div>
 
@@ -70,7 +70,7 @@
                     </div>
 
                 </div>
-                <button class="btn btn-primary w-100">تعديل مجلة</button>
+                <button class="btn btn-primary w-100">{{__('forms.edit-magazine')}}</button>
 
         </div>
 

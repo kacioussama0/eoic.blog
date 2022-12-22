@@ -1,21 +1,14 @@
 @extends('blog-layout.app')
 @section('title',__('home.home'))
-
 @section('style')
     <link rel="stylesheet" href="{{asset('assets/css/breaking-news-ticker.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/owl.carousel.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/post.carousel.css')}}">
-
     <link rel="stylesheet" href="{{asset('assets/photoswipe/photoswipe.css')}}" />
     <link rel="stylesheet" href="https://cdn.plyr.io/3.7.3/plyr.css" />
-
 @endsection
 
-
 @section('content')
-
-
-
     @if(count($news_titles))
 
     <div class="bn-breaking-news position-fixed bottom-0 end-0 w-100" id="newsTicker2" style="z-index: 999">
@@ -38,6 +31,7 @@
 
     </div>
 @endif
+
 @if(count($categories))
 
     <div class="section">
@@ -105,14 +99,14 @@
 
         </div>
 
-    <div class="section ">
+    <div class="section">
         <div class="container-lg">
             <div class="row">
                 <div class="col-lg-8">
 
                     <h3 class="category-title mb-3 mx-auto"><img src="{{asset('assets/imgs/zellig.svg')}}" style="width: 30px" alt="" class="me-2">{{__('home.last-posts')}} </h3>
 
-                    <div class="row g-3 mb-3 ">
+                    <div class="row g-3 mb-3">
 
 
                             @foreach($last_posts as $post)
@@ -124,7 +118,7 @@
                                     </div>
                                 @endif
                             @endforeach
-                        </div>
+                    </div>
 
 
                 <!-- Start Magazine -->
@@ -138,7 +132,7 @@
                         </div>
                         <div class="card-body">
                             <div class="row">
-                                @foreach($magazines as $magazine)
+                                @foreach($magazines->take(12) as $magazine)
 
                                     @if($magazine->title())
                                           <div class="col-md-3 col-lg-4 col-xl-3 col-sm-6 col wow flipInY  text-center" style=".df-container-lg {background: blue};">
@@ -190,41 +184,51 @@
         <!-- End Video -->
 
 
-            @foreach($categories->take(1) as $key=> $category)
+            @foreach($categories as $category)
 
-            @if( count($category -> posts) && count($category->posts->where('title_en','<>',null)))
+                @php
 
-            <div @if($key % 2 == 1) style="background-color: #e9f2f61f" @endif>
+                    if(config('app.locale') == 'ar') {
+                            $category = $category->posts()->where('title' ,'<>', null)->get();
 
-                <section class="ftco-section">
+                        }
+                        elseif(config('app.locale') == 'fr') {
+                            $category = $category->posts()->where('title_fr' ,'<>', null)->get();
+                        }else {
+                            $category = $category->posts()->where('title_en', '<>' , 'null')->get();
+                        }
+
+
+                @endphp
+
+            @if( count($category))
+
+
+
+            <div  class="border-bottom border-secondary border-opacity-10">
+
+
 
                     <div class="container-lg">
-                        <h2 class="heading-section mb-5 pb-md-4">{{$category->name()}}</h2>
-                        <div class="featured-carousel owl-carousel">
-
-                                @foreach($category->posts as $post)
-
-
-                                            <div class="item">
-                                                <div class="work">
-                                                    <div class="img d-flex align-items-center justify-content-center rounded" style="background-image: url('{{asset('storage/' . $post -> image())}}');">
-                                                        <a href="#" class="icon d-flex align-items-center justify-content-center">
-                                                            <span class="ion-ios-search"></span>
-                                                        </a>
-                                                    </div>
-                                                    <div class="text pt-3 w-100 text-center">
-                                                        <h3><a href="#">Work 01</a></h3>
-                                                        <span>Web Design</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                        <h2 class="heading-section my-5" style="font-family: 'Changa' !important;">
+                            <span style="width: 10px; height: 10px" class="rounded-circle bg-secondary d-inline-block"></span>
+                                    {{$category[0]->category->name()}}
+                        </h2>
 
 
-                               @endforeach
-                        </div>
 
-                    </section>
+
+                    <div class="row">
+                        @foreach($category  ->take(3) as $post)
+
+                            <div class="col-md-6 col-lg-4 wow fadeIn">
+                                <x-article :post="$post"/>
+                            </div>
+
+                       @endforeach
+                    </div>
+
+                    </div>
 
             </div>
 
@@ -234,7 +238,7 @@
 
 
 
-
+        @if(count($cards))
             <article class="my-3">
                 <div class="container-lg">
                     <div class="row">
@@ -262,10 +266,11 @@
                             </div>
                         </div>
                     </div>
+                </div>
             </article>
+        @endif
 
 
-        </div>
     </div>
 
 
@@ -367,6 +372,8 @@
                 carousel();
 
             })(jQuery);
+
+
         </script>
     @endsection
 

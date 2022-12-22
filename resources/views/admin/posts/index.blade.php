@@ -9,7 +9,7 @@
     <span class="d-flex justify-content-between flex-sm-row flex-column">
 
             <a href="{{route('posts.create')}}" class="btn btn-lg btn-primary mb-4">{{__('forms.add-articles')}}</a>
-            <a href="{{url('admin/junk')}}" class="btn btn-lg btn-danger mb-4">المقالات المحذوفة</a>
+            <a href="{{url('admin/junk')}}" class="btn btn-lg btn-danger mb-4">{{__('forms.deleted-articles')}}</a>
 
     </span>
 
@@ -56,12 +56,12 @@
                                         </td>
 
                                         <td>
-                                            {{$post->title_en ? 'نعم' : 'لا'}}
+                                            {{$post->title_en ? __('forms.oui') : __('forms.no')}}
 
                                         </td>
 
                                         <td>
-                                            {{$post->title_fr ? 'نعم' : 'لا'}}
+                                            {{$post->title_fr ? __('forms.oui') : __('forms.no')}}
 
 
                                         </td>
@@ -74,7 +74,7 @@
 
                                         <td>{{$post->created_at}}</td>
                                         <td>{{$post->updated_at}}</td>
-                                        <td>{{($post->is_published == 'on') ? 'نعم' : 'لا'}}</td>
+                                        <td>{{($post->is_published == 'on') ? __('forms.oui') : __('forms.no')}}</td>
                                         <td>
 
 
@@ -90,7 +90,7 @@
                                                     <li> <a href="{{route('posts.edit',$post)}}"  class="dropdown-item">{{__('forms.edit')}}</a></li>
 
                                                     <li>
-                                                        <form action="{{route('posts.destroy',$post)}}" method="POST" onsubmit="return confirm('هل أنت متأكد ?')" class="d-inline-block w-100">
+                                                        <form action="{{route('posts.destroy',$post)}}" method="POST" onsubmit="return confirm({{__('forms.you-sure')}})" class="d-inline-block w-100">
                                                             @csrf
                                                             @method('DELETE')
                                                             <button class="dropdown-item">{{__('forms.delete')}}</button>

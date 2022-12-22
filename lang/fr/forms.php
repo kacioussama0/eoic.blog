@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'admin-panel' => 'Panel',
     'full-name' => 'Nom et prénom',
     'email' => 'E-mail',
     'subject' => 'Sujet',
@@ -8,6 +9,7 @@ return [
     'message' => 'Message',
     'password' => 'mot de passe',
     'phone' => 'Numéro de Téléphone',
+    'address' => 'Addresse',
     'dob' => 'Date de naissance',
     'gender' => 'Sexe',
     'male' => 'Mâle',
@@ -67,8 +69,8 @@ return [
     'latin-name' => 'Nom Latin',
     'name-in-ar' => ' Nom En AR',
     'office-members' => 'Membres Du Bureau ',
-    'card' => 'Carte',
-    'add-card' => 'Ajouter Card',
+    'cards' => 'Les Cards',
+    'add-card' => 'Ajouter Une Card',
     'setting' => 'Paramètres',
     'site-name' => 'Nom De Site',
     'slogan' => 'Slogan',
@@ -89,6 +91,46 @@ return [
     'previous-article' => 'Article précédent',
     'more-of' => 'Plus de',
     'browse' => 'voir',
+    'you-sure' => 'es-tu sûr',
+    'card-in-en' => 'La Card en EN',
+    'card-in-ar' => 'La Card en AR',
+    'card-in-fr' => 'La Card en FR',
+    'share' => 'Partage',
+    'edit-card' => 'Modifier La card',
+     'category-in-en' => 'Categorie en EN',
+    'category-in-ar' => 'Categorie en AR',
+    'category-in-fr' => 'Categorie en FR',
+    'edit-category' => 'Modifier Categorie',
+    'profession' => 'Profession',
+    'profession-in-en' => 'Profession en EN',
+    'profession-in-fr' => 'Profession en FR',
+    'edit-membres' => 'Modifier Le Members',
+    'title-in-ar' => 'Titre en AR',
+    'title-in-fr' => 'Titre en FR',
+    'title-in-en' => 'Titre en EN',
+    'picture-in-ar' => 'La photo en AR',
+    'picture-in-fr' => 'La photo en FR',
+    'picture-in-en' => 'La photo en EN',
+    'book-in-ar' => 'Livre en AR',
+    'book-in-fr' => 'Livre en FR',
+    'book-in-en' => 'Livre en EN',
+    'title' => 'Titre',
+    'book' => 'livre',
+    'edit-magazine' => 'Modifies Magazine',
+    'add-news' => 'Ajouter des news',
+    'news' => 'News',
+    'add-articles' => 'Ajouter un Article',
+    'article-content-en' => 'Article Contenu en EN',
+    'article-content-fr' => 'Article Contenu en FR',
+    'article-content-ar' => 'Article Contenu en AR',
+    'article-content' => 'Contenu de l article',
+    'deleted-articles' => 'Article Supprimer',
+    'destroy' => 'détruire',
+    'restore' => 'restaurer',
+    'articles-showcase' => 'Article Vitrine'
+
+
+
 
 
 

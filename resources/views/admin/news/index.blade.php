@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('title','أخر الأخبار')
+@section('title',__('forms.latest-news'))
 
 
 
@@ -15,7 +15,7 @@
 
 
 
-    <a href="{{route('news.create')}}" class="btn btn-lg btn-primary mb-4">إضافة خبر جديد</a>
+    <a href="{{route('news.create')}}" class="btn btn-lg btn-primary mb-4">{{__('forms.add-news')}}</a>
     @if(count($news))
     <div class="card">
         <div>
@@ -44,11 +44,11 @@
 
                             <thead>
                             <tr>
-                                <th>الخبر</th>
-                                <th>منشور</th>
-                                <th>تم إنشاءه</th>
-                                <th>تم تعديله</th>
-                                <th>{{__('الإجراءات')}}</th>
+                                <th>{{__('forms.news')}}</th>
+                                <th>{{__('forms.published')}}</th>
+                                <th>{{__('forms.created-at')}}</th>
+                                <th>{{__('forms.edited-at')}}</th>
+                                <th>{{__('forms.procedures')}}</th>
                             </tr>
                             </thead>
 
@@ -59,7 +59,7 @@
                                 <tr>
 
                                     <td>{{$new->title}}</td>
-                                    <td>{{$new -> is_published ? 'نعم' : 'لا'}}</td>
+                                    <td>{{$new -> is_published ? __('forms.yes') :__('forms.no')}}</td>
                                     <td>{{$new->created_at}}</td>
                                     <td>{{$new->updated_at}}</td>
 
@@ -67,15 +67,15 @@
                                     <td>
                                         <div class="btn-group position-relative z-20">
                                             <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                                {{__('الإجراءات')}}
+                                                {{__('forms.procedures')}}
                                             </button>
                                             <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item" href="{{route('news.edit',$new)}}">{{__('تعديل')}}</a></li>
+                                                <li><a class="dropdown-item" href="{{route('news.edit',$new)}}">{{__('forms.edit')}}</a></li>
                                                 <li>
-                                                    <form action="{{route('news.destroy',$new)}}" method = "POST" onsubmit="return confirm('هل أنت متأكد')">
+                                                    <form action="{{route('news.destroy',$new)}}" method = "POST" onsubmit="return confirm({{__('forms.you-sure')}})">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" class="btn">{{__('حذف')}}</button>
+                                                        <button type="submit" class="btn border-0">{{__('forms.delete')}}</button>
                                                     </form>
                                                 </li>
 
@@ -108,11 +108,11 @@
 
                             <thead>
                             <tr>
-                                <th>الخبر</th>
-                                <th>منشور</th>
-                                <th>تم إنشاءه</th>
-                                <th>تم تعديله</th>
-                                <th>{{__('الإجراءات')}}</th>
+                                <th>{{__('forms.news')}}</th>
+                                <th>{{__('forms.published')}}</th>
+                                <th>{{__('forms.created-at')}}</th>
+                                <th>{{__('forms.edited-at')}}</th>
+                                <th>{{__('forms.procedures')}}</th>
                             </tr>
                             </thead>
 
@@ -123,7 +123,7 @@
                                 <tr>
 
                                     <td>{{$new->title_en}}</td>
-                                    <td>{{$new -> is_published ? 'نعم' : 'لا'}}</td>
+                                    <td>{{$new -> is_published ? __('forms.yes') :__('forms.no')}}</td>
                                     <td>{{$new->created_at}}</td>
                                     <td>{{$new->updated_at}}</td>
 
@@ -131,15 +131,15 @@
                                     <td>
                                         <div class="btn-group position-relative z-20">
                                             <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                                {{__('الإجراءات')}}
+                                                {{__('forms.procedures')}}
                                             </button>
                                             <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item" href="{{route('news.edit',$new)}}">{{__('تعديل')}}</a></li>
+                                                <li><a class="dropdown-item" href="{{route('news.edit',$new)}}">{{__('forms.edit')}}</a></li>
                                                 <li>
-                                                    <form action="{{route('news.destroy',$new)}}" method = "POST" onsubmit="return confirm('هل أنت متأكد')">
+                                                    <form action="{{route('news.destroy',$new)}}" method = "POST" onsubmit="return confirm({{__('forms.you-sure')}})">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" class="btn">{{__('حذف')}}</button>
+                                                        <button type="submit" class="btn border-0">{{__('forms.delete')}}</button>
                                                     </form>
                                                 </li>
 
@@ -172,11 +172,11 @@
 
                             <thead>
                             <tr>
-                                <th>الخبر</th>
-                                <th>منشور</th>
-                                <th>تم إنشاءه</th>
-                                <th>تم تعديله</th>
-                                <th>{{__('الإجراءات')}}</th>
+                                <th>{{__('forms.news')}}</th>
+                                <th>{{__('forms.published')}}</th>
+                                <th>{{__('forms.created-at')}}</th>
+                                <th>{{__('forms.edited-at')}}</th>
+                                <th>{{__('forms.procedures')}}</th>
                             </tr>
                             </thead>
 
@@ -187,21 +187,21 @@
                                 <tr>
 
                                     <td>{{$new->title_fr}}</td>
-                                    <td>{{$new -> is_published ? 'نعم' : 'لا'}}</td>
+                                    <td>{{$new -> is_published ? __('forms.yes') :__('forms.no')}}</td>
                                     <td>{{$new->created_at}}</td>
                                     <td>{{$new->updated_at}}</td>
                                     <td>
                                         <div class="btn-group position-relative z-20">
                                             <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                                {{__('الإجراءات')}}
+                                                {{__('forms.procedures')}}
                                             </button>
                                             <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item" href="#">{{__('تعديل')}}</a></li>
+                                                <li><a class="dropdown-item" href="#">{{__('forms.edit')}}</a></li>
                                                 <li>
-                                                    <form action="{{route('news.destroy',$new)}}" method = "POST" onsubmit="return confirm('هل أنت متأكد')">
+                                                    <form action="{{route('news.destroy',$new)}}" method = "POST" onsubmit="return confirm({{__('forms.you-sure')}})">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" class="btn">{{__('حذف')}}</button>
+                                                        <button type="submit" class="btn border-0">{{__('forms.delete')}}</button>
                                                     </form>
                                                 </li>
 
@@ -232,6 +232,6 @@
 
     </div>
     @else
-        <div class="alert alert-danger display-6 text-center">لا توجد أخبار</div>
+        <div class="alert alert-danger display-6 text-center">{{__('forms.empty')}}</div>
     @endif
 @endsection

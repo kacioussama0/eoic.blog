@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('title','المقالات المحذوفة')
+@section('title',__('forms.deleted-articles'))
 
 
 
@@ -16,13 +16,13 @@
             <thead>
 
                 <tr>
-                    <th>العنوان</th>
-                    <th>التصنيف</th>
-                    <th>الصورة</th>
-                    <th>تم إنشاءه</th>
-                    <th>تم تعديله</th>
-                    <th>منشور</th>
-                    <th>الإجراءات</th>
+                    <th>{{__('forms.title')}}</th>
+                    <th>{{__('forms.category')}}</th>
+                    <th>{{__('forms.picture')}}</th>
+                    <th>{{__('forms.created-at')}}</th>
+                    <th>{{__('forms.edited-at')}}</th>
+                    <th>{{__('forms.published')}}</th>
+                    <th>{{__('forms,procedures')}}</th>
                 </tr>
 
             </thead>
@@ -40,7 +40,7 @@
                         </td>
                         <td>{{$post->created_at}}</td>
                         <td>{{$post->updated_at}}</td>
-                        <td>{{($post->is_published == 'on') ? 'نعم' : 'لا'}}</td>
+                        <td>{{($post->is_published == 'on') ? __('forms.yes') : __('forms.no')}}</td>
                         <td>
 
 
@@ -50,11 +50,11 @@
                             <!-- Example single danger button -->
                             <div class="btn-group">
                                 <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                    الإجراءات
+                                    {{__('forms,procedures')}}
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li> <a href="{{route('posts.restore',$post->id)}}"  class="dropdown-item">استرجاع</a></li>
-                                    <li> <a href="{{route('posts.delete',$post->id)}}"  class="dropdown-item">الحذف النهائي</a></li>
+                                    <li> <a href="{{route('posts.restore',$post->id)}}"  class="dropdown-item">{{__('forms.restore')}}</a></li>
+                                    <li> <a href="{{route('posts.delete',$post->id)}}"  class="dropdown-item">{{__('forms.destroy')}}</a></li>
 
                                 </ul>
                             </div>
@@ -76,7 +76,7 @@
 
     @else
         <div class="alert alert-danger py-5 text-center">
-            <h1>لا توجد مقالات محذوفة</h1>
+            <h1>{{__('forms.empty')}}</h1>
         </div>
 
     </div>

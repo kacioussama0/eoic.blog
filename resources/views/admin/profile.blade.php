@@ -15,7 +15,7 @@
             <div class="card">
                 <div class="card-body">
 
-                    <form action="{{route('updateProfile')}}" method="POST" onsubmit="return confirm('هل أنت متأكد ?')">
+                    <form action="{{route('updateProfile')}}" method="POST" onsubmit="return confirm('{{__('forms.you-sure')}}')">
                         @csrf
                         <x-admin.forms.input name="name" title="{{__('forms.full-name')}}" type="text" value="{{$user -> name}}"/>
                         <x-admin.forms.input name="email" title="{{__('forms.email')}}" type="email" value="{{$user -> email}}"/>
@@ -32,7 +32,7 @@
 
                     <img src="{{File::exists(public_path('storage/' . $user -> avatar)) ? asset('storage/' . $user -> avatar) : asset('assets/imgs/logo.svg') }}" alt="" class="me-3 rounded-circle" style="object-fit: cover ; height: 150px ; width: 150px">
 
-                    <form action="{{route('updateImage')}}" method="POST" enctype="multipart/form-data" onsubmit="return confirm('هل أنت متأكد ?')">
+                    <form action="{{route('updateImage')}}" method="POST" enctype="multipart/form-data" onsubmit="return confirm('{{__('forms.you-sure')}}')">
                         @csrf
                         @method('PATCH')
                         <x-admin.forms.input name="image" title="{{__('forms.picture')}}" type="file" value="{{old('image')}}"/>
@@ -50,7 +50,7 @@
             <div class="card">
                 <div class="card-body">
 
-                    <form action="{{route('updatePassword')}}" method="POST" onsubmit="return confirm('هل أنت متأكد ?')">
+                    <form action="{{route('updatePassword')}}" method="POST" onsubmit="return confirm('{{__('forms.you-sure')}}')">
 
                         @csrf
 

@@ -25,12 +25,20 @@ class BlogController extends Controller
 
         if(config('app.locale') == 'en') {
             $categories = Category::where('name_en' ,'<>', null)->latest();
+            $cards = Card::where('is_published','1')->where('image_en','<>' , '')->latest()->get()->take(8);
+            $magazines = Magazine::where('is_published','1')->where('book_en','<>' , '')->latest()->get();
 
         }
         elseif(config('app.locale') == 'fr') {
             $categories = Category::where('name_fr' ,'<>', null)->latest();
+            $cards = Card::where('is_published','1')->where('image_fr','<>' , '')->latest()->get()->take(8);
+            $magazines = Magazine::where('is_published','1')->where('book_fr','<>' , '')->latest()->get();
+
         }else {
             $categories = Category::where('name', '<>' , 'null')->latest();
+            $cards = Card::where('is_published','1')->where('image','<>' , '')->latest()->get()->take(8);
+            $magazines = Magazine::where('is_published','1')->where('book','<>' , '')->latest()->get();
+
         }
 
 
@@ -39,10 +47,10 @@ class BlogController extends Controller
         return view('home')->with('slider_posts',Post::where('is_published','on')->latest()->take(10)->get())
             ->with('last_posts',Post::where('is_published','on')->latest()->take(4)->get())
             ->with('categories',Category::get()->take(12))
-            ->with('magazines',Magazine::where('is_published','1')->latest()->get())
+            ->with('magazines',$magazines)
             ->with('videos',Video::where('is_published','1')->latest()->get())
             ->with('news_titles',News::where('is_published','1')->latest()->get()->take(10))
-            ->with('cards',Card::where('is_published','1')->latest()->get()->take(8))
+            ->with('cards',$cards)
             ->with('settings',Setting::first())
             ->with('tags',Tag::get()->take(11));
     }
@@ -101,9 +109,16 @@ class BlogController extends Controller
             return  redirect() -> to('/');
         }
 
-        $posts = Post::where('category_id',$category->id)->latest()-> paginate(5);
 
+        if(config('app.locale') == 'en') {
+            $posts = Post::where('category_id',$category->id)->where('title_en','<>',null)->latest()-> paginate(5);
 
+        }
+        elseif(config('app.locale') == 'fr') {
+            $posts = Post::where('category_id',$category->id)->where('title_fr','<>',null)->latest()-> paginate(5);
+        }else {
+            $posts = Post::where('category_id',$category->id)->where('title','<>',null)->latest()-> paginate(5);
+        }
 
 
         return view('category') ->with('settings',Setting::first())

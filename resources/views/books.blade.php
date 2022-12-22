@@ -65,3 +65,10 @@
 
 
 @endsection
+
+@section('script')
+
+    <script src="{{asset('assets/dflip/assets/js/dflip.min.js')}}"></script>
+    <script src="{{asset('assets/dflip/assets/js/metaboxes.min.js')}}"></script>
+
+@endsection

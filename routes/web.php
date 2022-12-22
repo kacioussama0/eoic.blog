@@ -28,7 +28,7 @@ Route::get('books',[\App\Http\Controllers\MagazineController::class,'books']);
 Route::get('cards',[\App\Http\Controllers\CardController::class,'cards']);
 Route::get('videos',[\App\Http\Controllers\VideoController::class,'videos']);
 Route::get('join-us',[\App\Http\Controllers\JoinController::class,'create'])->name('join-us');
-Route::get('posts/{slug}',[\App\Http\Controllers\BlogController::class,'post'])->name('post.slug');
+Route::get('posts/{slug?}',[\App\Http\Controllers\BlogController::class,'post'])->name('post.slug');
 Route::get('category/{title}',[\App\Http\Controllers\BlogController::class,'category'])->name('category.show');
 Route::get('tag/{id}',[\App\Http\Controllers\BlogController::class,'tag'])->name('tag.show');
 Route::get('search',[\App\Http\Controllers\BlogController::class,'search'])->name('search');

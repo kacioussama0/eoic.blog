@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('title','المجلات')
+@section('title',__('forms.magazines'))
 
 
 
@@ -15,7 +15,7 @@
 
 
 
-    <a href="{{route('magazines.create')}}" class="btn btn-lg btn-primary mb-4">إضافة مجلة جديدة</a>
+    <a href="{{route('magazines.create')}}" class="btn btn-lg btn-primary mb-4">{{__('forms.add-magazines')}}</a>
 
 
 
@@ -43,12 +43,12 @@
 
                         <table class="table table-bordered">
                             <tr>
-                                <th>العنوان</th>
-                                <th>الصورة</th>
-                                <th>منشور</th>
-                                <th>تم إنشاءه</th>
-                                <th>تم تعديله</th>
-                                <th>الإجراءات</th>
+                                <th>{{__('forms.title')}}</th>
+                                <th>{{__('forms.picture')}}</th>
+                                <th>{{__('forms.published')}}</th>
+                                <th>{{__('forms.created-at')}}</th>
+                                <th>{{__('forms.edited-at')}}</th>
+                                <th>{{__('forms.procedures')}}</th>
                             </tr>
 
                             <tbody>
@@ -60,21 +60,21 @@
                                     <td>
                                         <img src="{{asset('storage/' . $magazine->thumbnail)}}" alt="" style="width: 150px">
                                     </td>
-                                    <td>{{$magazine->is_published ? 'نعم' : 'لا'}}</td>
+                                    <td>{{$magazine->is_published ? __('forms.yes') : __('forms.no')}}</td>
                                     <td>{{$magazine->created_at}}</td>
                                     <td>{{$magazine->updated_at}}</td>
                                     <td>
                                         <div class="btn-group position-relative z-20">
                                             <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                                {{__('الإجراءات')}}
+                                                {{__('forms.procedures')}}
                                             </button>
                                             <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item" href="{{route('magazines.edit',$magazine)}}">{{__('تعديل')}}</a></li>
+                                                <li><a class="dropdown-item" href="{{route('magazines.edit',$magazine)}}">{{__('forms.edit')}}</a></li>
                                                 <li>
-                                                    <form action="{{route('magazines.destroy',$magazine)}}" method = "POST" onsubmit="return confirm('هل أنت متأكد')">
+                                                    <form action="{{route('magazines.destroy',$magazine)}}" method = "POST" onsubmit="return confirm({{__('forms.you-sure')}})">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" class="btn">{{__('حذف')}}</button>
+                                                        <button type="submit" class="btn border-0">{{__('forms.delete')}}</button>
                                                     </form>
                                                 </li>
 
@@ -96,12 +96,12 @@
 
                         <table class="table table-bordered">
                             <tr>
-                                <th>العنوان</th>
-                                <th>الصورة</th>
-                                <th>منشور</th>
-                                <th>تم إنشاءه</th>
-                                <th>تم تعديله</th>
-                                <th>الإجراءات</th>
+                                <th>{{__('forms.title')}}</th>
+                                <th>{{__('forms.picture')}}</th>
+                                <th>{{__('forms.published')}}</th>
+                                <th>{{__('forms.created-at')}}</th>
+                                <th>{{__('forms.edited-at')}}</th>
+                                <th>{{__('forms.procedures')}}</th>
                             </tr>
 
                             <tbody>
@@ -115,21 +115,21 @@
                                        <td>
                                            <img src="{{asset('storage/' . $magazine->thumbnail_en)}}" alt="" style="width: 150px">
                                        </td>
-                                       <td>{{$magazine->is_published ? 'نعم' : 'لا'}}</td>
+                                       <td>{{$magazine->is_published ? __('forms.yes') : __('forms.no')}}</td>
                                        <td>{{$magazine->created_at}}</td>
                                        <td>{{$magazine->updated_at}}</td>
                                        <td>
                                            <div class="btn-group position-relative z-20">
                                                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                                   {{__('الإجراءات')}}
+                                                   {{__('forms.procedures')}}
                                                </button>
                                                <ul class="dropdown-menu">
-                                                   <li><a class="dropdown-item" href="{{route('magazines.edit',$magazine)}}">{{__('تعديل')}}</a></li>
+                                                   <li><a class="dropdown-item" href="{{route('magazines.edit',$magazine)}}">{{__('forms.edit')}}</a></li>
                                                    <li>
-                                                       <form action="{{route('magazines.destroy',$magazine)}}" method = "POST" onsubmit="return confirm('هل أنت متأكد')">
+                                                       <form action="{{route('magazines.destroy',$magazine)}}" method = "POST" onsubmit="return confirm({{__('forms.you-sure')}})">
                                                            @csrf
                                                            @method('DELETE')
-                                                           <button type="submit" class="btn">{{__('حذف')}}</button>
+                                                           <button type="submit" class="btn border-0">{{__('forms.delete')}}</button>
                                                        </form>
                                                    </li>
 
@@ -153,12 +153,12 @@
 
                         <table class="table table-bordered">
                             <tr>
-                                <th>العنوان</th>
-                                <th>الصورة</th>
-                                <th>منشور</th>
-                                <th>تم إنشاءه</th>
-                                <th>تم تعديله</th>
-                                <th>الإجراءات</th>
+                                <th>{{__('forms.title')}}</th>
+                                <th>{{__('forms.picture')}}</th>
+                                <th>{{__('forms.published')}}</th>
+                                <th>{{__('forms.created-at')}}</th>
+                                <th>{{__('forms.edited-at')}}</th>
+                                <th>{{__('forms.procedures')}}</th>
                             </tr>
 
                             <tbody>
@@ -172,21 +172,21 @@
                                     <td>
                                         <img src="{{asset('storage/' . $magazine->thumbnail_fr)}}" alt="" style="width: 150px">
                                     </td>
-                                    <td>{{$magazine->is_published ? 'نعم' : 'لا'}}</td>
+                                    <td>{{$magazine->is_published ? __('forms.yes') : __('forms.no')}}</td>
                                     <td>{{$magazine->created_at}}</td>
                                     <td>{{$magazine->updated_at}}</td>
                                     <td>
                                         <div class="btn-group position-relative z-20">
                                             <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                                {{__('الإجراءات')}}
+                                                {{__('forms.procedures')}}
                                             </button>
                                             <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item" href="{{route('magazines.edit',$magazine)}}">{{__('تعديل')}}</a></li>
+                                                <li><a class="dropdown-item" href="{{route('magazines.edit',$magazine)}}">{{__('forms.edit')}}</a></li>
                                                 <li>
-                                                    <form action="{{route('magazines.destroy',$magazine)}}" method = "POST" onsubmit="return confirm('هل أنت متأكد')">
+                                                    <form action="{{route('magazines.destroy',$magazine)}}" method = "POST" onsubmit="return confirm({{__('forms.you-sure')}})">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" class="btn">{{__('حذف')}}</button>
+                                                        <button type="submit" class="btn border-0">{{__('forms.delete')}}</button>
                                                     </form>
                                                 </li>
 

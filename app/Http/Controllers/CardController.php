@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Card;
+use App\Models\Magazine;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules\File;
 
@@ -213,7 +214,20 @@ class CardController extends Controller
 
 
     public function cards() {
-        $cards = Card::latest()->get();
+
+        if(config('app.locale') == 'en') {
+            $cards = Card::where('is_published','1')->where('image_en','<>' , '')->latest()->get();
+
+        }
+        elseif(config('app.locale') == 'fr') {
+            $cards = Card::where('is_published','1')->where('image_fr','<>' , '')->latest()->get();
+
+        }else {
+            $cards = Card::where('is_published','1')->where('image','<>' , '')->latest()->get();
+
+        }
+
+
         return view('cards',compact('cards'));
     }
 }

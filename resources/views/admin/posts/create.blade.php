@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('title','إضافة مقال')
+@section('title',__('forms.add-articles'))
 
 
 
@@ -44,23 +44,23 @@
                         </div>
 
                         <x-admin.forms.input name="image" title="{{__('forms.picture')}}" type="file" value="{{old('image')}}"/>
-                        <x-admin.forms.text-area name="content" id="#content" class="content" title="محتوى المقال"  value="{!!old('content')!!}"/>
+                        <x-admin.forms.text-area name="content" id="#content" class="content" title="article-content-ar"  value="{!!old('content')!!}"/>
                          <hr>
                         <span class="fi fi-gb  mx-auto d-block" style="width: 70px; height: 70Px"></span>
 
-                    <x-admin.forms.input name="title_en" title="العنوان بالإنجليزي" type="text" value="{{old('title_en')}}"/>
-                        <x-admin.forms.input name="image_en" title="صورة المقال الإنجليزي" type="file" value="{{old('image_en')}}"/>
-                        <x-admin.forms.text-area name="content_en" id="content_1" title="محتوى المقال بالإنجليزي"  value="{!!old('content_en')!!}"/>
+                    <x-admin.forms.input name="title_en" title="{{__('forms.title-in-en')}}" type="text" value="{{old('title_en')}}"/>
+                        <x-admin.forms.input name="image_en" title="{{__('forms.picture')}}" type="file" value="{{old('image_en')}}"/>
+                        <x-admin.forms.text-area name="content_en" id="content_1" title="article-content-en"  value="{!!old('content_en')!!}"/>
                         <hr>
 
                     <span class="fi fi-fr mx-auto d-block" style="width: 70px; height: 70Px"></span>
 
-                    <x-admin.forms.input name="title_fr" title="العنوان بالفرنسي" type="text" value="{{old('title_fr')}}"/>
-                        <x-admin.forms.input name="image_fr" title="صورة المقال الفرنسي" type="file" value="{{old('image_fr')}}"/>
-                        <x-admin.forms.text-area name="content_fr" id="content_2" title="محتوى المقال بالفرنسي"  value="{!!old('content_fr')!!}"/>
+                    <x-admin.forms.input name="title_fr" title="{{__('forms.title-in-fr')}}" type="text" value="{{old('title_fr')}}"/>
+                        <x-admin.forms.input name="image_fr" title="{{__('forms.picture')}}" type="file" value="{{old('image_fr')}}"/>
+                        <x-admin.forms.text-area name="content_fr" id="content_2" title="article-content-fr"  value="{!!old('content_fr')!!}"/>
 
                         <div class="form-check form-switch mb-3">
-                            <label for="is_published">المقال منشور</label>
+                            <label for="is_published">{{__('forms.share')}}</label>
                             <input class="form-check-input" type="checkbox" name="is_published" id="is_published" value="on">
                         </div>
 
@@ -74,7 +74,7 @@
 
 
                 </div>
-                    <button type="submit" class="btn btn-primary w-100">{{__('إضافة مقال')}}</button>
+                    <button type="submit" class="btn btn-primary w-100">{{__('forms.add-articles')}}</button>
                 </form>
 
         </div>

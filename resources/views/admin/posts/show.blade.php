@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('title','إظهار المقال')
+@section('title',__('forms.articles-showcase'))
 
 
 

@@ -9,13 +9,13 @@
         <a href="{{url('category/'. $post -> category -> name)}}" class="badge bg-primary link-light">{{$post -> category -> name()}}</a>
     </div>
 
-    <div class="card-footer bg-transparent d-flex justify-content-between align-items-center flex-row-reverse border-top-0" style="height: 55px">
-        <div class="d-flex flex-row-reverse ms-1">
+    <div class="card-footer bg-transparent d-flex justify-content-between align-items-center flex-row-reverse border-top-0" style="height: 65px">
+        <div class="d-flex flex-row-reverse ms-2">
+
             <span style="" >
                   <button class="bg-transparent border-0" type="button" data-bs-toggle="collapse" data-bs-target="#post{{$post->id}}" aria-expanded="false" aria-controls="{{$post->id}}">
                     <i class="fa-regular fa-share ms-1 pe-auto fa-lg"></i>
                 </button>
-
             </span>
 
 
@@ -26,13 +26,11 @@
                 <a href="https://twitter.com/intent/tweet?text={{$post->title()}}&url={{route('post.slug', $post->slug())}}" target="_blank" class="me-2" style="color: #1DA1F2"><i class="fa-brands fa-twitter fa-lg"></i></a>
             </div>
 
-        </div>
-
-
-        <p class="card-text fs-6"><small class="text-muted">{{$post ->created_at -> diffForHumans()}}</small></p>
 
 
     </div>
 
+        <p class="card-text fs-6"><small class="text-muted">{{$post ->created_at -> diffForHumans()}}</small></p>
 
+    </div>
 </div>

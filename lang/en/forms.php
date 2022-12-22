@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'admin-panel' => 'Panneau',
     'full-name' => 'Full Name',
     'email' => 'Email',
     'subject' => 'Subject',
@@ -8,6 +9,7 @@ return [
     'password' => 'password',
     'age' => 'Age',
     'phone' => 'Phone Number',
+    'address' => 'Address',
     'dob' => 'Date of Birth',
     'gender' => 'Gender',
     'male' => 'Male',
@@ -89,8 +91,44 @@ return [
     'previous-article' => 'Previous article',
     'more-of' => 'More of',
     'browse' => 'Browse',
+    'you-sure' => 'You Sure',
+    'card-in-en' => 'Card in EN',
+    'card-in-ar' => 'Card in AR',
+    'card-in-fr' => 'Card in FR',
+    'share' => 'Share',
+    'edit-card' => 'Edit Card',
+    'category-in-en' => 'Category in EN',
+    'category-in-ar' => 'Category in AR',
+    'category-in-fr' => 'Category in FR',
+    'edit-category' => 'Edit Category',
+    'profession' => 'Profession',
+    'profession-in-en' => 'Profession in EN',
+    'profession-in-fr' => 'Profession in FR',
+    'edit-membres' => 'Edit Membres',
+    'title-in-ar' => 'Title in AR',
+    'title-in-fr' => 'Title in FR',
+    'title-in-en' => 'Title in EN',
+    'picture-in-ar' => 'Picture in AR',
+    'picture-in-fr' => 'Picture in FR',
+    'picture-in-en' => 'Picture in EN',
+    'book-in-ar' => 'Book in AR',
+    'book-in-fr' => 'Book in FR',
+    'book-in-en' => 'Book in EN',
+    'title' => 'Title',
+    'book' => 'Book',
+    'edit-magazine' => 'Edit Magazine',
+    'add-news' => 'Add News',
+    'news' => 'News',
+    'add-articles' => 'Add Article',
+    'article-content-en' => 'Article content in EN',
+    'article-content-fr' => 'Article content in FR',
+    'article-content-ar' => 'Article content in AR',
+    'article-content' => 'Article Content',
+    'deleted-articles' => 'Delete Articles',
+    'destroy' => 'Destroy',
+    'restore' => 'Restore',
+    'articles-showcase' => 'Article Showcase'
+
 
 ]
-
-
 ?>
