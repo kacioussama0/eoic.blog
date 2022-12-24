@@ -40,13 +40,7 @@ $settings = \App\Models\Setting::first();
     <link type="text/css" rel="stylesheet" href="{{asset('assets/css/blog.css')}}" />
     <link type="text/css" rel="stylesheet" href="{{asset('assets/css/blog_style.css')}}" />
     <link type="text/css" rel="stylesheet" href="{{asset('assets/css/animate.css')}}" />
-    @if(session()->get('locale') != 'ar')
-        <style>
-            * {
-                font-family: 'Cairo',sans-serif !important;
-            }
-        </style>
-    @endif
+
     <link href="{{asset('assets/dflip/assets/css/dflip.min.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('assets/dflip/assets/css/themify-icons.min.css')}}" rel="stylesheet" type="text/css">
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
@@ -97,8 +91,26 @@ $settings = \App\Models\Setting::first();
 
 
 <!-- Start Header-->
+<div class="text-white user-select-none  bg-primary position-relative top-0 py-3 py-md-0 z-n1">
+   <div class="container-lg d-flex flex-column flex-md-row justify-content-between align-items-center">
+       <h6 class="mb-3 mb-md-0 text-white">{{__('home.united-nations')}}</h6>
+       <span class=" wow flash text-bg-secondary d-none d-md-block p-2 rounded-bottom-4 mb-1" data-wow-iteration="infinite" data-wow-duration="2s">
+            {{__('home.beta')}}
+       </span>
+
+       <div class="d-flex align-items-center justify-content-center ">
+           <a href="https://www.facebook.com/MEDIA.EOIC/" target="_blank" class="me-3 text-white" ><i class="fa-brands fa-facebook fa-1x"></i></a>
+           <a href="https://www.instagram.com/eoic_geneva/" target="_blank" class="me-3 text-white" ><i class="fa-brands fa-instagram fa-1x"></i></a>
+           <a href="https://www.youtube.com/channel/UCi_iTZfHrRN19Wtwo4vM4EA?view_as=subscriber" target="_blank" class="me-3 text-white" ><i class="fa-brands fa-youtube fa-1x"></i></a>
+
+           <a href="https://twitter.com/EOIC_Geneva" target="_blank" class="me-3 text-white" ><i class="fa-brands fa-twitter fa-1x"></i></a>
+       </div>
+   </div>
+</div>
 
 <header class="position-sticky top-0  bg-white" style="z-index: 999">
+
+
 
 <nav class="navbar navbar-expand-lg shadow-sm align-items-center justify-content-between">
 
@@ -645,15 +657,15 @@ $settings = \App\Models\Setting::first();
                             </li>
 
                             <li class="nav-item">
-                                <a href="" class="nav-link"><i class="fa-light fa-scroll me-1"></i> {{__('home.magazines')}}</a>
+                                <a href="{{url("books")}}" class="nav-link"><i class="fa-light fa-scroll me-1"></i> {{__('home.magazines')}}</a>
                             </li>
 
                             <li class="nav-item">
-                                <a href="" class="nav-link"><i class="fa-light fa-credit-card-blank  me-1"></i> {{__('home.cards')}}</a>
+                                <a href="{{url("cards")}}" class="nav-link"><i class="fa-light fa-credit-card-blank  me-1"></i> {{__('home.cards')}}</a>
                             </li>
 
                             <li class="nav-item">
-                                <a href="" class="nav-link"><i class="fa-light fa-message  me-1"></i> {{__('home.contact-us')}}</a>
+                                <a href="{{url('contact')}}" class="nav-link"><i class="fa-light fa-message  me-1"></i> {{__('home.contact-us')}}</a>
                             </li>
 
 
@@ -675,12 +687,12 @@ $settings = \App\Models\Setting::first();
 
                             <div class="py-2 mb-0">
                                 <i class="fa-light fa-envelope me-2"></i>
-                                <span>{{$settings -> email}}</span>
+                                <a href="mailto:{{$settings -> email}}">  {{$settings -> email}}</a>
                             </div>
 
                             <div class="py-2 mb-0 d-flex justify-content-center">
                                 <i class="fa-light fa-location-dot me-2 h-100"></i>
-                                <p class="text-lg-start text-center  mb-0">{{$settings -> address}}</p>
+                                <a class="text-lg-start text-center  mb-0" href="https://goo.gl/maps/GYL96BCX7LhZZY7a7" target="_blank">{{$settings -> address}}</a>
                             </div>
 
 
@@ -700,7 +712,7 @@ $settings = \App\Models\Setting::first();
 
                     <a href="https://twitter.com/EOIC_Geneva" target="_blank" class="me-3" style="color: #1DA1F2"><i class="fa-brands fa-twitter fa-2x"></i></a>
                 </div>
-                    <p class="mb-0 mt-2 mt-lg-0 text-center"> {{   __('forms.all-right-reserved-by') .' ' . date('Y')}} &copy; {{$settings -> display_name()}}</p>
+                    <p class="mb-0 mt-2 mt-lg-0 text-center"> {{__('forms.all-right-reserved-by') .' ' . date('Y')}} &copy; {{$settings -> display_name()}}</p>
 
             </div>
 
@@ -726,6 +738,9 @@ $settings = \App\Models\Setting::first();
     });
 
 </script>
+
+
+
 
 @yield('script')
 

@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'admin-panel' => 'Panneau',
+    'admin-panel' => 'Panel',
     'full-name' => 'Full Name',
     'email' => 'Email',
     'subject' => 'Subject',
@@ -127,7 +127,36 @@ return [
     'deleted-articles' => 'Delete Articles',
     'destroy' => 'Destroy',
     'restore' => 'Restore',
-    'articles-showcase' => 'Article Showcase'
+    'articles-showcase' => 'Article Showcase',
+    'add-project' => 'Add Project',
+    'edit-project' => 'Edit Project',
+    'donation-progres' => 'projects Progress',
+    'tag-in-en' => 'Tag in EN',
+    'tag-in-fr' => 'Tag in FR',
+    'tag-in-ar' => 'Tag in AR',
+    'edit-tag' => 'Edit Tag',
+    'add-video' => 'Add Video',
+    'edit-video' => 'Edit Video',
+    'link' => 'link',
+    'edit-video' => 'Edit Video',
+    'reset-password' => 'Reset your password',
+    'edited-successfully' => 'Edited Successfully',
+    'current-pass-incorrect' => 'Current password incorrect',
+    'pass-chan-success' => 'Password changed successfully',
+    'pic-chan-success'=> 'Picture changed successfully',
+    'add-success' => 'Add successfully',
+    'deleted-success' => 'Deleted successfully',
+    'edit-success' => 'Edited successfully',
+    'there-are-articles-in-it' => 'There are articles in it ',
+    'msg-sent' => 'Message sent successfully',
+    'restore-success' => 'Restore successfully',
+    'not-found' => 'PAGE NOT FOUND !!',
+    'something-wrong' => 'SOMETHING WRONG !',
+    'under-dev' => ' UNDER DEVELOPMENT',
+
+
+
+
 
 
 ]

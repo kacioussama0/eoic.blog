@@ -29,13 +29,14 @@ class JoinController extends Controller
         return view('join')->with('settings',Setting::first());
     }
 
-    public function destroy(Join $join)
+    public function destroy($id)
     {
-        $join -> delete();
+
+        Join::find($id)->delete();
 
         return  redirect()->to('admin/join-us')->with(
             [
-                'success' =>'تم الحذف بنجاح'
+                'success' => __('forms.deleted-success')
             ]
         );
     }

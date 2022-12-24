@@ -56,12 +56,12 @@
                                         </td>
 
                                         <td>
-                                            {{$post->title_en ? __('forms.oui') : __('forms.no')}}
+                                            {{$post->title_en ? __('forms.yes') : __('forms.no')}}
 
                                         </td>
 
                                         <td>
-                                            {{$post->title_fr ? __('forms.oui') : __('forms.no')}}
+                                            {{$post->title_fr ? __('forms.yes') : __('forms.no')}}
 
 
                                         </td>
@@ -74,7 +74,7 @@
 
                                         <td>{{$post->created_at}}</td>
                                         <td>{{$post->updated_at}}</td>
-                                        <td>{{($post->is_published == 'on') ? __('forms.oui') : __('forms.no')}}</td>
+                                        <td>{{($post->is_published == 'on') ? __('forms.yes') : __('forms.no')}}</td>
                                         <td>
 
 
@@ -90,7 +90,7 @@
                                                     <li> <a href="{{route('posts.edit',$post)}}"  class="dropdown-item">{{__('forms.edit')}}</a></li>
 
                                                     <li>
-                                                        <form action="{{route('posts.destroy',$post)}}" method="POST" onsubmit="return confirm({{__('forms.you-sure')}})" class="d-inline-block w-100">
+                                                        <form action="{{route('posts.destroy',$post)}}" method="POST" onsubmit="return confirm('{{__('forms.you-sure')}}')" class="d-inline-block w-100">
                                                             @csrf
                                                             @method('DELETE')
                                                             <button class="dropdown-item">{{__('forms.delete')}}</button>

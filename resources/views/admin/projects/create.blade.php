@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('title','إضافة مشروع')
+@section('title',__('forms.add-project'))
 
 
 
@@ -27,14 +27,14 @@
                     <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
 
                         @csrf
-                        <x-admin.forms.input name="title" title="العنوان بالعربية" type="text" value="{{old('title')}}"/>
-                        <x-admin.forms.text-area name="description" title="الوصف بالعربية" value="{{old('description')}}"/>
-                        <x-admin.forms.input name="thumbnail" title="الصورة بالعربية" type="file" value="{{old('thumbnail')}}"/>
-                        <x-admin.forms.input name="amount" title="المبلغ" type="number" value="{{old('amount')}}"/>
+                        <x-admin.forms.input name="title" title="{{__('forms.title-in-ar')}}" type="text" value="{{old('title')}}"/>
+                        <x-admin.forms.text-area name="description" title="{{__('forms.description')}}" value="{!! old('description') !!}"/>
+                        <x-admin.forms.input name="thumbnail" title="{{__('forms.picture')}}" type="file" value="{{old('thumbnail')}}"/>
+                        <x-admin.forms.input name="amount" title="{{__('forms.price')}}" type="number" value="{{old('amount')}}"/>
 
                         <div class="form-check form-switch mb-3">
-                            <label for="is_published">المشروع منشور</label>
-                            <input class="form-check-input" type="checkbox" name="is_published" id="is_published" value="on">
+                            <label for="is_published">{{__('forms.share')}}</label>
+                            <input class="form-check-input" type="checkbox" name="is_published" id="is_published" @if(old('is_published')) checked @endif value="1">
                         </div>
 
 
@@ -43,20 +43,20 @@
 
 
                     <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
-                        <x-admin.forms.input name="title_en" title="العنوان بالإنجليزية" type="text" value="{{old('title_en')}}"/>
-                        <x-admin.forms.text-area name="description_en" title="الوصف  بالإنجلزية" value="{{old('description_fr')}}"/>
-                        <x-admin.forms.input name="thumbnail_en" title="الصورة بالإنجلزية" type="file" value="{{old('thumbnail_en')}}"/>
+                        <x-admin.forms.input name="title_en" title="{{__('forms.title-in-en')}}" type="text" value="{{old('title_en')}}"/>
+                        <x-admin.forms.text-area name="description_en" title="{{__('forms.description')}}" value="{{old('description_fr')}}"/>
+                        <x-admin.forms.input name="thumbnail_en" title="{{__('forms.price')}}" type="file" value="{{old('thumbnail_en')}}"/>
 
                     </div>
                     <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
-                        <x-admin.forms.input name="title_fr" title="العنوان بالفرنسية" type="text" value="{{old('title_fr')}}"/>
-                        <x-admin.forms.text-area name="description_fr" title="الوصف بالفرنسية" value="{{old('description_en')}}"/>
-                        <x-admin.forms.input name="thumbnail_fr" title="الصورة بالفرنسية" type="file" value="{{old('thumbnail_fr')}}"/>
+                        <x-admin.forms.input name="title_fr" title="{{__('forms.title-in-fr')}}" type="text" value="{{old('title_fr')}}"/>
+                        <x-admin.forms.text-area name="description_fr" title="{{__('forms.description')}}" value="{{old('description_en')}}"/>
+                        <x-admin.forms.input name="thumbnail_fr" title="{{__('forms.price')}}" type="file" value="{{old('thumbnail_fr')}}"/>
 
                     </div>
 
                 </div>
-                <button type="submit" class="btn btn-primary w-100">{{__('إضافة مشروع')}}</button>
+                <button type="submit" class="btn btn-primary w-100">{{__('forms.add-project')}}</button>
             </form>
 
         </div>

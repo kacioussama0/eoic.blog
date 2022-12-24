@@ -7,6 +7,10 @@
         height: 150px !important;
     }
 
+    header .fi {
+        margin-bottom: 5px;
+    }
+
     .card-header {
         background: #fff !important;
         text-align: center;

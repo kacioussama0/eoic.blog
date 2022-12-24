@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('title','الوسوم')
+@section('title',__('forms.tags'))
 
 
 
@@ -9,7 +9,7 @@
     @include('admin.layouts.success')
     @include('admin.layouts.failed')
 
-    <a href="{{route('tags.create')}}" class="btn btn-lg btn-primary mb-3">إضافة وسم</a>
+    <a href="{{route('tags.create')}}" class="btn btn-lg btn-primary mb-3">{{__('forms.add-tag')}}</a>
 
     <div class="card">
         <div>
@@ -38,10 +38,10 @@
 
                             <thead>
                             <tr>
-                                <th>إسم الوسم</th>
-                                <th>تم إنشاءه</th>
-                                <th>تم تعديله</th>
-                                <th>{{__('الإجراءات')}}</th>
+                                <th>{{__('forms.tag-name')}}</th>
+                                <th>{{__('forms.created-at')}}</th>
+                                <th>{{__('forms.edited-at')}}</th>
+                                <th>{{__('forms.procedures')}}</th>
                             </tr>
                             </thead>
 
@@ -59,15 +59,15 @@
                                     <td>
                                         <div class="btn-group position-relative z-20">
                                             <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                                {{__('الإجراءات')}}
+                                                {{__('forms.procedures')}}
                                             </button>
                                             <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item" href="{{route('tags.edit',$tag)}}">{{__('تعديل')}}</a></li>
+                                                <li><a class="dropdown-item" href="{{route('tags.edit',$tag)}}">{{__('forms.edit')}}</a></li>
                                                 <li>
-                                                    <form action="{{route('tags.destroy',$tag)}}" method = "POST" onsubmit="return confirm('هل أنت متأكد')">
+                                                    <form action="{{route('tags.destroy',$tag)}}" method = "POST" onsubmit="return confirm({{__('forms,you-sure')}})">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" class="btn">{{__('حذف')}}</button>
+                                                        <button type="submit" class="btn border-0">{{__('forms.delete')}}</button>
                                                     </form>
                                                 </li>
 
@@ -100,10 +100,10 @@
 
                             <thead>
                             <tr>
-                                <th>إسم الوسم</th>
-                                <th>تم إنشاءه</th>
-                                <th>تم تعديله</th>
-                                <th>{{__('الإجراءات')}}</th>
+                                <th>{{__('forms.tag-name')}}</th>
+                                <th>{{__('forms.created-at')}}</th>
+                                <th>{{__('forms.edited-at')}}</th>
+                                <th>{{__('forms.procedures')}}</th>
                             </tr>
                             </thead>
 
@@ -121,15 +121,15 @@
                                     <td>
                                         <div class="btn-group position-relative z-20">
                                             <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                                {{__('الإجراءات')}}
+                                                {{__('forms.procedures')}}
                                             </button>
                                             <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item" href="{{route('tags.edit',$tag)}}">{{__('تعديل')}}</a></li>
+                                                <li><a class="dropdown-item" href="{{route('tags.edit',$tag)}}">{{__('forms.edit')}}</a></li>
                                                 <li>
-                                                    <form action="{{route('tags.destroy',$tag)}}" method = "POST" onsubmit="return confirm('هل أنت متأكد')">
+                                                    <form action="{{route('tags.destroy',$tag)}}" method = "POST" onsubmit="return confirm({{__('forms,you-sure')}})">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" class="btn">{{__('حذف')}}</button>
+                                                        <button type="submit" class="btn border-0">{{__('forms.delete')}}</button>
                                                     </form>
                                                 </li>
 
@@ -162,10 +162,10 @@
 
                             <thead>
                             <tr>
-                                <th>إسم الوسم</th>
-                                <th>تم إنشاءه</th>
-                                <th>تم تعديله</th>
-                                <th>{{__('الإجراءات')}}</th>
+                                <th>{{__('forms.tag-name')}}</th>
+                                <th>{{__('forms.created-at')}}</th>
+                                <th>{{__('forms.edited-at')}}</th>
+                                <th>{{__('forms.procedures')}}</th>
                             </tr>
                             </thead>
 
@@ -181,15 +181,15 @@
                                     <td>
                                         <div class="btn-group position-relative z-20">
                                             <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                                {{__('الإجراءات')}}
+                                                {{__('forms.procedures')}}
                                             </button>
                                             <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item" href="{{route('tags.edit',$tag)}}">{{__('تعديل')}}</a></li>
+                                                <li><a class="dropdown-item" href="{{route('tags.edit',$tag)}}">{{__('forms.edit')}}</a></li>
                                                 <li>
-                                                    <form action="{{route('tags.destroy',$tag)}}" method = "POST" onsubmit="return confirm('هل أنت متأكد')">
+                                                    <form action="{{route('tags.destroy',$tag)}}" method = "POST" onsubmit="return confirm({{__('forms,you-sure')}})">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" class="btn">{{__('حذف')}}</button>
+                                                        <button type="submit" class="btn border-0">{{__('forms.delete')}}</button>
                                                     </form>
                                                 </li>
 

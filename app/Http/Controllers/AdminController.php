@@ -54,7 +54,7 @@ class AdminController extends Controller
         Auth::user()->update($request->all());
 
         return redirect()->to('admin/profile')->with([
-            'success' => 'تم تعديل المعلومات بنجاح'
+            'success' => __('forms.edited-successfully')
         ]);
     }
 
@@ -71,7 +71,7 @@ class AdminController extends Controller
 
         if (!Hash::check($request->actual_password, $user->password)) {
             return redirect()->back()->with([
-                'failed' => 'كلمة السر الحالية خاطئة'
+                'failed' => __('forms.current-pass-incorrect')
             ]);
         }
 
@@ -80,7 +80,7 @@ class AdminController extends Controller
         $user->save();
 
         return redirect()->back()->with([
-            'success' => 'تم تغيير كلمة السر بنجاح'
+            'success' => __('forms.pass-chan-success')
         ]);
 
     }
@@ -106,7 +106,7 @@ class AdminController extends Controller
             $user -> save();
 
             return redirect()->back()->with([
-                'success' => 'تم تغيير الصورة بنجاح'
+                'success' => __('forms.pic-chan-success')
             ]);
 
         }

@@ -227,7 +227,11 @@ nav {
 
 }
 
+.offcanvas {
 
+height: 100vh !important;
+
+}
 
 @media (min-width: 992px) {
 

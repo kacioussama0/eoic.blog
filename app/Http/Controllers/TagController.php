@@ -34,7 +34,7 @@ class TagController extends Controller
         Tag::create($request->all());
 
         return redirect() -> to('admin/tags')->with([
-            'success' => 'تم إضافة الوسم بنجاح'
+            'success' => __('forms.add-success')
         ]);
 
     }
@@ -54,7 +54,7 @@ class TagController extends Controller
         $tag->update($request->all());
 
         return redirect() -> to('admin/tags')->with([
-            'success' => 'تم تعديل الوسم بنجاح'
+            'success' => __('forms.edit-success')
         ]);
     }
 
@@ -62,7 +62,7 @@ class TagController extends Controller
     {
         $tag -> delete();
         return redirect() -> back()->with([
-            'success' => 'تم حذف الوسم بنجاح'
+            'success' => __('forms.deleted-success')
         ]);
     }
 }

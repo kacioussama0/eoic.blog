@@ -80,7 +80,7 @@ class CardController extends Controller
 
 
         return redirect()->to('admin/cards')->with([
-            'success' => 'تم إضافة البطاقة بنجاح'
+            'success' => __('forms.add-success')
         ]);
     }
 
@@ -174,7 +174,7 @@ class CardController extends Controller
 
 
         return redirect()->to('admin/cards')->with([
-            'success' => 'تم تعديل البطاقة بنجاح'
+            'success' => __('forms.edit-success')
         ]);
     }
 
@@ -208,7 +208,7 @@ class CardController extends Controller
             $card -> delete();
 
             return redirect()->to('admin/cards')->with([
-                'success' => 'تم حذف البطاقة بنجاح'
+                'success' => __('forms.deleted-success')
             ]);
     }
 

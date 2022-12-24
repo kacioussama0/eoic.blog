@@ -68,7 +68,7 @@ class OrganizationMemberController extends Controller
         );
 
         return redirect()->to('admin/organization-members')-> with([
-            'success' => 'تم إضافة العضو بنجاح'
+            'success' =>  __('forms.add-success')
         ]);
 
 
@@ -141,7 +141,7 @@ class OrganizationMemberController extends Controller
         );
 
         return redirect()->to('admin/organization-members')-> with([
-            'success' => 'تم تعديل العضو بنجاح'
+            'success' =>  __('forms.edit-success')
         ]);
 
     }
@@ -161,7 +161,7 @@ class OrganizationMemberController extends Controller
         $organizationMember -> delete();
 
         return redirect()->to('admin/organization-members')-> with([
-            'success' => 'تم حذف العضو بنجاح'
+            'success' =>  __('forms.deleted-success')
         ]);
 
     }

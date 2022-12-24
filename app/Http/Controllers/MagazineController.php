@@ -93,7 +93,7 @@ class MagazineController extends Controller
         ]);
 
         return redirect()->to('admin/magazines')->with([
-            'success' => 'تم إضافة المجلة بنجاح'
+            'success' => __('forms.add-success')
         ]);
 
     }
@@ -104,24 +104,11 @@ class MagazineController extends Controller
         return view('books',compact('magazines'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Magazine  $magazine
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Magazine $magazine)
     {
         return view('admin.magazines.edit',compact('magazine'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Magazine  $magazine
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Magazine $magazine)
     {
         $request->validate([
@@ -201,48 +188,43 @@ class MagazineController extends Controller
 
 
         return redirect()->to('admin/magazines')->with([
-            'success' => 'تم تعديل  المجلة بنجاح'
+            'success' => __('forms.edit-success')
         ]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Magazine  $magazine
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy(Magazine $magazine)
     {
 
-        if(File::exists("storage/" . $magazine->thumbnail)) {
+        if(File::exists(public_path("storage/" . $magazine->thumbnail))) {
             unlink(public_path("storage/" . $magazine->thumbnail));
         }
 
-        if(File::exists("storage/" . $magazine->thumbnail_en)) {
+        if(File::exists(public_path("storage/" . $magazine->thumbnail_en)) && $magazine->thumbnail_en != null) {
             unlink(public_path("storage/" . $magazine->thumbnail_en));
         }
 
 
-        if(File::exists("storage/" . $magazine->thumbnail_fr)) {
+        if(File::exists(public_path("storage/" . $magazine->thumbnail_fr)) && $magazine->thumbnail_fr != null) {
             unlink(public_path("storage/" . $magazine->thumbnail_fr));
         }
 
-        if(File::exists("storage/" . $magazine->book)) {
+        if(File::exists(public_path("storage/" . $magazine->book)) && $magazine->book != null) {
             unlink(public_path("storage/" . $magazine->book));
         }
 
-        if(File::exists("storage/" . $magazine->book_en)) {
+        if(File::exists(public_path("storage/" . $magazine->book_en))  && $magazine->book_en != null) {
             unlink(public_path("storage/" . $magazine->book_en));
         }
 
-        if(File::exists("storage/" . $magazine->book_fr)) {
+        if(File::exists("storage/" . $magazine->book_fr) && $magazine->book_fr != null)  {
             unlink(public_path("storage/" . $magazine->book_fr));
         }
 
         $magazine->delete();
 
         return redirect()->to('admin/magazines')->with([
-            'success' => 'تم حذف المجلة بنجاح'
+            'success' => __('forms.deleted-success')
         ]);
     }
 }

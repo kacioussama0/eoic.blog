@@ -70,7 +70,7 @@
                                                 <li><a class="dropdown-item" href="{{url('category/'. $category->name())}}">{{__('forms.show-case')}}</a></li>
                                                 <li><a class="dropdown-item" href="{{route('categories.edit',$category)}}">{{__('forms.edit')}}</a></li>
                                                 <li>
-                                                    <form action="{{route('categories.destroy',$category)}}" method = "POST" onsubmit="return confirm('هل أنت متأكد')">
+                                                    <form action="{{route('categories.destroy',$category)}}" method = "POST" onsubmit="return confirm('{{__('forms.you-sure')}}')">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn border-0">{{__('forms.delete')}}</button>
@@ -140,7 +140,7 @@
 
                                                     <li><a class="dropdown-item" href="{{route('categories.edit',$category)}}">{{__('forms.edit')}}</a></li>
                                                     <li>
-                                                        <form action="{{route('categories.destroy',$category)}}" method = "POST" onsubmit="return confirm('هل أنت متأكد')">
+                                                        <form action="{{route('categories.destroy',$category)}}" method = "POST" onsubmit="return confirm('{{__('forms.you-sure')}}')">
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit" class="btn border-0">{{__('forms.delete')}}</button>
@@ -207,7 +207,7 @@
                                                     <li><a class="dropdown-item" href="{{url('category/'. $category->name())}}">{{__('forms.show-case')}}</a></li>
                                                     <li><a class="dropdown-item" href="{{route('categories.edit',$category)}}">{{__('forms.edit')}}</a></li>
                                                     <li>
-                                                        <form action="{{route('categories.destroy',$category)}}" method = "POST" onsubmit="return confirm('هل أنت متأكد')">
+                                                        <form action="{{route('categories.destroy',$category)}}" method = "POST" onsubmit="return confirm('{{__('forms.you-sure')}}')">
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit" class="btn border-0">{{__('forms.delete')}}</button>

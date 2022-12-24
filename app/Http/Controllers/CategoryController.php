@@ -44,7 +44,7 @@ class CategoryController extends Controller
 
 
         return redirect()->to('admin/categories')->with([
-            'success'=> 'تم إضافة التصنيف بنجاح'
+            'success'=> __('forms.add-success')
         ]);
 
     }
@@ -71,7 +71,7 @@ class CategoryController extends Controller
 
 
         return redirect()->to('admin/categories')->with([
-            'success'=> 'تم تعديل التصنيف بنجاح'
+            'success'=> __('forms.edit-success')
         ]);
     }
 
@@ -82,12 +82,12 @@ class CategoryController extends Controller
     {
         if(count($category->posts)) {
             return redirect()->back()->with([
-                'failed'=> 'لا يمكن حذف التصنيف يوجد مقالات داخله'
+                'failed'=> __('forms.there-are-articles-in-it')
             ]);
         }
         $category -> delete();
         return redirect()->back()->with([
-            'success'=> 'تم حذف التصنيف بنجاح'
+            'success'=> __('forms.deleted-success')
         ]);
     }
 }

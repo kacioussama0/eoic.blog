@@ -51,7 +51,7 @@
                            <ul class="dropdown-menu">
                                <li> <a href="{{route('users.edit',$user)}}"  class="dropdown-item">{{__('forms.edit')}}</a></li>
                                <li>
-                                   <form action="{{route('users.destroy',$user)}}" method="POST" onsubmit="return confirm('هل أنت متأكد ?')" class="d-inline-block w-100">
+                                   <form action="{{route('users.destroy',$user)}}" method="POST" onsubmit="return confirm('{{__('forms.you-sure')}}')" class="d-inline-block w-100">
                                        @csrf
                                        @method('DELETE')
                                        <button class="dropdown-item">{{__('forms.delete')}}</button>

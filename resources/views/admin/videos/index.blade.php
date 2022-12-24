@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('title','الفيديوهات')
+@section('title',__('forms.videos'))
 
 
 
@@ -15,7 +15,7 @@
 
 
 
-    <a href="{{route('videos.create')}}" class="btn btn-lg btn-primary mb-4">إضافة فيديو جديد</a>
+    <a href="{{route('videos.create')}}" class="btn btn-lg btn-primary mb-4">{{__('forms.add-video')}}</a>
 
 
 
@@ -28,11 +28,11 @@
                 <thead>
 
                 <tr>
-                    <th>العنوان</th>
-                    <th>منشور</th>
-                    <th>تم إنشاءه</th>
-                    <th>تم تعديله</th>
-                    <th>الإجراءات</th>
+                    <th>{{__('forms.title')}}</th>
+                    <th>{{__('forms.share')}}</th>
+                    <th>{{__('forms.created-at')}}</th>
+                    <th>{{__('forms.edited-at')}}</th>
+                    <th>{{__('forms.procedures')}}</th>
                 </tr>
 
                 </thead>
@@ -49,11 +49,11 @@
                         <td>{{$video -> updated_at}}</td>
 
                         <td>
-                            <a href="{{route('videos.edit',$video)}}" class="btn btn-success">تعديل</a>
-                            <form action="{{route('videos.destroy',$video)}}" method="POST" onsubmit="return confirm('هل أنت متأكد ?')" class="d-inline-block">
+                            <a href="{{route('videos.edit',$video)}}" class="btn btn-success">{{__('forms.edit')}}</a>
+                            <form action="{{route('videos.destroy',$video)}}" method="POST" onsubmit="return confirm('{{__('forms.you-sure')}}')" class="d-inline-block">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger">حذف</button>
+                                <button type="submit" class="btn btn-danger">{{__('forms.delete')}}</button>
                             </form>
                         </td>
 
@@ -68,7 +68,7 @@
         </div>
     @else
         <div class="alert alert-danger py-5 text-center">
-            <h1>لا توجد رسائل</h1>
+            <h1>{{__('forms.empty')}}</h1>
         </div>
 
         @endif

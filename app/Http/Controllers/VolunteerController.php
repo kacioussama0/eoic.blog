@@ -83,7 +83,7 @@ class VolunteerController extends Controller
         dd($volunteer);
         $volunteer -> delete();
         return redirect()->to('admin/join-us')->with([
-            'success' => 'تم الحذف بنجاح'
+            'success' => __('forms.deleted-success')
         ]);
     }
 }

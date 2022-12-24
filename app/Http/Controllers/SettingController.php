@@ -44,7 +44,7 @@ class SettingController extends Controller
             $setting->update($request->all());
 
             return redirect()->back()->with([
-                'success' => 'تم تعديل إعدادات الموقع بنجاح'
+                'success' => __('forms.edit-success')
             ]);
 
         }

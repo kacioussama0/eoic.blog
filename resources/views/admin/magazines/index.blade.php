@@ -71,7 +71,7 @@
                                             <ul class="dropdown-menu">
                                                 <li><a class="dropdown-item" href="{{route('magazines.edit',$magazine)}}">{{__('forms.edit')}}</a></li>
                                                 <li>
-                                                    <form action="{{route('magazines.destroy',$magazine)}}" method = "POST" onsubmit="return confirm({{__('forms.you-sure')}})">
+                                                    <form action="{{route('magazines.destroy',$magazine)}}" method = "POST" onsubmit="return confirm('{{__('forms.you-sure')}}')">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn border-0">{{__('forms.delete')}}</button>
@@ -126,7 +126,7 @@
                                                <ul class="dropdown-menu">
                                                    <li><a class="dropdown-item" href="{{route('magazines.edit',$magazine)}}">{{__('forms.edit')}}</a></li>
                                                    <li>
-                                                       <form action="{{route('magazines.destroy',$magazine)}}" method = "POST" onsubmit="return confirm({{__('forms.you-sure')}})">
+                                                       <form action="{{route('magazines.destroy',$magazine)}}" method = "POST" onsubmit="return confirm('{{__('forms.you-sure')}}')">
                                                            @csrf
                                                            @method('DELETE')
                                                            <button type="submit" class="btn border-0">{{__('forms.delete')}}</button>
@@ -183,7 +183,7 @@
                                             <ul class="dropdown-menu">
                                                 <li><a class="dropdown-item" href="{{route('magazines.edit',$magazine)}}">{{__('forms.edit')}}</a></li>
                                                 <li>
-                                                    <form action="{{route('magazines.destroy',$magazine)}}" method = "POST" onsubmit="return confirm({{__('forms.you-sure')}})">
+                                                    <form action="{{route('magazines.destroy',$magazine)}}" method = "POST" onsubmit="return confirm('{{__('forms.you-sure')}}')">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn border-0">{{__('forms.delete')}}</button>

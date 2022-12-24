@@ -5,8 +5,9 @@
 
 @section('content')
 
+    @include('admin.layouts.success')
 
-    <form action="{{route('removeAllMessages')}}" method="POST"  onsubmit="return confirm({{__('forms.you-sure')}})" class="mb-3">
+    <form action="{{route('removeAllMessages')}}" method="POST"  onsubmit="return confirm('{{__('forms.you-sure')}}')" class="mb-3">
         @csrf
         @method('DELETE')
         <button type="submit" class="btn btn-lg btn-danger">{{__('forms.delete-all-message')}}</button>
@@ -42,7 +43,7 @@
                         <td>{{$message->message}}</td>
 
                         <td>
-                            <form action="{{route('messages.destroy',$message->id)}}" method="POST" onsubmit="return confirm({{__('forms.you-sure')}})" class="d-inline-block">
+                            <form action="{{route('messages.destroy',$message->id)}}" method="POST" onsubmit="return confirm('{{__('forms.you-sure')}}')" class="d-inline-block">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">{{__('forms.delete')}}</button>

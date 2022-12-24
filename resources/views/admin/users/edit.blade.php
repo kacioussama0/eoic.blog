@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('title','تعديل عضو')
+@section('title',__('forms.edit-membres'))
 @section('icon','bi bi-people-fill')
 
 
@@ -38,7 +38,7 @@
 
 
 
-        <button class="btn btn-primary w-100">{{__('forms.edit-member')}}</button>
+        <button class="btn btn-primary w-100">{{__('forms.edit-membres')}}</button>
 
     </form>
 

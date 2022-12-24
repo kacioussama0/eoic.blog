@@ -44,7 +44,7 @@ class MessageController extends Controller
 
         Message::create($request->all());
 
-        return  redirect()->back()->with(['success'=>'تمت إرسال الرسالة بنجاح']);
+        return  redirect()->back()->with(['success'=>__('forms.msg-sent')]);
 
     }
 
@@ -54,7 +54,7 @@ class MessageController extends Controller
     {
         $message -> delete();
 
-        return redirect() -> back();
+        return redirect() -> to('admin/messages')->with(['success'=>__('forms.deleted-success')]);
     }
 
     public function destroyAll()
@@ -62,6 +62,6 @@ class MessageController extends Controller
 
         Message::truncate();
 
-        return redirect() -> to('admin/messages');
+        return redirect() -> to('admin/messages')->with(['success'=>__('forms.deleted-success')]);
     }
 }

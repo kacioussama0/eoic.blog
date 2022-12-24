@@ -23,7 +23,7 @@ class JoinUs extends Component
     protected $rules = [
         'name' => 'required|min:3|max:50',
         'email' => 'required|email|max:50',
-        'phone' => 'required|min:10|max:10',
+        'phone' => 'required|min:10|max:15',
         'dob' => 'required|date',
         'gender' => 'required',
         'cv' => 'required|max:20480|mimes:pdf,png,jpeg,psd,doc,docx'

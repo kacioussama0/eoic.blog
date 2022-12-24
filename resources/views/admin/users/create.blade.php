@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('title','إضافة عضو')
+@section('title', __('forms.add-members'))
 @section('icon','bi bi-people-fill')
 
 
@@ -14,7 +14,7 @@
         <x-admin.forms.input name="email" title="{{__('forms.email')}}" type="email" value="{{old('email')}}"/>
         <x-admin.forms.input name="password" title="{{__('forms.password')}}" type="password" value="{{old('password')}}"/>
 
-        <button class="btn btn-primary w-100 mt-3">{{__('forms.add-members')}}</button>
+        <button class="btn btn-primary w-100 mt-3">{{__('forms.edit-membres')}}</button>
 
     </form>
 

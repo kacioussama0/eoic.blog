@@ -20,7 +20,7 @@
 
                                     <div class=" form-floating mb-3">
                                         <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-                                        <label for="email" >{{__('البريد الإلكتروني')}}</label>
+                                        <label for="email" >{{__('forms.email')}}</label>
                                         @error('email')
                                         <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -33,7 +33,7 @@
 
                                     <div class=" form-floating">
                                         <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-                                        <label for="password" >{{__('كلمة السر')}}</label>
+                                        <label for="password" >{{__('forms.password')}}</label>
                                         @error('password')
                                         <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -48,14 +48,14 @@
 
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link my-3" href="{{ route('password.request') }}">
-                                        {{__('هل نسيت كلمة السر ?')}}
+                                        {{__('forms.forgot-password-?')}}
                                     </a>
                                 @endif
 
 
 
                                         <button type="submit" class="btn btn-primary d-block w-100">
-                                            {{__('دخول')}}
+                                            {{__('forms.log-in')}}
                                         </button>
 
                             </form>

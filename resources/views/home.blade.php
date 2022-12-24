@@ -1,11 +1,23 @@
 @extends('blog-layout.app')
 @section('title',__('home.home'))
 @section('style')
+
+    <style class="embedly-css">
+        .card , div.brd  {
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        .card .hdr , .card .brd a{
+            display:none;
+
+        }
+    </style>
+
     <link rel="stylesheet" href="{{asset('assets/css/breaking-news-ticker.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/owl.carousel.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/post.carousel.css')}}">
     <link rel="stylesheet" href="{{asset('assets/photoswipe/photoswipe.css')}}" />
-    <link rel="stylesheet" href="https://cdn.plyr.io/3.7.3/plyr.css" />
+
 @endsection
 
 @section('content')
@@ -39,7 +51,12 @@
 
             <!-- Start Carousel -->
 
-                    <div id="LastPosts" class="carousel slide overflow-hidden position-relative  rounded-4 rounded-top-0 shadow mb-5" data-bs-ride="carousel">
+
+
+
+
+            <div id="LastPosts" class="carousel slide overflow-hidden position-relative  rounded-4 rounded-top-0 shadow mb-5" data-bs-ride="carousel">
+
                         <div class="carousel-inner ">
 
                             @foreach($slider_posts as  $key => $post)
@@ -56,13 +73,13 @@
                                 @if($post->title() != null )
 
                                     <div class="carousel-item  @if($key == $active) active @endif">
-                                        <div class="carousel-content ">
+                                        <div class="carousel-content mb-4">
                                             <div class="badge rounded-pill text-bg-secondary  mb-3"><a href="{{url('category/' . $post ->category->name())}}" class="link-dark">{{$post ->category -> name()}}</a></div>
                                             <div class="mb-3">{{$post ->created_at -> diffForHumans()}}</div>
                                             <h4 class="fw-6"><a href="{{route('post.slug', $post->slug())}}" class="link-light ">{{$post -> title()}}</a></h4>
                                         </div>
                                         <img src="{{File::exists('storage/' . $post -> image()) ? asset('storage/' . $post -> image()) : asset('assets/imgs/logo.svg') }}" class="d-block w-100 " alt="...">
-                                        <span style="font-size: 25px;z-index: 99" class="position-absolute bottom-0 end-0 m-2">
+                                        <span style="font-size: 25px;z-index: 99" class="position-absolute bottom-0 mb-2 end-0 m-2">
                                           <button class="bg-transparent border-0 me-3" type="button" data-bs-toggle="collapse" data-bs-target="#slug" aria-expanded="false" aria-controls="slug">
                                             <i class="fa-solid fa-share me-1 pe-auto text-light"></i>
                                            </button>
@@ -84,6 +101,27 @@
 
                         </div>
 
+
+                    <div class="carousel-indicators end-0 m-0 w-auto mb-2">
+
+                        @foreach($slider_posts as  $key => $post)
+                            @if($post->title() != null )
+                                @php $active = $key @endphp
+                                @break
+                            @endif
+                        @endforeach
+
+
+                    @foreach($slider_posts as  $key => $post)
+
+
+                            @if($post->title() != null )
+                                <button type="button" data-bs-target="#LastPosts" data-bs-slide-to="{{$key}}" class="@if($key == 0) active @endif rounded-circle" aria-current="true" aria-label="Slide {{$key}}" style="width: 10px;height: 10px"></button>
+                            @endif
+                        @endforeach
+                    </div>
+
+
                         <button class="carousel-control-prev" type="button" data-bs-target="#LastPosts" data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Previous</span>
@@ -101,8 +139,8 @@
 
     <div class="section">
         <div class="container-lg">
-            <div class="row">
-                <div class="col-lg-8">
+            <div class="row ">
+                <div class="col-lg-8 order-1 order-lg-0">
 
                     <h3 class="category-title mb-3 mx-auto"><img src="{{asset('assets/imgs/zellig.svg')}}" style="width: 30px" alt="" class="me-2">{{__('home.last-posts')}} </h3>
 
@@ -139,6 +177,8 @@
                                               <div class="_df_thumb" source="{{asset('storage/' . $magazine -> book())}}" thumb="{{asset('storage/' . $magazine -> thumbnail())}}">
                                                   {{$magazine->title()}}
                                               </div>
+
+
                                           </div>
                                     @endif
 
@@ -167,14 +207,23 @@
             <section class="mt-2 mb-3">
                 <div class="container-lg">
                     <h3 class="category-title"><img src="{{asset('assets/imgs/zellig.svg')}}" style="width: 30px" alt="" class="me-2">{{__('home.videos')}} </h3>
-                    <div class="plyr__video-embed ratio ratio-16x9" id="player">
-                        <iframe
-                            src="https://www.youtube.com/watch?v=3h6RMkjDR50&ab_channel=%D8%A7%D9%84%D9%87%D9%8A%D8%A6%D8%A9%D8%A7%D9%84%D8%A3%D9%88%D8%B1%D9%88%D8%A8%D9%8A%D8%A9%D9%84%D9%84%D9%85%D8%B1%D8%A7%D9%83%D8%B2%D8%A7%D9%84%D8%A5%D8%B3%D9%84%D8%A7%D9%85%D9%8A%D8%A9"
-                            allowfullscreen
-                            allowtransparency
-                            allow="autoplay"
-                        ></iframe>
+                    <div class="row">
+
+                        @foreach($videos as $video)
+
+
+                            <div class="col-md-4">
+
+                                <figure class="media">
+                                    <oembed url="{{$video -> url}}" allowfullscreen></oembed>
+                                </figure>
+
+                            </div>
+
+                        @endforeach
+
                     </div>
+
 
                 </div>
 
@@ -249,14 +298,14 @@
                                 <div class="row g-3">
 
                                     @foreach($cards as $card)
-                                        <div class="col-md-6">
-                                            <div class="card border-secondary border-2 overflow-hidden wow flipInY">
+                                        <div class="col-md-4">
+                                            <div class="card border-secondary border-2 overflow-hidden wow fadeInDown">
                                                 <a href="#"
                                                    data-pswp-src="{{asset('storage/' . $card -> image())}}"
                                                    data-pswp-width="2500"
                                                    data-pswp-height="1666"
                                                    target="_blank">
-                                                    <img src="{{asset('storage/' . $card -> image())}}" class="img-fluid" alt="" />
+                                                    <img src="{{asset('storage/' . $card -> image())}}" class="img-fluid w-100" alt="" />
                                                 </a>
                                             </div>
                                         </div>
@@ -278,6 +327,7 @@
 
     @section('script')
 
+
             <script src="{{asset('assets/dflip/assets/js/dflip.min.js')}}"></script>
             <script src="{{asset('assets/dflip/assets/js/metaboxes.min.js')}}"></script>
             <script src="{{asset('assets/js/ideabox-news-ticker.min.js')}}"></script>
@@ -298,11 +348,21 @@
 
         </script>
 
-            <script src="https://cdn.plyr.io/3.7.3/plyr.polyfilled.js"></script>
 
+            <script async charset="utf-8" src="//cdn.embedly.com/widgets/platform.js"></script>
             <script>
-                const player = new Plyr('#player');
+                document.querySelectorAll( 'oembed[url]' ).forEach( element => {
+                    // Create the <a href="..." class="embedly-card"></a> element that Embedly uses
+                    // to discover the media.
+                    const anchor = document.createElement( 'a' );
+
+                    anchor.setAttribute( 'href', element.getAttribute( 'url' ) );
+                    anchor.className = 'embedly-card';
+
+                    element.appendChild( anchor );
+                } );
             </script>
+
 
             <script type="module">
                 // Include Lightbox
@@ -326,55 +386,15 @@
                 lightbox.init();
             </script>
 
-            <script src="{{asset('assets/js/owl.js')}}"></script>
 
-        <script>
-            (function($) {
 
-                "use strict";
 
-                var fullHeight = function() {
-
-                    $('.js-fullheight').css('height', $(window).height());
-                    $(window).resize(function(){
-                        $('.js-fullheight').css('height', $(window).height());
-                    });
-
-                };
-                fullHeight();
-
-                var carousel = function() {
-                    $('.featured-carousel').owlCarousel({
-                        loop:true,
-                        autoplay: true,
-                        margin:30,
-                        animateOut: 'fadeOut',
-                        animateIn: 'fadeIn',
-                        nav:true,
-                        dots: true,
-                        autoplayHoverPause: false,
-                        items: 1,
-                        navText : ["<span class='ion-ios-arrow-back'></span>","<span class='ion-ios-arrow-forward'></span>"],
-                        responsive:{
-                            0:{
-                                items:1
-                            },
-                            600:{
-                                items:2
-                            },
-                            1000:{
-                                items:3
-                            }
-                        }
-                    });
-
-                };
-                carousel();
-
-            })(jQuery);
 
 
         </script>
+
+
+
     @endsection
 
     @else

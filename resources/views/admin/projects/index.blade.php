@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('title','مشاريع التبرع')
+@section('title',__('forms.donation-progres'))
 
 
 
@@ -8,7 +8,7 @@
     @include('admin.layouts.success')
     @include('admin.layouts.failed')
 
-    <a href="{{route('projects.create')}}" class="btn btn-lg btn-primary mb-3">إضافة مشروع</a>
+    <a href="{{route('projects.create')}}" class="btn btn-lg btn-primary mb-3">{{__('forms.add-project')}}</a>
 
     <div class="card">
         <div>
@@ -37,13 +37,13 @@
 
                             <thead>
                             <tr>
-                                <th>إسم المشروع</th>
-                                <th>الوصف</th>
-                                <th>المبلغ</th>
-                                <th>الصورة</th>
-                                <th>تم إنشاءه</th>
-                                <th>تم تعديله</th>
-                                <th>{{__('الإجراءات')}}</th>
+                                <th>{{__('forms.project-name')}}</th>
+                                <th>{{__('forms.description')}}</th>
+                                <th>{{__('forms.price')}}</th>
+                                <th>{{__('forms.picture')}}</th>
+                                <th>{{__('forms.created-at')}}</th>
+                                <th>{{__('forms.edited-at')}}</th>
+                                <th>{{__('forms.procedures')}}</th>
                             </tr>
                             </thead>
 
@@ -65,12 +65,12 @@
                                     <td>
                                         <div class="btn-group position-relative z-20">
                                             <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                                {{__('الإجراءات')}}
+                                                {{__('forms.procedures')}}
                                             </button>
                                             <ul class="dropdown-menu">
                                                 <li><a class="dropdown-item" href="{{route('projects.edit',$project)}}">{{__('تعديل')}}</a></li>
                                                 <li>
-                                                    <form action="{{route('projects.destroy',$project)}}" method = "POST" onsubmit="return confirm('هل أنت متأكد')">
+                                                    <form action="{{route('projects.destroy',$project)}}" method = "POST" onsubmit="return confirm('{{__('forms.you-sure')}}')">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn">{{__('حذف')}}</button>
@@ -105,13 +105,13 @@
 
                             <thead>
                             <tr>
-                                <th>إسم المشروع</th>
-                                <th>الوصف</th>
-                                <th>المبلغ</th>
-                                <th>الصورة</th>
-                                <th>تم إنشاءه</th>
-                                <th>تم تعديله</th>
-                                <th>{{__('الإجراءات')}}</th>
+                                <th>{{__('forms.project-name')}}</th>
+                                <th>{{__('forms.description')}}</th>
+                                <th>{{__('forms.price')}}</th>
+                                <th>{{__('forms.picture')}}</th>
+                                <th>{{__('forms.created-at')}}</th>
+                                <th>{{__('forms.edited-at')}}</th>
+                                <th>{{__('forms.procedures')}}</th>
                             </tr>
                             </thead>
 
@@ -133,12 +133,12 @@
                                     <td>
                                         <div class="btn-group position-relative z-20">
                                             <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                                {{__('الإجراءات')}}
+                                                {{__('forms.procedures')}}
                                             </button>
                                             <ul class="dropdown-menu">
                                                 <li><a class="dropdown-item" href="{{route('projects.edit',$project)}}">{{__('تعديل')}}</a></li>
                                                 <li>
-                                                    <form action="{{route('projects.destroy',$project)}}" method = "POST" onsubmit="return confirm('هل أنت متأكد')">
+                                                    <form action="{{route('projects.destroy',$project)}}" method = "POST" onsubmit="return confirm('{{__('forms.you-sure')}}')">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn">{{__('حذف')}}</button>
@@ -173,13 +173,13 @@
 
                             <thead>
                             <tr>
-                                <th>إسم المشروع</th>
-                                <th>الوصف</th>
-                                <th>المبلغ</th>
-                                <th>الصورة</th>
-                                <th>تم إنشاءه</th>
-                                <th>تم تعديله</th>
-                                <th>{{__('الإجراءات')}}</th>
+                                <th>{{__('forms.project-name')}}</th>
+                                <th>{{__('forms.description')}}</th>
+                                <th>{{__('forms.price')}}</th>
+                                <th>{{__('forms.picture')}}</th>
+                                <th>{{__('forms.created-at')}}</th>
+                                <th>{{__('forms.edited-at')}}</th>
+                                <th>{{__('forms.procedures')}}</th>
                             </tr>
                             </thead>
 
@@ -201,15 +201,15 @@
                                     <td>
                                         <div class="btn-group position-relative z-20">
                                             <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                                {{__('الإجراءات')}}
+                                                {{__('forms.procedures')}}
                                             </button>
                                             <ul class="dropdown-menu">
                                                 <li><a class="dropdown-item" href="{{route('projects.edit',$project)}}">{{__('تعديل')}}</a></li>
                                                 <li>
-                                                    <form action="{{route('projects.destroy',$project)}}" method = "POST" onsubmit="return confirm('هل أنت متأكد')">
+                                                    <form action="{{route('projects.destroy',$project)}}" method = "POST" onsubmit="return confirm('{{__('forms.you-sure')}}')">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" class="btn">{{__('حذف')}}</button>
+                                                        <button type="submit" class="btn">{{__('forms.delete')}}</button>
                                                     </form>
                                                 </li>
 

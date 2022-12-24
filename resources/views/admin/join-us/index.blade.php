@@ -10,6 +10,8 @@
 
     @if(count($joins))
 
+        @include('admin.layouts.success')
+
     <div class="table-responsive rounded">
 
         <table class="table table-striped table-primary border rounded">
@@ -42,7 +44,7 @@
                             <a href="{{asset('storage/' . $join -> cv)}}" class="btn btn-primary" download>{{__('forms.download')}} </a>
                         </td>
                         <td>
-                            <form action="{{route('join-us.destroy',$join)}}" method="POST" onsubmit="return confirm({{__('forms.you-sure')}})" class="d-inline-block">
+                            <form action="{{route('join-us.destroy',$join->id)}}" method="POST" onsubmit="return confirm('{{__('forms.you-sure')}}')" class="d-inline-block">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">{{__('forms.delete')}}</button>

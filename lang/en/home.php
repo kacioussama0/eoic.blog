@@ -29,7 +29,17 @@ return [
     'more' => 'More',
     'shortcuts' => 'Shortcuts',
     'posts' => 'Posts',
-    'important-news' => 'Breaking news'
+    'important-news' => 'Breaking news',
+    'prayer-times' => 'Prayer Times',
+    'fajr' => 'Fajr',
+    'sunrise' => 'Sunrise',
+    'dhuhr' => 'Dhuhr',
+    'asr' => 'Asr',
+    'maghrib' => 'Maghrib',
+    'isha' => 'Isha',
+    'beta' => 'Beta',
+    'united-nations' => 'Consultative status with the United Nations'
+
 
 ];
 

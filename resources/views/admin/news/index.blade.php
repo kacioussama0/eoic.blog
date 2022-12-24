@@ -198,7 +198,7 @@
                                             <ul class="dropdown-menu">
                                                 <li><a class="dropdown-item" href="#">{{__('forms.edit')}}</a></li>
                                                 <li>
-                                                    <form action="{{route('news.destroy',$new)}}" method = "POST" onsubmit="return confirm({{__('forms.you-sure')}})">
+                                                    <form action="{{route('news.destroy',$new)}}" method = "POST" onsubmit="return confirm('{{__('forms.you-sure')}}')">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn border-0">{{__('forms.delete')}}</button>

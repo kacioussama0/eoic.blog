@@ -64,9 +64,9 @@
                                                 {{__('forms.procedures')}}
                                             </button>
                                             <ul class="dropdown-menu ">
-                                                <li><a class="dropdown-item " href="{{route('cards.edit',$card)}}">{{__('forms.edited-at')}}</a></li>
+                                                <li><a class="dropdown-item " href="{{route('cards.edit',$card)}}">{{__('forms.edit')}}</a></li>
                                                 <li>
-                                                    <form action="{{route('cards.destroy',$card)}}" method = "POST" onsubmit="return confirm({{__('forms.you-sure')}})">
+                                                    <form action="{{route('cards.destroy',$card)}}" method = "POST" onsubmit="return confirm('{{__('forms.you-sure')}}')">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn border-0">{{__('forms.delete')}}</button>
@@ -131,7 +131,7 @@
                                             <ul class="dropdown-menu">
                                                 <li><a class="dropdown-item" href="{{route('cards.edit',$card)}}">{{__('forms.edit')}}</a></li>
                                                 <li>
-                                                    <form action="{{route('cards.destroy',$card)}}" method = "POST" onsubmit="return confirm({{__('forms.you-sure')}})">
+                                                    <form action="{{route('cards.destroy',$card)}}" method = "POST" onsubmit="return confirm('{{__('forms.you-sure')}}')">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn border-0">{{__('forms.delete')}}</button>

@@ -144,7 +144,7 @@ class PostController extends Controller
 
 
         return redirect()->to('admin/posts')->with([
-            'success' => 'تم إضافة المنشور بنجاح'
+            'success' =>  __('forms.add-success')
         ]);
 
     }
@@ -263,7 +263,7 @@ class PostController extends Controller
 
         return redirect()->to('admin/posts')->with(
           [
-              'success' => 'تم تعديل المقال بنجاح'
+              'success' =>  __('forms.edit-success')
           ]
         );
 
@@ -288,7 +288,7 @@ class PostController extends Controller
 
 
         return redirect()->to('admin/posts')->with(
-            ['success' => 'تم الإسترجاع بنجاح']
+            ['success' => __('forms.restore-success')]
         );
     }
 
@@ -315,7 +315,7 @@ class PostController extends Controller
         $post -> forceDelete();
 
         return redirect()->back()->with([
-            'success' => 'تم حذف المقال بنجاح'
+            'success' => __('forms.deleted-success')
         ]);
     }
 
@@ -324,7 +324,7 @@ class PostController extends Controller
     {
         $post -> delete();
         return redirect()->back()->with([
-            'success' => 'تم حذف المقال بنجاح'
+            'success' => __('forms.deleted-success')
         ]);
     }
 

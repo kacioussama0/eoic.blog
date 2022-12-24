@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'admin-panel' => 'Panel',
+    'admin-panel' => 'Panneau',
     'full-name' => 'Nom et prénom',
     'email' => 'E-mail',
     'subject' => 'Sujet',
@@ -69,8 +69,8 @@ return [
     'latin-name' => 'Nom Latin',
     'name-in-ar' => ' Nom En AR',
     'office-members' => 'Membres Du Bureau ',
-    'cards' => 'Les Cards',
-    'add-card' => 'Ajouter Une Card',
+    'cards' => 'Les Cartes',
+    'add-card' => 'Ajouter Une Carte',
     'setting' => 'Paramètres',
     'site-name' => 'Nom De Site',
     'slogan' => 'Slogan',
@@ -92,12 +92,12 @@ return [
     'more-of' => 'Plus de',
     'browse' => 'voir',
     'you-sure' => 'es-tu sûr',
-    'card-in-en' => 'La Card en EN',
-    'card-in-ar' => 'La Card en AR',
-    'card-in-fr' => 'La Card en FR',
+    'card-in-en' => 'La Carte en EN',
+    'card-in-ar' => 'La Carte en AR',
+    'card-in-fr' => 'La Carte en FR',
     'share' => 'Partage',
-    'edit-card' => 'Modifier La card',
-     'category-in-en' => 'Categorie en EN',
+    'edit-card' => 'Modifier La carte',
+    'category-in-en' => 'Categorie en EN',
     'category-in-ar' => 'Categorie en AR',
     'category-in-fr' => 'Categorie en FR',
     'edit-category' => 'Modifier Categorie',
@@ -127,7 +127,35 @@ return [
     'deleted-articles' => 'Article Supprimer',
     'destroy' => 'détruire',
     'restore' => 'restaurer',
-    'articles-showcase' => 'Article Vitrine'
+    'articles-showcase' => 'Article Vitrine',
+    'add-project' => 'Ajouter un project',
+    'edit-project' => 'Modifier un project',
+    'donation-progres' => 'Progression des project',
+    'tag-in-en' => 'Mot cle en EN',
+    'tag-in-fr' => 'Mot cle en FR',
+    'tag-in-ar' => 'Mot cle en AR',
+    'edit-tag' => 'Modifier Mot Cle',
+    'link' => 'link',
+    'edit-video' => 'Modifier Video',
+    'reset-password' => 'Réinitialiser votre mot de passe',
+    'edited-successfully' => 'Modifier avec succès',
+    'current-pass-incorrect' => 'Mot de passe actuel incorrect',
+    'pass-chan-success' => 'Mot de passe modifier avec succès',
+    'pic-chan-success'=> 'Photo modifier avec succès',
+    'add-success' => 'Ajouter avec succès',
+    'deleted-success' => 'Supprimer avec succès',
+    'edit-success' => 'Modifier avec succès',
+    'there-are-articles-in-it' => 'Il y a des articles dedans',
+    'msg-sent' => 'message envoyé avec succès',
+    'restore-success' => 'Restaurer avec succès',
+    'not-found' => 'LA PAGE EST INDISPONIBLE !!',
+    'something-wrong' => 'QUELQUE CHOSE NE VA PAS!',
+    'under-dev' => 'الموقع قيد الصيانة',
+
+
+
+
+
 
 
 

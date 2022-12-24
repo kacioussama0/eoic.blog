@@ -56,7 +56,7 @@ class UserController extends Controller
                 'type' => 'editor'
             ]);
             return  redirect()->to('admin/users')->with(
-                ['success' => 'تم إضافة العضو بنجاح']
+                ['success' => __('forms.add-success')]
             );
 
         }
@@ -89,7 +89,9 @@ class UserController extends Controller
                 'email' => $request->email,
             ]);
 
-            return redirect()->to('admin/users');
+            return redirect()->to('admin/users')->with(
+                ['success' => __('forms.edit-success')]
+            );
 
         }
     }
@@ -101,7 +103,9 @@ class UserController extends Controller
             $user = User::find($id);
             $user->notifications()->delete();
             $user -> delete();
-            return redirect()->to('admin/users');
+            return redirect()->to('admin/users')->with(
+                ['success' => __('forms.deleted-success')]
+            );
         }
         return  abort(404);
     }

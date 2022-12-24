@@ -18,7 +18,7 @@ return [
     'donate' => 'Faire un don',
     'volunteer' => 'Faites du bénévolat',
     'magazines' => 'Magasines',
-    'cards' => 'Cartes',
+    'cards' => 'Carte',
     'videos' => 'Vidéos',
     'last-posts' => 'Derniers Articles',
     'categories' => 'Catégories',
@@ -29,7 +29,17 @@ return [
     'more' => 'Suite',
     'shortcuts' => 'Raccourcis',
     'posts' => 'Articles',
-    'important-news' => 'Dernières nouvelles'
+    'important-news' => 'Dernières nouvelles',
+    'prayer-times' => 'Heures de prières',
+    'fajr' => 'Fajr',
+    'sunrise' => 'lever du soleil',
+    'dhuhr' => 'Dhuhr',
+    'asr' => 'Asr',
+    'maghrib' => 'Maghrib',
+    'isha' => 'Isha',
+    'beta' => 'Démo',
+    'united-nations' => 'Statut consultatif auprès des Nations Unies'
+
 ];
 
 

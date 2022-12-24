@@ -47,7 +47,7 @@ class ProjectController extends Controller
             'description' => 'required|min:5',
             'description_fr' => 'required|min:5',
             'description_en' => 'required|min:5',
-            'amount' => 'required|min:5',
+            'amount' => 'required',
             'thumbnail'=> [
                 'required',
                 File::types([
@@ -96,7 +96,7 @@ class ProjectController extends Controller
 
 
         return  redirect()->to('admin/projects')->with([
-            'success' => 'تم إضافة المشروع بنجاح'
+            'success' => __('forms.add-success')
         ]);
 
     }
@@ -213,7 +213,7 @@ class ProjectController extends Controller
 
 
         return  redirect()->to('admin/projects')->with([
-            'success' => 'تم تعديل المشروع بنجاح'
+            'success' => __('forms.edit-success')
         ]);
     }
 
@@ -227,7 +227,7 @@ class ProjectController extends Controller
     {
         $project->delete();
         return  redirect()->to('admin/projects')->with([
-            'success' => 'تم حذف المشروع بنجاح'
+            'success' => __('forms.deleted-success')
         ]);
     }
 }

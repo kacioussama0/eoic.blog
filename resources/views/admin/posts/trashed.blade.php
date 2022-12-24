@@ -22,7 +22,7 @@
                     <th>{{__('forms.created-at')}}</th>
                     <th>{{__('forms.edited-at')}}</th>
                     <th>{{__('forms.published')}}</th>
-                    <th>{{__('forms,procedures')}}</th>
+                    <th>{{__('forms.procedures')}}</th>
                 </tr>
 
             </thead>
@@ -50,7 +50,7 @@
                             <!-- Example single danger button -->
                             <div class="btn-group">
                                 <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                    {{__('forms,procedures')}}
+                                    {{__('forms.procedures')}}
                                 </button>
                                 <ul class="dropdown-menu">
                                     <li> <a href="{{route('posts.restore',$post->id)}}"  class="dropdown-item">{{__('forms.restore')}}</a></li>

@@ -21,12 +21,12 @@
 
 
 @endphp
-<div class="col-lg-4 d-lg-block d-none">
+<div class="col-lg-4 order-0 order-lg-1">
 
 
 @if(!empty($project))
     <!-- ad widget-->
-    <div class="aside-widget ">
+    <div class="aside-widget d-lg-block d-none">
         <a href="#" style="display: inline-block;margin: auto;">
             <div class="section-title">
                 <h2 class="title">{{__('home.our-projects')}}</h2>
@@ -48,10 +48,51 @@
 
 @endif
 
+    <div class="card  mb-3  border-primary">
+        <div class="card-header p-0 bg-transparent  border-primary">
+            <h3 class=" my-0 p-3">
+                <span class="text-center">
+                    <i class="fa-light fa-mosque me-2 text-primary"></i>
+                    <span class="">{{__('home.prayer-times')}}</span>
+                </span>
+                <div class="fw-normal fs-6 mt-2 d-flex justify-content-between flex-column align-items-center"  id="prayer-date">
+
+                </div>
+
+            </h3>
+        </div>
+
+        <div class="card-body p-0">
+            <ul class="list-group border-0" id="prayers">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span>{{__('home.fajr')}}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span>{{__('home.sunrise')}}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span>{{__('home.dhuhr')}}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span>{{__('home.asr')}}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span>{{__('home.maghrib')}}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span>{{__('home.isha')}}</span>
+                </li>
+            </ul>
+
+        </div>
+
+    </div>
+
+
     @if(request()->is('/') )
 
         @if(count($Articles))
-        <div class="card rounded-4  overflow-hidden border-primary mb-3">
+        <div class="card rounded-4  overflow-hidden border-primary mb-3 d-lg-block d-none">
             <div class="card-header p-0 bg-transparent border-primary">
                 <h3 class=" my-0 p-3">
                     <a href="{{url('category/Posts')}}" class="link-primary"><img src="{{asset('assets/imgs/zellig.svg')}}" style="width: 30px" alt="" class="me-2"> {{__('home.posts')}} </a>
@@ -84,7 +125,7 @@
         </div>
         @endif
     @if(count($Dialogues))
-        <div class="card rounded-4  overflow-hidden border-primary mb-3">
+        <div class="card rounded-4  overflow-hidden border-primary mb-3 d-lg-block d-none">
             <div class="card-header p-0 bg-transparent border-primary">
                 <h3 class=" my-0 p-3">
                     <a href="{{url('category/Posts')}}" class="link-primary"><img src="{{asset('assets/imgs/zellig.svg')}}" style="width: 30px" alt="" class="me-2"> {{__('forms.dialogues')}}</a>
@@ -153,9 +194,8 @@
 
                     @foreach($tags as $tag)
 
-                        @if(count($tag -> posts))
+
                             <li><a href="{{url('tag/'.$tag -> id)}}">{{$tag ->name()}}</a></li>
-                        @endif
 
                     @endforeach
 
@@ -169,3 +209,54 @@
 </div>
 </div>
 
+@section('script')
+
+    <script>
+        const obj = {
+            city: 'Geneva',
+            country: 'switzerland',
+            method: 1,
+            year: new Date().getFullYear(),
+            month: new Date().getMonth() + 1,
+            day: new Date().getDate(),
+        }
+
+        let prayers = [];
+
+        const URL =  `http://api.aladhan.com/v1/calendarByCity?city=${obj.city}&country=${obj.country}&method=${obj.method}&month=${obj.month}&year=${obj.year}`;
+
+        $.ajax({
+            url: URL,
+            method: 'GET'
+        }).done((response)=> {
+            prayers = response.data[obj.day - 1];
+            console.log(prayers);
+            let prayerDate = document.querySelector('#prayer-date');
+
+            prayerDate.innerHTML = `
+
+            <span class="text-muted">${prayers.date.gregorian.weekday.en} ${prayers.date.gregorian.day}, ${prayers.date.gregorian.month.en} ${prayers.date.gregorian.year}</span>
+            <span class="text-muted"> ${prayers.date.hijri.day} ${prayers.date.hijri.month.en}  | ${prayers.date.hijri.year} </span>
+
+            `;
+
+            let timing = $('#prayers li');
+            let times = [
+                prayers.timings.Fajr,
+                prayers.timings.Sunrise,
+                prayers.timings.Dhuhr,
+                prayers.timings.Asr,
+                prayers.timings.Maghrib,
+                prayers.timings.Isha,
+            ]
+            for(let time in timing) {
+                timing[time].innerHTML += `<span>${times[time].slice(0,times[time].length - 6)}</span>`;
+            }
+
+
+        })
+
+
+    </script>
+
+@endsection

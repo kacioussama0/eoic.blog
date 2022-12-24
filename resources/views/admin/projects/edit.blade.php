@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('title','تعديل مشروع')
+@section('title',__('forms.edit-project'))
 
 
 
@@ -28,14 +28,14 @@
 
                         @method('PATCH')
                         @csrf
-                        <x-admin.forms.input name="title" title="العنوان بالعربية" type="text" value="{{$project->title}}"/>
-                        <x-admin.forms.text-area name="description" title="الوصف بالعربية" value="{!! $project -> description!!}"/>
-                        <x-admin.forms.input name="thumbnail" title="الصورة بالعربية" type="file" value="{{old('thumbnail')}}"/>
+                        <x-admin.forms.input name="title" title="{{__('forms.title-in-ar')}}" type="text" value="{{$project->title}}"/>
+                        <x-admin.forms.text-area name="description" title="{{__('forms.description')}}" value="{!! $project -> description!!}"/>
+                        <x-admin.forms.input name="thumbnail" title="{{__('forms.picture')}}" type="file" value="{{old('thumbnail')}}"/>
                         <img src="{{asset('storage/' . $project -> thumbnail)}}" alt="" style="width: 200px ; height: 200px">
-                        <x-admin.forms.input name="amount" title="المبلغ" type="number" value="{{$project -> amount}}"/>
+                        <x-admin.forms.input name="amount" title="{{__('forms.price')}}" type="number" value="{{$project -> amount}}"/>
 
                         <div class="form-check form-switch mb-3">
-                            <label for="is_published">المشروع منشور</label>
+                            <label for="is_published">{{__('forms.share')}}</label>
                             <input class="form-check-input " @if($project -> is_published)  checked @endif type="checkbox" name="is_published" id="is_published" value="on">
                         </div>
 
@@ -45,22 +45,22 @@
 
 
                     <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
-                        <x-admin.forms.input name="title_en" title="العنوان بالإنجليزية" type="text" value="{{$project->title_en}}"/>
-                        <x-admin.forms.text-area name="description_en" title="الوصف  بالإنجلزية" value="{!! $project -> description_en !!}"/>
-                        <x-admin.forms.input name="thumbnail_en" title="الصورة بالإنجلزية" type="file" value="{{old('thumbnail_en')}}"/>
+                        <x-admin.forms.input name="title_en" title="{{__('forms.title-in-en')}}" type="text" value="{{$project->title_en}}"/>
+                        <x-admin.forms.text-area name="description_en" title="{{__('forms.description')}}" value="{!! $project -> description_en !!}"/>
+                        <x-admin.forms.input name="thumbnail_en" title="{{__('forms.picture')}}" type="file" value="{{old('thumbnail_en')}}"/>
                         <img src="{{asset('storage/' . $project -> thumbnail_en) }}" alt="" style="width: 200px ; height: 200px">
 
                     </div>
                     <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
-                        <x-admin.forms.input name="title_fr" title="العنوان بالفرنسية" type="text" value="{{$project->title_fr}}"/>
-                        <x-admin.forms.text-area name="description_fr" title="الوصف بالفرنسية" value="{!! $project -> description_fr !!}"/>
-                        <x-admin.forms.input name="thumbnail_fr" title="الصورة بالفرنسية" type="file" value="{{old('thumbnail_fr')}}"/>
+                        <x-admin.forms.input name="title_fr" title="{{__('forms.title-in-fr')}}" type="text" value="{{$project->title_fr}}"/>
+                        <x-admin.forms.text-area name="description_fr" title="{{__('forms.description')}}" value="{!! $project -> description_fr !!}"/>
+                        <x-admin.forms.input name="thumbnail_fr" title="{{__('forms.picture')}}" type="file" value="{{old('thumbnail_fr')}}"/>
                         <img src="{{asset('storage/' . $project -> thumbnail_fr) }}" alt="" style="width: 200px ; height: 200px">
 
                     </div>
 
                 </div>
-                <button type="submit" class="btn btn-primary w-100">{{__('تعديل مشروع')}}</button>
+                <button type="submit" class="btn btn-primary w-100">{{__('forms.edit-project')}}</button>
             </form>
 
         </div>

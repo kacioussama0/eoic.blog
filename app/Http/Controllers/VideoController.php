@@ -49,7 +49,7 @@ class VideoController extends Controller
         ]);
 
         return redirect()->to('admin/videos')->with([
-            'success' => 'تم إضافة الفيديو بنجاح'
+            'success' => __('forms.add-success')
         ]);
     }
 
@@ -96,7 +96,7 @@ class VideoController extends Controller
         ]);
 
         return redirect()->to('admin/videos')->with([
-            'success' => 'تم تعديل الفيديو بنجاح'
+            'success' => __('forms.edit-success')
         ]);
     }
 
@@ -112,7 +112,7 @@ class VideoController extends Controller
         $video -> delete();
 
         return redirect()->to('admin/videos')->with([
-            'success' => 'تم حذف الفيديو بنجاح'
+            'success' => __('forms.deleted-success')
         ]);
     }
 

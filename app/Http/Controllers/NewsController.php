@@ -46,7 +46,7 @@ class NewsController extends Controller
         News::create($request -> all());
 
         return redirect()->to('admin/news')->with([
-            'success' => 'تم إضافة الخبر بنجاح'
+            'success' => __('forms.add-success')
         ]);
     }
 
@@ -99,14 +99,14 @@ class NewsController extends Controller
             );
 
             return redirect()->to('admin/news')->with([
-                'success' => 'تم تعديل الخبر بنجاح'
+                'success' =>  __('forms.edit-success')
             ]);
         }
 
         $news->update($request -> all());
 
         return redirect()->to('admin/news')->with([
-            'success' => 'تم تعديل الخبر بنجاح'
+            'success' =>  __('forms.edit-success')
         ]);
     }
 
@@ -120,7 +120,7 @@ class NewsController extends Controller
     {
         $news -> delete();
         return redirect()->to('admin/news')->with([
-            'success' => 'تم حذف الخبر بنجاح'
+            'success' => __('forms.deleted-success')
         ]);
     }
 }

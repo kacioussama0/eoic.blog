@@ -128,7 +128,35 @@ return [
     'deleted-articles' => 'المقالات المحذوفة',
     'destroy' => 'الحذف النهائي',
     'restore' => 'استرجاع',
-    'articles-showcase' => 'إظهار المقال'
+    'articles-showcase' => 'إظهار المقال',
+     'add-project' => 'إضافة مشروع',
+    'edit-project' => 'تعديل مشروع',
+    'donation-progres' => 'مشاريع المتبرع لها',
+    'tag-in-en' => 'الوسم بالعربية',
+    'tag-in-fr' => 'الوسم بالفرنسية',
+    'tag-in-ar' => 'الوسم بالعربية',
+    'edit-tag' => 'تعديل الوسم',
+    'link' => 'الرابط',
+    'edit-video' => 'تعديل فيديو',
+    'reset-password' => 'إعادة تعيين كلمة السر',
+    'edited-successfully' => 'تم تعديل  بنجاح',
+    'current-pass-incorrect' => 'كلمة السر الحالية خاطئة',
+    'pass-chan-success' => 'تم تغيير كلمة السر بنجاح',
+    'pic-chan-success'=> 'تم تغيير الصورة بنجاح',
+    'add-success' => 'تمت الإضافة بنجاح',
+    'deleted-success' => 'تم  الحذف بنجاح',
+    'edit-success' => 'تم  التعديل بنجاح',
+    'there-are-articles-in-it' => 'لا يمكن حذف التصنيف يوجد مقالات بداخله',
+    'msg-sent' => 'تمت إرسال الرسالة بنجاح',
+    'restore-success' => 'تم الإسترجاع بنجاح',
+    'not-found' => 'الصفحة غير متوفرة',
+    'something-wrong' => 'حدث خطأ ما!',
+    'under-dev' => ' UNDER DEVELOPMENT',
+
+
+
+
+
 
 
 

@@ -37,7 +37,7 @@ class BlogController extends Controller
         }else {
             $categories = Category::where('name', '<>' , 'null')->latest();
             $cards = Card::where('is_published','1')->where('image','<>' , '')->latest()->get()->take(8);
-            $magazines = Magazine::where('is_published','1')->where('book','<>' , '')->latest()->get();
+            $magazines = Magazine::where('is_published','1')->where('book','<>' , null)->latest()->get();
 
         }
 
@@ -48,7 +48,7 @@ class BlogController extends Controller
             ->with('last_posts',Post::where('is_published','on')->latest()->take(4)->get())
             ->with('categories',Category::get()->take(12))
             ->with('magazines',$magazines)
-            ->with('videos',Video::where('is_published','1')->latest()->get())
+            ->with('videos',Video::where('is_published','1')->latest()->take(3)->get())
             ->with('news_titles',News::where('is_published','1')->latest()->get()->take(10))
             ->with('cards',$cards)
             ->with('settings',Setting::first())
