@@ -5,7 +5,7 @@
 
 @section('content')
 
-    <form action="{{route('tags.update')}}" method="POST">
+    <form action="{{route('tags.update',$tag)}}" method="POST">
 
         @csrf
         @method('PATCH')

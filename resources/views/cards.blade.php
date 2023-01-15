@@ -1,7 +1,7 @@
 @extends('blog-layout.app')
 @section('title','البطاقات')
 
-@section('style')
+@section('styles')
 
 <link rel="stylesheet" href="{{asset('assets/photoswipe/photoswipe.css')}}" />
 
@@ -24,7 +24,6 @@
                     <h1 class="text-uppercase">{{__('البطاقات')}}</h1>
 
                     <div class="position-relative ">
-
 
                     </div>
                 </div>

@@ -2,7 +2,6 @@
 $navCategories = \App\Models\Category::all()->take(12);
 $settings = \App\Models\Setting::first();
 @endphp
-
 <!-- Made By SKTE :) -->
 <!-- Zakaria Seggar Front End -->
 <!-- Kaci Oussama Back End -->
@@ -14,40 +13,43 @@ $settings = \App\Models\Setting::first();
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    @if(request()->is('posts/*') )
-        <meta name="title" content="{{$post -> title()}}">
-        <meta name="description" content="{!! Str::limit(strip_tags($post -> content()) ,100) !!}">
-    @else
-        <meta name="title" content="{{$settings -> display_name()}}">
-        <meta name="description" content="{{$settings -> description()}}">
-    @endif
-    <meta name="keywords" content="">
+    <meta name="title" content="{{$settings -> display_name()}}">
+    <meta name="description" content="{{$settings -> description()}}">
+    @yield('meta')
     <meta name="robots" content="index, follow">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="language" content="Arabic">
+    <meta name="robots" content="all"/>
+    <meta name="robots" content="noindex"/>
+    <meta name="robots" content="nofollow"/>
+    <meta name=”robots” content="noindex, nofollow">
+    <meta name=”robots” content="index, follow">
+    <meta name="robots" content="none"/>
+    <meta name="robots" content="noarchive"/>
+    <meta name="robots" content="notranslate"/>
+    <meta name="robots" content="noimageindex"/>
+    <meta name="robots" content="nosnippet"/>
+    <meta name="keywords" content="@foreach($navCategories as $category){{$category->name() . ','}}@endforeach"/>
     <!-- End Meta -->
-
-
-    <link rel='icon' href='{{asset('assets/imgs/logo.svg')}}'>
     <title>{{$settings->display_name()}} | @yield('title')</title>
     <!-- Start Links -->
+    <link rel='icon' href='{{asset('assets/imgs/logo.svg')}}'>
     @if(session()->get('locale') == 'ar')
     <link rel="stylesheet" href="{{asset('assets/css/bootstrap.rtl.css')}}">
     @else
     <link rel="stylesheet" href="{{asset('assets/css/bootstrap.css')}}">
     @endif
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" ></script>
+
+    <link href="{{asset('assets/dflip/assets/css/dflip.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{asset('assets/dflip/assets/css/themify-icons.min.css')}}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href='{{asset('assets/fontawesome/css/all.min.css')}}'>
     <link type="text/css" rel="stylesheet" href="{{asset('assets/css/blog.css')}}" />
     <link type="text/css" rel="stylesheet" href="{{asset('assets/css/blog_style.css')}}" />
     <link type="text/css" rel="stylesheet" href="{{asset('assets/css/animate.css')}}" />
-
-    <link href="{{asset('assets/dflip/assets/css/dflip.min.css')}}" rel="stylesheet" type="text/css">
-    <link href="{{asset('assets/dflip/assets/css/themify-icons.min.css')}}" rel="stylesheet" type="text/css">
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css"/>
-    @yield('style')
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+    @yield('styles')
     <script>
         $(window).on('load',function(){
             $('.loader-container').fadeOut();
@@ -55,15 +57,14 @@ $settings = \App\Models\Setting::first();
         });
     </script>
     @livewireStyles
-
     <!-- End Links -->
-
 </head>
+
+<x-loader/>
 
 
 <body class="overflow-hidden">
 
-<x-loader/>
 
 <!-- Start Search Modal -->
 
@@ -91,7 +92,8 @@ $settings = \App\Models\Setting::first();
 
 
 <!-- Start Header-->
-<div class="text-white user-select-none  bg-primary position-relative top-0 py-3 py-md-0 z-n1">
+
+<div class="text-white user-select-none  bg-primary position-relative top-0 py-3 py-md-0 ">
    <div class="container-lg d-flex flex-column flex-md-row justify-content-between align-items-center">
        <h6 class="mb-3 mb-md-0 text-white">{{__('home.united-nations')}}</h6>
        <span class=" wow flash text-bg-secondary d-none d-md-block p-2 rounded-bottom-4 mb-1" data-wow-iteration="infinite" data-wow-duration="2s">
@@ -146,7 +148,6 @@ $settings = \App\Models\Setting::first();
                 </li>
 
 
-
                 <div id="megaGroup">
 
                     <div class="collapse mega-menu" id="about" data-bs-parent="#megaGroup">
@@ -172,7 +173,6 @@ $settings = \App\Models\Setting::first();
 
                                             <li  class="col-4"><a href="{{url('category/' . $category -> name())}}">{{$category->name()}}</a></li>
                                         @endforeach
-
                                     </ul>
                                 </div>
 
@@ -722,28 +722,20 @@ $settings = \App\Models\Setting::first();
 
 <!-- End Footer  -->
 
+<!-- Start Scripts -->
+<script src="{{asset('assets/dflip/assets/js/dflip.min.js')}}"></script>
+<script src="{{asset('assets/dflip/assets/js/metaboxes.min.js')}}"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="{{asset('assets/fontawesome/js/all.min.js')}}"></script>
 <script src="{{asset('assets/js/wow.min.js')}}"></script>
 <script>
     new WOW().init();
 </script>
-
 @livewireScripts
 
-<script type="text/javascript">
+@yield('scripts')
 
-    jQuery('button').click( function(e) {
-        jQuery('.collapse').collapse('hide');
-    });
-
-</script>
-
-
-
-
-@yield('script')
-
+<!-- End Scripts -->
 </body>
 
 </html>

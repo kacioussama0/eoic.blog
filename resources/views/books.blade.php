@@ -33,11 +33,11 @@
                    <div class="col-md-6 col-lg-4 col-xl-3">
                        <div class="card border-primary"  style="height: 550px">
                            <img src="{{asset('storage/' . $magazine -> thumbnail())}}" class="card-img-top object-fit-cover  h-75" alt="...">
-                           <div class="card-body h-25 d-flex justify-content-center align-items-center">
+                           <div class="card-body d-flex p-1 justify-content-center align-items-center">
                                <h5 class="card-title text-center ">{{$magazine -> title()}}</h5>
                            </div>
 
-                           <div class="card-footer bg-transparent border-0 d-flex justify-content-between align-items-center h-25">
+                           <div class="card-footer bg-transparent border-0 d-flex justify-content-between align-items-center">
 
                                <a href="" class="_df_button text-bg-primary" source="{{asset('storage/' . $magazine->book())}}">
                                    {{__('تصفح')}}
@@ -48,8 +48,6 @@
                                    {{__('تحميل')}}
                                    <i class="fa-light fa-download ms-1"></i>
                                </a>
-
-
                            </div>
                        </div>
                    </div>
@@ -66,9 +64,3 @@
 
 @endsection
 
-@section('script')
-
-    <script src="{{asset('assets/dflip/assets/js/dflip.min.js')}}"></script>
-    <script src="{{asset('assets/dflip/assets/js/metaboxes.min.js')}}"></script>
-
-@endsection

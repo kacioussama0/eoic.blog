@@ -13,7 +13,6 @@ class TagController extends Controller
         $tagsEN = Tag::latest()->where('name_en' , '<>' , null)->paginate(6);
         $tagsFR = Tag::latest()->where('name_fr' , '<>' , null)->paginate(6);
         return view('admin.tags.index',compact('tags','tagsEN','tagsFR'));
-
     }
 
 
@@ -26,7 +25,7 @@ class TagController extends Controller
     public function store(Request $request)
     {
         $request -> validate([
-            'name' => 'required|min:3|max:50|unique:tags',
+            'name' => 'required|min:3|max:50|unique:tags,'  ,
             'name_en' => 'required|min:3|max:50|unique:tags',
             'name_fr' => 'required|min:3|max:50|unique:tags',
         ]);

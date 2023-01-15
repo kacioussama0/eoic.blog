@@ -177,12 +177,12 @@ p {
 }
 
 .carousel {
-    height: 90vh !important;
+    height: 80vh !important;
     position: relative !important;
 }
 
 .carousel-item {
-    height: 90vh !important;
+    height: 80vh !important;
     position: relative !important;
 }
 

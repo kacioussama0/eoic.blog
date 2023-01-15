@@ -1,5 +1,22 @@
 @extends('blog-layout.app')
-@section('title','مقال')
+@section('title',$post->title())
+@section('meta')
+
+    <!--  Twitter Meta Tags -->
+
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:title" content="{{$settings->display_name()}} | {{$post->title()}}">
+    <meta name="twitter:description" content="{!! Str::limit(strip_tags($post -> content()) ,100) !!}">
+    <meta name="twitter:image" content="{{$post->image()}}"/>
+
+    <!-- Facebook Meta Tags -->
+
+    <meta property="og:title" content="{{$post->title()}}"/>
+    <meta property="og:description" content="{!! Str::limit(strip_tags($post -> content()) ,100) !!}"/>
+    <meta property="og:image" content="{{$post->image()}}"/>
+    <meta property="og:url" content="{{request()->url()}}"/>
+
+@endsection
 @section('style')
     <style class="embedly-css">
         .card , div.brd  {
@@ -8,7 +25,6 @@
         }
         .card .hdr , .card .brd a{
             display:none;
-
         }
     </style>
 
@@ -104,7 +120,7 @@
 
                     <div class="more-posts mt-3 border-top border-primary border-opacity-25 py-5">
 
-                        <h3 class="title"> {{__('forms.more-of')}} {{$post -> category -> name()}}</h3>
+                        <h3 class=""> {{__('forms.more-of')}} {{$post -> category -> name()}}</h3>
 
                         <div class="row mt-5">
                         @foreach($post -> category -> posts -> where('slug' ,'<>', $post->slug ) -> take(4) as $post)
@@ -131,8 +147,8 @@
 
 
 @endsection
-@section('script')
-    <script async charset="utf-8" src="//cdn.embedly.com/widgets/platform.js"></script>
+@section('scripts')
+    <script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script>
     <script>
         document.querySelectorAll( 'oembed[url]' ).forEach( element => {
             // Create the <a href="..." class="embedly-card"></a> element that Embedly uses
@@ -145,6 +161,7 @@
             element.appendChild( anchor );
         } );
     </script>
+
 
 
 @endsection

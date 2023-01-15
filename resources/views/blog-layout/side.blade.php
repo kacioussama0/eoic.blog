@@ -21,6 +21,7 @@
 
 
 @endphp
+
 <div class="col-lg-4 order-0 order-lg-1">
 
 
@@ -48,6 +49,8 @@
 
 @endif
 
+
+@if(request()->is('/'))
     <div class="card  mb-3  border-primary">
         <div class="card-header p-0 bg-transparent  border-primary">
             <h3 class=" my-0 p-3">
@@ -88,6 +91,7 @@
 
     </div>
 
+@endif
 
     @if(request()->is('/') )
 
@@ -209,7 +213,7 @@
 </div>
 </div>
 
-@section('script')
+@section('scripts')
 
     <script>
         const obj = {
@@ -230,7 +234,7 @@
             method: 'GET'
         }).done((response)=> {
             prayers = response.data[obj.day - 1];
-            console.log(prayers);
+
             let prayerDate = document.querySelector('#prayer-date');
 
             prayerDate.innerHTML = `
@@ -240,7 +244,7 @@
 
             `;
 
-            let timing = $('#prayers li');
+            let timing = document.querySelectorAll('#prayers li');
             let times = [
                 prayers.timings.Fajr,
                 prayers.timings.Sunrise,
@@ -250,7 +254,7 @@
                 prayers.timings.Isha,
             ]
             for(let time in timing) {
-                timing[time].innerHTML += `<span>${times[time].slice(0,times[time].length - 6)}</span>`;
+                timing[time].innerHTML += "<span>" + times[time].slice(0,times[time].length - 6)  + "</span>";
             }
 
 

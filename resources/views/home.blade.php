@@ -1,6 +1,7 @@
 @extends('blog-layout.app')
 @section('title',__('home.home'))
-@section('style')
+
+@section('styles')
 
     <style class="embedly-css">
         .card , div.brd  {
@@ -9,18 +10,17 @@
         }
         .card .hdr , .card .brd a{
             display:none;
-
         }
     </style>
 
     <link rel="stylesheet" href="{{asset('assets/css/breaking-news-ticker.min.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/owl.carousel.min.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/post.carousel.css')}}">
     <link rel="stylesheet" href="{{asset('assets/photoswipe/photoswipe.css')}}" />
 
 @endsection
 
+
 @section('content')
+
     @if(count($news_titles))
 
     <div class="bn-breaking-news position-fixed bottom-0 end-0 w-100" id="newsTicker2" style="z-index: 999">
@@ -50,10 +50,6 @@
         <div class="container-lg px-0 px-lg-2">
 
             <!-- Start Carousel -->
-
-
-
-
 
             <div id="LastPosts" class="carousel slide overflow-hidden position-relative  rounded-4 rounded-top-0 shadow mb-5" data-bs-ride="carousel">
 
@@ -142,15 +138,13 @@
             <div class="row ">
                 <div class="col-lg-8 order-1 order-lg-0">
 
-                    <h3 class="category-title mb-3 mx-auto"><img src="{{asset('assets/imgs/zellig.svg')}}" style="width: 30px" alt="" class="me-2">{{__('home.last-posts')}} </h3>
+                    <h3 class="mb-4"><i class="fa-light fa-newspaper me-2"></i>{{__('home.last-posts')}}</h3>
 
                     <div class="row g-3 mb-3">
-
 
                             @foreach($last_posts as $post)
 
                                 @if($post->title() != null )
-
                                     <div class="col-md-6 wow fadeIn">
                                         <x-article :post="$post"/>
                                     </div>
@@ -172,13 +166,11 @@
                             <div class="row">
                                 @foreach($magazines->take(12) as $magazine)
 
-                                    @if($magazine->title())
-                                          <div class="col-md-3 col-lg-4 col-xl-3 col-sm-6 col wow flipInY  text-center" style=".df-container-lg {background: blue};">
+                                    @if($magazine->title() != null)
+                                          <div class="col-md-3 col-lg-4 col-xl-3 col-sm-6 col wow flipInY  text-center" >
                                               <div class="_df_thumb" source="{{asset('storage/' . $magazine -> book())}}" thumb="{{asset('storage/' . $magazine -> thumbnail())}}">
                                                   {{$magazine->title()}}
                                               </div>
-
-
                                           </div>
                                     @endif
 
@@ -193,44 +185,52 @@
                 <!-- End Magazine -->
 
 
+
+
+
                 <!-- Start Side Bar -->
                 @include('blog-layout.side')
                 <!-- End Side Bar -->
 
 
-                </div>
+                <!-- Start Video -->
+                <section class="mt-2 mb-3">
+                    <div class="container-lg">
+                        <h3 class="mb-4"><i class="fa-light fa-video me-2"></i>{{__('home.videos')}} </h3>
+
+                        <div class="row">
+
+                            @foreach($videos as $video)
 
 
+                                <div class="col-md-4 wow fadeInUp">
 
+                                    <figure class="media">
+                                        <oembed url="{{$video -> url}}"></oembed>
+                                    </figure>
 
-        <!-- Start Video -->
-            <section class="mt-2 mb-3">
-                <div class="container-lg">
-                    <h3 class="category-title"><img src="{{asset('assets/imgs/zellig.svg')}}" style="width: 30px" alt="" class="me-2">{{__('home.videos')}} </h3>
-                    <div class="row">
+                                </div>
 
-                        @foreach($videos as $video)
+                            @endforeach
 
+                        </div>
 
-                            <div class="col-md-4">
-
-                                <figure class="media">
-                                    <oembed url="{{$video -> url}}" allowfullscreen></oembed>
-                                </figure>
-
-                            </div>
-
-                        @endforeach
 
                     </div>
 
 
-                </div>
+                </section>
+
+                <!-- End Video -->
 
 
-            </section>
 
-        <!-- End Video -->
+            </div>
+
+
+
+
+
 
 
             @foreach($categories as $category)
@@ -252,28 +252,19 @@
 
             @if( count($category))
 
-
-
             <div  class="border-bottom border-secondary border-opacity-10">
-
-
 
                     <div class="container-lg">
                         <h2 class="heading-section my-5" style="font-family: 'Changa' !important;">
                             <span style="width: 10px; height: 10px" class="rounded-circle bg-secondary d-inline-block"></span>
-                                    {{$category[0]->category->name()}}
+                                {{$category[0]->category->name()}}
                         </h2>
-
-
-
 
                     <div class="row">
                         @foreach($category  ->take(3) as $post)
-
                             <div class="col-md-6 col-lg-4 wow fadeIn">
                                 <x-article :post="$post"/>
                             </div>
-
                        @endforeach
                     </div>
 
@@ -296,20 +287,26 @@
                             <div class="pswp-gallery pswp-gallery--single-column" id="gallery--getting-started">
 
                                 <div class="row g-3">
+                                    <div class="pswp-gallery pswp-gallery--single-column" id="gallery--getting-started">
 
-                                    @foreach($cards as $card)
-                                        <div class="col-md-4">
-                                            <div class="card border-secondary border-2 overflow-hidden wow fadeInDown">
-                                                <a href="#"
-                                                   data-pswp-src="{{asset('storage/' . $card -> image())}}"
-                                                   data-pswp-width="2500"
-                                                   data-pswp-height="1666"
-                                                   target="_blank">
-                                                    <img src="{{asset('storage/' . $card -> image())}}" class="img-fluid w-100" alt="" />
-                                                </a>
-                                            </div>
+                                        <div class="row g-3">
+
+                                            @foreach($cards as $card)
+                                                <div class="col-md-6 col-lg-4 col-xl-3">
+                                                    <div class="card border-primary overflow-hidden">
+                                                        <a href="https://unsplash.com"
+                                                           data-pswp-src="{{asset('storage/' . $card -> image())}}"
+                                                           data-pswp-width="2500"
+                                                           data-pswp-height="1666"
+                                                           target="_blank">
+                                                            <img src="{{asset('storage/' . $card -> image())}}" class="img-fluid" alt="" />
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            @endforeach
                                         </div>
-                                    @endforeach
+
+                                    </div>
                                 </div>
 
                             </div>
@@ -325,23 +322,22 @@
 
 
 
-    @section('script')
+    @section('scripts')
 
 
-            <script src="{{asset('assets/dflip/assets/js/dflip.min.js')}}"></script>
-            <script src="{{asset('assets/dflip/assets/js/metaboxes.min.js')}}"></script>
-            <script src="{{asset('assets/js/ideabox-news-ticker.min.js')}}"></script>
+        <script src="{{asset('assets/js/ideabox-news-ticker.min.js')}}"></script>
 
         <script>
 
             $(document).ready(function(){
 
                 $('#newsTicker2').breakingNews({
-
+                    effect: 'typography',
+                    delayTimer: 5000,
+                    fontSize: 14,
                     @if(session()->get('locale') == 'ar')
                     direction: 'rtl',
                     @endif
-                    radius: 5
                 });
 
             });
@@ -349,51 +345,19 @@
         </script>
 
 
-            <script async charset="utf-8" src="//cdn.embedly.com/widgets/platform.js"></script>
-            <script>
-                document.querySelectorAll( 'oembed[url]' ).forEach( element => {
-                    // Create the <a href="..." class="embedly-card"></a> element that Embedly uses
-                    // to discover the media.
-                    const anchor = document.createElement( 'a' );
+        <script async charset="utf-8" src="//cdn.embedly.com/widgets/platform.js"></script>
 
-                    anchor.setAttribute( 'href', element.getAttribute( 'url' ) );
-                    anchor.className = 'embedly-card';
+        <script>
+            document.querySelectorAll( `oembed[url]` ).forEach( element => {
 
-                    element.appendChild( anchor );
-                } );
-            </script>
+                const anchor = document.createElement( 'a' );
 
+                anchor.setAttribute( 'href', element.getAttribute( 'url' ) );
+                anchor.className = 'embedly-card';
 
-            <script type="module">
-                // Include Lightbox
-                import PhotoSwipeLightbox from '{{asset('assets/photoswipe/photoswipe-lightbox.esm.js')}}';
-
-                const lightbox = new PhotoSwipeLightbox({
-                    // may select multiple "galleries"
-                    gallery: '#gallery--getting-started',
-
-                    // Elements within gallery (slides)
-                    children: 'a',
-
-
-                    showHideAnimationType: 'zoom',
-                    showAnimationDuration: 300,
-                    hideAnimationDuration: 300,
-
-                    // setup PhotoSwipe Core dynamic import
-                    pswpModule: () => import('{{asset('assets/photoswipe/photoswipe.esm.js')}}')
-                });
-                lightbox.init();
-            </script>
-
-
-
-
-
-
+                element.appendChild( anchor );
+            } );
         </script>
-
-
 
     @endsection
 

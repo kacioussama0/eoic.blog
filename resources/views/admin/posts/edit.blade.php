@@ -95,7 +95,7 @@
                         <x-admin.forms.input name="image_fr" title="{{__('forms.picture')}}" type="file" value="{{old('image_fr')}}"/>
                         <img src="{{!File::exists(public_path($post->image_fr)) ? asset('storage/' . $post->image_fr) : asset('storage/' . $post->image) }}" alt="" class="rounded" style="width: 250px">
 
-                        <x-admin.forms.text-area name="content_fr" id="content_2" title="{{__('forms.share')}}"value="{!!$post -> content_fr !!}"/>
+                        <x-admin.forms.text-area name="content_fr" id="content_fr" title="{{__('forms.share')}}" value="{!!$post -> content_fr !!}"/>
 
 
                     </div>
