@@ -34,7 +34,6 @@
             </div>
 
                     <div class="card rounded-5 border-0" style="font-size: 14px; width: 150px">
-                        <img src="{{asset('storage/' . $project -> thumbnail())}}" class="card-img-top object-fit-cover " alt="..." >
                         <div class="card-body">
                             <h6 class=" text-center" style="font-family: 'Changa' !important;">{{$project -> amount}} €</h6>
                             <div class="progress w-100">
@@ -104,7 +103,7 @@
             </div>
             <div class="card-body">
                 <div class="row">
-                    @foreach($Articles as $post)
+                    @foreach($Articles->take(3) as $post)
 
                         <div class="post post-row border-bottom pb-4 border-primary border-opacity-25">
                             <div>
@@ -128,7 +127,7 @@
             </div>
         </div>
         @endif
-    @if(count($Dialogues))
+    @if(count($Dialogues ->take(3)))
         <div class="card rounded-4  overflow-hidden border-primary mb-3 d-lg-block d-none">
             <div class="card-header p-0 bg-transparent border-primary">
                 <h3 class=" my-0 p-3">
