@@ -35,7 +35,7 @@
 
                     <div class="card rounded-5 border-0" style="font-size: 14px; width: 150px">
                         <div class="card-body">
-                            <h3>{{$project->title()}}</h3>
+                            <h6>{{$project->title()}}</h6>
                             <span class=" text-center">{{$project -> amount}} €</span>
                             <div class="progress w-100">
                                 <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-label="Animated striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
@@ -106,11 +106,11 @@
                 <div class="row">
                     @foreach($Articles as $post)
 
-                        <div class="post post-row border-bottom pb-4 border-primary border-opacity-25">
+                        <div class="post post-row border-bottom  border-primary border-opacity-25">
                             <div>
 
-                                <h3 class="post-title"><a href="{{url('posts/' . $post  -> slug())}}">{{$post -> title()}}</a></h3>
-                                <p>{!! Str::limit(strip_tags($post -> content()) ,100)!!}</p>
+                                <h6 class="post-title mb-2"><a href="{{url('posts/' . $post  -> slug())}}">{{$post -> title()}}</a></h6>
+                                <p class="mb-1">{!! Str::limit(strip_tags($post -> content()) ,100)!!}</p>
 
                                 <ul class="post-meta">
                                     <li>{{$post ->created_at -> diffForHumans()}}</li>
@@ -122,6 +122,7 @@
 
                             </div>
                         </div>
+
 
                     @endforeach
                 </div>
@@ -139,11 +140,11 @@
                 <div class="row">
                     @foreach($Dialogues as $post)
 
-                        <div class="post post-row border-bottom pb-4 border-primary border-opacity-25">
+                        <div class="post post-row border-bottom  border-primary border-opacity-25">
                             <div>
 
-                                <h3 class="post-title"><a href="{{url('posts/' . $post  -> slug())}}">{{$post -> title()}}</a></h3>
-                                <p>{!! Str::limit(strip_tags($post -> content()) ,100)!!}</p>
+                                <h6 class="post-title mb-2"><a href="{{url('posts/' . $post  -> slug())}}">{{$post -> title()}}</a></h6>
+                                <p class="mb-1">{!! Str::limit(strip_tags($post -> content()) ,100)!!}</p>
 
                                 <ul class="post-meta">
                                     <li>{{$post ->created_at -> diffForHumans()}}</li>
