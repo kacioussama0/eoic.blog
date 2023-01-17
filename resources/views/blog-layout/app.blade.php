@@ -745,6 +745,7 @@ $settings = \App\Models\Setting::first();
     new WOW().init();
 </script>
 @livewireScripts
+<script async charset="utf-8" src="//cdn.embedly.com/widgets/platform.js"></script>
 
 <script>
     document.querySelectorAll( 'oembed[url]' ).forEach( element => {
