@@ -147,24 +147,7 @@
 
 
 @endsection
-@section('scripts')
-    <script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script>
-    <script>
-        document.querySelectorAll( 'oembed[url]' ).forEach( element => {
-            // Create the <a href="..." class="embedly-card"></a> element that Embedly uses
-            // to discover the media.
-            const anchor = document.createElement( 'a' );
 
-            anchor.setAttribute( 'href', element.getAttribute( 'url' ) );
-            anchor.className = 'embedly-card';
-
-            element.appendChild( anchor );
-        } );
-    </script>
-
-
-
-@endsection
 
 
 

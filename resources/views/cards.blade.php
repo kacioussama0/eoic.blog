@@ -68,7 +68,7 @@
 @endsection
 
 
-@section('script')
+@section('scripts')
 
     <script type="module">
         // Include Lightbox

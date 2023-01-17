@@ -2,22 +2,14 @@
 @section('title',__('home.home'))
 
 @section('styles')
-
-    <style class="embedly-css">
-        .card , div.brd  {
-            border-radius: 15px;
-            overflow: hidden;
-        }
-        .card .hdr , .card .brd a{
-            display:none;
-        }
-    </style>
-
+    <link href="{{asset('assets/dflip/css/dflip.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{asset('assets/dflip/css/themify-icons.min.css')}}" rel="stylesheet" type="text/css">
+    <script src="{{asset('assets/dflip/js/dflip.min.js')}}"></script>
+    <script src="{{asset('assets/dflip/js/metaboxes.min.js')}}"></script>
     <link rel="stylesheet" href="{{asset('assets/css/breaking-news-ticker.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/photoswipe/photoswipe.css')}}" />
 
 @endsection
-
 
 @section('content')
 
@@ -70,9 +62,12 @@
 
                                     <div class="carousel-item  @if($key == $active) active @endif">
                                         <div class="carousel-content mb-4">
-                                            <div class="badge rounded-pill text-bg-secondary  mb-3"><a href="{{url('category/' . $post ->category->name())}}" class="link-dark">{{$post ->category -> name()}}</a></div>
                                             <div class="mb-3">{{$post ->created_at -> diffForHumans()}}</div>
-                                            <h4 class="fw-6"><a href="{{route('post.slug', $post->slug())}}" class="link-light ">{{$post -> title()}}</a></h4>
+
+                                            <h4 class="lh-lg"><a href="{{route('post.slug', $post->slug())}}" class="link-light ">{{$post -> title()}}</a></h4>
+                                            <div class="badge rounded-pill text-bg-secondary  mb-3"><a href="{{url('category/' . $post ->category->name())}}" class="link-dark">{{$post ->category -> name()}}</a></div>
+
+
                                         </div>
                                         <img src="{{File::exists('storage/' . $post -> image()) ? asset('storage/' . $post -> image()) : asset('assets/imgs/logo.svg') }}" class="d-block w-100 " alt="...">
                                         <span style="font-size: 25px;z-index: 99" class="position-absolute bottom-0 mb-2 end-0 m-2">
@@ -168,9 +163,9 @@
 
                                     @if($magazine->title() != null)
                                           <div class="col-md-3 col-lg-4 col-xl-3 col-sm-6 col wow flipInY  text-center" >
-                                              <div class="_df_thumb" source="{{asset('storage/' . $magazine -> book())}}" thumb="{{asset('storage/' . $magazine -> thumbnail())}}">
-                                                  {{$magazine->title()}}
-                                              </div>
+                                              <div class="_df_thumb"
+                                                   source="{{asset('storage/' . $magazine -> book())}}"
+                                                   thumb="{{asset('storage/' . $magazine -> thumbnail())}}">{{$magazine->title()}}</div>
                                           </div>
                                     @endif
 
@@ -208,7 +203,6 @@
                                     <figure class="media">
                                         <oembed url="{{$video -> url}}"></oembed>
                                     </figure>
-
                                 </div>
 
                             @endforeach
@@ -281,36 +275,26 @@
         @if(count($cards))
             <article class="my-3">
                 <div class="container-lg">
-                    <div class="row">
-                        <div class="col-md-8">
                             <h3 class="category-title"><img src="{{asset('assets/imgs/zellig.svg')}}" style="width: 30px" alt="" class="me-2">{{__('home.cards')}} </h3>
-                            <div class="pswp-gallery pswp-gallery--single-column" id="gallery--getting-started">
+                    <div class="pswp-gallery pswp-gallery--single-column" id="gallery--getting-started">
 
-                                <div class="row g-3">
-                                    <div class="pswp-gallery pswp-gallery--single-column" id="gallery--getting-started">
+                        <div class="row g-3">
 
-                                        <div class="row g-3">
-
-                                            @foreach($cards as $card)
-                                                <div class="col-md-6 col-lg-4 col-xl-3">
-                                                    <div class="card border-primary overflow-hidden">
-                                                        <a href="https://unsplash.com"
-                                                           data-pswp-src="{{asset('storage/' . $card -> image())}}"
-                                                           data-pswp-width="2500"
-                                                           data-pswp-height="1666"
-                                                           target="_blank">
-                                                            <img src="{{asset('storage/' . $card -> image())}}" class="img-fluid" alt="" />
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            @endforeach
-                                        </div>
-
+                            @foreach($cards as $card)
+                                <div class="col-md-6 col-lg-4 col-xl-3">
+                                    <div class="card border-primary overflow-hidden">
+                                        <a href="#"
+                                           data-pswp-src="{{asset('storage/' . $card -> image())}}"
+                                           data-pswp-width="2500"
+                                           data-pswp-height="1666"
+                                           target="_blank">
+                                            <img src="{{asset('storage/' . $card -> image())}}" class="img-fluid" alt="" />
+                                        </a>
                                     </div>
                                 </div>
-
-                            </div>
+                            @endforeach
                         </div>
+
                     </div>
                 </div>
             </article>
@@ -322,8 +306,30 @@
 
 
 
-    @section('scripts')
 
+
+    @section('scripts')
+            <script type="module">
+                // Include Lightbox
+                import PhotoSwipeLightbox from '{{asset('assets/photoswipe/photoswipe-lightbox.esm.js')}}';
+
+                const lightbox = new PhotoSwipeLightbox({
+                    // may select multiple "galleries"
+                    gallery: '#gallery--getting-started',
+
+                    // Elements within gallery (slides)
+                    children: 'a',
+
+
+                    showHideAnimationType: 'zoom',
+                    showAnimationDuration: 300,
+                    hideAnimationDuration: 300,
+
+                    // setup PhotoSwipe Core dynamic import
+                    pswpModule: () => import('{{asset('assets/photoswipe/photoswipe.esm.js')}}')
+                });
+                lightbox.init();
+            </script>
 
         <script src="{{asset('assets/js/ideabox-news-ticker.min.js')}}"></script>
 
@@ -345,6 +351,7 @@
         </script>
 
 
+
         <script async charset="utf-8" src="//cdn.embedly.com/widgets/platform.js"></script>
 
         <script>
@@ -358,6 +365,8 @@
                 element.appendChild( anchor );
             } );
         </script>
+
+
 
     @endsection
 

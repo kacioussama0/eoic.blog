@@ -1,6 +1,6 @@
 
 
-<div class="card border-0 mb-3 shadow-sm rounded-2 overflow-hidden" style="min-height: 300px;">
+<div class="card border-0 mb-3 shadow-sm rounded-2 overflow-hidden" style="min-height: 350px;">
 
     <a href="{{route('post.slug', $post->slug())}}" class="post-img overflow-hidden" style="height: 200px"><img class="card-img-top w-100 " src="{{File::exists('storage/' . $post -> image) ? asset('storage/' . $post -> image) : asset('assets/imgs/logo.svg') }}" alt="" style=" ; object-fit: cover"></a>
     <div class="card-body">

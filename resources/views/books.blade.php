@@ -1,5 +1,14 @@
 @extends('blog-layout.app')
 @section('title','المجلات')
+@section('styles')
+    <link href="{{asset('assets/dflip/css/dflip.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{asset('assets/dflip/css/themify-icons.min.css')}}" rel="stylesheet" type="text/css">
+    <script src="{{asset('assets/dflip/js/dflip.min.js')}}"></script>
+    <script src="{{asset('assets/dflip/js/metaboxes.min.js')}}"></script>
+
+
+
+@endsection
 @section('content')
 
 

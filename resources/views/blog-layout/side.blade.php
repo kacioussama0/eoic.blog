@@ -215,7 +215,82 @@
 
 @section('scripts')
 
+
+
+
     <script>
+
+        function dayFr(day) {
+            let days = [
+                'Dimanche',
+                'Lundi',
+                'Mardi',
+                'Mercredi',
+                'Jeudi',
+                'Venderedi',
+                'Samedi'
+            ]
+
+            return days[day];
+        }
+
+
+        function dayAR(day) {
+            let days = [
+                'الأحد',
+                'الإثنين',
+                'الثلاثاء',
+                'الأربعاء',
+                'الخميس',
+                'الجمعة',
+                'السبت'
+            ]
+
+            return days[day];
+        }
+
+
+        function monthFR(month) {
+            let months = [
+                'Janvier',
+                'Fevrier',
+                'Mars',
+                'Avril',
+                'May',
+                'Juin',
+                'Juillet',
+                'Aout',
+                'Septembre',
+                'Octobre',
+                'Novombre',
+                'Decembre',
+            ]
+
+            return months[month];
+        }
+
+
+        function monthAR(month) {
+            let months = [
+                'جانفي',
+                'فيفري',
+                'مارس',
+                'أفريل',
+                'ماي',
+                'جوان',
+                'جويلية',
+                'أوت',
+                'سبتمبر',
+                'أوكتوبر',
+                'نوفمبر',
+                'ديسمبر',
+            ]
+
+            return months[month];
+        }
+
+
+
         const obj = {
             city: 'Geneva',
             country: 'switzerland',
@@ -235,11 +310,30 @@
         }).done((response)=> {
             prayers = response.data[obj.day - 1];
 
+            let day = '';
+            let month = '';
+
+            @if(config('app.locale') == 'ar')
+
+                day = dayAR(new Date().getDay());
+                month = monthAR(new Date().getMonth());
+
+            @elseif(config('app.locale') == 'fr')
+
+                day = dayFr(new Date().getDay());
+                month = monthFR(new Date().getMonth());
+
+
+            @else
+                day = prayers.date.gregorian.weekday.en;
+                month = prayers.date.gregorian.month.en;
+            @endif
+
             let prayerDate = document.querySelector('#prayer-date');
 
             prayerDate.innerHTML = `
 
-            <span class="text-muted">${prayers.date.gregorian.weekday.en} ${prayers.date.gregorian.day}, ${prayers.date.gregorian.month.en} ${prayers.date.gregorian.year}</span>
+            <span class="text-muted">${day} ${prayers.date.gregorian.day}, ${month} ${prayers.date.gregorian.year}</span>
             <span class="text-muted"> ${prayers.date.hijri.day} ${prayers.date.hijri.month.en}  | ${prayers.date.hijri.year} </span>
 
             `;

@@ -34,22 +34,21 @@ $settings = \App\Models\Setting::first();
     <title>{{$settings->display_name()}} | @yield('title')</title>
     <!-- Start Links -->
     <link rel='icon' href='{{asset('assets/imgs/logo.svg')}}'>
+
     @if(session()->get('locale') == 'ar')
     <link rel="stylesheet" href="{{asset('assets/css/bootstrap.rtl.css')}}">
     @else
     <link rel="stylesheet" href="{{asset('assets/css/bootstrap.css')}}">
     @endif
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" ></script>
-
-    <link href="{{asset('assets/dflip/assets/css/dflip.min.css')}}" rel="stylesheet" type="text/css">
-    <link href="{{asset('assets/dflip/assets/css/themify-icons.min.css')}}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href='{{asset('assets/fontawesome/css/all.min.css')}}'>
     <link type="text/css" rel="stylesheet" href="{{asset('assets/css/blog.css')}}" />
     <link type="text/css" rel="stylesheet" href="{{asset('assets/css/blog_style.css')}}" />
     <link type="text/css" rel="stylesheet" href="{{asset('assets/css/animate.css')}}" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css"/>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @yield('styles')
+
     <script>
         $(window).on('load',function(){
             $('.loader-container').fadeOut();
@@ -57,7 +56,22 @@ $settings = \App\Models\Setting::first();
         });
     </script>
     @livewireStyles
+
+    <script async charset="utf-8" src="https://cdn.embedly.com/widgets/platform.js"></script>
     <!-- End Links -->
+
+    <style class="embedly-css">
+        .card , div.brd  {
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        .card .hdr , .card .brd a{
+            display:none;
+        }
+    </style>
+
+
+
 </head>
 
 <x-loader/>
@@ -723,8 +737,10 @@ $settings = \App\Models\Setting::first();
 <!-- End Footer  -->
 
 <!-- Start Scripts -->
-<script src="{{asset('assets/dflip/assets/js/dflip.min.js')}}"></script>
-<script src="{{asset('assets/dflip/assets/js/metaboxes.min.js')}}"></script>
+
+
+@yield('scripts')
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="{{asset('assets/fontawesome/js/all.min.js')}}"></script>
 <script src="{{asset('assets/js/wow.min.js')}}"></script>
@@ -733,7 +749,20 @@ $settings = \App\Models\Setting::first();
 </script>
 @livewireScripts
 
-@yield('scripts')
+<script>
+    document.querySelectorAll( 'oembed[url]' ).forEach( element => {
+        // Create the <a href="..." class="embedly-card"></a> element that Embedly uses
+        // to discover the media.
+        const anchor = document.createElement( 'a' );
+
+        anchor.setAttribute( 'href', element.getAttribute( 'url' ) );
+        anchor.className = 'embedly-card';
+
+        element.appendChild( anchor );
+    } );
+</script>
+
+
 
 <!-- End Scripts -->
 </body>

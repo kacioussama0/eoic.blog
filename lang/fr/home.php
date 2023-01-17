@@ -30,7 +30,7 @@ return [
     'shortcuts' => 'Raccourcis',
     'posts' => 'Articles',
     'important-news' => 'Dernières nouvelles',
-    'prayer-times' => 'Heures de prières',
+    'prayer-times' => 'Horaires de prières',
     'fajr' => 'Fajr',
     'sunrise' => 'lever du soleil',
     'dhuhr' => 'Dhuhr',
