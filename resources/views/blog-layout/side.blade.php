@@ -214,7 +214,7 @@
 </div>
 </div>
 
-@section('scripts')
+@section('side-scripts')
 
 
 

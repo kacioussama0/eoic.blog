@@ -8,7 +8,6 @@
     <script src="{{asset('assets/dflip/js/metaboxes.min.js')}}"></script>
 
     <link href="{{asset('assets/dflip/css/themify-icons.min.css')}}" rel="stylesheet">
-
     <script src="{{asset('assets/dflip/js/dflip.min.js')}}"></script>
 @endsection
 
@@ -28,7 +27,6 @@
                         <span class="bn-seperator ms-3" style="background-image:url('{{asset('assets/imgs/zellig.svg')}}');"></span>
 
                         <a href="#">{{$title->title()}}</a>
-
 
                     </li>
 
@@ -290,7 +288,7 @@
                             @foreach($cards as $card)
                                 <div class="col-md-6 col-lg-4 col-xl-3">
                                     <div class="card border-primary overflow-hidden">
-                                        <a href="#"
+                                        <a href="https://unsplash.com"
                                            data-pswp-src="{{asset('storage/' . $card -> image())}}"
                                            data-pswp-width="2500"
                                            data-pswp-height="1666"
@@ -318,7 +316,7 @@
     @section('scripts')
             <script type="module">
                 // Include Lightbox
-                import PhotoSwipeLightbox from '{{asset('assets/photoswipe/photoswipe-lightbox.esm.js')}}';
+                import PhotoSwipeLightbox from '{{asset('assets/photoswipe/photoswipe-lightbox.esm.min.js')}}';
 
                 const lightbox = new PhotoSwipeLightbox({
                     // may select multiple "galleries"
@@ -333,7 +331,7 @@
                     hideAnimationDuration: 300,
 
                     // setup PhotoSwipe Core dynamic import
-                    pswpModule: () => import('{{asset('assets/photoswipe/photoswipe.esm.js')}}')
+                    pswpModule: () => import('{{asset('assets/photoswipe/photoswipe.esm.min.js')}}')
                 });
                 lightbox.init();
             </script>
@@ -377,45 +375,6 @@
 
 
     @endsection
-
-
-        <section class="py-5">
-
-            <div class="container">
-                <div class="row g-3">
-                    @foreach($magazines as $magazine)
-
-                        @if($magazine->title() != null)
-
-                            <div class="col-md-6 col-lg-4 col-xl-3">
-                                <div class="card border-primary"  style="height: 550px">
-                                    <img src="{{asset('storage/' . $magazine -> thumbnail())}}" class="card-img-top object-fit-cover  h-75" alt="...">
-                                    <div class="card-body d-flex p-1 justify-content-center align-items-center">
-                                        <h5 class="card-title text-center ">{{$magazine -> title()}}</h5>
-                                    </div>
-
-                                    <div class="card-footer bg-transparent border-0 d-flex justify-content-between align-items-center">
-
-                                        <a href="" class="_df_button text-bg-primary" source="{{asset('storage/' . $magazine->book())}}">
-                                            {{__('تصفح')}}
-                                            <i class="fa-light fa-eye ms-1" ></i>
-                                        </a>
-
-                                        <a href="{{asset('storage/' . $magazine->book())}}" download>
-                                            {{__('تحميل')}}
-                                            <i class="fa-light fa-download ms-1"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-
-                        @endif
-                    @endforeach
-
-                </div>
-            </div>
-
-        </section>
 
     @else
 

@@ -737,7 +737,6 @@ $settings = \App\Models\Setting::first();
 <!-- Start Scripts -->
 
 
-@yield('scripts')
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="{{asset('assets/fontawesome/js/all.min.js')}}"></script>
@@ -760,6 +759,8 @@ $settings = \App\Models\Setting::first();
     } );
 </script>
 
+@yield('side-scripts')
+@yield('scripts')
 
 
 <!-- End Scripts -->
