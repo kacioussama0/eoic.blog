@@ -232,7 +232,7 @@
 
 
 
-            @foreach($categories as $category)
+            @foreach($categories as $key => $category)
 
                 @php
 
@@ -249,13 +249,12 @@
 
                 @endphp
 
-            @if( count($category))
+            @if(count($category))
 
-            <div  class="border-bottom border-secondary border-opacity-10">
+            <div class="py-3" @if($key % 2 == 0) style="background: #fcfcfc" @endif>
 
                     <div class="container-lg">
-                        <h2 class="heading-section my-5" style="font-family: 'Changa' !important;">
-                            <span style="width: 10px; height: 10px" class="rounded-circle bg-secondary d-inline-block"></span>
+                        <h2 class="heading-section position-relative  @if(session()->get('locale') == 'ar') {{'special-heading-ar'}} @else {{'special-heading'}} @endif mb-5 mt-3">
                                 {{$category[0]->category->name()}}
                         </h2>
 
