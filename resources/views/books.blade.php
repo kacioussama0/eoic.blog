@@ -6,8 +6,6 @@
     <script src="{{asset('assets/dflip/js/dflip.min.js')}}"></script>
     <script src="{{asset('assets/dflip/js/metaboxes.min.js')}}"></script>
 
-
-
 @endsection
 @section('content')
 
@@ -30,6 +28,9 @@
             </div>
         </div>
     </div>
+
+
+
 
     <section class="py-5">
 

@@ -17,8 +17,6 @@ $settings = \App\Models\Setting::first();
     <meta name="description" content="{{$settings -> description()}}">
     @yield('meta')
     <meta name="robots" content="index, follow">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="language" content="Arabic">
     <meta name="robots" content="all"/>
     <meta name="robots" content="noindex"/>
     <meta name="robots" content="nofollow"/>
@@ -47,7 +45,6 @@ $settings = \App\Models\Setting::first();
     <link type="text/css" rel="stylesheet" href="{{asset('assets/css/animate.css')}}" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css"/>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    @yield('styles')
 
     <script>
         $(window).on('load',function(){
@@ -71,6 +68,7 @@ $settings = \App\Models\Setting::first();
     </style>
 
 
+    @yield('styles')
 
 </head>
 
