@@ -1,16 +1,16 @@
 @php
 
     if(config('app.locale') == 'ar') {
-              $Articles = \App\Models\Category::where('name','مقالات')->first()->posts->where('title','<>',null)->take(5);
-              $Dialogues = \App\Models\Category::where('name','حوارات')->first()->posts->where('title','<>',null)->take(5);
+              $Articles = \App\Models\Category::where('name','مقالات')->first()->posts->where('title','<>',null)->take(3);
+              $Dialogues = \App\Models\Category::where('name','حوارات')->first()->posts->where('title','<>',null)->take(3);
 
           }
       elseif(config('app.locale') == 'fr') {
-            $Articles = \App\Models\Category::where('name_fr','Articles')->first()->posts->where('title_fr','<>',null)->take(5);
-            $Dialogues = \App\Models\Category::where('name_fr','Dialogues')->first()->posts->where('title_fr','<>',null)->take(5);
+            $Articles = \App\Models\Category::where('name_fr','Articles')->first()->posts->where('title_fr','<>',null)->take(3);
+            $Dialogues = \App\Models\Category::where('name_fr','Dialogues')->first()->posts->where('title_fr','<>',null)->take(3);
       }else {
-            $Articles = \App\Models\Category::where('name_en','Articles')->first()->posts->where('title_en','<>',null)->take(5);
-            $Dialogues = \App\Models\Category::where('name_en','Dialogues')->first()->posts->where('title_en','<>',null)->take(5);
+            $Articles = \App\Models\Category::where('name_en','Articles')->first()->posts->where('title_en','<>',null)->take(3);
+            $Dialogues = \App\Models\Category::where('name_en','Dialogues')->first()->posts->where('title_en','<>',null)->take(3);
       }
 
 
@@ -35,7 +35,8 @@
 
                     <div class="card rounded-5 border-0" style="font-size: 14px; width: 150px">
                         <div class="card-body">
-                            <h6 class=" text-center" style="font-family: 'Changa' !important;">{{$project -> amount}} €</h6>
+                            <h3>{{$project->title()}}</h3>
+                            <span class=" text-center">{{$project -> amount}} €</span>
                             <div class="progress w-100">
                                 <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-label="Animated striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
                             </div>
@@ -103,7 +104,7 @@
             </div>
             <div class="card-body">
                 <div class="row">
-                    @foreach($Articles->take(3) as $post)
+                    @foreach($Articles as $post)
 
                         <div class="post post-row border-bottom pb-4 border-primary border-opacity-25">
                             <div>
@@ -127,7 +128,7 @@
             </div>
         </div>
         @endif
-    @if(count($Dialogues ->take(3)))
+    @if(count($Dialogues))
         <div class="card rounded-4  overflow-hidden border-primary mb-3 d-lg-block d-none">
             <div class="card-header p-0 bg-transparent border-primary">
                 <h3 class=" my-0 p-3">
