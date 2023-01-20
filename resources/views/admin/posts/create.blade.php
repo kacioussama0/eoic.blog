@@ -59,11 +59,15 @@
                         <x-admin.forms.input name="image_fr" title="{{__('forms.picture')}}" type="file" value="{{old('image_fr')}}"/>
                         <x-admin.forms.text-area name="content_fr" id="content_2" title="article-content-fr"  value="{!!old('content_fr')!!}"/>
 
+
+                    <div class="mb-3">
+                        <input type="datetime-local" class="form-control" name="created_at" value="{{date('Y-m-d H:i')}}">
+                    </div>
+
                         <div class="form-check form-switch mb-3">
                             <label for="is_published">{{__('forms.share')}}</label>
                             <input class="form-check-input" type="checkbox" name="is_published" id="is_published" value="on">
                         </div>
-
 
 
 

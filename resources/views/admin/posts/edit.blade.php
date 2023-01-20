@@ -72,6 +72,9 @@
 
                         <x-admin.forms.text-area name="content" id="#content" class="content" title="{{__('forms.article-content')}}"  value="{!!$post -> content!!}"/>
 
+                        <input type="datetime-local" class="form-control" name="created_at" value="{{$post -> created_at}}">
+
+
                         <div class="form-check form-switch mb-3">
                             <label for="is_published">{{__('forms.share')}}</label>
                             <input class="form-check-input" type="checkbox" name="is_published" id="is_published" value="on" @if($post -> is_published) checked @endif>

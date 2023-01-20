@@ -28,25 +28,22 @@
 @if(!empty($project))
     <!-- ad widget-->
     <div class="aside-widget d-lg-block d-none">
-        <a href="#" style="display: inline-block;margin: auto;">
+        <a href="#">
             <div class="section-title">
                 <h2 class="title">{{__('home.our-projects')}}</h2>
             </div>
 
-                    <div class="card rounded-5 border-0" style="font-size: 14px; width: 150px">
+                    <div class="card rounded-5 border-0">
                         <div class="card-body">
-                            <h6>{{$project->title()}}</h6>
+                            <h6 class="mt-1">{{$project->title()}}</h6>
+                            <p>{!! \Illuminate\Support\Str::limit($project->description(),100) !!}</p>
                             <span class=" text-center">{{$project -> amount}} €</span>
-                            <div class="progress w-100">
-                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-label="Animated striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
-                            </div>
-                            <a class="btn btn-primary w-100" href="{{route('projects.donate',$project)}}">{{__('forms.donate')}}</a>
+
                         </div>
                     </div>
         </a>
     </div>
     <!-- /ad widget -->
-
 @endif
 
 
