@@ -3,18 +3,17 @@
 @section('meta')
 
     <!--  Twitter Meta Tags -->
-
-    <meta name="twitter:card" content="summary"/>
     <meta name="twitter:title" content="{{$settings->display_name()}} | {{$post->title()}}">
     <meta name="twitter:description" content="{!! Str::limit(strip_tags($post -> content()) ,100) !!}">
     <meta name="twitter:image" content="{{asset('storage/' . $post->image())}}"/>
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:site" content="{{request()->url()}}" />
 
     <!-- Facebook Meta Tags -->
 
     <meta property="og:title" content="{{$post->title()}}"/>
     <meta property="og:description" content="{!! Str::limit(strip_tags($post -> content()) ,100) !!}"/>
     <meta property="og:image" content="{{asset("storage/" . $post->image())}}"/>
-
     <meta property="og:url" content="{{request()->url()}}"/>
 
 @endsection
