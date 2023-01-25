@@ -22,7 +22,7 @@
 
 @endphp
 
-<div class="col-lg-4 order-0 order-lg-1">
+<div class="col-lg-4 d-lg-block d-md-none order-0 order-lg-1">
 
 
 @if(!empty($project))
