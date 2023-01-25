@@ -27,7 +27,7 @@
                 <a href="https://www.facebook.com/sharer.php?u={{route('post.slug', $post->slug())}}" target="_blank" class="me-2" style="color: #4267B2"><i class="fa-brands fa-facebook fa-1x"></i></a>
                 <a href="https://www.facebook.com/dialog/send?app_id=5303202981&display=popup&link={{route('post.slug', $post->slug())}}&redirect_uri={{route('post.slug', $post->slug())}}" class="me-2" style="color: #00B2FF"><i class="fa-brands fa-1x fa-facebook-messenger" ></i></a>
                 <a href="#" class="me-2"><i class="fa-brands fa-whatsapp fa-1x" style="color: #25D366"></i></a>
-                <a href="https://twitter.com/intent/tweet?text={{$post->title()}}&url={{route('post.slug', $post->slug())}}" target="_blank" class="me-2" style="color: #1DA1F2"><i class="fa-brands fa-twitter fa-1x"></i></a>
+                <a href="https://twitter.com/intent/tweet?text={{$post->title()}}&url={{env('APP_URL') . '/' . $post->slug()}}" target="_blank" class="me-2" style="color: #1DA1F2"><i class="fa-brands fa-twitter fa-1x"></i></a>
             </div>
 
 
