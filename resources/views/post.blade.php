@@ -4,7 +4,7 @@
 
     <!--  Twitter Meta Tags -->
 
-    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:card" content="summary"/>
     <meta name="twitter:title" content="{{$settings->display_name()}} | {{$post->title()}}">
     <meta name="twitter:description" content="{!! Str::limit(strip_tags($post -> content()) ,100) !!}">
     <meta name="twitter:image" content="{{asset('storage/' . $post->image())}}"/>
