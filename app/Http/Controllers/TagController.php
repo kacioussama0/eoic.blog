@@ -25,7 +25,7 @@ class TagController extends Controller
     public function store(Request $request)
     {
         $request -> validate([
-            'name' => 'required|min:3|max:50|unique:tags,'  ,
+            'name' => 'required|min:3|max:50|unique:tags'  ,
             'name_en' => 'required|min:3|max:50|unique:tags',
             'name_fr' => 'required|min:3|max:50|unique:tags',
         ]);
@@ -45,9 +45,9 @@ class TagController extends Controller
     public function update(Request $request, Tag $tag)
     {
         $request -> validate([
-            'name' => 'required|min:3|max:50|unique:tags',
-            'name_en' => 'required|min:3|max:50|unique:tags',
-            'name_fr' => 'required|min:3|max:50|unique:tags',
+            'name' => 'required|min:3|max:50|unique:tags,name,' . $tag -> id,
+            'name_en' => 'required|min:3|max:50|unique:tags,name,' . $tag -> id,
+            'name_fr' => 'required|min:3|max:50|unique:tags,name,' . $tag -> id,
         ]);
 
         $tag->update($request->all());

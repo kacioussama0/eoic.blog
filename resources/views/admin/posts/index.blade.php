@@ -23,7 +23,7 @@
 
                                 <thead >
 
-                                <tr class="sticky-top">
+                                <tr>
                                     <th>{{__('forms.title')}}</th>
                                     <th>{{__('forms.category')}}</th>
                                     <th>
@@ -67,7 +67,7 @@
                                         </td>
 
                                         <td>
-                                            <img src="{{File::exists(public_path('storage/' . $post->image)) ? asset('storage/' . $post->image) : asset('assets/imgs/logo.svg') }}" alt="" style="width: 80px ; height: 80px ; object-fit: cover ; border-radius: 5Px">
+                                            <img src="{{File::exists('storage/' . $post->image) ? asset('storage/' . $post->image) : asset('assets/imgs/logo.svg') }}" alt="" style="width: 80px ; height: 80px ; object-fit: cover ; border-radius: 5Px">
                                         </td>
 
 

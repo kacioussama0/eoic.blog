@@ -58,8 +58,9 @@
 
                         @foreach($slider_posts as  $key => $post)
 
-
+                             
                                 @if($post->title() != null )
+
 
                                     <div class="carousel-item  @if($key == $active) active @endif">
                                         <div class="carousel-content mb-4">

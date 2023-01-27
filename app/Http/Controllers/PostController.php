@@ -70,7 +70,7 @@ class PostController extends Controller
 
         $request->validate([
 
-            'title' => 'required|min:5|unique:posts',
+            'title' => 'required|min:5|max:255|unique:posts',
             'category' => 'required',
             'content' => 'required|min:20',
 
@@ -171,7 +171,7 @@ class PostController extends Controller
 
         $request->validate([
 
-            'title' => 'required|min:5|unique:posts,title,' . $post->id,
+            'title' => 'required|min:5|max:255|unique:posts,title,' . $post->id,
             'category' => 'required',
             'content' => 'required|min:20',
 
