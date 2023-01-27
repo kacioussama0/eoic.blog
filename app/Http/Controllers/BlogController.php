@@ -27,22 +27,26 @@ class BlogController extends Controller
             $categories = Category::where('name_en' ,'<>', null)->latest();
             $cards = Card::where('is_published','1')->where('image_en','<>' , '')->latest()->get()->take(8);
             $magazines = Magazine::where('is_published','1')->where('book_en','<>' , '')->latest()->get();
-
+            $slider_posts = Post::where('is_published','on')->where('title_en','<>', null)->latest()->take(10)->get();
         }
         elseif(config('app.locale') == 'fr') {
             $categories = Category::where('name_fr' ,'<>', null)->latest();
             $cards = Card::where('is_published','1')->where('image_fr','<>' , '')->latest()->get()->take(8);
             $magazines = Magazine::where('is_published','1')->where('book_fr','<>' , '')->latest()->get();
+            $slider_posts = Post::where('is_published','on')->where('title_fr','<>', null)->latest()->take(10)->get();
+
 
         }else {
             $categories = Category::where('name', '<>' , 'null')->latest();
             $cards = Card::where('is_published','1')->where('image','<>' , '')->latest()->get()->take(8);
             $magazines = Magazine::where('is_published','1')->where('book','<>' , null)->latest()->get();
+            $slider_posts = Post::where('is_published','on')->latest()->take(10)->get();
+
 
         }
 
 
-        return view('home')->with('slider_posts',Post::where('is_published','on')->latest()->take(10)->get())
+        return view('home')->with('slider_posts',$slider_posts)
             ->with('last_posts',Post::where('is_published','on')->latest()->take(4)->get())
             ->with('categories',Category::get()->take(12))
             ->with('magazines',$magazines)
