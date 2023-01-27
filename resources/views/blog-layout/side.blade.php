@@ -3,18 +3,21 @@
     if(config('app.locale') == 'ar') {
             $article = \App\Models\Category::where('name','مقالات')->first();
              $Articles = \App\Models\Post::where('category_id',$article->id)->latest()->take(3)->get();
-              $Dialogues = \App\Models\Category::where('name','حوارات')->first()->posts->where('title','<>',null)->take(3);
+             $Dialogue =  \App\Models\Category::where('name','حوارات')->first();
+             $Dialogues = \App\Models\Post::where('category_id',$Dialogue->id)->latest()->take(3)->get();
 
           }
       elseif(config('app.locale') == 'fr') {
 
             $article = \App\Models\Category::where('name','Articles')->first();
             $Articles = \App\Models\Post::where('category_id',$article->id)->where('title_fr' , '<>' , null)->latest()->take(3)->get();
-            $Dialogues = \App\Models\Category::where('name_fr','Dialogues')->first()->posts->where('title_fr','<>',null)->take(3);
+            $Dialogue =  \App\Models\Category::where('name','')->first();
+            $Dialogues = \App\Models\Post::where('category_id',$Dialogue->id)->where('title_fr','<>',null)->latest()->take(3)->get();
       }else {
             $article = \App\Models\Category::where('name','Articles')->first();
             $Articles = \App\Models\Post::where('category_id',$article->id)->where('title_en' , '<>' , null)->latest()->take(3)->get();
-            $Dialogues = \App\Models\Category::where('name_en','Dialogues')->first()->posts->where('title_en','<>',null)->take(3);
+            $Dialogue =  \App\Models\Category::where('name','')->first();
+            $Dialogues = \App\Models\Post::where('category_id',$Dialogue->id)->where('title_en','<>',null)->latest()->take(3)->get();
       }
 
 
