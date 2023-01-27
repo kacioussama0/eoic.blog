@@ -11,12 +11,12 @@
 
             $article = \App\Models\Category::where('name','Articles')->first();
             $Articles = \App\Models\Post::where('category_id',$article->id)->where('title_fr' , '<>' , null)->latest()->take(3)->get();
-            $Dialogue =  \App\Models\Category::where('name','Dialogues')->first();
+            $Dialogue =  \App\Models\Category::where('name_fr','Dialogues')->first();
             $Dialogues = \App\Models\Post::where('category_id',$Dialogue->id)->where('title_fr','<>',null)->latest()->take(3)->get();
       }else {
             $article = \App\Models\Category::where('name','Articles')->first();
             $Articles = \App\Models\Post::where('category_id',$article->id)->where('title_en' , '<>' , null)->latest()->take(3)->get();
-            $Dialogue =  \App\Models\Category::where('name','Dialogues')->first();
+            $Dialogue =  \App\Models\Category::where('name_en','Dialogues')->first();
             $Dialogues = \App\Models\Post::where('category_id',$Dialogue->id)->where('title_en','<>',null)->latest()->take(3)->get();
       }
 
