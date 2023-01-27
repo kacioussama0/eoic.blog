@@ -23,7 +23,7 @@
 
                                 <thead >
 
-                                <tr class="sticky-top">
+                                <tr>
                                     <th>{{__('forms.title')}}</th>
                                     <th>{{__('forms.category')}}</th>
                                     <th>

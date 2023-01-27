@@ -70,7 +70,7 @@ class PostController extends Controller
 
         $request->validate([
 
-            'title' => 'required|min:5|unique:posts',
+            'title' => 'required|min:5|max:255|unique:posts',
             'category' => 'required',
             'content' => 'required|min:20',
 
@@ -171,7 +171,7 @@ class PostController extends Controller
 
         $request->validate([
 
-            'title' => 'required|min:5|unique:posts,title,' . $post->id,
+            'title' => 'required|min:5|max:255|unique:posts,title,' . $post->id,
             'category' => 'required',
             'content' => 'required|min:20',
 
@@ -238,35 +238,35 @@ class PostController extends Controller
 
 
         $post->update([
-                'title' => $request->title,
-                'title_fr' => $request->title_fr,
-                'title_en' => $request->title_en,
-                'slug' => Str::words($this->slug($request->title,'-'),5),
-                'slug_en' => Str::words($this->slug($request->title_en,'-'),5),
-                'slug_fr' => Str::words($this->slug($request->title_fr,'-'),5),
-                'category_id' => $request->category,
-                'content' => $request['content'],
-                'content_fr' => $request['content_fr'],
-                'content_en' => $request['content_en'],
-                'created_by' => Auth::id(),
-                'created_at' => $request -> created_at,
-                'is_published' => ($request->is_published == null) ? null : 'on' ,
-                'image' => $image ? $image : $post -> image,
-                'image_en' => $imageEN ? $imageEN : $post -> image_en,
-                'image_fr' => $imageFR ? $imageFR : $post -> image_fr
-            ]);
+            'title' => $request->title,
+            'title_fr' => $request->title_fr,
+            'title_en' => $request->title_en,
+            'slug' => Str::words($this->slug($request->title,'-'),5),
+            'slug_en' => Str::words($this->slug($request->title_en,'-'),5),
+            'slug_fr' => Str::words($this->slug($request->title_fr,'-'),5),
+            'category_id' => $request->category,
+            'content' => $request['content'],
+            'content_fr' => $request['content_fr'],
+            'content_en' => $request['content_en'],
+            'created_by' => Auth::id(),
+            'created_at' => $request -> created_at,
+            'is_published' => ($request->is_published == null) ? null : 'on' ,
+            'image' => $image ? $image : $post -> image,
+            'image_en' => $imageEN ? $imageEN : $post -> image_en,
+            'image_fr' => $imageFR ? $imageFR : $post -> image_fr
+        ]);
 
-            // End Update Post To Database
+        // End Update Post To Database
 
 
-            $post -> tags()->sync($request->tags);
+        $post -> tags()->sync($request->tags);
 
 
 
         return redirect()->to('admin/posts')->with(
-          [
-              'success' =>  __('forms.edit-success')
-          ]
+            [
+                'success' =>  __('forms.edit-success')
+            ]
         );
 
     }
@@ -276,8 +276,8 @@ class PostController extends Controller
     public function junk()
     {
 
-         $trashedPosts = Post::onlyTrashed()->paginate(6);
-         return view('admin.posts.trashed',compact('trashedPosts'));
+        $trashedPosts = Post::onlyTrashed()->paginate(6);
+        return view('admin.posts.trashed',compact('trashedPosts'));
     }
 
 
