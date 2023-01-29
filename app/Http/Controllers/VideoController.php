@@ -117,7 +117,7 @@ class VideoController extends Controller
     }
 
     public function videos() {
-        $videos = Video::where('is_published',1)->latest()->paginate(12);
+        $videos = Video::where('is_published',1)->latest()->paginate(9);
         return view('videos',compact('videos'));
     }
 }
