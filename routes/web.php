@@ -44,6 +44,7 @@ Route::prefix('admin')->middleware('auth')->group(function() {
     Route::resource('categories',\App\Http\Controllers\CategoryController::class);
     Route::resource('tags',\App\Http\Controllers\TagController::class);
     Route::resource('posts',\App\Http\Controllers\PostController::class);
+    Route::get('post/{title?}',[\App\Http\Controllers\PostController::class,'filtering'])->name('posts.search');
     Route::resource('projects',\App\Http\Controllers\ProjectController::class);
     Route::get('junk',[\App\Http\Controllers\PostController::class,'junk']);
     Route::post('posts/uploadImage',[\App\Http\Controllers\PostController::class,'uploadImage'])->name('posts.uploadImage');

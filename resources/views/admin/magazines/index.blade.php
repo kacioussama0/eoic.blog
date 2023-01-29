@@ -199,6 +199,7 @@
                             </tbody>
                         </table>
                     </div>
+                    {{$magazines->links()}}
                 </div>
 
             </div>

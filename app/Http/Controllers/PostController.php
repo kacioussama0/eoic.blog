@@ -43,10 +43,9 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::latest()->paginate(12);
-        $postsEN = Post::latest()->where('title_en' , '<>' , null)->paginate(12);
-        $postsFR = Post::latest()->where('title_fr' , '<>' , null)->paginate(12);
 
-        return view('admin.posts.index',compact('posts','postsFR','postsEN'));
+
+        return view('admin.posts.index',compact('posts'));
 
     }
 
@@ -336,6 +335,19 @@ class PostController extends Controller
             $image = $request->file('upload')->store('posts/images','public');
             return response()->json(['filename' => $image , 'uploaded' => 1 , 'url' => asset('storage/' . $image)]);
         }
+
+        return  "";
+
+    }
+
+    public function filtering(Request $request) {
+
+
+
+        $posts = Post::where('title','like','%' . $request->title . '%')->paginate(12);
+
+        return view('admin.posts.index',compact('posts'));
+
 
     }
 

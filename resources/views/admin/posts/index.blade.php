@@ -16,12 +16,22 @@
     @include('admin.layouts.success')
 
 
+    <form action="{{route('posts.search')}}" method="GET">
+
+        <div class="input-group mb-3">
+            <input type="search" class="form-control" name="title" value="{{old('title')}}">
+            <button type="submit" class="btn btn-primary">{{__('home.search')}}</button>
+        </div>
+
+    </form>
+
     <div class="card">
                         <div class="table-responsive rounded align-middle text-center">
 
+
                             <table class="table table-striped table-waning border rounded align-middle">
 
-                                <thead >
+                                <thead>
 
                                 <tr>
                                     <th>{{__('forms.title')}}</th>
