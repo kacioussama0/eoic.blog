@@ -200,7 +200,9 @@ class PostController extends Controller
 
         if(!empty($request->file('image'))) {
 
-            unlink(public_path("storage/" . $post->image));
+            if(Storage::exists(public_path("storage/" . $post->image))) {
+                unlink(public_path("storage/" . $post->image));
+            }
 
             $image = $request->file('image')->store('posts/ar/','public');
 
@@ -299,19 +301,19 @@ class PostController extends Controller
 
         $post = Post::withTrashed()->where('id',$id)->first();
 
-        if(\Illuminate\Support\Facades\File::exists('storage/' . $post -> image) && $post -> image != null) {
+
+        if(Storage::exists(public_path("storage/" . $post->image))) {
             unlink(public_path("storage/" . $post->image));
         }
 
-        if(\Illuminate\Support\Facades\File::exists('storage/' . $post -> image_en) && $post -> image_en != null) {
+        if(Storage::exists(public_path("storage/" . $post->image_en))) {
             unlink(public_path("storage/" . $post->image_en));
         }
 
-
-        if(\Illuminate\Support\Facades\File::exists('storage/' . $post -> image_fr) && $post -> image_fr != null) {
+        if(Storage::exists(public_path("storage/" . $post->image_fr))) {
             unlink(public_path("storage/" . $post->image_fr));
-
         }
+
 
         $post -> forceDelete();
 
