@@ -4503,6 +4503,8 @@ textarea.form-control-lg {
   --bs-pagination-disabled-border-color: #dee2e6;
   display: flex;
   padding-right: 0;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
   list-style: none;
 }
 
