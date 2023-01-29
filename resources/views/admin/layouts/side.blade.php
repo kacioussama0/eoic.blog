@@ -117,7 +117,7 @@
                         <span>{{__('forms.videos')}}</span>
                     </a>
                 </li>
-
+{{--
                 <li
                     class="sidebar-item {{request()->is('admin/organization-members*') ? "active" : '' }}">
                     <a href="{{route('organization-members.index')}}" class='sidebar-link '>
@@ -125,7 +125,7 @@
                         <span>{{__('forms.office-members')}}</span>
                     </a>
                 </li>
-
+--}}
 
                 <li
                     class="sidebar-item {{request()->is('admin/cards*') ? "active" : '' }}">
