@@ -199,9 +199,8 @@
                             </tbody>
                         </table>
                     </div>
-                    {{$magazines->links()}}
                 </div>
-
+                {{$magazines->links()}}
             </div>
         </div>
     </div>
