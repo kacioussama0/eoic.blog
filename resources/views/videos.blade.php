@@ -61,6 +61,8 @@
 
                </div>
 
+            {{$videos->links()}}
+
            </div>
 
 

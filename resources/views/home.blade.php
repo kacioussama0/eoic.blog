@@ -246,8 +246,6 @@
                         }else {
                             $category = $category->posts()->where('title_en', '<>' , 'null')->latest()->get();
                         }
-
-
                 @endphp
 
             @if(count($category))
