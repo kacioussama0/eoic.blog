@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('who-we-are',[\App\Http\Controllers\BlogController::class,'who'])->name('who-we-are');
-Route::get('members',[\App\Http\Controllers\BlogController::class,'members'])->name('members');
+// Route::get('members',[\App\Http\Controllers\BlogController::class,'members'])->name('members');
 Route::get('author/{author}',[\App\Http\Controllers\BlogController::class,'author'])->name('author');
 Route::get('projects',[\App\Http\Controllers\BlogController::class,'projects'])->name('projects');
 Route::get('projects/{project}',[\App\Http\Controllers\BlogController::class,'projectDonate'])->name('projects.donate');
@@ -51,7 +51,7 @@ Route::prefix('admin')->middleware('auth')->group(function() {
     Route::get('trashed/restore/{id}',[\App\Http\Controllers\PostController::class,'restoredTrashed'])->name('posts.restore');
     Route::get('trashed/delete/{id}',[\App\Http\Controllers\PostController::class,'deleteTrashed'])->name('posts.delete');
     Route::resource('join-us',\App\Http\Controllers\JoinController::class)->name('','join-us');
-    Route::resource('organization-members',\App\Http\Controllers\OrganizationMemberController::class)->name('','organization-members');
+   // Route::resource('organization-members',\App\Http\Controllers\OrganizationMemberController::class)->name('','organization-members');
     Route::resource('messages',\App\Http\Controllers\MessageController::class)->name('','messages')->except('destroyAll');
     Route::delete('removeAllMessages',[\App\Http\Controllers\MessageController::class,'destroyAll'])->name('removeAllMessages');
     Route::resource('magazines',\App\Http\Controllers\MagazineController::class)->name('','magazines');

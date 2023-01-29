@@ -228,15 +228,15 @@ $settings = \App\Models\Setting::first();
 
                     <div class="collapse mega-menu" id="media" data-bs-parent="#megaGroup">
                         <div class="container p-5">
-                            <div class="row row-cols-5 justify-content-center text-center ">
+                            <div class="row row-cols-4 justify-content-center text-center ">
 
-                                <div class="col">
+                             {{--   <div class="col">
                                     <a href="{{route('members')}}" class="text-white">
                                         <i class="fa-light fa-users" style="font-size: 80px"></i>
                                         <h3 class="text-white mt-3">{{__('forms.office-members')}}</h3>
                                     </a>
 
-                                </div>
+                          </div>    --}}
 
 
                                 <div class="col">
