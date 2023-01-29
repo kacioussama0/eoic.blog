@@ -237,13 +237,13 @@
                 @php
 
                     if(config('app.locale') == 'ar') {
-                            $category = $category->posts()->where('title' ,'<>', null)->get();
+                            $category = $category->posts()->where('title' ,'<>', null)->latest()->get();
 
                         }
                         elseif(config('app.locale') == 'fr') {
-                            $category = $category->posts()->where('title_fr' ,'<>', null)->get();
+                            $category = $category->posts()->where('title_fr' ,'<>', null)->latest()->get();
                         }else {
-                            $category = $category->posts()->where('title_en', '<>' , 'null')->get();
+                            $category = $category->posts()->where('title_en', '<>' , 'null')->latest()->get();
                         }
 
 
