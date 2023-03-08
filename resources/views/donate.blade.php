@@ -9,7 +9,7 @@
     <div class="container-lg">
         <h1 class="pt-5 text-center">{{__('forms.donate-to-organisation')}}</h1>
 
-        <img src="{{asset('assets/imgs/ahseno-ayah.svg')}}" alt="" class="mx-auto d-block my-5">
+        <img src="{{asset('assets/imgs/ahseno-ayah.svg')}}" alt="" class="mx-auto d-block img-fluid my-5">
 
 
 
