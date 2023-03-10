@@ -31,6 +31,7 @@
                         <x-admin.forms.text-area name="description" title="{{__('forms.description')}}" value="{!! old('description') !!}"/>
                         <x-admin.forms.input name="thumbnail" title="{{__('forms.picture')}}" type="file" value="{{old('thumbnail')}}"/>
                         <x-admin.forms.input name="amount" title="{{__('forms.price')}}" type="number" value="{{old('amount')}}"/>
+                        <x-admin.forms.input name="suggestions_amount" title="{{__('forms.price')}}" type="number" value="{{old('suggestions_amount')}}"/>
 
                         <div class="form-check form-switch mb-3">
                             <label for="is_published">{{__('forms.share')}}</label>

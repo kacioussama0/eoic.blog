@@ -25,11 +25,15 @@ return new class extends Migration
             $table->text('description_en');
             $table->text('description_fr');
             $table->double('amount');
+
+            $table->double('suggestions_amount');
+            $table->double('earned_amount');
+            $table->enum('status',['PROGRESS','CLOSED','HIDDEN']);
             $table->string('thumbnail');
             $table->string('thumbnail_en');
             $table->string('thumbnail_fr');
-            $table->boolean('is_published');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
