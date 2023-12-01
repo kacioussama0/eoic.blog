@@ -13,21 +13,13 @@ $settings = \App\Models\Setting::first();
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="title" content="{{$settings -> display_name()}}">
-    <meta name="description" content="{{$settings -> description()}}">
+    <meta name="title" content="الهيئة الأوروبية للمراكز الإسلامية">
+    <meta name="description" content="هي هيئة متخصصة في العناية بشؤون المراكز الإسلامية في أوروبا.
+أُسست وفقاً للمادة (60) وما يتلوها من المواد المتعلقة بتأسيس الجمعيات، من القانون المدني السويسري، بمبادرة من شخصيات دعوية من عدة أقطار أوروبية. وهي جمعية خيرية تطوعية، غير حكومية، مستقلة، وتسعى للعمل وفق رؤية واضحة وأهداف مرسومة وخطوات مدروسة، ووسائل معلنه.">
     @yield('meta')
     <meta name="robots" content="index, follow">
-    <meta name="robots" content="all"/>
-    <meta name="robots" content="noindex"/>
-    <meta name="robots" content="nofollow"/>
-    <meta name=”robots” content="noindex, nofollow">
-    <meta name=”robots” content="index, follow">
-    <meta name="robots" content="none"/>
-    <meta name="robots" content="noarchive"/>
-    <meta name="robots" content="notranslate"/>
-    <meta name="robots" content="noimageindex"/>
-    <meta name="robots" content="nosnippet"/>
-    <meta name="keywords" content="@foreach($navCategories as $category){{$category->name() . ','}}@endforeach"/>
+    <meta name="language" content="Arabic">
+    <meta name="keywords" content="@foreach($navCategories as $category){{$category->name . ','}}@endforeach"/>
     <!-- End Meta -->
     <title>{{$settings->display_name()}} | @yield('title')</title>
     <!-- Start Links -->
@@ -112,7 +104,7 @@ $settings = \App\Models\Setting::first();
             {{__('home.beta')}}
        </span>
 
-       <div class="d-flex align-items-center justify-content-center ">
+       <div class="d-flex align-items-center justify-content-center">
            <a href="https://www.facebook.com/MEDIA.EOIC/" target="_blank" class="me-3 text-white" ><i class="fa-brands fa-facebook fa-1x"></i></a>
            <a href="https://www.instagram.com/eoic_geneva/" target="_blank" class="me-3 text-white" ><i class="fa-brands fa-instagram fa-1x"></i></a>
            <a href="https://www.youtube.com/channel/UCi_iTZfHrRN19Wtwo4vM4EA?view_as=subscriber" target="_blank" class="me-3 text-white" ><i class="fa-brands fa-youtube fa-1x"></i></a>
@@ -170,7 +162,7 @@ $settings = \App\Models\Setting::first();
                                     <h3 class="border-start border-5 text-light ps-2 border-secondary ">{{__('home.about-organization')}}</h3>
                                     <ul>
                                         <li class=""><a href="{{route('who-we-are')}}">{{__('home.who-we-are')}}</a></li>
-                                        <li><a href="{{url('projects')}}">{{__('home.our-projects')}}</a></li>
+                                        <li><a href="{{url('who-we-are')}}#organisation-members">{{__('home.organisation-members')}}</a></li>
                                         <li><a href="{{url('who-we-are')}}#beneficiaries">{{__('home.beneficiaries')}}</a></li>
                                         <li><a href="{{url('who-we-are')}}#countries">{{__('home.countries-deal')}}</a></li>
                                     </ul>
@@ -408,7 +400,7 @@ $settings = \App\Models\Setting::first();
                     <div class="accordion-body">
                         <ul>
                             <li class="list-group-item ms-3 mb-2"><a href="{{route('who-we-are')}}" class="text-muted">{{__('home.who-we-are')}}</a></li>
-                            <li class="list-group-item ms-3 mb-2"><a href="" class="text-muted">{{__('home.our-projects')}}</a></li>
+                            <li class="list-group-item ms-3 mb-2"><a href="{{url('who-we-are')}}#organisation-members" class="text-muted">{{__('home.organisation-members')}}</a></li>
                             <li class="list-group-item ms-3 mb-2"><a href="{{url('who-we-are')}}#beneficiaries" class="text-muted">{{__('home.beneficiaries')}}</a></li>
                             <li class="list-group-item ms-3 mb-2"><a href="{{url('who-we-are')}}#countries" class="text-muted">{{__('home.countries-deal')}}</a></li>
                         </ul>

@@ -24,7 +24,6 @@
 
 
 
-
         .imgs {
             background-position: top center;
             background-repeat: no-repeat;

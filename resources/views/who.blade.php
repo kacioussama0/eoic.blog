@@ -2,6 +2,14 @@
 @section('title','من نحن')
 
 <style>
+
+    .avatar {
+        height: 400px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: top center;
+    }
+
     .fi:not(header .fi) {
         width: 100% !important;
         height: 150px !important;
@@ -456,5 +464,25 @@
 
         </div>
 
+
+        <h3 class="my-5" id="organisation-members"><img src="{{asset('assets/imgs/zellig.svg')}}" style="width: 30px" alt="" class="me-2"> {{__('home.organisation-members')}}</h3>
+
+        <div class="row g-4">
+            @foreach($members as $member)
+                <div class=" col-md-6 col-lg-4 col-xl-3" style="order: {{$member->order}};">
+                    <div class="card rounded-5 border-0 shadow">
+                        <div class="avatar" style="background-image: url('{{asset('storage/' . $member->avatar)}}')"></div>
+                        <div class="card-body text-center text-bg-primary">
+                            <h4 class="text-white">{{$member->full_name()}}</h4>
+                            <span>{{$member->occupation()}}</span>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+
     </div>
+
+
+
 @endsection

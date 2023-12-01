@@ -8,6 +8,7 @@ return [
     'message' => 'Message',
     'password' => 'password',
     'age' => 'Age',
+    'order' => 'Order',
     'phone' => 'Phone Number',
     'address' => 'Address',
     'dob' => 'Date of Birth',

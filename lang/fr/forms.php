@@ -9,6 +9,7 @@ return [
     'message' => 'Message',
     'password' => 'mot de passe',
     'phone' => 'Numéro de Téléphone',
+    'order' => 'Order',
     'address' => 'Addresse',
     'dob' => 'Date de naissance',
     'gender' => 'Sexe',

@@ -3,9 +3,6 @@
 
 @section('content')
 
-
-
-
     <div class="container my-5">
         <livewire:volunteer/>
     </div>

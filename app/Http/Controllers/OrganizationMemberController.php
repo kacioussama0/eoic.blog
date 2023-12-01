@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\OrganizationMember;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rules\File;
 
 class OrganizationMemberController extends Controller
@@ -38,13 +39,13 @@ class OrganizationMemberController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $validatedData = $request->validate([
             'name' => 'required|min:5',
             'name_latin' => 'required|min:5',
             'occupation' => 'required|min:5',
             'occupation_en' => 'required|min:5',
             'occupation_fr' => 'required|min:5',
-            'age' => 'required',
+            'order' => 'required',
             'avatar'=> [
                 'required',
                 File::types([
@@ -53,23 +54,17 @@ class OrganizationMemberController extends Controller
             ]
         ]);
 
-        $avatar = $request->file('avatar')->store('organization_members','public');
+        $validatedData['avatar'] = $request->file('avatar')->store('organization_members','public');
 
-        OrganizationMember::create(
-            [
-                'name' => $request->name,
-                'name_latin' =>  $request->name_latin,
-                'occupation' =>  $request->occupation,
-                'occupation_en' =>  $request->occupation_en,
-                'occupation_fr' =>  $request->occupation_fr,
-                'age' => $request->age,
-                'avatar' => $avatar,
-            ]
-        );
+        $created =  OrganizationMember::create($validatedData);
 
-        return redirect()->to('admin/organization-members')-> with([
-            'success' =>  __('forms.add-success')
-        ]);
+        if($created) {
+            return redirect()->to('admin/organization-members')-> with([
+                'success' =>  __('forms.add-success')
+            ]);
+
+        }
+
 
 
     }
@@ -105,45 +100,29 @@ class OrganizationMemberController extends Controller
      */
     public function update(Request $request, OrganizationMember $organizationMember)
     {
-        $request->validate([
+        $validatedData = $request->validate([
             'name' => 'required|min:5',
             'name_latin' => 'required|min:5',
             'occupation' => 'required|min:5',
             'occupation_en' => 'required|min:5',
             'occupation_fr' => 'required|min:5',
-            'age' => 'required',
-            'avatar'=> [
-                File::types([
-                    'jpg','gif','png','webp','svg'
-                ])->max(1024 * 4)
-            ]
+            'order' => 'required',
         ]);
 
-        $avatar = '';
+
 
         if(!empty($request->file('avatar'))) {
-            if(\Illuminate\Support\Facades\File::exists('storage/' . $organizationMember -> avatar)) {
-                unlink(public_path('storage/' . $organizationMember -> avatar));
-            }
-            $avatar = $request->file('avatar')->store('organization_members','public');
+            Storage::delete('public/' . $organizationMember -> avatar);
+            $validatedData['avatar'] = $request->file('avatar')->store('organization_members','public');
         }
 
-        $organizationMember->update(
-            [
-                'name' => $request->name,
-                'name_latin' =>  $request->name_latin,
-                'occupation' =>  $request->occupation,
-                'occupation_en' =>  $request->occupation_en,
-                'occupation_fr' =>  $request->occupation_fr,
-                'age' => $request->age,
-                'avatar' => $avatar ? $avatar : $organizationMember -> avatar,
-            ]
-        );
+        $updated = $organizationMember->update($validatedData);
 
-        return redirect()->to('admin/organization-members')-> with([
-            'success' =>  __('forms.edit-success')
-        ]);
-
+        if($updated) {
+            return redirect()->to('/admin/organization-members')-> with([
+                'success' =>  __('forms.edit-success')
+            ]);
+        }
     }
 
     /**
@@ -154,15 +133,13 @@ class OrganizationMemberController extends Controller
      */
     public function destroy(OrganizationMember $organizationMember)
     {
-        if(\Illuminate\Support\Facades\File::exists('storage/' . $organizationMember -> avatar)) {
-            unlink(public_path('storage/' . $organizationMember -> avatar));
+
+        if($organizationMember -> delete()) {
+            Storage::delete('public/' . $organizationMember -> avatar);
+
+            return redirect()->to('/admin/organization-members')-> with([
+                'success' =>  __('forms.deleted-success')
+            ]);
         }
-
-        $organizationMember -> delete();
-
-        return redirect()->to('admin/organization-members')-> with([
-            'success' =>  __('forms.deleted-success')
-        ]);
-
     }
 }

@@ -11,6 +11,7 @@ return [
     'get-closure' => 'إقترب إلينا',
     'news-and-activities' => 'الأخبار والنشاطات',
     'beneficiaries' => 'الجهات المستفيدة',
+    'organisation-members' => 'أعضاء المكتب التنفيذي',
     'countries-deal' => 'الدول التي نعمل بها',
     'media' => 'وسائط الإعلام',
     'contact-us' => 'تواصلو معنا',

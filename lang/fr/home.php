@@ -11,6 +11,7 @@ return [
     'get-closure' => 'Viens près de nous',
     'news-and-activities' => 'News and activities',
     'media' => 'Media',
+    'organisation-members' => 'Membres de l\'organisation',
     'beneficiaries' => 'Les bénéficiaires',
     'countries-deal' => 'Les pays dans lesquels nous opérons',
     'contact-us' => 'Contacter Nous',

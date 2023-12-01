@@ -12,6 +12,7 @@ return [
     'media' => 'Media',
     'get-closure' => 'Get Closure',
     'beneficiaries' => 'Beneficiaries',
+    'organisation-members' => 'Organisation Members',
     'countries-deal' => 'The countries in which we operate',
     'contact-us' => 'Contact Us',
     'join-us' => 'Join Us',

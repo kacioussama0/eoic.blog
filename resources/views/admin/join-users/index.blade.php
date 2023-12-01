@@ -21,7 +21,6 @@
                 <tr>
                     <th>{{__('forms.full-name')}}</th>
                     <th>{{__('forms.latin-name')}}</th>
-                    <th>{{__('forms.age')}}</th>
                     <th>{{__('forms.picture')}}</th>
                     <th>{{__('forms.profession')}}</th>
                     <th>{{__('forms.created-at')}}</th>
@@ -37,7 +36,6 @@
                     <tr>
                         <td>{{$user -> name}}</td>
                         <td>{{$user -> name_latin}}</td>
-                        <td>{{$user -> age}}</td>
                         <td>
                             <img src="{{asset('storage/' . $user -> avatar)}}" alt="" style="width: 100px; height: 100px ; object-fit: cover" class="rounded-circle ">
                         </td>

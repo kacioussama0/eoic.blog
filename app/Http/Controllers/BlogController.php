@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Session;
 
 class BlogController extends Controller
-{               
+{
     public function index() {
 
         if(config('app.locale') == 'en') {
@@ -169,7 +169,7 @@ class BlogController extends Controller
     }
 
     public function who() {
-        return view('who')->with('settings',Setting::first());
+        return view('who')->with('settings',Setting::first())->with('members',OrganizationMember::orderBy('created_at')->orderBy('order')->get());
     }
 
 
@@ -225,10 +225,10 @@ class BlogController extends Controller
         $members = OrganizationMember::all();
         return view('members',compact('members'));
     }
-    
+
     public function share($slug) {
-    
-        
+
+
         if(!empty(Post::where('slug','=',$slug)->first())) {
         	$postAR = Post::where('slug','=',$slug)->first();
         	$posts = [
@@ -239,7 +239,7 @@ class BlogController extends Controller
                 'dir'=> 'rtl'
             ];
         }
-        
+
         else if(!empty(Post::where('slug_fr','=',$slug)->first())) {
         $postFR = Post::where('slug_fr','=',$slug)->first();
         	$posts = [
@@ -250,9 +250,9 @@ class BlogController extends Controller
                 'dir'=> 'ltr'
             ];
         }
-        
+
         else if(!empty(Post::where('slug_en','=',$slug)->first())) {
-        
+
         	$postEN = Post::where('slug_en','=',$slug)->first();
         	$posts = [
             	'title'=> $postEN -> title_en,
@@ -261,14 +261,14 @@ class BlogController extends Controller
                 'created_at' => $postEN -> created_at,
                 'dir'=> 'ltr'
             ];
-        
+
         }else {
              return abort(404);
 
         }
-        
+
     	$settings = Setting::first();
-        
+
         return view('share',compact('settings','slug'))->with('post', $posts);
    }
 }
