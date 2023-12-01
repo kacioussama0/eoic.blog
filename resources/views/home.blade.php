@@ -47,7 +47,7 @@
             <div id="LastPosts" class="carousel slide overflow-hidden position-relative  rounded-4 rounded-top-0 shadow mb-5" data-bs-ride="carousel">
 
                         <div class="carousel-inner ">
-
+					
                             @foreach($slider_posts as  $key => $post)
                                 @if($post->title() != null )
                                     @php $active = $key @endphp
@@ -65,8 +65,8 @@
                                     <div class="carousel-item  @if($key == $active) active @endif">
                                         <div class="carousel-content mb-4">
                                             <div class="mb-3">{{$post ->created_at -> diffForHumans()}}</div>
-
                                             <h4 class="lh-lg"><a href="{{route('post.slug', $post->slug())}}" class="link-light ">{{$post -> title()}}</a></h4>
+
                                             <div class="badge rounded-pill text-bg-secondary  mb-3"><a href="{{url('category/' . $post ->category->name())}}" class="link-dark">{{$post ->category -> name()}}</a></div>
 
 
@@ -258,7 +258,7 @@
                         </h2>
 
                     <div class="row">
-                        @foreach($category  ->take(3) as $post)
+                        @foreach($category  -> take(3)   as $post)
                             <div class="col-md-6 col-lg-4 wow fadeIn">
                                 <x-article :post="$post"/>
                             </div>

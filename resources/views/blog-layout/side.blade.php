@@ -309,7 +309,7 @@
 
 
         $.ajax({
-            url: `http://api.aladhan.com/v1/calendarByCity?city=${obj.city}&country=${obj.country}&method=${obj.method}&month=${obj.month}&year=${obj.year}`,
+            url: `https://api.aladhan.com/v1/calendarByCity?city=${obj.city}&country=${obj.country}&method=${obj.method}&month=${obj.month}&year=${obj.year}`,
             method: 'GET'
         }).done((response)=> {
             prayers = response.data[obj.day - 1];

@@ -70,10 +70,11 @@
                             {{date_format($post->created_at,'Y-m-d')}}
                         </div>
                         <div>
-                            <a href="https://www.facebook.com/sharer.php?u={{route('post.slug', $post->slug())}}" target="_blank" class="me-2" style="color: #4267B2"><i class="fa-brands fa-facebook"></i></a>
-                            <a href="https://www.facebook.com/dialog/send?app_id=5303202981&display=popup&link={{route('post.slug', $post->slug())}}&redirect_uri={{route('post.slug', $post->slug())}}" class="me-2" style="color: #00B2FF"><i class="fa-brands fa-facebook-messenger" ></i></a>
-                            <a href="#" class="me-2"><i class="fa-brands fa-whatsapp" style="color: #25D366"></i></a>
-                            <a href="https://twitter.com/intent/tweet?text={{$post->title()}}&url={{route('post.slug', $post->slug())}}" target="_blank" class="me-2" style="color: #1DA1F2"><i class="fa-brands fa-twitter"></i></a>
+                        
+                            <a href="https://www.facebook.com/sharer.php?u={{url('posts/share') . '/' . $post->slug()}}" target="_blank" class="me-2" style="color: #4267B2"><i class="fa-brands fa-facebook"></i></a>
+                            <a href="https://www.facebook.com/dialog/send?app_id=5303202981&display=popup&link={{url('posts/share/') . $post->slug()}}&redirect_uri={{url('posts/share/') . $post->slug()}}" class="me-2" style="color: #00B2FF"><i class="fa-brands fa-facebook-messenger" ></i></a>
+                            <a href="https://api.whatsapp.com/send?text= . {{$post->title()}} . '%20' . {{url('posts/share') . '/' . $post->slug()}}" class="me-2"><i class="fa-brands fa-whatsapp" style="color: #25D366"></i></a>
+                            <a href="https://twitter.com/intent/tweet?text={{$post->title()}}&url='{{route('post.slug', $post->slug())}}'" target="_blank" class="me-2" style="color: #1DA1F2"><i class="fa-brands fa-twitter"></i></a>
                         </div>
 
                     </div>

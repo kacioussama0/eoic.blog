@@ -144,32 +144,32 @@ class MagazineController extends Controller
         $book = $thumbnail = $bookEN = $thumbnailEN = $bookFR = $thumbnailFR = '';
 
         if($request->file('book') != null) {
-            unlink(public_path("storage/" . $magazine->book));
+            //unlink(public_path("storage/" . $magazine->book));
             $book = $request->file('book')->store('magazines/books/ar','public');
         }
 
         if($request->file('thumbnail') != null) {
-            unlink(public_path("storage/" . $magazine->thumbnail));
+            //unlink(public_path("storage/" . $magazine->thumbnail));
             $thumbnail = $request->file('thumbnail')->store('magazines/thumbnails/ar','public');
         }
 
         if($request->file('book_en') != null) {
-            unlink(public_path("storage/" . $magazine->book_en));
+            //unlink(public_path("storage/" . $magazine->book_en));
             $bookEN = $request->file('book_en')->store('magazines/books/en','public');
         }
 
         if($request->file('thumbnail_en') != null) {
-            unlink(public_path("storage/" . $magazine->thumbnail_en));
+            //unlink(public_path("storage/" . $magazine->thumbnail_en));
             $thumbnailEN = $request->file('thumbnail_en')->store('magazines/thumbnails/en','public');
         }
 
         if($request->file('book_fr') != null) {
-            unlink(public_path("storage/" . $magazine->book_fr));
+            //unlink(public_path("storage/" . $magazine->book_fr));
             $bookFR = $request->file('book_fr')->store('magazines/books/fr','public');
         }
 
         if($request->file('thumbnail_fr') != null) {
-            unlink(public_path("storage/" . $magazine->thumbnail_fr));
+            //unlink(public_path("storage/" . $magazine->thumbnail_fr));
             $thumbnailFR = $request->file('thumbnail_fr')->store('magazines/thumbnails/fr','public');
         }
 

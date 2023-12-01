@@ -28,22 +28,25 @@ class BlogController extends Controller
             $cards = Card::where('is_published','1')->where('image_en','<>' , '')->latest()->get()->take(8);
             $magazines = Magazine::where('is_published','1')->where('book_en','<>' , '')->latest()->get();
             $slider_posts = Post::where('is_published','on')->where('title_en','<>', null)->latest()->take(10)->get();
+            $last_posts = Post::where('is_published','on')->where('title_en','<>', null)->latest()->take(4)->get();
         }
         elseif(config('app.locale') == 'fr') {
             $categories = Category::where('name_fr' ,'<>', null)->latest();
             $cards = Card::where('is_published','1')->where('image_fr','<>' , '')->latest()->get()->take(8);
             $magazines = Magazine::where('is_published','1')->where('book_fr','<>' , '')->latest()->get();
-            $slider_posts = Post::where('is_published','on')->where('title_fr','<>', null)->latest()->take(10)->get();
+            $slider_posts = Post::where('is_published','on')->where('title_fr','<>', '')->latest()->take(10)->get();
+            $last_posts = Post::where('is_published','on')->where('title_fr','<>', '')->latest()->take(4)->get();
         }else {
-            $categories = Category::where('name', '<>' , 'null')->latest();
+            $categories = Category::where('name', '<>' , null)->latest();
             $cards = Card::where('is_published','1')->where('image','<>' , '')->latest()->get()->take(8);
             $magazines = Magazine::where('is_published','1')->where('book','<>' , null)->latest()->get();
             $slider_posts = Post::where('is_published','on')->latest()->take(10)->get();
+            $last_posts = Post::where('is_published','on')->latest()->take(4)->get();
         }
 
 
         return view('home')->with('slider_posts',$slider_posts)
-            ->with('last_posts',Post::where('is_published','on')->latest()->take(4)->get())
+            ->with('last_posts',$last_posts)
             ->with('categories',Category::get()->take(12))
             ->with('magazines',$magazines)
             ->with('videos',Video::where('is_published','1')->latest()->take(3)->get())
@@ -222,5 +225,50 @@ class BlogController extends Controller
         $members = OrganizationMember::all();
         return view('members',compact('members'));
     }
+    
+    public function share($slug) {
+    
+        
+        if(!empty(Post::where('slug','=',$slug)->first())) {
+        	$postAR = Post::where('slug','=',$slug)->first();
+        	$posts = [
+            	'title'=> $postAR -> title,
+                'content' => $postAR -> content,
+                'image' => $postAR -> image,
+                'created_at' => $postAR -> created_at,
+                'dir'=> 'rtl'
+            ];
+        }
+        
+        else if(!empty(Post::where('slug_fr','=',$slug)->first())) {
+        $postFR = Post::where('slug_fr','=',$slug)->first();
+        	$posts = [
+            	'title'=> $postFR -> title_fr,
+                'content' => $postFR -> content_fr,
+                'image' => $postFR -> image_fr,
+                'created_at' => $postFR -> created_at,
+                'dir'=> 'ltr'
+            ];
+        }
+        
+        else if(!empty(Post::where('slug_en','=',$slug)->first())) {
+        
+        	$postEN = Post::where('slug_en','=',$slug)->first();
+        	$posts = [
+            	'title'=> $postEN -> title_en,
+                'content' => $postEN -> content_en,
+                'image' => $postEN -> image_en,
+                'created_at' => $postEN -> created_at,
+                'dir'=> 'ltr'
+            ];
+        
+        }else {
+             return abort(404);
 
+        }
+        
+    	$settings = Setting::first();
+        
+        return view('share',compact('settings','slug'))->with('post', $posts);
+   }
 }
