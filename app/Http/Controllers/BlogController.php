@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Session;
 
 class BlogController extends Controller
-{
+{               
     public function index() {
 
         if(config('app.locale') == 'en') {
@@ -190,7 +190,7 @@ class BlogController extends Controller
     }
 
     public function projects() {
-        $projects = Project::where('is_published',1)->latest()->get();
+        $projects = Project::latest()->get();
         return view('projects')->with('settings',Setting::first())
             ->with('projects',$projects);
     }

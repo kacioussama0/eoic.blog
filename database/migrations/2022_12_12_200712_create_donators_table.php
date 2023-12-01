@@ -15,6 +15,13 @@ return new class extends Migration
     {
         Schema::create('donators', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('email');
+            $table->unsignedBigInteger('project_id')->nullable();
+            $table->foreign('project_id')->references('id')
+                ->on('projects')->nullOnDelete();
+            $table->decimal('price');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
